@@ -119,13 +119,13 @@ test08CanNotSuspendAnAlreadySuspendedCustomer
 ! !
 
 
-!CustomerBookTest methodsFor: 'auxiliaryMethodsForTesting' stamp: 'SF 4/11/2023 18:36:14'!
+!CustomerBookTest methodsFor: 'auxiliary methods for testing' stamp: 'SF 4/11/2023 18:36:14'!
 assertCustomerIsSoleCustomer: aCustomerBook customer: aName
 
 	self assert: aCustomerBook numberOfCustomers = 1.
 	self assert: (aCustomerBook includesCustomerNamed: aName) ! !
 
-!CustomerBookTest methodsFor: 'auxiliaryMethodsForTesting' stamp: 'JPL 4/13/2023 01:19:50'!
+!CustomerBookTest methodsFor: 'auxiliary methods for testing' stamp: 'JPL 4/13/2023 01:19:50'!
 assertInvalidClosureThrowsAnError: aClosure errorThatMustOccur: errorType closureToExecuteOnError: errorHandlingClosure
 
 	
@@ -134,14 +134,14 @@ assertInvalidClosureThrowsAnError: aClosure errorThatMustOccur: errorType closur
 		on: errorType
 		do: [errorHandlingClosure .]! !
 
-!CustomerBookTest methodsFor: 'auxiliaryMethodsForTesting' stamp: 'JPL 4/13/2023 01:11:30'!
+!CustomerBookTest methodsFor: 'auxiliary methods for testing' stamp: 'JPL 4/13/2023 01:11:30'!
 assertLengthsOfCustomerListsForCustomerBook: aCustomerBook activeCustomerLength: anAmountOfActiveCustomers suspendedCustomerLength: anAmountOfSuspendedCustomers totalCustomerLength: anAmountOfTotalCustomers
 
 	self assert: anAmountOfActiveCustomers equals: aCustomerBook numberOfActiveCustomers.
 	self assert: anAmountOfSuspendedCustomers equals: aCustomerBook numberOfSuspendedCustomers.
 	self assert: anAmountOfTotalCustomers equals: aCustomerBook numberOfCustomers.! !
 
-!CustomerBookTest methodsFor: 'auxiliaryMethodsForTesting' stamp: 'N 4/10/2023 21:53:57'!
+!CustomerBookTest methodsFor: 'auxiliary methods for testing' stamp: 'N 4/10/2023 21:53:57'!
 createCustomerBookWithCustomer: aCustomerName
 
 	| customerBook |
@@ -151,7 +151,7 @@ createCustomerBookWithCustomer: aCustomerName
 	
 	^customerBook! !
 
-!CustomerBookTest methodsFor: 'auxiliaryMethodsForTesting' stamp: 'JPL 4/12/2023 23:29:09'!
+!CustomerBookTest methodsFor: 'auxiliary methods for testing' stamp: 'JPL 4/12/2023 23:29:09'!
 executeClosureWithTimeLimit: closureToExecute executionTimeLimitInMilliseconds: anAmountOfMilliseconds
 
 	|millisecondsBeforeRunning millisecondsAfterRunning |
