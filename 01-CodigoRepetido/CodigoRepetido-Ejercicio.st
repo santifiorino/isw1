@@ -27,12 +27,12 @@ assertCustomerIsSoleCustomer: aCustomerBook customer: aName
 	self assert: aCustomerBook numberOfCustomers = 1.
 	self assert: (aCustomerBook includesCustomerNamed: aName) ! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'N 4/10/2023 21:49:31'!
-assertLengthsOfCustomerListsForCustomerBook: aCustomerBook activeCustomerLength: aNumberForActiveCustomers suspendedCustomerLength: aNumberForSuspendedCustomers totalCustomerLength: aNumberForTotalCustomers
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/13/2023 01:11:30'!
+assertLengthsOfCustomerListsForCustomerBook: aCustomerBook activeCustomerLength: anAmountOfActiveCustomers suspendedCustomerLength: anAmountOfSuspendedCustomers totalCustomerLength: anAmountOfTotalCustomers
 
-	self assert: aNumberForActiveCustomers equals: aCustomerBook numberOfActiveCustomers.
-	self assert: aNumberForSuspendedCustomers equals: aCustomerBook numberOfSuspendedCustomers.
-	self assert: aNumberForTotalCustomers equals: aCustomerBook numberOfCustomers.! !
+	self assert: anAmountOfActiveCustomers equals: aCustomerBook numberOfActiveCustomers.
+	self assert: anAmountOfSuspendedCustomers equals: aCustomerBook numberOfSuspendedCustomers.
+	self assert: anAmountOfTotalCustomers equals: aCustomerBook numberOfCustomers.! !
 
 !CustomerBookTest methodsFor: 'testing' stamp: 'N 4/10/2023 21:53:57'!
 createCustomerBookWithCustomer: aCustomerName
@@ -43,15 +43,6 @@ createCustomerBookWithCustomer: aCustomerName
 	customerBook addCustomerNamed: aCustomerName.
 	
 	^customerBook! !
-
-!CustomerBookTest methodsFor: 'testing' stamp: 'N 4/10/2023 21:20:33'!
-executeClosureWithErrorHandling: aClosure errorToHandle: errorType closureToExecuteOnError: errorHandlerClosure
-
-	
-	[ aClosure value.
-	self fail ]
-		on: errorType
-		do: [errorHandlerClosure .]! !
 
 !CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/12/2023 23:29:09'!
 executeClosureWithTimeLimit: closureToExecute executionTimeLimitInMilliseconds: anAmountOfMilliseconds
@@ -64,45 +55,56 @@ executeClosureWithTimeLimit: closureToExecute executionTimeLimitInMilliseconds: 
 	
 	self assert: (millisecondsAfterRunning-millisecondsBeforeRunning) < (anAmountOfMilliseconds * millisecond)! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'SF 4/11/2023 17:21:20'!
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/13/2023 01:12:21'!
+executeInvalidClosure: aClosure errorToHandle: errorType closureToExecuteOnError: errorHandlingClosure
+
+	
+	[ aClosure value.
+	self fail ]
+		on: errorType
+		do: [errorHandlingClosure .]! !
+
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/13/2023 01:09:22'!
 test01AddingCustomerShouldNotTakeMoreThan50Milliseconds
 
 	| customerBook|
 	
 	customerBook := CustomerBook new.
 	
-	self executeClosureWithTimeLimit:  [customerBook addCustomerNamed: 'John Lennon'.] executionTimeLimitInMilliseconds: 50.! !
+	self executeClosureWithTimeLimit:  [customerBook addCustomerNamed: 'John Lennon'.] 
+		executionTimeLimitInMilliseconds: 50.! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'SF 4/11/2023 18:37:18'!
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/13/2023 01:09:18'!
 test02RemovingCustomerShouldNotTakeMoreThan100Milliseconds
 
 	| customerBook |
 	
 	customerBook := self createCustomerBookWithCustomer: 'Paul McCartney'.
 	
-	self executeClosureWithTimeLimit: [customerBook removeCustomerNamed: 'Paul McCartney'.] executionTimeLimitInMilliseconds: 100.
+	self executeClosureWithTimeLimit: [customerBook removeCustomerNamed: 'Paul McCartney'.] 
+		executionTimeLimitInMilliseconds: 100.
 ! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'SF 4/11/2023 17:23:26'!
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/13/2023 01:09:11'!
 test03CanNotAddACustomerWithEmptyName 
 
 	| customerBook |
 			
 	customerBook := CustomerBook new.
 	
-	self executeClosureWithErrorHandling: [customerBook addCustomerNamed: ''.]
-	errorToHandle: Error
-	closureToExecuteOnError: [ :anError | self assert: anError messageText = CustomerBook customerCanNotBeEmptyErrorMessage.			self assert: customerBook isEmpty ]! !
+	self executeInvalidClosure: [customerBook addCustomerNamed: ''.]
+		errorToHandle: Error
+		closureToExecuteOnError: [ :anError | self assert: anError messageText = CustomerBook customerCanNotBeEmptyErrorMessage.			self assert: customerBook isEmpty ]! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/12/2023 23:33:25'!
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/13/2023 01:05:58'!
 test04CanNotRemoveAnInvalidCustomer
 
 	| customerBook |
 			
 	customerBook := self createCustomerBookWithCustomer: 'John Lennon' .
-	self executeClosureWithErrorHandling: [ customerBook removeCustomerNamed: 'Paul McCartney'.]
+	self executeInvalidClosure: [ customerBook removeCustomerNamed: 'Paul McCartney'.]
 		errorToHandle: NotFound
-		closureToExecuteOnError: [ :anError | self assert: customerBook numberOfCustomers = 1. self assert: (customerBook includesCustomerNamed: 'John Lennon') ]
+		closureToExecuteOnError: [ self assertCustomerIsSoleCustomer: customerBook customer: 'John Lennon']
 ! !
 
 !CustomerBookTest methodsFor: 'testing' stamp: 'SF 4/11/2023 18:39:20'!
@@ -135,26 +137,28 @@ test06RemovingASuspendedCustomerShouldRemoveItFromCustomerBook
 		totalCustomerLength: 0.
 	self deny: (customerBook includesCustomerNamed: 'Paul McCartney').! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'SF 4/11/2023 18:40:50'!
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/13/2023 01:09:42'!
 test07CanNotSuspendAnInvalidCustomer
 
 	| customerBook |
 	
 	customerBook := self createCustomerBookWithCustomer: 'John Lennon'.
 		
-	self executeClosureWithErrorHandling: [ customerBook suspendCustomerNamed: 'George Harrison'.] errorToHandle:  CantSuspend closureToExecuteOnError: [ :anError | 
-			self assertCustomerIsSoleCustomer: customerBook customer: 'John Lennon']
+	self executeInvalidClosure: [ customerBook suspendCustomerNamed: 'George Harrison'.] 
+		errorToHandle:  CantSuspend 
+		closureToExecuteOnError: [self assertCustomerIsSoleCustomer: customerBook customer: 'John Lennon']
 ! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'SF 4/11/2023 18:42:12'!
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/13/2023 01:09:46'!
 test08CanNotSuspendAnAlreadySuspendedCustomer
 	| customerBook |
 	
 	customerBook := self createCustomerBookWithCustomer: 'John Lennon' .
 	customerBook suspendCustomerNamed: 'John Lennon'.
 	
-	self executeClosureWithErrorHandling: [ customerBook suspendCustomerNamed: 'John Lennon'.] errorToHandle:  CantSuspend closureToExecuteOnError: [ :anError | 
-			self assertCustomerIsSoleCustomer: customerBook customer: 'John Lennon' ]
+	self executeInvalidClosure: [ customerBook suspendCustomerNamed: 'John Lennon'.] 
+		errorToHandle:  CantSuspend 
+		closureToExecuteOnError: [		self assertCustomerIsSoleCustomer: customerBook customer: 'John Lennon' ]
 ! !
 
 
