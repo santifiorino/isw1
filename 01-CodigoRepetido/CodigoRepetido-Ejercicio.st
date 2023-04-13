@@ -53,8 +53,8 @@ executeClosureWithErrorHandling: aClosure errorToHandle: errorType closureToExec
 		on: errorType
 		do: [errorHandlerClosure .]! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'N 4/10/2023 21:09:18'!
-executeClosureWithTimeLimit: closureToExecute executionTimeLimitInMilliseconds: aNumberInMilliseconds
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/12/2023 23:29:09'!
+executeClosureWithTimeLimit: closureToExecute executionTimeLimitInMilliseconds: anAmountOfMilliseconds
 
 	|millisecondsBeforeRunning millisecondsAfterRunning |
 	
@@ -62,7 +62,7 @@ executeClosureWithTimeLimit: closureToExecute executionTimeLimitInMilliseconds: 
 	closureToExecute value.
 	millisecondsAfterRunning := Time millisecondClockValue * millisecond.
 	
-	self assert: (millisecondsAfterRunning-millisecondsBeforeRunning) < (aNumberInMilliseconds * millisecond)! !
+	self assert: (millisecondsAfterRunning-millisecondsBeforeRunning) < (anAmountOfMilliseconds * millisecond)! !
 
 !CustomerBookTest methodsFor: 'testing' stamp: 'SF 4/11/2023 17:21:20'!
 test01AddingCustomerShouldNotTakeMoreThan50Milliseconds
@@ -94,7 +94,7 @@ test03CanNotAddACustomerWithEmptyName
 	errorToHandle: Error
 	closureToExecuteOnError: [ :anError | self assert: anError messageText = CustomerBook customerCanNotBeEmptyErrorMessage.			self assert: customerBook isEmpty ]! !
 
-!CustomerBookTest methodsFor: 'testing' stamp: 'SF 4/11/2023 18:38:33'!
+!CustomerBookTest methodsFor: 'testing' stamp: 'JPL 4/12/2023 23:33:25'!
 test04CanNotRemoveAnInvalidCustomer
 
 	| customerBook |
