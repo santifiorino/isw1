@@ -5,7 +5,7 @@ TestCase subclass: #NumeroTest
 	poolDictionaries: ''
 	category: 'Numero-Exercise'!
 
-!NumeroTest methodsFor: 'tests' stamp: 'SF 4/17/2023 19:48:22'!
+!NumeroTest methodsFor: 'tests' stamp: 'SF 4/17/2023 21:40:47'!
 setUp
 
 	zero := Entero with: 0.
@@ -23,9 +23,7 @@ setUp
 	twoFifth := Fraccion with: two over: five.
 	twoTwentyfifth := Fraccion with: two over: (Entero with: 25).
 	fiveHalfs := Fraccion with: five over: two.
-	negativeOneHalf := Fraccion with: negativeOne over: two
-	
-	! !
+	negativeOneHalf := Fraccion with: negativeOne over: two! !
 
 !NumeroTest methodsFor: 'tests' stamp: 'SF 4/17/2023 19:22:34'!
 test01isCeroReturnsTrueWhenAskToZero
@@ -56,7 +54,7 @@ test06EnteroMultipliesWithEnteroCorrectly
 
 	self assert: two * two equals: four! !
 
-!NumeroTest methodsFor: 'tests' stamp: 'NR 9/8/2019 21:15:37'!
+!NumeroTest methodsFor: 'tests' stamp: 'SF 4/17/2023 21:39:14'!
 test07FraccionAddsWithFraccionCorrectly
 "
     La suma de fracciones es:
@@ -68,7 +66,7 @@ test07FraccionAddsWithFraccionCorrectly
 "
 	| sevenTenths |
 
-	sevenTenths := Numero with: (Numero with: 7) over: (Numero with: 10).
+	sevenTenths := Fraccion with: (Entero with: 7) over: (Entero with: 10).
 
 	self assert: oneFifth + oneHalf equals: sevenTenths! !
 
@@ -82,10 +80,10 @@ test08FraccionMultipliesWithFraccionCorrectly
 
 	self assert: oneFifth * twoFifth equals: twoTwentyfifth! !
 
-!NumeroTest methodsFor: 'tests' stamp: 'NR 9/8/2019 21:16:19'!
+!NumeroTest methodsFor: 'tests' stamp: 'SF 4/17/2023 21:39:30'!
 test09AparentFraccionesAreEqual
 
-	self assert: oneHalf equals: (Numero with: two over: four)! !
+	self assert: oneHalf equals: (Fraccion with: two over: four)! !
 
 !NumeroTest methodsFor: 'tests' stamp: 'NR 9/8/2019 21:12:46'!
 test10AddingFraccionesCanReturnAnEntero
@@ -117,15 +115,15 @@ test15NegationOfFraccionIsCorrect
 
 	self assert: oneHalf negated equals: negativeOneHalf! !
 
-!NumeroTest methodsFor: 'tests' stamp: 'NR 9/8/2019 21:29:45'!
+!NumeroTest methodsFor: 'tests' stamp: 'SF 4/17/2023 21:39:54'!
 test16SignIsCorrectlyAssignedToFractionWithTwoNegatives
 
-	self assert: oneHalf equals: (Numero with: negativeOne over: negativeTwo)! !
+	self assert: oneHalf equals: (Fraccion with: negativeOne over: negativeTwo)! !
 
-!NumeroTest methodsFor: 'tests' stamp: 'NR 9/8/2019 21:30:07'!
+!NumeroTest methodsFor: 'tests' stamp: 'SF 4/17/2023 21:40:01'!
 test17SignIsCorrectlyAssignedToFractionWithNegativeDivisor
 
-	self assert: oneHalf negated equals: (Numero with: one over: negativeTwo)! !
+	self assert: oneHalf negated equals: (Fraccion with: one over: negativeTwo)! !
 
 
 !classDefinition: #Numero category: 'Numero-Exercise'!
@@ -438,10 +436,10 @@ greatestCommonDivisorWith: anEntero
 		
 	self error: 'Esta operacion es para números enteros'! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/17/2023 19:41:05'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/17/2023 21:41:18'!
 negated
 	
-	^self class with: numerator * (self class with: -1) over: denominator! !
+	^self class with: numerator * (Entero with: -1) over: denominator! !
 
 !Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/17/2023 19:42:03'!
 printOn: aStream
