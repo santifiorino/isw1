@@ -364,54 +364,44 @@ Numero subclass: #Entero
 	poolDictionaries: ''
 	category: 'Numero-Exercise'!
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:32:49'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:10:12'!
 * aMultiplier
 
-	^aMultiplier multiplySelfToEntero: self.! !
+	^aMultiplier multiplySelfToTheEntero: self.! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:22:48'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 15:32:25'!
 + anAdder 
 
-	^anAdder addSelfToEntero: self
+	^anAdder addSelfToTheEntero: self
 ! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:39:57'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:10:27'!
 - aSubtrahend 
 	
-	^aSubtrahend substractSelfToEntero: self
+	^aSubtrahend substractSelfToTheEntero: self
 ! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:47:32'!
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:18:57'!
 / aDivisor
 
-	^aDivisor divideSelfToEntero: self.! !
+	^aDivisor performDivisionWithTheEnteroDividend: self .! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 'HernanWilkinson 5/7/2016 21:55'!
 // aDivisor 
 	
 	^self class with: value // aDivisor integerValue! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:20:46'!
-addSelfToEntero: anEntero 
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:13:36'!
+addSelfToTheEntero: anEnteroAdder 
 
-	^self class with: anEntero integerValue + value.
+	^self class with: anEnteroAdder integerValue + value.
 ! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:26:46'!
-addSelfToFraccion: aFraccion
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:13:54'!
+addSelfToTheFraccion: aFraccionAdder
 		
-	^Fraccion with: self * aFraccion denominator + aFraccion numerator over: aFraccion denominator
+	^Fraccion with: self * aFraccionAdder denominator + aFraccionAdder numerator over: aFraccionAdder denominator
 ! !
-
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:47:17'!
-divideSelfToEntero: aDivisorEntero
-
-	^Fraccion with: aDivisorEntero over: self! !
-
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:50:02'!
-divideSelfToFraccion: aDivisorFraccion
-
-	^Fraccion with: aDivisorFraccion numerator over: aDivisorFraccion denominator * self! !
 
 !Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 17:56:33'!
 fibonacci
@@ -429,25 +419,35 @@ greatestCommonDivisorWith: anEntero
 	
 	^self class with: (value gcd: anEntero integerValue)! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:30:28'!
-multiplySelfToEntero: anEntero
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:14:10'!
+multiplySelfToTheEntero: anEnteroMultiplier
 
-	^self class with: anEntero integerValue * value! !
+	^self class with: anEnteroMultiplier integerValue * value! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:35:11'!
-multiplySelfToFraccion: aFraccion
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:14:19'!
+multiplySelfToTheFraccion: aFraccionMultiplier
 
-	^Fraccion with: aFraccion numerator * self over: aFraccion denominator.! !
+	^Fraccion with: aFraccionMultiplier numerator * self over: aFraccionMultiplier denominator.! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:41:03'!
-substractSelfToEntero: aSubstrahendEntero
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:17:32'!
+performDivisionWithTheEnteroDividend: aEnteroDividend
 
-	^self class with: aSubstrahendEntero integerValue - value.! !
+	^Fraccion with: aEnteroDividend over: self! !
 
-!Entero methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:44:29'!
-substractSelfToFraccion: aSubtrahendFraccion
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:17:42'!
+performDivisionWithTheFraccionDividend: aFraccionDividend
 
-	^Fraccion with: aSubtrahendFraccion numerator - (self * aSubtrahendFraccion denominator) over: aSubtrahendFraccion denominator! !
+	^Fraccion with: aFraccionDividend numerator over: aFraccionDividend denominator * self! !
+
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:17:53'!
+substractSelfToTheEntero: anEnteroMinuend
+
+	^self class with: anEnteroMinuend integerValue - value.! !
+
+!Entero methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:18:05'!
+substractSelfToTheFraccion: aFraccionMinuend
+
+	^Fraccion with: aFraccionMinuend numerator - (self * aFraccionMinuend denominator) over: aFraccionMinuend denominator! !
 
 
 !Entero methodsFor: 'comparing' stamp: 'HernanWilkinson 5/7/2016 21:01'!
@@ -576,25 +576,25 @@ Numero subclass: #Fraccion
 	poolDictionaries: ''
 	category: 'Numero-Exercise'!
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:47:41'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:10:20'!
 * aMultiplier 
 	
-	^aMultiplier multiplySelfToFraccion: self.! !
+	^aMultiplier multiplySelfToTheFraccion: self.! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:41:50'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 15:32:37'!
 + anAdder 
 	
-	^anAdder addSelfToFraccion: self.! !
+	^anAdder addSelfToTheFraccion: self.! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:44:47'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:12:15'!
 - aSubtrahend 
 	
-	^aSubtrahend substractSelfToFraccion: self.! !
+	^aSubtrahend substractSelfToTheFraccion: self.! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:50:21'!
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:12:03'!
 / aDivisor
 
-	^aDivisor divideSelfToFraccion: self.
+	^aDivisor performDivisionWithTheFraccionDividend: self.
 	"
 	(aDivisor isKindOf: Fraccion) ifTrue:[
 	^(numerator * aDivisor denominator) / (denominator * aDivisor numerator)].
@@ -603,53 +603,53 @@ Numero subclass: #Fraccion
 		]
 	"! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:18:41'!
-addSelfToEntero: anEntero
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:16:33'!
+addSelfToTheEntero: anEnteroAdder
 
-	^Fraccion with: anEntero * denominator + numerator over: denominator! !
+	^Fraccion with: anEnteroAdder * denominator + numerator over: denominator! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:24:02'!
-addSelfToFraccion: aFraccion 
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:16:40'!
+addSelfToTheFraccion: aFraccionAdder 
 	
 	| newNumerator newDenominator |
 	
-	newNumerator := (aFraccion numerator * denominator) + (aFraccion denominator * numerator).
-	newDenominator := aFraccion denominator * denominator.
+	newNumerator := (aFraccionAdder numerator * denominator) + (aFraccionAdder denominator * numerator).
+	newDenominator := aFraccionAdder denominator * denominator.
 	
 	^newNumerator / newDenominator! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:46:51'!
-divideSelfToEntero: aDivisorEntero
-
-	^Fraccion with: aDivisorEntero * denominator over: numerator! !
-
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:49:15'!
-divideSelfToFraccion: aDivisorFraccion
-
-	^(aDivisorFraccion numerator * denominator) / (aDivisorFraccion denominator * numerator).! !
-
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:31:37'!
-multiplySelfToEntero: anEntero
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:14:49'!
+multiplySelfToTheEntero: anEnteroMultiplier
 	
-	^Fraccion with: anEntero * numerator over: denominator! !
+	^Fraccion with: anEnteroMultiplier * numerator over: denominator! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:34:25'!
-multiplySelfToFraccion: aFraccion
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:15:07'!
+multiplySelfToTheFraccion: aFraccionMultiplier
 
-	^(aFraccion numerator * numerator) / (aFraccion denominator * denominator)! !
+	^(aFraccionMultiplier numerator * numerator) / (aFraccionMultiplier denominator * denominator)! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:39:20'!
-substractSelfToEntero: aSubtrahendEntero
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:16:58'!
+performDivisionWithTheEnteroDividend: anEnteroDividend
 
-	^Fraccion with: aSubtrahendEntero * denominator - numerator over: denominator! !
+	^Fraccion with: anEnteroDividend * denominator over: numerator! !
 
-!Fraccion methodsFor: 'arithmetic operations' stamp: 'SF 4/18/2023 16:43:29'!
-substractSelfToFraccion: aSubtrahendFraccion
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:17:14'!
+performDivisionWithTheFraccionDividend: aFraccionDividend
+
+	^(aFraccionDividend numerator * denominator) / (aFraccionDividend denominator * numerator).! !
+
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:16:06'!
+substractSelfToTheEntero: anEnteroMinuend
+
+	^Fraccion with: anEnteroMinuend * denominator - numerator over: denominator! !
+
+!Fraccion methodsFor: 'arithmetic operations' stamp: 'Jp 4/20/2023 16:16:20'!
+substractSelfToTheFraccion: aFraccionMinuend
 
 	| newNumerator newDenominator |
 	
-	newNumerator := (aSubtrahendFraccion numerator * denominator) - (aSubtrahendFraccion denominator * numerator).
-	newDenominator := aSubtrahendFraccion denominator * denominator.
+	newNumerator := (aFraccionMinuend numerator * denominator) - (aFraccionMinuend denominator * numerator).
+	newDenominator := aFraccionMinuend denominator * denominator.
 	
 	^newNumerator / newDenominator! !
 
