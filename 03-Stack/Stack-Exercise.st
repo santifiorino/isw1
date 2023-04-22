@@ -161,8 +161,8 @@ test00EmptyStackReturnsEmptyCollection
 	self assert: actualResult = expectedResult.
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:34:27'!
-test01EmptyPrefixRaisesError
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 18:57:34'!
+test01PrefixCannotBeEmpty
 	
 	prefix := ''.
 	stack := OOStack new.
@@ -202,8 +202,8 @@ test03PrefixIsCaseSensitive
 	self assert: actualResult = expectedResult.
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:35:07'!
-test04NonEmptyStringIsPrefixOfWordsBegginingWithIt
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:07:33'!
+test04AllMatchesOfNonEmptyPrefixAreFound
 	
 	prefix := 'ho'.
 	
@@ -224,6 +224,75 @@ test04NonEmptyStringIsPrefixOfWordsBegginingWithIt
 	self assert: actualResult = expectedResult.
 	! !
 
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:04:12'!
+test05StackRemainsIntactAfterBeingSearched
+	|stackCopy|
+
+	prefix := 'di'.
+	
+	stack := OOStack new.
+	stack push: 'discord'.
+	stack push: 'Dije'.
+	stack push: 'dije'.
+	
+	stackCopy := OOStack new.
+	stackCopy push: 'discord'.
+	stackCopy push: 'Dije'.
+	stackCopy push: 'dije'.
+	
+	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
+	
+	1 to: stack size do: [:x | self assert: stack pop = stackCopy pop ]
+	! !
+
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:10:46'!
+test06EmptyListIsReturnedIfPrefixNotFound
+
+	prefix := 'unPrefijoNoPresente'.
+	
+	stack := OOStack new.
+	stack push: 'discord'.
+	stack push: 'Dije'.
+	stack push: 'dije'.
+
+	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
+	
+	self assert: actualResult  = OrderedCollection new.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:21:41'!
+test07WhitespaceShouldNotCountForPrefix
+
+	prefix := 'di'.
+	
+	stack := OOStack new.
+	stack push: ' discord'.
+	stack push: '  Dije'.
+	stack push: 'dije'.
+
+	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
+	
+	expectedResult := OrderedCollection new.
+	expectedResult add: 'dije'.
+	
+	self assert: actualResult  = expectedResult .! !
+
+!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:24:05'!
+test08WordAfterWhitespaceShouldNotBeMatched
+
+	prefix := 'di'.
+	
+	stack := OOStack new.
+	stack push: 'hola'.
+	stack push: 'te dije'.
+	stack push: 'dije'.
+
+	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
+	
+	expectedResult := OrderedCollection new.
+	expectedResult add: 'dije'.
+	
+	self assert: actualResult  = expectedResult .! !
+
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
 Object subclass: #OOStack
@@ -232,7 +301,7 @@ Object subclass: #OOStack
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:23:31'!
+!OOStack methodsFor: 'initialization' stamp: 'SF 4/22/2023 16:23:31'!
 initialize
 	
 	base := OOStackBase new.
@@ -240,12 +309,8 @@ initialize
 	size := 0.
 	! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:23:39'!
-isEmpty
 
-	^size = 0! !
-
-!OOStack methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:38:14'!
+!OOStack methodsFor: 'modification' stamp: 'SF 4/22/2023 16:38:14'!
 pop
 
 	|topElement|	
@@ -255,7 +320,7 @@ pop
 	^topElement .
 	! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:27:50'!
+!OOStack methodsFor: 'modification' stamp: 'SF 4/22/2023 16:27:50'!
 push: anObject
 	
 	|newElement|
@@ -263,12 +328,18 @@ push: anObject
 	topComponent := newElement.
 	size := size + 1.! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:35:22'!
+
+!OOStack methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:23:39'!
+isEmpty
+
+	^size = 0! !
+
+!OOStack methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:35:22'!
 size
 
 	^size! !
 
-!OOStack methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:38:32'!
+!OOStack methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:38:32'!
 top
 
 	^topComponent value! !
@@ -292,12 +363,12 @@ Object subclass: #OOStackComponent
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackComponent methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:21:19'!
+!OOStackComponent methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:21:19'!
 previousComponent
 
 	^self subclassResponsibility ! !
 
-!OOStackComponent methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:21:23'!
+!OOStackComponent methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:21:23'!
 value
 
 	^self subclassResponsibility ! !
@@ -310,12 +381,12 @@ OOStackComponent subclass: #OOStackBase
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackBase methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:20:07'!
+!OOStackBase methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:20:07'!
 previousComponent
 
 	^self error: OOStack stackEmptyErrorDescription.! !
 
-!OOStackBase methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:20:54'!
+!OOStackBase methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:20:54'!
 value
 
 	^self error: OOStack stackEmptyErrorDescription.! !
@@ -328,18 +399,19 @@ OOStackComponent subclass: #OOStackElement
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackElement methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:34:37'!
+!OOStackElement methodsFor: 'initialization' stamp: 'SF 4/22/2023 16:34:37'!
 initializeWithValue: anObjectToSetAsValue withPreviousComponent: aComponentToSetAsPrevious.
 	
 	value := anObjectToSetAsValue.
 	previous := aComponentToSetAsPrevious.! !
 
-!OOStackElement methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:20:31'!
+
+!OOStackElement methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:20:31'!
 previousComponent
 
 	^previous.! !
 
-!OOStackElement methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 16:20:49'!
+!OOStackElement methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:20:49'!
 value
 
 	^value.! !
@@ -352,36 +424,38 @@ Object subclass: #SentenceFinderByPrefix
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 17:40:49'!
+!SentenceFinderByPrefix methodsFor: 'modification' stamp: 'SF 4/22/2023 17:40:49'!
 popAllElementsFrom: aStackToPop andAddThemTo: aCollection
 
 	1 to: aStackToPop size do: [:x |
 		aCollection addFirst: aStackToPop pop.
 	].! !
 
-!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 17:42:33'!
+!SentenceFinderByPrefix methodsFor: 'modification' stamp: 'SF 4/22/2023 17:42:33'!
 pushElementsFrom: aCollection toStack: aStackToPush
 	
 	1 to: aCollection size do: [:x |
 		aStackToPush push: (aCollection at: x).
 	].! !
 
-!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:33:55'!
+
+!SentenceFinderByPrefix methodsFor: 'error handling' stamp: 'SF 4/22/2023 18:33:55'!
 raiseErrorIfPrefixContainsWhitespace: aPrefix
 
 	(aPrefix includesSubString: ' ') ifTrue: [^self error: self class prefixContainsWhitespaceErrorDescription].! !
 
-!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:33:44'!
+!SentenceFinderByPrefix methodsFor: 'error handling' stamp: 'SF 4/22/2023 18:33:44'!
 raiseErrorIfPrefixIsEmpty: aPrefix
 
 	(aPrefix = '') ifTrue: [^self error: self class emptyPrefixErrorDescription].! !
 
-!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 17:50:31'!
+
+!SentenceFinderByPrefix methodsFor: 'selection' stamp: 'SF 4/22/2023 17:50:31'!
 selectElementsFromCollection: aCollectionToSelect withPrefix: aPrefixToCheck
 
 	^aCollectionToSelect select: [:aStringFromCollection | aStringFromCollection value beginsWith: aPrefixToCheck].! !
 
-!SentenceFinderByPrefix methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:27:50'!
+!SentenceFinderByPrefix methodsFor: 'selection' stamp: 'SF 4/22/2023 18:27:50'!
 selectElementsFromStack: aStackToSearch withPrefix: aPrefix
 
 	|temporalCollection |
