@@ -277,10 +277,10 @@ Object subclass: #OOStack
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'initialization' stamp: 'SF 4/22/2023 16:23:31'!
+!OOStack methodsFor: 'initialization' stamp: 'SF 4/23/2023 20:34:26'!
 initialize
 	
-	base := OOStackBase new.
+	base := OOStackBase new initializeBaseOfStack: self.
 	topComponent := base.
 	size := 0.
 	! !
@@ -320,6 +320,12 @@ top
 
 	^topComponent value! !
 
+
+!OOStack methodsFor: 'error handling' stamp: 'SF 4/23/2023 20:38:27'!
+triedToInspectBaseElement
+
+	^self error: self class stackEmptyErrorDescription.! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'OOStack class' category: 'Stack-Exercise'!
@@ -352,20 +358,24 @@ value
 
 !classDefinition: #OOStackBase category: 'Stack-Exercise'!
 OOStackComponent subclass: #OOStackBase
-	instanceVariableNames: ''
+	instanceVariableNames: 'theStackImBaseOf'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackBase methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:20:07'!
+!OOStackBase methodsFor: 'inspection' stamp: 'SF 4/23/2023 20:42:36'!
 previousComponent
+	theStackImBaseOf triedToInspectBaseElement.! !
 
-	^self error: OOStack stackEmptyErrorDescription.! !
-
-!OOStackBase methodsFor: 'inspection' stamp: 'SF 4/22/2023 16:20:54'!
+!OOStackBase methodsFor: 'inspection' stamp: 'SF 4/23/2023 20:42:36'!
 value
+	theStackImBaseOf triedToInspectBaseElement.! !
 
-	^self error: OOStack stackEmptyErrorDescription.! !
+
+!OOStackBase methodsFor: 'initialization' stamp: 'SF 4/23/2023 20:42:36'!
+initializeBaseOfStack: aStack
+
+	theStackImBaseOf := aStack.! !
 
 
 !classDefinition: #OOStackElement category: 'Stack-Exercise'!
@@ -375,10 +385,10 @@ OOStackComponent subclass: #OOStackElement
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackElement methodsFor: 'initialization' stamp: 'SF 4/22/2023 16:34:37'!
+!OOStackElement methodsFor: 'initialization' stamp: 'SF 4/23/2023 20:44:00'!
 initializeWithValue: anObjectToSetAsValue withPreviousComponent: aComponentToSetAsPrevious.
-	
 	value := anObjectToSetAsValue.
+	
 	previous := aComponentToSetAsPrevious.! !
 
 
