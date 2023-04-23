@@ -144,11 +144,11 @@ TestCase subclass: #SentenceFinderByPrefixTest
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:03:02'!
-assertThatSearchingForPrefix: aPrefix onStack: aStack raisesErrorWithDescription: anErrorDescription
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:27:16'!
+assertThatSearchingForPrefix: aPrefixToSearchFor onStack: aStackToSearch raisesErrorWithDescription: anErrorDescription
 
 	self 
-		should: [sentenceFinder selectElementsFromStack: aStack withPrefix: aPrefix.]
+		should: [sentenceFinder selectElementsFromStack: aStackToSearch withPrefix: aPrefixToSearchFor.]
 		raise: Error
 		withExceptionDo: [ :anError | self assert: anError messageText equals: anErrorDescription].
 	! !
@@ -161,10 +161,10 @@ assertThatSearchingForPrefix: aPrefixToSearchFor onStack: aStackToSearch yieldsT
 	self assert: returnedCollection = expectedCollection.
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:19:32'!
-assertThatTheStack: aStackToSearch isEqualToTheStack: aStackToCompareTo afterBeingSearchedForPrefix: aPrefix
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:26:59'!
+assertThatTheStack: aStackToSearch isEqualToTheStack: aStackToCompareTo afterBeingSearchedForPrefix: aPrefixToSearchFor
 	
-	sentenceFinder selectElementsFromStack: aStackToSearch withPrefix: aPrefix.
+	sentenceFinder selectElementsFromStack: aStackToSearch withPrefix: aPrefixToSearchFor.
 	
 	1 to: aStackToSearch size do: [:x | self assert: aStackToSearch pop = aStackToCompareTo pop ]
 	! !
