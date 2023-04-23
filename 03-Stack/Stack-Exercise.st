@@ -161,8 +161,8 @@ assertThatSearchingForPrefix: aPrefixToSearchFor onStack: aStackToSearch yieldsT
 	self assert: returnedCollection = expectedCollection.
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:10:15'!
-assertThatTheStack: aStackToSearch isEqualToTheStack: aStackToCompareTo afterSearchingForPrefix: aPrefix
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:19:32'!
+assertThatTheStack: aStackToSearch isEqualToTheStack: aStackToCompareTo afterBeingSearchedForPrefix: aPrefix
 	
 	sentenceFinder selectElementsFromStack: aStackToSearch withPrefix: aPrefix.
 	
@@ -189,12 +189,6 @@ setUp
 	
 	sentenceFinder := SentenceFinderByPrefix new.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
-test00EmptyStackReturnsEmptyCollection
-	self assertThatSearchingForPrefix: 'test' onStack: emptyStack yieldsTheCollection: emptyCollection.
-	
-! !
-
 !SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:02'!
 test01PrefixCannotBeEmpty
 
@@ -206,8 +200,19 @@ test01PrefixCannotBeEmpty
 test02PrefixCannotHaveWhitespace
 	self assertThatSearchingForPrefix: 'a b' onStack: emptyStack raisesErrorWithDescription: SentenceFinderByPrefix prefixContainsWhitespaceErrorDescription! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
-test03AllMatchesOfNonEmptyPrefixAreFound
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:23:57'!
+test03SearchingEmptyStackReturnsEmptyCollection
+	self assertThatSearchingForPrefix: 'test' onStack: emptyStack yieldsTheCollection: emptyCollection.
+	
+! !
+
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:22:58'!
+test04EmptyCollectionIsReturnedIfPrefixNotFound
+	
+	self assertThatSearchingForPrefix: 'unPrefijoNoPresente' onStack: stackWithMixedCase  yieldsTheCollection: emptyCollection.! !
+
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:24:03'!
+test05AllMatchesOfNonEmptyPrefixAreFound
 	testStack := OOStack new.
 	testStack push: 'horario'.
 	testStack push: 'hola'.
@@ -222,29 +227,13 @@ test03AllMatchesOfNonEmptyPrefixAreFound
 	self assertThatSearchingForPrefix: 'ho' onStack: testStack  yieldsTheCollection: expectedCollection.
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
-test04PrefixSearchIsCaseSensitive
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:23:11'!
+test06PrefixSearchIsCaseSensitive
 	expectedCollection := OrderedCollection new.
 	expectedCollection add: 'discord'.
 	expectedCollection add: 'dije'.
 	self assertThatSearchingForPrefix: 'di' onStack: stackWithMixedCase yieldsTheCollection: expectedCollection
 	! !
-
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:11:10'!
-test05StackRemainsIntactAfterBeingSearched
-	|copyOfStackWithMixedCase|
-	
-	copyOfStackWithMixedCase := OOStack new.
-	copyOfStackWithMixedCase push: 'discord'.
-	copyOfStackWithMixedCase push: 'Dije'.
-	copyOfStackWithMixedCase push: 'dije'.
-	
-	self assertThatTheStack: stackWithMixedCase isEqualToTheStack: copyOfStackWithMixedCase  afterSearchingForPrefix: 'di'.! !
-
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
-test06EmptyCollectionIsReturnedIfPrefixNotFound
-	
-	self assertThatSearchingForPrefix: 'unPrefijoNoPresente' onStack: stackWithMixedCase  yieldsTheCollection: emptyCollection.! !
 
 !SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
 test07WhitespaceShouldNotCountForPrefix
@@ -268,6 +257,17 @@ test08WordAfterWhitespaceShouldNotBeMatched
 	expectedCollection add: 'dije'.
 	
 	self assertThatSearchingForPrefix: 'di' onStack: stackWithWhitespaceInMiddleOfString yieldsTheCollection: expectedCollection ! !
+
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:23:32'!
+test09StackRemainsIntactAfterBeingSearched
+	|copyOfStackWithMixedCase|
+	
+	copyOfStackWithMixedCase := OOStack new.
+	copyOfStackWithMixedCase push: 'discord'.
+	copyOfStackWithMixedCase push: 'Dije'.
+	copyOfStackWithMixedCase push: 'dije'.
+	
+	self assertThatTheStack: stackWithMixedCase isEqualToTheStack: copyOfStackWithMixedCase  afterBeingSearchedForPrefix: 'di'.! !
 
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
