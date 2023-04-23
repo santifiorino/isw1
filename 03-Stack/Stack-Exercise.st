@@ -139,159 +139,135 @@ test10CanNotTopWhenThereAreNoObjectsInTheStack
 
 !classDefinition: #SentenceFinderByPrefixTest category: 'Stack-Exercise'!
 TestCase subclass: #SentenceFinderByPrefixTest
-	instanceVariableNames: 'stack prefix sentenceFinder actualResult expectedResult'
+	instanceVariableNames: 'testStack emptyStack stackWithAOnlyLowercase stackWithMixedCase stackWithWhitespacePrefix emptyCollection prefix sentenceFinder returnedCollection expectedCollection'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:13:49'!
-setUp
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:03:02'!
+assertThatSearchingForPrefix: aPrefix onStack: aStack raisesErrorWithDescription: anErrorDescription
 
+	self 
+		should: [sentenceFinder selectElementsFromStack: aStack withPrefix: aPrefix.]
+		raise: Error
+		withExceptionDo: [ :anError | self assert: anError messageText equals: anErrorDescription].
+	! !
+
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:05:02'!
+assertThatSearchingForPrefix: aPrefixToSearchFor onStack: aStackToSearch yieldsTheCollection: correctResultCollection
+	returnedCollection := sentenceFinder selectElementsFromStack: aStackToSearch withPrefix: aPrefixToSearchFor.
+	expectedCollection := correctResultCollection.
+	
+	self assert: returnedCollection = expectedCollection.
+	! !
+
+!SentenceFinderByPrefixTest methodsFor: 'auxiliary - assertions' stamp: 'JPL 4/23/2023 13:10:15'!
+assertThatTheStack: aStackToSearch isEqualToTheStack: aStackToCompareTo afterSearchingForPrefix: aPrefix
+	
+	sentenceFinder selectElementsFromStack: aStackToSearch withPrefix: aPrefix.
+	
+	1 to: aStackToSearch size do: [:x | self assert: aStackToSearch pop = aStackToCompareTo pop ]
+	! !
+
+
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 12:40:05'!
+setUp
+	emptyStack := OOStack new.
+	emptyCollection := OrderedCollection  new.
+	
+	stackWithMixedCase := OOStack new.
+	stackWithMixedCase push: 'discord'.
+	stackWithMixedCase push: 'Dije'.
+	stackWithMixedCase push: 'dije'.
+	
+	stackWithWhitespacePrefix := OOStack new.
+	stackWithWhitespacePrefix push: ' discord'.
+	stackWithWhitespacePrefix push: '  Dije'.
+	stackWithWhitespacePrefix push: 'dije'.
+	
+	
+	
 	sentenceFinder := SentenceFinderByPrefix new.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:13:57'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
 test00EmptyStackReturnsEmptyCollection
+	self assertThatSearchingForPrefix: 'test' onStack: emptyStack yieldsTheCollection: emptyCollection.
 	
-	prefix := 'test'.
-	stack := OOStack new.
-	
-	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
-	expectedResult := OrderedCollection new.
-	
-	self assert: actualResult = expectedResult.
-	! !
+! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 18:57:34'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:02'!
 test01PrefixCannotBeEmpty
-	
-	prefix := ''.
-	stack := OOStack new.
-	self 
-		should: [sentenceFinder selectElementsFromStack: stack withPrefix: prefix.]
-		raise: Error
-		withExceptionDo: [ :anError | self assert: anError messageText equals: SentenceFinderByPrefix emptyPrefixErrorDescription].
-	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:34:47'!
+	self assertThatSearchingForPrefix: '' onStack: emptyStack  raisesErrorWithDescription: SentenceFinderByPrefix emptyPrefixErrorDescription.
+	
+! !
+
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:02'!
 test02PrefixCannotHaveWhitespace
+	self assertThatSearchingForPrefix: 'a b' onStack: emptyStack raisesErrorWithDescription: SentenceFinderByPrefix prefixContainsWhitespaceErrorDescription! !
+
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
+test03AllMatchesOfNonEmptyPrefixAreFound
+	testStack := OOStack new.
+	testStack push: 'horario'.
+	testStack push: 'hola'.
+	testStack push: 'hijo'.
+	testStack push: 'ho'.
+	testStack push: 'h'.
+	expectedCollection := OrderedCollection new.
+	expectedCollection add: 'horario'.
+	expectedCollection add: 'hola'.
+	expectedCollection add: 'ho'.
 	
-	prefix := 'aa bb'.
-	stack := OOStack new.
-	self 
-		should: [sentenceFinder selectElementsFromStack: stack withPrefix: prefix.]
-		raise: Error
-		withExceptionDo: [ :anError | self assert: anError messageText equals: SentenceFinderByPrefix prefixContainsWhitespaceErrorDescription].
+	self assertThatSearchingForPrefix: 'ho' onStack: testStack  yieldsTheCollection: expectedCollection.
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'SF 4/22/2023 18:17:28'!
-test03PrefixIsCaseSensitive
-
-	prefix := 'di'.
-	
-	stack := OOStack new.
-	stack push: 'discord'.
-	stack push: 'Dije'.
-	stack push: 'dije'.
-	
-	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
-	
-	expectedResult := OrderedCollection new.
-	expectedResult add: 'discord'.
-	expectedResult add: 'dije'.
-	
-	self assert: actualResult = expectedResult.
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
+test04PrefixSearchIsCaseSensitive
+	expectedCollection := OrderedCollection new.
+	expectedCollection add: 'discord'.
+	expectedCollection add: 'dije'.
+	self assertThatSearchingForPrefix: 'di' onStack: stackWithMixedCase yieldsTheCollection: expectedCollection
 	! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:07:33'!
-test04AllMatchesOfNonEmptyPrefixAreFound
-	
-	prefix := 'ho'.
-	
-	stack := OOStack new.
-	stack push: 'horario'.
-	stack push: 'hola'.
-	stack push: 'hijo'.
-	stack push: 'ho'.
-	stack push: 'h'.
-	
-	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
-	
-	expectedResult := OrderedCollection new.
-	expectedResult add: 'horario'.
-	expectedResult add: 'hola'.
-	expectedResult add: 'ho'.
-	
-	self assert: actualResult = expectedResult.
-	! !
-
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:04:12'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:11:10'!
 test05StackRemainsIntactAfterBeingSearched
-	|stackCopy|
+	|copyOfStackWithMixedCase|
+	
+	copyOfStackWithMixedCase := OOStack new.
+	copyOfStackWithMixedCase push: 'discord'.
+	copyOfStackWithMixedCase push: 'Dije'.
+	copyOfStackWithMixedCase push: 'dije'.
+	
+	self assertThatTheStack: stackWithMixedCase isEqualToTheStack: copyOfStackWithMixedCase  afterSearchingForPrefix: 'di'.! !
 
-	prefix := 'di'.
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
+test06EmptyCollectionIsReturnedIfPrefixNotFound
 	
-	stack := OOStack new.
-	stack push: 'discord'.
-	stack push: 'Dije'.
-	stack push: 'dije'.
-	
-	stackCopy := OOStack new.
-	stackCopy push: 'discord'.
-	stackCopy push: 'Dije'.
-	stackCopy push: 'dije'.
-	
-	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
-	
-	1 to: stack size do: [:x | self assert: stack pop = stackCopy pop ]
-	! !
+	self assertThatSearchingForPrefix: 'unPrefijoNoPresente' onStack: stackWithMixedCase  yieldsTheCollection: emptyCollection.! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:10:46'!
-test06EmptyListIsReturnedIfPrefixNotFound
-
-	prefix := 'unPrefijoNoPresente'.
-	
-	stack := OOStack new.
-	stack push: 'discord'.
-	stack push: 'Dije'.
-	stack push: 'dije'.
-
-	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
-	
-	self assert: actualResult  = OrderedCollection new.! !
-
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:21:41'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
 test07WhitespaceShouldNotCountForPrefix
-
-	prefix := 'di'.
 	
-	stack := OOStack new.
-	stack push: ' discord'.
-	stack push: '  Dije'.
-	stack push: 'dije'.
-
-	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
+	expectedCollection := OrderedCollection new.
+	expectedCollection add: 'dije'.
 	
-	expectedResult := OrderedCollection new.
-	expectedResult add: 'dije'.
-	
-	self assert: actualResult  = expectedResult .! !
+	self assertThatSearchingForPrefix: 'di' onStack: stackWithWhitespacePrefix yieldsTheCollection: expectedCollection ! !
 
-!SentenceFinderByPrefixTest methodsFor: 'as yet unclassified' stamp: 'JPL 4/22/2023 19:24:05'!
+!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:20'!
 test08WordAfterWhitespaceShouldNotBeMatched
 
-	prefix := 'di'.
-	
-	stack := OOStack new.
-	stack push: 'hola'.
-	stack push: 'te dije'.
-	stack push: 'dije'.
+	|stackWithWhitespaceInMiddleOfString|
 
-	actualResult := sentenceFinder selectElementsFromStack: stack withPrefix: prefix.
+	stackWithWhitespaceInMiddleOfString := OOStack new.
+	stackWithWhitespaceInMiddleOfString push: 'hola'.
+	stackWithWhitespaceInMiddleOfString push: 'te dije'.
+	stackWithWhitespaceInMiddleOfString push: 'dije'.
+
+	expectedCollection := OrderedCollection new.
+	expectedCollection add: 'dije'.
 	
-	expectedResult := OrderedCollection new.
-	expectedResult add: 'dije'.
-	
-	self assert: actualResult  = expectedResult .! !
+	self assertThatSearchingForPrefix: 'di' onStack: stackWithWhitespaceInMiddleOfString yieldsTheCollection: expectedCollection ! !
 
 
 !classDefinition: #OOStack category: 'Stack-Exercise'!
