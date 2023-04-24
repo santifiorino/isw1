@@ -170,7 +170,7 @@ assertThatTheStack: aStackToSearch isEqualToTheStack: aStackToCompareTo afterBei
 	! !
 
 
-!SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 12:40:05'!
+!SentenceFinderByPrefixTest methodsFor: 'setUp' stamp: 'JPL 4/23/2023 12:40:05'!
 setUp
 	emptyStack := OOStack new.
 	emptyCollection := OrderedCollection  new.
@@ -188,6 +188,7 @@ setUp
 	
 	
 	sentenceFinder := SentenceFinderByPrefix new.! !
+
 
 !SentenceFinderByPrefixTest methodsFor: 'testing' stamp: 'JPL 4/23/2023 13:03:02'!
 test01PrefixCannotBeEmpty
