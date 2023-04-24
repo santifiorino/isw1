@@ -139,7 +139,7 @@ test10CanNotTopWhenThereAreNoObjectsInTheStack
 
 !classDefinition: #SentenceFinderByPrefixTest category: 'Stack-Exercise'!
 TestCase subclass: #SentenceFinderByPrefixTest
-	instanceVariableNames: 'testStack emptyStack stackWithAOnlyLowercase stackWithMixedCase stackWithWhitespacePrefix emptyCollection prefix sentenceFinder returnedCollection expectedCollection'
+	instanceVariableNames: 'testStack emptyStack stackWithMixedCase stackWithWhitespacePrefix emptyCollection prefix sentenceFinder expectedCollection'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
@@ -277,10 +277,10 @@ Object subclass: #OOStack
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStack methodsFor: 'initialization' stamp: 'SF 4/23/2023 20:34:26'!
+!OOStack methodsFor: 'initialization' stamp: 'JPL 4/23/2023 23:54:24'!
 initialize
 	
-	base := OOStackBase new initializeBaseOfStack: self.
+	base := OOStackBase new initializeBaseOfTheStack: self.
 	topComponent := base.
 	size := 0.
 	! !
@@ -296,11 +296,11 @@ pop
 	^topElement .
 	! !
 
-!OOStack methodsFor: 'modification' stamp: 'SF 4/22/2023 16:27:50'!
+!OOStack methodsFor: 'modification' stamp: 'JPL 4/23/2023 23:52:35'!
 push: anObject
 	
 	|newElement|
-	newElement := OOStackElement new initializeWithValue: anObject withPreviousComponent: topComponent.
+	newElement := OOStackElement new initializeWithValue: anObject andWithPreviousComponent: topComponent.
 	topComponent := newElement.
 	size := size + 1.! !
 
@@ -321,8 +321,8 @@ top
 	^topComponent value! !
 
 
-!OOStack methodsFor: 'error handling' stamp: 'SF 4/23/2023 20:38:27'!
-triedToInspectBaseElement
+!OOStack methodsFor: 'error handling' stamp: 'JPL 4/23/2023 23:50:25'!
+elementAccessAttemptedOnBase
 
 	^self error: self class stackEmptyErrorDescription.! !
 
@@ -363,17 +363,17 @@ OOStackComponent subclass: #OOStackBase
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackBase methodsFor: 'inspection' stamp: 'SF 4/23/2023 20:42:36'!
+!OOStackBase methodsFor: 'inspection' stamp: 'JPL 4/23/2023 23:50:25'!
 previousComponent
-	theStackImBaseOf triedToInspectBaseElement.! !
+	theStackImBaseOf elementAccessAttemptedOnBase.! !
 
-!OOStackBase methodsFor: 'inspection' stamp: 'SF 4/23/2023 20:42:36'!
+!OOStackBase methodsFor: 'inspection' stamp: 'JPL 4/23/2023 23:50:25'!
 value
-	theStackImBaseOf triedToInspectBaseElement.! !
+	theStackImBaseOf elementAccessAttemptedOnBase.! !
 
 
-!OOStackBase methodsFor: 'initialization' stamp: 'SF 4/23/2023 20:42:36'!
-initializeBaseOfStack: aStack
+!OOStackBase methodsFor: 'initialization' stamp: 'JPL 4/23/2023 23:54:24'!
+initializeBaseOfTheStack: aStack
 
 	theStackImBaseOf := aStack.! !
 
@@ -385,8 +385,8 @@ OOStackComponent subclass: #OOStackElement
 	poolDictionaries: ''
 	category: 'Stack-Exercise'!
 
-!OOStackElement methodsFor: 'initialization' stamp: 'SF 4/23/2023 20:44:00'!
-initializeWithValue: anObjectToSetAsValue withPreviousComponent: aComponentToSetAsPrevious.
+!OOStackElement methodsFor: 'initialization' stamp: 'JPL 4/23/2023 23:52:35'!
+initializeWithValue: anObjectToSetAsValue andWithPreviousComponent: aComponentToSetAsPrevious.
 	value := anObjectToSetAsValue.
 	
 	previous := aComponentToSetAsPrevious.! !
