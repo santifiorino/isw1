@@ -287,13 +287,13 @@ initialize
 	! !
 
 
-!OOStack methodsFor: 'modification' stamp: 'JPL 4/24/2023 00:08:22'!
+!OOStack methodsFor: 'modification' stamp: 'JPL 4/24/2023 12:59:47'!
 pop
 
-	|topElement|	
-	topElement := self removeTopComponentFromTheStack.
+	|formerTopComponent|	
+	formerTopComponent := self removeTopComponentFromTheStack.
 	size := size - 1.
-	^topElement .
+	^formerTopComponent value .
 	! !
 
 !OOStack methodsFor: 'modification' stamp: 'JPL 4/24/2023 00:14:35'!
@@ -319,19 +319,19 @@ top
 	^topComponent value! !
 
 
-!OOStack methodsFor: 'auxiliary' stamp: 'JPL 4/24/2023 00:12:45'!
+!OOStack methodsFor: 'auxiliary' stamp: 'JPL 4/24/2023 12:56:25'!
 extendStackWithNewTopComponent: anObjectToAddToTheStack
-	|newElement|
-	newElement := OOStackElement new initializeWithValue: anObjectToAddToTheStack andWithPreviousComponent: topComponent.
-	topComponent := newElement.! !
+	|newTopComponent|
+	newTopComponent := OOStackElement new initializeWithValue: anObjectToAddToTheStack andWithPreviousComponent: topComponent.
+	topComponent := newTopComponent.! !
 
-!OOStack methodsFor: 'auxiliary' stamp: 'JPL 4/24/2023 00:07:59'!
+!OOStack methodsFor: 'auxiliary' stamp: 'JPL 4/24/2023 12:59:37'!
 removeTopComponentFromTheStack
-	|topElement|	
-	topElement := topComponent value.
+	|formerTopComponent|	
+	formerTopComponent := topComponent.
 	topComponent := topComponent previousComponent.
 	
-	^topElement .
+	^formerTopComponent .
 	! !
 
 
@@ -386,10 +386,10 @@ value
 	theStackImBaseOf elementAccessAttemptedOnBase.! !
 
 
-!OOStackBase methodsFor: 'initialization' stamp: 'JPL 4/23/2023 23:54:24'!
-initializeBaseOfTheStack: aStack
+!OOStackBase methodsFor: 'initialization' stamp: 'JPL 4/24/2023 12:57:51'!
+initializeBaseOfTheStack: aStackToBeBaseOf
 
-	theStackImBaseOf := aStack.! !
+	theStackImBaseOf := aStackToBeBaseOf .! !
 
 
 !classDefinition: #OOStackElement category: 'Stack-Exercise'!
