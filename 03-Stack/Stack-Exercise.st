@@ -286,22 +286,19 @@ initialize
 	! !
 
 
-!OOStack methodsFor: 'modification' stamp: 'SF 4/22/2023 16:38:14'!
+!OOStack methodsFor: 'modification' stamp: 'JPL 4/24/2023 00:08:22'!
 pop
 
 	|topElement|	
-	topElement := topComponent value.
-	topComponent := topComponent previousComponent.
+	topElement := self removeTopComponentFromTheStack.
 	size := size - 1.
 	^topElement .
 	! !
 
-!OOStack methodsFor: 'modification' stamp: 'JPL 4/23/2023 23:52:35'!
-push: anObject
+!OOStack methodsFor: 'modification' stamp: 'JPL 4/24/2023 00:14:35'!
+push: anObjectToAddToTheStack
 	
-	|newElement|
-	newElement := OOStackElement new initializeWithValue: anObject andWithPreviousComponent: topComponent.
-	topComponent := newElement.
+	self extendStackWithNewTopComponent: anObjectToAddToTheStack .
 	size := size + 1.! !
 
 
@@ -319,6 +316,22 @@ size
 top
 
 	^topComponent value! !
+
+
+!OOStack methodsFor: 'auxiliary' stamp: 'JPL 4/24/2023 00:12:45'!
+extendStackWithNewTopComponent: anObjectToAddToTheStack
+	|newElement|
+	newElement := OOStackElement new initializeWithValue: anObjectToAddToTheStack andWithPreviousComponent: topComponent.
+	topComponent := newElement.! !
+
+!OOStack methodsFor: 'auxiliary' stamp: 'JPL 4/24/2023 00:07:59'!
+removeTopComponentFromTheStack
+	|topElement|	
+	topElement := topComponent value.
+	topComponent := topComponent previousComponent.
+	
+	^topElement .
+	! !
 
 
 !OOStack methodsFor: 'error handling' stamp: 'JPL 4/23/2023 23:50:25'!
