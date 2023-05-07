@@ -10,11 +10,15 @@ aCollection size
 
 ### Agregar un objeto
 
+Agrega el objeto al final, si se quiere agregar al principio usar "addFirst:".
+
 ```smalltalk
 aCollection add: anObject
 ```
 
 ### Agregar todos los objetos de una collection a otra
+
+Agrega los objetos al final, si se quieren agregar al principio usar "addAllFirst:".
 
 ```smalltalk
 aCollection addAll: anotherCollection
@@ -34,6 +38,20 @@ Saca todas las apariciones del objeto de la collection. Tira error si el objeto 
 
 ```smalltalk
 aCollection remove: anObject ifAbsent: [aClosure]
+```
+
+### Sacar el(los) primero(s)/último(s) objeto(s)
+
+Si se quiere sacar el último usar "removeLast".
+
+```smalltalk
+aCollection removeFirst
+```
+
+Se puede hacer lo mismo para los 'n' primeros/ultimos objetos. Para los últimos usar "removeLast:".
+
+```smalltalk
+aCollection removeFirst: n
 ```
 
 ### Preguntar si tiene un objeto
@@ -100,14 +118,30 @@ aCollection sum: [:anObject | anObject aMessage] ifEmpty: [somethingToReturn]
 
 ### Iterar sobre sus elementos
 
+Si se quiere iterar empezando por el último hasta el primero usar "reverseDo:".
+
 ```smalltalk
 aCollection do: [:anObject | "doSomethingHere"]
 ```
 
-### Flatten
+### Ordenarla
 
-Retorna una collection (1 dimensión), con todos los elementos de una collection de collections (2 o más dimensiones).
+Retorna la collection ordenada ascendentemente.
 
 ```smalltalk
-a2DCollection flatten
+aCollection sort
+```
+
+### Flatten
+
+Retorna una collection de 1 dimensión, con todos los elementos de una collection de collections (puede ser de 2 o más dimensiones).
+
+```smalltalk
+aMultiDimentionalCollection flatten
+```
+
+### Invertirla
+
+```smalltalk
+aCollection reversed
 ```
