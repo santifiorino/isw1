@@ -95,8 +95,8 @@ test05rotarRoverALaIzquierdaLoRota90GradosALaDerecha
 	
 	self assert: rover isAt: 0@0 facing: oeste.! !
 
-!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 13:55:10'!
-test06avanzarRoverMultiplesVecesLoDesplazaHaciaAdelanteMultiplesVeces
+!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 14:21:58'!
+test06avanzarRoverNVecesLoDesplazaHaciaAdelanteNVeces
 	
 	|rover|
 	
@@ -106,8 +106,8 @@ test06avanzarRoverMultiplesVecesLoDesplazaHaciaAdelanteMultiplesVeces
 	
 	self assert: rover isAt: 0@2 facing: norte.! !
 
-!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 13:55:13'!
-test07retrocederRoverMultiplesVecesLoDesplazaHaciaAtrasMultiplesVeces
+!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 14:22:08'!
+test07retrocederRoverNVecesLoDesplazaHaciaAtrasNVeces
 
 	| rover|
 	rover := self crearRoverEnOrigenApuntandoAlNorte .
@@ -116,8 +116,8 @@ test07retrocederRoverMultiplesVecesLoDesplazaHaciaAtrasMultiplesVeces
 	
 	self assert: rover isAt: 0 @ -2 facing: norte.! !
 
-!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 13:55:38'!
-test08rotarElRoverALaDerechaMultiplesVecesLoRota90GradosALaDerechaMultiplesVeces
+!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 14:22:19'!
+test08rotarElRoverALaDerechaNVecesLoRota90GradosALaDerechaNVeces
 	
 	| rover|
 	rover := self crearRoverEnOrigenApuntandoAlNorte .
@@ -128,8 +128,8 @@ test08rotarElRoverALaDerechaMultiplesVecesLoRota90GradosALaDerechaMultiplesVeces
 	
 	! !
 
-!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 13:55:42'!
-test09rotarElRoverALaIzquierdaMultiplesVecesLoRota90GradosALaIzquierdaMultiplesVeces
+!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 14:22:31'!
+test09rotarElRoverALaIzquierdaNVecesLoRota90GradosALaIzquierdaNVeces
 
 	| rover|
 	
@@ -152,8 +152,8 @@ test10rotarElRoverYAvanzarLoDesplazaHaciaAdelanteEnSuNuevaDireccion
 	
 	self assert: rover isAt: 1 @ 0 facing: este.! !
 
-!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 14:01:45'!
-test11elRoverNoHaceNadaDadaUnaListaVacia
+!MarsRoverTest methodsFor: 'testing' stamp: 'JPL 5/15/2023 14:22:49'!
+test11elRoverNoHaceNadaDadaUnaListaDeComandosVacia
 	| rover|
 	
 	rover := self crearRoverEnOrigenApuntandoAlNorte .
