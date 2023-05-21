@@ -5,7 +5,89 @@ TestCase subclass: #PortfolioTest
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 16:00:35'!
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/20/2023 15:51:34'!
+test01PortfolioWithNoAccountsHasNoBalance
+	
+	self assert: 0 equals: portfolioVacio balance.! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/20/2023 15:58:35'!
+test02PortfolioWithOneAccountHasItsBalance
+
+	self assert: 100
+	equals: portfolioConCuentaDe100Pesos balance.! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/20/2023 15:58:28'!
+test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance
+
+	self assert: 150
+	equals: portfolioConCuentasDe100y50Pesos balance.! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:47:39'!
+test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances
+	
+	| portfolioPadre portfolioHijo |
+
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	portfolioPadre addAccount: cuentaCon100Pesos.
+	portfolioHijo addAccount: cuentaCon50Pesos.
+	portfolioPadre addAccount: portfolioHijo.
+
+	self assert: 150 equals: (portfolioPadre balance).! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/20/2023 15:51:34'!
+test05PortfolioWithNoAccountsHasNoTransaction
+	
+	self assert: portfolioVacio transactions isEmpty.! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/20/2023 15:58:19'!
+test06PortfolioWithOneAccountHasItsTransactions
+	
+	self assert: (cuentaCon100Pesos transactions)
+	equals: (portfolioConCuentaDe100Pesos transactions).! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/20/2023 16:03:18'!
+test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions
+	
+	self assert: (cuentaCon100Pesos transactions), (cuentaCon50Pesos transactions)
+	equals: (portfolioConCuentasDe100y50Pesos transactions).! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/20/2023 16:27:18'!
+test08CanFindTransactionsInAPortfolio
+
+	self assert: (portfolioConCuentasDe100y50Pesos hasRegistered: transaccionDepositar100).
+	self assert: (portfolioConCuentasDe100y50Pesos hasRegistered: transaccionDepositar50).! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:38:07'!
+test09CantAddReceptiveAccountThatIsAlreadyPresent
+
+	self should: [ portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Account triedToAddExistingAccountErrorDescription
+		]
+	
+! !
+
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:48:38'!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| portfolioPadre portfolioHijo |
+
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos.
+	portfolioHijo addAccount: cuentaCon100Pesos.
+	
+	self should: [ portfolioPadre addAccount: portfolioHijo ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Account triedToAddExistingAccountErrorDescription.
+		].! !
+
+
+!PortfolioTest methodsFor: 'setUp/tearDown' stamp: 'SF 5/21/2023 17:46:27'!
 setUp
 	
 	portfolioVacio := Portfolio new initialize.
@@ -22,63 +104,7 @@ setUp
 	portfolioConCuentasDe100y50Pesos := Portfolio new initialize.
 	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon100Pesos.
 	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon50Pesos.
-	
 	! !
-
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 15:51:34'!
-test01PortfolioWithNoAccountsHasNoBalance
-	
-	self assert: 0 equals: portfolioVacio balance.! !
-
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 15:58:35'!
-test02PortfolioWithOneAccountHasItsBalance
-
-	self assert: 100
-	equals: portfolioConCuentaDe100Pesos balance.! !
-
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 15:58:28'!
-test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance
-
-	self assert: 150
-	equals: portfolioConCuentasDe100y50Pesos balance.! !
-
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 16:00:00'!
-test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances
-
-	| portfolioPadre portfolioHijo|
-	
-	portfolioPadre := Portfolio new initialize.
-	portfolioHijo := Portfolio new initialize.
-	
-	portfolioPadre addAccount: cuentaCon100Pesos .
-	
-	portfolioHijo addAccount: cuentaCon50Pesos .
-	portfolioPadre addPortfolio: portfolioHijo.
-	
-	self assert: 150 equals: (portfolioPadre balance).! !
-
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 15:51:34'!
-test05PortfolioWithNoAccountsHasNoTransaction
-	
-	self assert: portfolioVacio transactions isEmpty.! !
-
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 15:58:19'!
-test06PortfolioWithOneAccountHasItsTransactions
-	
-	self assert: (cuentaCon100Pesos transactions)
-	equals: (portfolioConCuentaDe100Pesos transactions).! !
-
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 16:03:18'!
-test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions
-	
-	self assert: (cuentaCon100Pesos transactions), (cuentaCon50Pesos transactions)
-	equals: (portfolioConCuentasDe100y50Pesos transactions).! !
-
-!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/20/2023 16:27:18'!
-test08CanFindTransactionsInAPortfolio
-
-	self assert: (portfolioConCuentasDe100y50Pesos hasRegistered: transaccionDepositar100).
-	self assert: (portfolioConCuentasDe100y50Pesos hasRegistered: transaccionDepositar50).! !
 
 
 !classDefinition: #ReceptiveAccountTest category: 'Portfolio-Ejercicio'!
@@ -88,13 +114,12 @@ TestCase subclass: #ReceptiveAccountTest
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'NR 11/2/2020 17:13:44'!
-test01ReceptiveAccountHaveZeroAsBalanceWhenCreated 
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:42:24'!
+test01ReceptiveAccountHaveZeroAsBalanceWhenCreated
 
 	| account |
 	
 	account := ReceptiveAccount new.
-
 	self assert: 0 equals: account balance.
 ! !
 
@@ -174,7 +199,7 @@ test07AccountKnowsItsTransactions
 
 !classDefinition: #Account category: 'Portfolio-Ejercicio'!
 Object subclass: #Account
-	instanceVariableNames: ''
+	instanceVariableNames: 'parentAccount'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
@@ -184,16 +209,37 @@ balance
 	
 	self subclassResponsibility ! !
 
-
-!Account methodsFor: 'transactions' stamp: 'SF 5/20/2023 16:31:25'!
+!Account methodsFor: 'accessing' stamp: 'SF 5/20/2023 16:31:25'!
 hasRegistered: aTransactionToLookFor
 	
 	self subclassResponsibility ! !
 
-!Account methodsFor: 'transactions' stamp: 'SF 5/20/2023 16:31:35'!
+!Account methodsFor: 'accessing' stamp: 'SF 5/21/2023 16:51:43'!
+parentPortfolio: aParentPortfolio
+
+	parentAccount := aParentPortfolio ! !
+
+!Account methodsFor: 'accessing' stamp: 'SF 5/21/2023 16:52:14'!
+rootPortfolio
+
+	(parentAccount = self) ifTrue: [ ^self ].
+	^parentAccount rootPortfolio.! !
+
+!Account methodsFor: 'accessing' stamp: 'SF 5/20/2023 16:31:35'!
 transactions
 	
 	self subclassResponsibility ! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'Account class' category: 'Portfolio-Ejercicio'!
+Account class
+	instanceVariableNames: ''!
+
+!Account class methodsFor: 'error messages' stamp: 'SF 5/21/2023 16:19:30'!
+triedToAddExistingAccountErrorDescription
+
+	^ 'La cuenta que quieres agregar ya existe.'! !
 
 
 !classDefinition: #Portfolio category: 'Portfolio-Ejercicio'!
@@ -203,12 +249,41 @@ Account subclass: #Portfolio
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!Portfolio methodsFor: 'transactions' stamp: 'SF 5/20/2023 16:26:09'!
+!Portfolio methodsFor: 'initialization' stamp: 'SF 5/21/2023 16:51:43'!
+initialize
+
+	accounts := OrderedCollection new.
+	parentAccount := self.! !
+
+
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/20/2023 16:04:59'!
+balance
+
+	^ accounts sum: [ :account | account balance ] ifEmpty: [ 0 ]! !
+
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:36:05'!
+flattenedAccounts
+
+	^ (accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts.
+		]), self portfolios! !
+
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 16:42:57'!
+hasAccount: anAccountToLookFor
+	
+	^accounts anySatisfy: [ :account | (account = anAccountToLookFor) | (account hasAccount: anAccountToLookFor) ]! !
+
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/20/2023 16:26:09'!
 hasRegistered: aTransactionToLookFor
 	
 	^accounts anySatisfy: [ :account | account hasRegistered: aTransactionToLookFor ]! !
 
-!Portfolio methodsFor: 'transactions' stamp: 'SF 5/20/2023 16:05:06'!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:34:01'!
+portfolios
+
+	^ accounts select: [ :anAccount | anAccount isKindOf: Portfolio ].! !
+
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 16:58:39'!
 transactions
 
 	^ accounts inject: OrderedCollection new into: [ :transactions :account |
@@ -216,27 +291,28 @@ transactions
 		]! !
 
 
-!Portfolio methodsFor: 'adding' stamp: 'SF 5/20/2023 15:19:23'!
+!Portfolio methodsFor: 'modifying' stamp: 'SF 5/21/2023 18:02:39'!
 addAccount: anAccountToAdd
 
+	self raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	anAccountToAdd parentPortfolio: self.
 	accounts add: anAccountToAdd! !
 
-!Portfolio methodsFor: 'adding' stamp: 'SF 5/20/2023 15:30:40'!
-addPortfolio: aPortfolioToAdd
 
-	accounts add: aPortfolioToAdd! !
+!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/21/2023 18:20:00'!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	(self rootHasNoAccountFrom: anAccountToAdd flattenedAccounts)
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
 
+!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/21/2023 18:19:54'!
+rootHasNoAccountFrom: aCollectionOfAccounts
+	
+	| flattenedRoot |
+	
+	flattenedRoot := self rootPortfolio flattenedAccounts.
 
-!Portfolio methodsFor: 'initialization' stamp: 'SF 5/20/2023 15:18:46'!
-initialize
-
-	accounts := OrderedCollection new.! !
-
-
-!Portfolio methodsFor: 'accessing' stamp: 'SF 5/20/2023 16:04:59'!
-balance
-
-	^ accounts sum: [ :account | account balance ] ifEmpty: [ 0 ]! !
+	^(flattenedRoot anySatisfy: [ :anAccount | aCollectionOfAccounts includes: anAccount ])! !
 
 
 !classDefinition: #ReceptiveAccount category: 'Portfolio-Ejercicio'!
@@ -246,34 +322,48 @@ Account subclass: #ReceptiveAccount
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!ReceptiveAccount methodsFor: 'initialization' stamp: 'NR 10/17/2019 15:06:56'!
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'SF 5/21/2023 16:51:43'!
 initialize
 
-	transactions := OrderedCollection new.! !
-
-
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/20/2023 16:04:23'!
-hasRegistered: aTransaction
-
-	^ transactions includes: aTransaction
-! !
-
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/20/2023 16:32:29'!
-register: aTransaction
-
-	transactions add: aTransaction
-! !
-
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
-transactions 
-
-	^ transactions copy! !
+	transactions := OrderedCollection new.
+	parentAccount := self.! !
 
 
 !ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/20/2023 15:15:37'!
 balance
 
 	^transactions sum: [ :aTransaction | aTransaction effectOnBalance ] ifEmpty: [ 0 ]! !
+
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:20:58'!
+flattenedAccounts
+
+	| res |
+	res := OrderedCollection new.
+	res add: self.
+	^ res.! !
+
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/21/2023 16:39:46'!
+hasAccount: anAccountToLookFor
+
+	^ self = anAccountToLookFor ! !
+
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/20/2023 16:04:23'!
+hasRegistered: aTransaction
+
+	^ transactions includes: aTransaction
+! !
+
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'HernanWilkinson 7/13/2011 18:37'!
+transactions 
+
+	^ transactions copy! !
+
+
+!ReceptiveAccount methodsFor: 'modifying' stamp: 'SF 5/20/2023 16:32:29'!
+register: aTransaction
+
+	transactions add: aTransaction
+! !
 
 
 !classDefinition: #AccountTransaction category: 'Portfolio-Ejercicio'!
@@ -283,12 +373,12 @@ Object subclass: #AccountTransaction
 	poolDictionaries: ''
 	category: 'Portfolio-Ejercicio'!
 
-!AccountTransaction methodsFor: 'value' stamp: 'SF 5/20/2023 15:14:47'!
+!AccountTransaction methodsFor: 'accessing' stamp: 'SF 5/20/2023 15:14:47'!
 effectOnBalance
 
 	self subclassResponsibility ! !
 
-!AccountTransaction methodsFor: 'value' stamp: 'SF 5/20/2023 15:14:42'!
+!AccountTransaction methodsFor: 'accessing' stamp: 'SF 5/20/2023 15:14:42'!
 value
 
 	self subclassResponsibility ! !
@@ -323,12 +413,12 @@ initializeFor: aValue
 	value := aValue ! !
 
 
-!Deposit methodsFor: 'value' stamp: 'SF 5/20/2023 15:15:00'!
+!Deposit methodsFor: 'accessing' stamp: 'SF 5/20/2023 15:15:00'!
 effectOnBalance
 
 	^ value! !
 
-!Deposit methodsFor: 'value' stamp: 'SF 5/20/2023 15:14:56'!
+!Deposit methodsFor: 'accessing' stamp: 'SF 5/20/2023 15:14:56'!
 value
 
 	^ value! !
@@ -358,12 +448,12 @@ initializeFor: aValue
 	value := aValue ! !
 
 
-!Withdraw methodsFor: 'value' stamp: 'SF 5/20/2023 15:15:23'!
+!Withdraw methodsFor: 'accessing' stamp: 'SF 5/20/2023 15:15:23'!
 effectOnBalance
 
 	^ value negated! !
 
-!Withdraw methodsFor: 'value' stamp: 'SF 5/20/2023 15:15:16'!
+!Withdraw methodsFor: 'accessing' stamp: 'SF 5/20/2023 15:15:16'!
 value
 
 	^ value! !

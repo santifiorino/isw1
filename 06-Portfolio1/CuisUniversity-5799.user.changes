@@ -1526,3 +1526,2043 @@ PASSED!
 
 !testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/20/2023 16:35:08'!
 PASSED!
+
+----STARTUP---- (21 May 2023 16:12:51) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5799.image!
+
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/21/2023 16:12:55'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/21/2023 16:12:56'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:15:10'!
+test09CanFindAccountInAPortfolio
+
+	
+! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:15:51'!
+test09CantAddExistingAccountInAPortfolio
+
+	
+! !
+
+!methodRemoval: PortfolioTest #test09CanFindAccountInAPortfolio stamp: 'SF 5/21/2023 16:15:52'!
+test09CanFindAccountInAPortfolio
+
+	
+!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:18:50' prior: 50621954!
+test09CantAddExistingAccountInAPortfolio
+
+	self should: [ portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Account triedToAddExistingAccountErrorDescription
+		]
+	
+! !
+!Account class methodsFor: 'no messages' stamp: 'SF 5/21/2023 16:19:30'!
+triedToAddExistingAccountErrorDescription
+
+	^ 'La cuenta que quieres agregar ya existe.'! !
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:19:59'!
+FAILURE!
+
+!methodRemoval: Portfolio #addPortfolio: stamp: 'SF 5/21/2023 16:21:16'!
+addPortfolio: aPortfolioToAdd
+
+	accounts add: aPortfolioToAdd!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:21:42' prior: 50621310!
+test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances
+
+	| portfolioPadre portfolioHijo|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	self assert: 150 equals: (portfolioPadre balance).! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 16:21:46'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 16:21:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 16:21:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 16:21:50'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 16:21:51'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 16:21:53'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 16:21:55'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 16:21:56'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:21:58'!
+FAILURE!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:21:58'!
+FAILURE!
+!Portfolio methodsFor: 'adding' stamp: 'SF 5/21/2023 16:23:05' prior: 50620265!
+addAccount: anAccountToAdd
+
+	self raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	accounts add: anAccountToAdd! !
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parentPortfolio'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 16:31:36'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parentPortfolio'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Portfolio methodsFor: 'initialization' stamp: 'SF 5/21/2023 16:31:58' prior: 50620254 overrides: 16920235!
+initialize
+
+	accounts := OrderedCollection new.
+	parentPortfolio := self.! !
+!Portfolio methodsFor: 'adding' stamp: 'SF 5/21/2023 16:33:27' prior: 50622039!
+addAccount: anAccountToAdd
+
+	self raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	anAccountToAdd parentPortfolio: self.
+	accounts add: anAccountToAdd! !
+!Portfolio methodsFor: 'adding' stamp: 'SF 5/21/2023 16:34:29'!
+parentPortfolio: aParentPortfolio
+
+	parentPortfolio := aParentPortfolio ! !
+!Portfolio methodsFor: 'transactions' stamp: 'SF 5/21/2023 16:39:23'!
+hasAccount: anAccountToLookFor
+	
+	^accounts anySatisfy: [ :account | account = anAccountToLookFor | account hasAccount: anAccountToLookFor. ]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/21/2023 16:39:46'!
+hasAccount: anAccountToLookFor
+
+	^ self = anAccountToLookFor ! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:40:24'!
+test10
+
+	self assert: (portfolioConCuentaDe100Pesos hasAccount: cuentaCon100Pesos)! !
+!Portfolio methodsFor: 'adding' stamp: 'SF 5/21/2023 16:40:45' prior: 50622065!
+addAccount: anAccountToAdd
+
+	"self raiseErrorIfAccountAlreadyPresent: anAccountToAdd."
+	anAccountToAdd parentPortfolio: self.
+	accounts add: anAccountToAdd! !
+
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts '
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Portfolio category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 16:41:46'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+Object subclass: #Account
+	instanceVariableNames: 'parentPortfolio'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #Account category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 16:41:49'!
+Object subclass: #Account
+	instanceVariableNames: 'parentPortfolio'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Account methodsFor: 'adding' stamp: 'SF 5/21/2023 16:41:54'!
+parentPortfolio: aParentPortfolio
+
+	parentPortfolio := aParentPortfolio ! !
+
+!methodRemoval: Portfolio #parentPortfolio: stamp: 'SF 5/21/2023 16:41:54'!
+parentPortfolio: aParentPortfolio
+
+	parentPortfolio := aParentPortfolio !
+
+!testRun: #PortfolioTest #test10 stamp: 'SF 5/21/2023 16:42:02'!
+ERROR!
+!Portfolio methodsFor: 'transactions' stamp: 'SF 5/21/2023 16:42:57' prior: 50622077!
+hasAccount: anAccountToLookFor
+	
+	^accounts anySatisfy: [ :account | (account = anAccountToLookFor) | (account hasAccount: anAccountToLookFor) ]! !
+
+!testRun: #PortfolioTest #test10 stamp: 'SF 5/21/2023 16:43:05'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:43:26' prior: 50622089!
+test10
+
+	self assert: (portfolioConCuentaDe100Pesos hasAccount: cuentaCon100Pesos).
+	self deny: (portfolioConCuentaDe100Pesos hasAccount: cuentaCon50Pesos).! !
+
+!testRun: #PortfolioTest #test10 stamp: 'SF 5/21/2023 16:43:28'!
+PASSED!
+
+!methodRemoval: PortfolioTest #test10 stamp: 'SF 5/21/2023 16:43:34'!
+test10
+
+	self assert: (portfolioConCuentaDe100Pesos hasAccount: cuentaCon100Pesos).
+	self deny: (portfolioConCuentaDe100Pesos hasAccount: cuentaCon50Pesos).!
+!Account methodsFor: 'adding' stamp: 'SF 5/21/2023 16:46:41'!
+rootPortfolio
+
+	(parentPortfolio = self) ifTrue: [ ^self ]
+	^parentPortfolio rootPortfolio.! !
+!Portfolio methodsFor: 'adding' stamp: 'SF 5/21/2023 16:47:58'!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	
+	(self rootPortfolio hasAccount: anAccountToAdd)
+	ifTrue: [ 
+		self error: Account triedToAddExistingAccountErrorDescription 
+		]! !
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:48:13'!
+FAILURE!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:48:13'!
+FAILURE!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:48:45'!
+FAILURE!
+!Portfolio methodsFor: 'adding' stamp: 'SF 5/21/2023 16:50:14' prior: 50622095!
+addAccount: anAccountToAdd
+
+	self raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	anAccountToAdd parentPortfolio: self.
+	accounts add: anAccountToAdd! !
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/21/2023 16:50:18'!
+PASSED!
+!ReceptiveAccount methodsFor: 'initialization' stamp: 'SF 5/21/2023 16:50:54' prior: 50620071 overrides: 16920235!
+initialize
+
+	transactions := OrderedCollection new.
+	parentPortfolio := self.! !
+
+!classDefinition: #Account category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 16:51:43'!
+Object subclass: #Account
+	instanceVariableNames: 'parentAccount'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!Account methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:51:43' prior: 50622127!
+parentPortfolio: aParentPortfolio
+
+	parentAccount := aParentPortfolio ! !
+!Account methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:51:43' prior: 50622167!
+rootPortfolio
+
+	(parentAccount = self) ifTrue: [ ^self ]
+	^parentAccount rootPortfolio.! !
+!ReceptiveAccount methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:51:43' prior: 50622203 overrides: 16920235!
+initialize
+
+	transactions := OrderedCollection new.
+	parentAccount := self.! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 16:51:43' prior: 50622060 overrides: 16920235!
+initialize
+
+	accounts := OrderedCollection new.
+	parentAccount := self.! !
+!Account methodsFor: 'adding' stamp: 'SF 5/21/2023 16:52:14' prior: 50622222!
+rootPortfolio
+
+	(parentAccount = self) ifTrue: [ ^self ].
+	^parentAccount rootPortfolio.! !
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:52:18'!
+PASSED!
+
+!methodRemoval: Portfolio #transactions stamp: 'SF 5/21/2023 16:56:52'!
+transactions
+
+	^ accounts inject: OrderedCollection new into: [ :transactions :account |
+		transactions, account transactions 
+		]!
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 16:57:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 16:57:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 16:57:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 16:57:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 16:57:07'!
+ERROR!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 16:57:07'!
+ERROR!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 16:57:07'!
+ERROR!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 16:57:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:57:07'!
+PASSED!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 16:58:39' overrides: 50621759!
+transactions
+
+	^ accounts inject: OrderedCollection new into: [ :transactions :account |
+		transactions, account transactions 
+		]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 16:58:41'!
+PASSED!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:10:36'!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		(flattenedAccounts, account), account flattenedAccounts
+		]! !
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:10:49'!
+flattenedAccounts
+
+	^ self! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:11:53'!
+test100
+
+	| portfolioPadre portfolioHijo|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	self assert: OrderedCollection new equals: portfolioPadre flattenedAccounts! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:11:54'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:11:54'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:13:18' prior: 50622327!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account, account flattenedAccounts
+		]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:13:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:13:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:13:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:13:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:13:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:13:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:13:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:13:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:13:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:13:20'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:13:20'!
+ERROR!
+
+| portfolioPadre portfolioHijo|
+	
+portfolioPadre := Portfolio new initialize.
+portfolioHijo := Portfolio new initialize.
+
+portfolioPadre addAccount: cuentaCon100Pesos .
+
+portfolioHijo addAccount: cuentaCon50Pesos .
+portfolioPadre addAccount: portfolioHijo.
+
+portfolioPadre flattenedAccounts!
+
+| portfolioPadre portfolioHijo|
+	
+portfolioPadre := Portfolio new initialize.
+portfolioHijo := Portfolio new initialize.
+
+portfolioPadre addAccount: cuentaCon100Pesos .
+
+portfolioHijo addAccount: cuentaCon50Pesos .
+portfolioPadre addAccount: portfolioHijo.
+
+portfolioPadre flattenedAccounts!
+
+| portfolioPadre portfolioHijo cuentaCon100Pesos cuentaCon50Pesos|
+		
+portfolioPadre := Portfolio new initialize.
+portfolioHijo := Portfolio new initialize.
+
+cuentaCon100Pesos := ReceptiveAccount new initialize.
+cuentaCon50Pesos := ReceptiveAccount new initialize.
+
+portfolioPadre addAccount: cuentaCon100Pesos .
+
+portfolioHijo addAccount: cuentaCon50Pesos .
+portfolioPadre addAccount: portfolioHijo.
+
+portfolioPadre flattenedAccounts!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:16:52' prior: 50622358!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		(flattenedAccounts, account), account flattenedAccounts
+		]! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:17:00'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:17:00'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:18:05' prior: 50622435!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		(flattenedAccounts add: account) add: account flattenedAccounts
+		]! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:18:09'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:18:09'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:18:52' prior: 50622448!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		(flattenedAccounts, account), account flattenedAccounts
+		]! !
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:19:07' prior: 50622335!
+flattenedAccounts
+
+	^ OrderedCollection with: self! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:19:09'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:19:10'!
+ERROR!
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:19:17' prior: 50622469!
+flattenedAccounts
+
+	^ OrderedCollection new with: self! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/21/2023 17:19:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/21/2023 17:19:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/21/2023 17:19:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/21/2023 17:19:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/21/2023 17:19:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/21/2023 17:19:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/21/2023 17:19:18'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:19:22'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:19:22'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:19:50' prior: 50622461!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		(flattenedAccounts, OrderedCollection new with: account), account flattenedAccounts
+		]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:19:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:19:52'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:19:52'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:20:05' prior: 50622515!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		(flattenedAccounts add: account), account flattenedAccounts
+		]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:20:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:20:07'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:20:07'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:20:11'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:20:11'!
+ERROR!
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:20:17' prior: 50622479!
+flattenedAccounts
+
+	^ OrderedCollection with: self! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:20:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:20:20'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:20:20'!
+ERROR!
+!ReceptiveAccount methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:20:58' prior: 50622611!
+flattenedAccounts
+
+	| res |
+	res := OrderedCollection new.
+	res add: self.
+	^ res.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/21/2023 17:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/21/2023 17:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/21/2023 17:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/21/2023 17:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/21/2023 17:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/21/2023 17:21:00'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/21/2023 17:21:00'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:21:01'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:21:01'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:21:01'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:22:02' prior: 50622561!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, ((account flattenedAccounts) add: account)
+		]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:22:09'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:22:09'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:22:09'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:23:13' prior: 50622722!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts.
+		flattenedAccounts add: account.
+		]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:23:14'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:23:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:23:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:23:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:23:15'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:23:15'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:23:15'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:23:52' prior: 50622768!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts.
+		
+		]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:23:54'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:23:54'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:23:54'!
+FAILURE!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:24:18' prior: 50622814!
+flattenedAccounts
+
+	^ accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		(flattenedAccounts, account flattenedAccounts) add: account.
+		
+		]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:24:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:24:19'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:24:19'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:25:33' prior: 50622859!
+flattenedAccounts
+
+	^ (accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts.
+		]) addAll: accounts.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:25:35'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:25:35'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:25:35'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:26:21'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:26:21'!
+FAILURE!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:28:34' prior: 50622339!
+test100
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: portfolioHijo.
+	flattened add: cuentaCon50Pesos.
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:28:37'!
+FAILURE!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:31:56' prior: 50622905!
+flattenedAccounts
+
+	^ (accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts.
+		]) add: self.! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:31:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:31:57'!
+ERROR!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:31:57'!
+ERROR!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:32:04' prior: 50622977!
+flattenedAccounts
+
+	^ (accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts.
+		]).! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:32:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:32:06'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:32:06'!
+FAILURE!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:33:36' prior: 50623023!
+flattenedAccounts
+
+	^ (accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts.
+		]) addAll: self portfolios.! !
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:34:01'!
+portfolios
+
+	^ accounts select: [ :anAccount | anAccount isKindOf: Portfolio ].! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:34:07'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:34:07'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:34:16'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:34:16'!
+FAILURE!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:34:47' prior: 50623068!
+flattenedAccounts
+
+	^ (accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts, self portfolios.
+		])! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:34:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:34:49'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:34:49'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:35:00'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:35:11'!
+FAILURE!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:35:28' prior: 50622956!
+test100
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo.
+	flattened add: cuentaCon100Pesos.
+	
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:35:29'!
+FAILURE!
+!Portfolio methodsFor: 'accessing' stamp: 'SF 5/21/2023 17:36:05' prior: 50623091!
+flattenedAccounts
+
+	^ (accounts inject: OrderedCollection new into: [ :flattenedAccounts :account |
+		flattenedAccounts, account flattenedAccounts.
+		]), self portfolios! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:36:06'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:36:06'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:36:06'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:36:12'!
+FAILURE!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:36:12'!
+FAILURE!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:36:28' prior: 50623142!
+test100
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon50Pesos.
+	flattened add: cuentaCon100Pesos.
+	flattened add: portfolioHijo.
+	
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:36:29'!
+FAILURE!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:36:35' prior: 50623214!
+test100
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	
+	flattened add: portfolioHijo.
+	
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts! !
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test100 stamp: 'SF 5/21/2023 17:36:36'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:36:39' prior: 50623235!
+test100
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo.
+	
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:36:59'!
+test10
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo.
+	
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts! !
+
+!methodRemoval: PortfolioTest #test100 stamp: 'SF 5/21/2023 17:37:00'!
+test100
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo.
+	
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:37:47'!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo.
+	
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts! !
+
+!methodRemoval: PortfolioTest #test10 stamp: 'SF 5/21/2023 17:37:48'!
+test10
+
+	| portfolioPadre portfolioHijo flattened|
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo.
+	
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:38:07'!
+test09CantAddReceptiveAccountThatIsAlreadyPresent
+
+	self should: [ portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Account triedToAddExistingAccountErrorDescription
+		]
+	
+! !
+
+!methodRemoval: PortfolioTest #test09CantAddExistingAccountInAPortfolio stamp: 'SF 5/21/2023 17:38:10'!
+test09CantAddExistingAccountInAPortfolio
+
+	self should: [ portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Account triedToAddExistingAccountErrorDescription
+		]
+	
+!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 17:39:33'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: 'portfolioVacio cuentaCon100Pesos transaccionDepositar100 cuentaCon50Pesos transaccionDepositar50 portfolioConCuentaDe100Pesos portfolioConCuentasDe100y50Pesos portfolioPadre1'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 17:39:34'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: 'portfolioVacio cuentaCon100Pesos transaccionDepositar100 cuentaCon50Pesos transaccionDepositar50 portfolioConCuentaDe100Pesos portfolioConCuentasDe100y50Pesos portfolioPadre1 portfolioHijo1'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:39:32' prior: 50621356 overrides: 16961394!
+setUp
+	
+	portfolioVacio := Portfolio new initialize.
+	
+	cuentaCon100Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar100 := Deposit register: 100 on: cuentaCon100Pesos.
+	
+	cuentaCon50Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar50 := Deposit register: 50 on: cuentaCon50Pesos.
+	
+	portfolioConCuentaDe100Pesos := Portfolio new initialize.
+	portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos.
+	
+	portfolioConCuentasDe100y50Pesos := Portfolio new initialize.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon100Pesos.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon50Pesos.
+	
+	portfolioPadre1 := Portfolio new initialize.
+	portfolioHijo1 := Portfolio new initialize.
+	
+	portfolioPadre1 addAccount: cuentaCon100Pesos .
+	
+	portfolioHijo1 addAccount: cuentaCon50Pesos .
+	portfolioPadre1 addAccount: portfolioHijo1.
+	! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:39:50' prior: 50621988!
+test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances
+
+	self assert: 150 equals: (portfolioPadre1 balance).! !
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:39:51'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:39:52'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:40:10' prior: 50623345!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| flattened|
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo1.
+	
+	self assert: flattened equals: portfolioPadre1 flattenedAccounts! !
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:40:11'!
+PASSED!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:40:31' prior: 50623433 overrides: 16961394!
+setUp
+	
+	portfolioVacio := Portfolio new initialize.
+	
+	cuentaCon100Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar100 := Deposit register: 100 on: cuentaCon100Pesos.
+	
+	cuentaCon50Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar50 := Deposit register: 50 on: cuentaCon50Pesos.
+	
+	portfolioConCuentaDe100Pesos := Portfolio new initialize.
+	portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos.
+	
+	portfolioConCuentasDe100y50Pesos := Portfolio new initialize.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon100Pesos.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon50Pesos.
+	
+	portfolioPadre1 := Portfolio new initialize.
+	portfolioHijo1 := Portfolio new initialize.
+	portfolioPadre1 addAccount: cuentaCon100Pesos .
+	portfolioHijo1 addAccount: cuentaCon50Pesos .
+	portfolioPadre1 addAccount: portfolioHijo1.
+	! !
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 17:40:39'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: 'portfolioVacio cuentaCon100Pesos transaccionDepositar100 cuentaCon50Pesos transaccionDepositar50 portfolioConCuentaDe100Pesos portfolioConCuentasDe100y50Pesos portfolioPadre1 portfolioHijo'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:40:39' prior: 50623566 overrides: 16961394!
+setUp
+	
+	portfolioVacio := Portfolio new initialize.
+	
+	cuentaCon100Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar100 := Deposit register: 100 on: cuentaCon100Pesos.
+	
+	cuentaCon50Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar50 := Deposit register: 50 on: cuentaCon50Pesos.
+	
+	portfolioConCuentaDe100Pesos := Portfolio new initialize.
+	portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos.
+	
+	portfolioConCuentasDe100y50Pesos := Portfolio new initialize.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon100Pesos.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon50Pesos.
+	
+	portfolioPadre1 := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	portfolioPadre1 addAccount: cuentaCon100Pesos .
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre1 addAccount: portfolioHijo.
+	! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:40:39' prior: 50623512!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| flattened|
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo.
+	
+	self assert: flattened equals: portfolioPadre1 flattenedAccounts! !
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 17:40:47'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: 'portfolioVacio cuentaCon100Pesos transaccionDepositar100 cuentaCon50Pesos transaccionDepositar50 portfolioConCuentaDe100Pesos portfolioConCuentasDe100y50Pesos portfolioPadre portfolioHijo'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:40:47' prior: 50623610 overrides: 16961394!
+setUp
+	
+	portfolioVacio := Portfolio new initialize.
+	
+	cuentaCon100Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar100 := Deposit register: 100 on: cuentaCon100Pesos.
+	
+	cuentaCon50Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar50 := Deposit register: 50 on: cuentaCon50Pesos.
+	
+	portfolioConCuentaDe100Pesos := Portfolio new initialize.
+	portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos.
+	
+	portfolioConCuentasDe100y50Pesos := Portfolio new initialize.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon100Pesos.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon50Pesos.
+	
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	portfolioPadre addAccount: cuentaCon100Pesos .
+	portfolioHijo addAccount: cuentaCon50Pesos .
+	portfolioPadre addAccount: portfolioHijo.
+	! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:40:47' prior: 50623640!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| flattened|
+	
+	flattened := OrderedCollection new.
+	flattened add: cuentaCon100Pesos.
+	flattened add: cuentaCon50Pesos.
+	flattened add: portfolioHijo.
+	
+	self assert: flattened equals: portfolioPadre flattenedAccounts! !
+!PortfolioTest methodsFor: 'as yet unclassified' stamp: 'SF 5/21/2023 17:40:47' prior: 50623464!
+test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances
+
+	self assert: 150 equals: (portfolioPadre balance).! !
+!ReceptiveAccountTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:42:24' prior: 50619882!
+test01ReceptiveAccountHaveZeroAsBalanceWhenCreated
+
+	| account |
+	
+	account := ReceptiveAccount new.
+	self assert: 0 equals: account balance.
+! !
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:42:43' prior: 50623696!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	! !
+!PortfolioTest methodsFor: 'setUp/tearDown' stamp: 'SF 5/21/2023 17:46:27' prior: 50623666 overrides: 16961394!
+setUp
+	
+	portfolioVacio := Portfolio new initialize.
+	
+	cuentaCon100Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar100 := Deposit register: 100 on: cuentaCon100Pesos.
+	
+	cuentaCon50Pesos := ReceptiveAccount new initialize.
+	transaccionDepositar50 := Deposit register: 50 on: cuentaCon50Pesos.
+	
+	portfolioConCuentaDe100Pesos := Portfolio new initialize.
+	portfolioConCuentaDe100Pesos addAccount: cuentaCon100Pesos.
+	
+	portfolioConCuentasDe100y50Pesos := Portfolio new initialize.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon100Pesos.
+	portfolioConCuentasDe100y50Pesos addAccount: cuentaCon50Pesos.
+	! !
+
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: 'portfolioVacio cuentaCon100Pesos transaccionDepositar100 cuentaCon50Pesos transaccionDepositar50 portfolioConCuentaDe100Pesos portfolioConCuentasDe100y50Pesos'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+
+!classDefinition: #PortfolioTest category: 'Portfolio-Ejercicio' stamp: 'SF 5/21/2023 17:46:33'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: 'portfolioVacio cuentaCon100Pesos transaccionDepositar100 cuentaCon50Pesos transaccionDepositar50 portfolioConCuentaDe100Pesos portfolioConCuentasDe100y50Pesos'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Ejercicio'!
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:46:54' prior: 50623723!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| portfolioPadre portfolioHijo |
+
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre add: cuentaCon100Pesos.
+	portfolioHijo add: cuentaCon100Pesos.
+	
+	self should: [ portfolioPadre addAccount: portfolioHijo ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		anError messageText = Account triedToAddExistingAccountErrorDescription 
+		].! !
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:47:39' prior: 50623708!
+test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances
+	
+	| portfolioPadre portfolioHijo |
+
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	portfolioPadre addAccount: cuentaCon100Pesos.
+	portfolioHijo addAccount: cuentaCon50Pesos.
+	portfolioPadre addAccount: portfolioHijo.
+
+	self assert: 150 equals: (portfolioPadre balance).! !
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:47:43'!
+ERROR!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:47:43'!
+ERROR!
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:47:51' prior: 50623774!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| portfolioPadre portfolioHijo |
+
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos.
+	portfolioHijo addAccount: cuentaCon100Pesos.
+	
+	self should: [ portfolioPadre addAccount: portfolioHijo ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		anError messageText = Account triedToAddExistingAccountErrorDescription 
+		].! !
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:47:51'!
+FAILURE!
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:48:21' prior: 50623814!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| portfolioPadre portfolioHijo |
+
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos.
+	portfolioHijo addAccount: cuentaCon100Pesos.
+	
+	self should: [ portfolioPadre addAccount: portfolioHijo ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Account triedToAddExistingAccountErrorDescription 
+		].! !
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 17:48:22'!
+FAILURE!
+!PortfolioTest methodsFor: 'tests' stamp: 'SF 5/21/2023 17:48:38' prior: 50623836!
+test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent
+
+	| portfolioPadre portfolioHijo |
+
+	portfolioPadre := Portfolio new initialize.
+	portfolioHijo := Portfolio new initialize.
+	
+	portfolioPadre addAccount: cuentaCon100Pesos.
+	portfolioHijo addAccount: cuentaCon100Pesos.
+	
+	self should: [ portfolioPadre addAccount: portfolioHijo ]
+	raise: Error
+	withExceptionDo: [ :anError |
+		self assert: anError messageText = Account triedToAddExistingAccountErrorDescription.
+		].! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 17:52:29' prior: 50622172!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	
+	((self flattenedAccounts) select: [ :anAccount | (self rootPortfolio flattenedAccounts) includes: anAccount ]) ifNotEmpty: (self error: Account triedToAddExistingAccountErrorDescription)! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 17:56:40' prior: 50623876!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	
+	((self flattenedAccounts) select: [ :anAccount | rootAccounts includes: anAccount ])
+	ifNotEmpty: (self error: Account triedToAddExistingAccountErrorDescription)! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 17:56:56' prior: 50623887!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	
+	((self flattenedAccounts) anySatisfy: [ :anAccount | rootAccounts includes: anAccount ])
+	ifTrue: (self error: Account triedToAddExistingAccountErrorDescription)! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 17:57:42' prior: 50623899!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	((self flattenedAccounts) anySatisfy: [ :anAccount | rootAccounts includes: anAccount ])
+	ifTrue: (self error: Account triedToAddExistingAccountErrorDescription)! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 17:58:30' prior: 50623911!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	
+	((anAccountToAdd flattenedAccounts) anySatisfy: [ :anAccount | rootAccounts includes: anAccount ])
+	ifTrue: (self error: Account triedToAddExistingAccountErrorDescription)! !
+
+rootAccounts!
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:01:52' prior: 50623923!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	((anAccountToAdd flattenedAccounts) anySatisfy: [ :anAccount | rootAccounts includes: anAccount ])
+	ifTrue: (self error: Account triedToAddExistingAccountErrorDescription)! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:01:55' prior: 50623936!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	((anAccountToAdd flattenedAccounts) anySatisfy: [ :anAccount | rootAccounts includes: anAccount ])
+	ifTrue: (self error: Account triedToAddExistingAccountErrorDescription)! !
+!Portfolio methodsFor: 'modifying' stamp: 'SF 5/21/2023 18:02:18' prior: 50622191!
+addAccount: anAccountToAdd
+
+	anAccountToAdd parentPortfolio: self.
+	self raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	
+	accounts add: anAccountToAdd! !
+!Portfolio methodsFor: 'modifying' stamp: 'SF 5/21/2023 18:02:37' prior: 50623961!
+addAccount: anAccountToAdd
+
+	
+	self raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	anAccountToAdd parentPortfolio: self.
+	accounts add: anAccountToAdd! !
+!Portfolio methodsFor: 'modifying' stamp: 'SF 5/21/2023 18:02:39' prior: 50623969!
+addAccount: anAccountToAdd
+
+	self raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	anAccountToAdd parentPortfolio: self.
+	accounts add: anAccountToAdd! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:06:37' prior: 50623949!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	(rootAccounts anySatisfy: [ :anAccount | anAccountToAdd hasAccount: anAccount ])
+	ifTrue: (self error: Account triedToAddExistingAccountErrorDescription)! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:08:10' prior: 50623985!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	(rootAccounts select: [ :anAccount | anAccountToAdd hasAccount: anAccount ])
+	ifNotEmpty: (self error: Account triedToAddExistingAccountErrorDescription)! !
+
+(rootAccounts select: [ :anAccount | anAccountToAdd hasAccount: anAccount ])!
+
+(rootAccounts select: [ :anAccount | anAccountToAdd hasAccount: anAccount ])!
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:09:57' prior: 50623997!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	(rootAccounts select: [ :anAccount | anAccountToAdd hasAccount: anAccount ])
+	ifNotEmpty: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 18:09:58'!
+PASSED!
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:10:10' prior: 50624014!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| rootAccounts |
+	rootAccounts := self rootPortfolio flattenedAccounts.
+	(rootAccounts anySatisfy: [ :anAccount | anAccountToAdd hasAccount: anAccount ])
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 18:10:11'!
+PASSED!
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:12:17' prior: 50624063!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| flattenedRoot accountAccounts |
+	
+	flattenedRoot := self rootPortfolio flattenedAccounts.
+	accountAccounts := anAccountToAdd flattenedAccounts.
+	(flattenedRoot anySatisfy: [ :anAccount | accountAccounts includes: anAccount ])
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:12:27' prior: 50624112!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	| flattenedRoot flattenedAccountToAdd |
+	
+	flattenedRoot := self rootPortfolio flattenedAccounts.
+	flattenedAccountToAdd := anAccountToAdd flattenedAccounts.
+	(flattenedRoot anySatisfy: [ :anAccount | flattenedAccountToAdd includes: anAccount ])
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:18:22'!
+assertThatRootHasNoAccountFrom: aCollectionOfAccounts
+	
+	| flattenedRoot |
+	
+	flattenedRoot := self rootPortfolio flattenedAccounts.
+
+	^(flattenedRoot anySatisfy: [ :anAccount | aCollectionOfAccounts includes: anAccount ])! !
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:18:57' prior: 50624126!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	(self assertThatRootHasNoAccountFrom: anAccountToAdd flattenedAccounts)
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 18:19:36'!
+PASSED!
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:19:54'!
+rootHasNoAccountFrom: aCollectionOfAccounts
+	
+	| flattenedRoot |
+	
+	flattenedRoot := self rootPortfolio flattenedAccounts.
+
+	^(flattenedRoot anySatisfy: [ :anAccount | aCollectionOfAccounts includes: anAccount ])! !
+
+!methodRemoval: Portfolio #assertThatRootHasNoAccountFrom: stamp: 'SF 5/21/2023 18:19:56'!
+assertThatRootHasNoAccountFrom: aCollectionOfAccounts
+	
+	| flattenedRoot |
+	
+	flattenedRoot := self rootPortfolio flattenedAccounts.
+
+	^(flattenedRoot anySatisfy: [ :anAccount | aCollectionOfAccounts includes: anAccount ])!
+!Portfolio methodsFor: 'error handling' stamp: 'SF 5/21/2023 18:20:00' prior: 50624151!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	(self rootHasNoAccountFrom: anAccountToAdd flattenedAccounts)
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+
+----SNAPSHOT----(21 May 2023 18:21:45) CuisUniversity-5799.image priorSource: 9283899!
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/21/2023 18:21:47'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/21/2023 18:21:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/21/2023 18:21:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/21/2023 18:21:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/21/2023 18:21:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/21/2023 18:21:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/21/2023 18:21:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/21/2023 18:21:49'!
+PASSED!
