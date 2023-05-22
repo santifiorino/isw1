@@ -3566,3 +3566,161 @@ PASSED!
 
 !testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/21/2023 18:21:49'!
 PASSED!
+
+----SNAPSHOT----(21 May 2023 18:23:01) CuisUniversity-5799.image priorSource: 9362400!
+
+----STARTUP---- (22 May 2023 11:17:42) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5799.image!
+
+!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/22/2023 11:18:20'!
+rootHasAccountFrom: aCollectionOfAccounts
+	
+	| flattenedRoot |
+	
+	flattenedRoot := self rootPortfolio flattenedAccounts.
+
+	^(flattenedRoot anySatisfy: [ :anAccount | aCollectionOfAccounts includes: anAccount ])! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'SF 5/22/2023 11:18:20' prior: 50624217!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	(self rootHasAccountFrom: anAccountToAdd flattenedAccounts)
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+
+!methodRemoval: Portfolio #rootHasNoAccountFrom: stamp: 'SF 5/22/2023 11:18:20'!
+rootHasNoAccountFrom: aCollectionOfAccounts
+	
+	| flattenedRoot |
+	
+	flattenedRoot := self rootPortfolio flattenedAccounts.
+
+	^(flattenedRoot anySatisfy: [ :anAccount | aCollectionOfAccounts includes: anAccount ])!
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/22/2023 11:18:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/22/2023 11:18:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/22/2023 11:18:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/22/2023 11:18:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/22/2023 11:18:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/22/2023 11:18:22'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/22/2023 11:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/22/2023 11:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/22/2023 11:18:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/22/2023 11:18:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/22/2023 11:18:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/22/2023 11:18:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/22/2023 11:18:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/22/2023 11:18:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/22/2023 11:18:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/22/2023 11:18:24'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/22/2023 11:18:25'!
+PASSED!
+
+----SNAPSHOT----(22 May 2023 11:21:38) CuisUniversity-5799.image priorSource: 9364514!
+
+----STARTUP---- (22 May 2023 12:26:58) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5799.image!
+
+!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/22/2023 12:27:16'!
+raiseErrorIfRootSharesAccountWith: anAccountToAdd
+	
+	(self rootHasAccountFrom: anAccountToAdd flattenedAccounts)
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+!Portfolio methodsFor: 'as yet unclassified' stamp: 'SF 5/22/2023 12:27:16' prior: 50623977!
+addAccount: anAccountToAdd
+
+	self raiseErrorIfRootSharesAccountWith: anAccountToAdd.
+	anAccountToAdd parentPortfolio: self.
+	accounts add: anAccountToAdd! !
+
+!methodRemoval: Portfolio #raiseErrorIfAccountAlreadyPresent: stamp: 'SF 5/22/2023 12:27:16'!
+raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+	
+	(self rootHasAccountFrom: anAccountToAdd flattenedAccounts)
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]!
+
+!testRun: #PortfolioTest #test01PortfolioWithNoAccountsHasNoBalance stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test02PortfolioWithOneAccountHasItsBalance stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test03PortfolioWithMultipleAccountsHasTheSumOfTheirBalance stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithAccountsAndPortfoliosHasTheSumOfTheirBalances stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioWithNoAccountsHasNoTransaction stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioWithOneAccountHasItsTransactions stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioWithMultipleAccountsHasAllOfTheirTransactions stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test08CanFindTransactionsInAPortfolio stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test09CantAddReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #PortfolioTest #test10CantAddPortfolioWithReceptiveAccountThatIsAlreadyPresent stamp: 'SF 5/22/2023 12:28:19'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/22/2023 12:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/22/2023 12:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/22/2023 12:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/22/2023 12:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/22/2023 12:28:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/22/2023 12:28:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/22/2023 12:28:21'!
+PASSED!
+!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/22/2023 12:28:40' prior: 50624395!
+raiseErrorIfRootSharesAccountWith: anAccountToCheck
+	
+	(self rootHasAccountFrom: anAccountToCheck flattenedAccounts)
+	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
+
+----SNAPSHOT----(22 May 2023 12:29:20) CuisUniversity-5799.image priorSource: 9367632!

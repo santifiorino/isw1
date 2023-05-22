@@ -291,22 +291,22 @@ transactions
 		]! !
 
 
-!Portfolio methodsFor: 'modifying' stamp: 'SF 5/21/2023 18:02:39'!
+!Portfolio methodsFor: 'modifying' stamp: 'SF 5/22/2023 12:27:16'!
 addAccount: anAccountToAdd
 
-	self raiseErrorIfAccountAlreadyPresent: anAccountToAdd.
+	self raiseErrorIfRootSharesAccountWith: anAccountToAdd.
 	anAccountToAdd parentPortfolio: self.
 	accounts add: anAccountToAdd! !
 
 
-!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/21/2023 18:20:00'!
-raiseErrorIfAccountAlreadyPresent: anAccountToAdd
+!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/22/2023 12:28:40'!
+raiseErrorIfRootSharesAccountWith: anAccountToCheck
 	
-	(self rootHasNoAccountFrom: anAccountToAdd flattenedAccounts)
+	(self rootHasAccountFrom: anAccountToCheck flattenedAccounts)
 	ifTrue: [ self error: Account triedToAddExistingAccountErrorDescription ]! !
 
-!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/21/2023 18:19:54'!
-rootHasNoAccountFrom: aCollectionOfAccounts
+!Portfolio methodsFor: 'auxiliar' stamp: 'SF 5/22/2023 11:18:20'!
+rootHasAccountFrom: aCollectionOfAccounts
 	
 	| flattenedRoot |
 	
