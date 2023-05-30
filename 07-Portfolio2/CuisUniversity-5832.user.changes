@@ -1,0 +1,1642 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (30 May 2023 16:58:19) as /home/clinux01/Descargas/linux64/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/clinux01/Descargas/2023-1c/06-Portfolio1/Portfolio-Solucion.st----!
+
+TestCase subclass: #TransactionTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransactionTest category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 16:59:33'!
+TestCase subclass: #TransactionTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransactionTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:01:39'!
+test01
+
+	| senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	senderAccount transfer: 100 to: receiverAccount.
+
+	self assert: -100 equals: senderAccount balance.
+	self assert: 100 equals: receiverAccount balance.! !
+
+!testRun: #TransactionTest #test01 stamp: 'SF 5/30/2023 17:01:43'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 17:02:06'!
+transfer: aRenameMe1 to: receiverAccount 
+	self shouldBeImplemented.! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 17:02:27' prior: 50625113!
+transfer: anAmountToTransfer to: anAccountToTransferTo
+
+	 
+	! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 17:03:57' prior: 50625119!
+transfer: anAmountToTransfer to: anAccountToTransferTo
+
+	Withdraw register: anAmountToTransfer on: self.
+	Deposit register: anAmountToTransfer on: anAccountToTransferTo.
+	
+	 
+	! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/30/2023 17:03:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 17:03:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 17:03:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/30/2023 17:03:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/30/2023 17:03:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/30/2023 17:03:59'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/30/2023 17:03:59'!
+PASSED!
+
+!testRun: #TransactionTest #test01 stamp: 'SF 5/30/2023 17:04:04'!
+PASSED!
+
+!classRenamed: #TransactionTest as: #TransferenceTest stamp: 'SF 5/30/2023 17:11:36'!
+Smalltalk renameClassNamed: #TransactionTest as: #TransferenceTest!
+
+!classRenamed: #TransferenceTest as: #TransferTest stamp: 'SF 5/30/2023 17:11:46'!
+Smalltalk renameClassNamed: #TransferenceTest as: #TransferTest!
+
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:12:33'!
+Object subclass: #Transfer
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:12:57' prior: 50625099!
+test01
+
+	| senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: -100 equals: senderAccount balance.
+	self assert: 100 equals: receiverAccount balance.! !
+!Transfer methodsFor: 'no messages' stamp: 'SF 5/30/2023 17:13:32'!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	! !
+
+!methodRemoval: ReceptiveAccount #transfer:to: stamp: 'SF 5/30/2023 17:13:40'!
+transfer: anAmountToTransfer to: anAccountToTransferTo
+
+	Withdraw register: anAmountToTransfer on: self.
+	Deposit register: anAmountToTransfer on: anAccountToTransferTo.
+	
+	 
+	!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:14:09' prior: 50625194!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	Withdraw register: aTransferValue on: aReceiverAccount.
+	Deposit register: aTransferValue on: aSenderAccount.! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:14:15' prior: 50625208!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	Withdraw register: aTransferValue on: aSenderAccount.
+	Deposit register: aTransferValue on: aReceiverAccount.! !
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:14:18'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:19:22'!
+test02
+
+	| senderAccount receiverAccount transfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	transfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: transfer withdrawalLeg transfer equals: transfer! !
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:20:03' prior: 50625228!
+test02
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg transfer equals: aTransfer! !
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:20:08' prior: 50625240!
+test02
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg transfer equals: aTransfer.! !
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:20:31'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawalLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:20:30' prior: 50625217!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	withdrawalLeg := Withdraw register: aTransferValue on: aSenderAccount.
+	Deposit register: aTransferValue on: aReceiverAccount.! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:20:43'!
+withdrawalLeg
+
+	^ withdrawalLeg! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:21:08'!
+transfer
+
+	^ self! !
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:21:09'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:21:09'!
+ERROR!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:21:09'!
+ERROR!
+
+Transfer subclass: #WithdrawalLeg
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawalLeg category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:21:44'!
+Transfer subclass: #WithdrawalLeg
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:23:57' prior: 50625272!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	withdrawalLeg := WithdrawalLeg new from: self withSender: aSenderAccount andReceiver: aReceiverAccount.
+	Deposit register: aTransferValue on: aReceiverAccount.! !
+
+!classDefinition: #WithdrawalLeg category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:24:47'!
+Transfer subclass: #WithdrawalLeg
+	instanceVariableNames: 'parentTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!WithdrawalLeg methodsFor: 'no messages' stamp: 'SF 5/30/2023 17:24:46'!
+from: aTransfer withSender: aSenderAccount andReceiver: aReceiverAccount
+
+	parentTransfer := aTransfer.
+	! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:26:29' prior: 50625308!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	withdrawalLeg := WithdrawalLeg new from: self withSender: aSenderAccount andValue: aTransferValue.
+	Deposit register: aTransferValue on: aReceiverAccount.! !
+
+!methodRemoval: WithdrawalLeg #from:withSender:andReceiver: stamp: 'SF 5/30/2023 17:26:32'!
+from: aTransfer withSender: aSenderAccount andReceiver: aReceiverAccount
+
+	parentTransfer := aTransfer.
+	!
+!WithdrawalLeg methodsFor: 'no messages' stamp: 'SF 5/30/2023 17:26:44'!
+from: aTransfer withSender: aSenderAccount andValue: aTransferValue.! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:27:14' prior: 50625349!
+from: aTransfer withSender: aSenderAccount andValue: aTransferValue.
+
+	parentTransfer := aTransfer.
+	Withdraw register: aTransferValue on: aSenderAccount.! !
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:27:44'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:27:44'!
+FAILURE!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:27:44'!
+FAILURE!
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:28:02' overrides: 50625285!
+transfer
+
+	^ parentTransfer! !
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:28:17'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:28:17'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:28:20'!
+PASSED!
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:28:22'!
+PASSED!
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:28:23'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:28:23'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:28:45' prior: 50625252!
+test02
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer depositLeg transfer equals: aTransfer.! !
+
+Transfer subclass: #DepositLeg
+	instanceVariableNames: 'parentTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositLeg category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:28:55'!
+Transfer subclass: #DepositLeg
+	instanceVariableNames: 'parentTransfer'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:29:25'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawalLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:29:23' prior: 50625333!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	withdrawalLeg := WithdrawalLeg new from: self withSender: aSenderAccount andValue: aTransferValue.
+	depositLeg := DepositLeg new from: self withReceiver: aReceiverAccount andValue: aTransferValue.! !
+!DepositLeg methodsFor: 'no messages' stamp: 'SF 5/30/2023 17:29:49'!
+from: aTransfer withReceiver: aReceiverAccount andValue: aTransferValue
+
+	parentTransfer := aTransfer.
+
+! !
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:30:07' prior: 50625432!
+from: aTransfer withReceiver: aReceiverAccount andValue: aTransferValue
+
+	parentTransfer := aTransfer.
+	Deposit register: aTransferValue on: aReceiverAccount.
+! !
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:30:21' overrides: 50625285!
+transfer
+
+	^ parentTransfer
+! !
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:30:46' prior: 50625388!
+test02
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg transfer equals: aTransfer.! !
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:30:47'!
+PASSED!
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:30:47'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:30:47'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:30:56'!
+test03
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer transferLeg transfer equals: aTransfer.! !
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:31:15' prior: 50625471!
+test03
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer depositLeg transfer equals: aTransfer.! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:31:26'!
+depositLeg
+
+	^ depositLeg! !
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:31:27'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:31:27'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'SF 5/30/2023 17:31:27'!
+PASSED!
+
+!testRun: #TransferTest #test01 stamp: 'SF 5/30/2023 17:31:29'!
+PASSED!
+
+!testRun: #TransferTest #test02 stamp: 'SF 5/30/2023 17:31:29'!
+PASSED!
+
+!testRun: #TransferTest #test03 stamp: 'SF 5/30/2023 17:31:29'!
+PASSED!
+
+!classDefinition: #DepositLeg category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:33:32'!
+Transfer subclass: #DepositLeg
+	instanceVariableNames: 'parentTransfer transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:33:31' prior: 50625439!
+from: aTransfer withReceiver: aReceiverAccount andValue: aTransferValue
+
+	parentTransfer := aTransfer.
+	transaction := Deposit register: aTransferValue on: aReceiverAccount.
+! !
+
+!classDefinition: #WithdrawalLeg category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:33:44'!
+Transfer subclass: #WithdrawalLeg
+	instanceVariableNames: 'parentTransfer transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:33:43' prior: 50625355!
+from: aTransfer withSender: aSenderAccount andValue: aTransferValue.
+
+	parentTransfer := aTransfer.
+	transaction := Withdraw register: aTransferValue on: aSenderAccount.! !
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:34:34'!
+transaction
+
+	^ transaction
+! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:34:39' prior: 50625370 overrides: 50625285!
+transfer
+
+	^ transaction! !
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:37:07'!
+test01ATransactionModifiesBothAccountsBalances
+
+	| senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: -100 equals: senderAccount balance.
+	self assert: 100 equals: receiverAccount balance.! !
+
+!methodRemoval: TransferTest #test01 stamp: 'SF 5/30/2023 17:37:10'!
+test01
+
+	| senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: -100 equals: senderAccount balance.
+	self assert: 100 equals: receiverAccount balance.!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:37:41'!
+test02AWithdrawalKnowsWhichTransferItsFrom
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg transfer equals: aTransfer.! !
+
+!methodRemoval: TransferTest #test02 stamp: 'SF 5/30/2023 17:37:44'!
+test02
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg transfer equals: aTransfer.!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:37:53'!
+test03ADepositKnowsWhichTransferItsFrom
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer depositLeg transfer equals: aTransfer.! !
+
+!methodRemoval: TransferTest #test03 stamp: 'SF 5/30/2023 17:37:56'!
+test03
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer depositLeg transfer equals: aTransfer.!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:38:47'!
+test04
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer value equals: 100.! !
+
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawalLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:39:08'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawalLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Transfer subclass: #WithdrawalLeg
+	instanceVariableNames: 'parentTransfer transaction value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawalLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:39:50'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawalLeg depositLeg'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Transfer subclass: #WithdrawalLeg
+	instanceVariableNames: 'parentTransfer transaction value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawalLeg category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:39:53'!
+Transfer subclass: #WithdrawalLeg
+	instanceVariableNames: 'parentTransfer transaction value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:40:04' prior: 50625538!
+from: aTransfer withSender: aSenderAccount andValue: aTransferValue.
+
+	parentTransfer := aTransfer.
+	transaction := Withdraw register: aTransferValue on: aSenderAccount.
+	value := aTransferValue.! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:40:10' prior: 50625684!
+from: aTransfer withSender: aSenderAccount andValue: aTransferValue.
+
+	parentTransfer := aTransfer.
+	value := aTransferValue.
+	transaction := Withdraw register: aTransferValue on: aSenderAccount.
+	! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:40:25' overrides: 16902254!
+value
+	
+	^ value
+	! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:40:33' overrides: 16902254!
+value
+
+	self subclassResponsibility.! !
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:40:55' prior: 50625627!
+test04
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg value equals: 100.! !
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:41:01'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:41:01'!
+FAILURE!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:41:01'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:41:01'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:41:01'!
+FAILURE!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:41:09'!
+FAILURE!
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:42:37' prior: 50625551 overrides: 50625285!
+transfer
+
+	^ parentTransfer ! !
+
+AccountTransaction subclass: #DepositLeg
+	instanceVariableNames: 'parentTransfer transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #DepositLeg category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:45:58'!
+AccountTransaction subclass: #DepositLeg
+	instanceVariableNames: 'parentTransfer transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #WithdrawalLeg
+	instanceVariableNames: 'parentTransfer transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #WithdrawalLeg category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:46:24'!
+AccountTransaction subclass: #WithdrawalLeg
+	instanceVariableNames: 'parentTransfer transaction'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:46:27'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:46:27'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:46:27'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:46:27'!
+PASSED!
+
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Withdraw category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:47:31'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Deposit category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:47:53'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:47:58'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!methodRemoval: WithdrawalLeg #value stamp: 'SF 5/30/2023 17:48:06'!
+value
+	
+	^ value
+	!
+
+!methodRemoval: Withdraw #value stamp: 'SF 5/30/2023 17:48:09'!
+value
+
+	^ value!
+
+!methodRemoval: Deposit #value stamp: 'SF 5/30/2023 17:48:13'!
+value
+
+	^ value!
+!AccountTransaction methodsFor: 'value' stamp: 'SF 5/30/2023 17:48:18' prior: 50624984 overrides: 16902254!
+value 
+
+	^ value ! !
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:48:22'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:48:22'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:48:22'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:48:22'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:48:26'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:48:26'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:48:26'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:48:26'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:48:41' prior: 50625712!
+test04
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg value equals: 100.
+	self assert: aTransfer depositLeg value equals: 100.! !
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:48:42'!
+FAILURE!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:49:08' prior: 50625521!
+from: aTransfer withReceiver: aReceiverAccount andValue: aTransferValue
+
+	parentTransfer := aTransfer.
+	value := aTransferValue.
+	transaction := Deposit register: aTransferValue on: aReceiverAccount.
+	
+! !
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:49:11'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:49:11'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:49:11'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:49:11'!
+PASSED!
+
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountTransaction category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:49:46'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Deposit category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:49:51'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Withdraw category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:49:53'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:50:06' overrides: 50625838!
+value
+
+	parentTransfer value.
+! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:50:13' overrides: 50625838!
+value
+
+	parentTransfer value.! !
+!AccountTransaction methodsFor: 'value' stamp: 'SF 5/30/2023 17:50:20' prior: 50625838 overrides: 16902254!
+value 
+
+	self subclassResponsibility ! !
+!Deposit methodsFor: 'value' stamp: 'SF 5/30/2023 17:50:40' overrides: 50625952!
+value
+
+	^ value! !
+!Withdraw methodsFor: 'value' stamp: 'SF 5/30/2023 17:50:47' overrides: 50625952!
+value
+
+	^ value! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 5/30/2023 17:50:49'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/30/2023 17:50:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 17:50:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 17:50:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/30/2023 17:50:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/30/2023 17:50:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/30/2023 17:50:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/30/2023 17:50:50'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:50:52'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:50:52'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:50:52'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:50:52'!
+ERROR!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:50:52'!
+ERROR!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:51:05'!
+ERROR!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:51:05'!
+ERROR!
+
+!classDefinition: #Transfer category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:51:21'!
+Object subclass: #Transfer
+	instanceVariableNames: 'withdrawalLeg depositLeg value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:51:20' prior: 50625708 overrides: 16902254!
+value
+
+	^ value.! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:51:29' prior: 50625421!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	value := aTransferValue.
+	withdrawalLeg := WithdrawalLeg new from: self withSender: aSenderAccount andValue: aTransferValue.
+	depositLeg := DepositLeg new from: self withReceiver: aReceiverAccount andValue: aTransferValue.! !
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:51:31'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:51:31'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:51:31'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:51:31'!
+FAILURE!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:51:31'!
+FAILURE!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:51:41'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:51:41'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:51:41'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:51:41'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:51:41'!
+FAILURE!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:51:41'!
+FAILURE!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:51:44'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:51:45'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:51:46'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:51:47'!
+FAILURE!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:51:47'!
+FAILURE!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:52:04' prior: 50625942 overrides: 50625952!
+value
+
+	^ parentTransfer value.
+! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:52:08' prior: 50625947 overrides: 50625952!
+value
+
+	^ parentTransfer value.! !
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:52:11'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:52:11'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:52:11'!
+PASSED!
+
+!testRun: #TransferTest #test04 stamp: 'SF 5/30/2023 17:52:11'!
+PASSED!
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:52:21'!
+test04TransferLegsKnowTheirValue
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg value equals: 100.
+	self assert: aTransfer depositLeg value equals: 100.! !
+
+!methodRemoval: TransferTest #test04 stamp: 'SF 5/30/2023 17:52:22'!
+test04
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg value equals: 100.
+	self assert: aTransfer depositLeg value equals: 100.!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:53:07'!
+parentTransfer
+
+	^ parentTransfer
+! !
+
+!methodRemoval: DepositLeg #transfer stamp: 'SF 5/30/2023 17:53:07'!
+transfer
+
+	^ parentTransfer
+!
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:53:20'!
+parentTransfer
+
+	^ parentTransfer ! !
+
+!methodRemoval: WithdrawalLeg #transfer stamp: 'SF 5/30/2023 17:53:20'!
+transfer
+
+	^ parentTransfer !
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:53:28' prior: 50625603!
+test03ADepositKnowsWhichTransferItsFrom
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer depositLeg parentTransfer equals: aTransfer.! !
+!TransferTest methodsFor: 'tests' stamp: 'SF 5/30/2023 17:53:34' prior: 50625579!
+test02AWithdrawalKnowsWhichTransferItsFrom
+
+	| senderAccount receiverAccount aTransfer|
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	aTransfer := Transfer new from: senderAccount to: 	receiverAccount withValue: 100.
+
+	self assert: aTransfer withdrawalLeg parentTransfer equals: aTransfer.! !
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:53:35'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:53:35'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:53:35'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:53:35'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 5/30/2023 17:53:35'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/30/2023 17:53:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 17:53:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 17:53:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/30/2023 17:53:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/30/2023 17:53:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/30/2023 17:53:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/30/2023 17:53:38'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 5/30/2023 17:53:43'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:53:43'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 5/30/2023 17:53:43'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 5/30/2023 17:53:43'!
+PASSED!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:54:36' prior: 50625883!
+from: aTransfer withReceiver: aReceiverAccount andValue: aTransferValue
+
+	parentTransfer := aTransfer.
+	transaction := Deposit register: aTransferValue on: aReceiverAccount.
+	
+! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:54:40' prior: 50625694!
+from: aTransfer withSender: aSenderAccount andValue: aTransferValue.
+
+	parentTransfer := aTransfer.
+	transaction := Withdraw register: aTransferValue on: aSenderAccount.
+	! !
+
+TestCase subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:57:46'!
+TestCase subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TestCase subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummaryTest category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 17:58:34'!
+TestCase subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountSummary stamp: 'SF 5/30/2023 17:58:36'!
+TestCase subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+OrderedCollection new with: 'Balance = 0'!
+
+OrderedCollection!
+
+OrderedCollection new with: 'Balance = 0'!
+
+OrderedCollection with: 'Balance = 0'!
+
+OrderedCollection with: 'Balance = 0'!
+
+OrderedCollection with: 'Balance = 0'!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'SF 5/30/2023 18:02:45'!
+test01
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	"accountSummary := AccountSummary new ofAccount: account."
+	
+	self assert: accountSummary print equals: (OrderedCollection with: 'Balance = 0')
+	! !
+
+Object subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 18:02:58'!
+Object subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'no messages' stamp: 'SF 5/30/2023 18:03:11' overrides: 16902957!
+print
+
+	^'Balance = 0'! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:03:14' prior: 50626362 overrides: 16902957!
+print
+
+	^ 'Balance = 0'! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:03:29' prior: 50626367 overrides: 16902957!
+print
+
+	^ OrderedCollection with: 'Balance = 0'! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:03:57'!
+ofAccount: anAccount
+! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'SF 5/30/2023 18:04:06' prior: 50626340!
+test01
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	accountSummary := AccountSummary new ofAccount: account.
+	
+	self assert: accountSummary print equals: (OrderedCollection with: 'Balance = 0')
+	! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:04:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:04:07'!
+PASSED!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'SF 5/30/2023 18:05:51'!
+test02
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	accountSummary := AccountSummary new ofAccount: account.
+	self assert: accountSummary print equals: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 0')
+	! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:05:59'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:05:59'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:05:59'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:06:05'!
+PASSED!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'SF 5/30/2023 18:23:41'!
+Object subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:23:39' prior: 50626377!
+ofAccount: anAccount
+
+	account := anAccount ! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:23:42' prior: 50626426!
+ofAccount: anAccount
+
+	account := anAccount.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:27:11' prior: 50626372 overrides: 16902957!
+print
+
+	^ account printTransactions! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 18:30:30'!
+printTransactions
+
+	^transactions inject: OrderedCollection new into: [ 
+		:printedTransactions :aTransaction | 
+		aTransaction appendToSummary: printedTransactions 
+		].! !
+
+'hola', 1!
+
+'hola', 1 asString!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 18:36:21' prior: 50626441!
+printTransactions
+
+	^transactions inject: OrderedCollection new into: [ 
+		:printedTransactions :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [printedTransactions add: 'Depósito por ', aTransaction value asString, '.'].
+		].! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/30/2023 18:36:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 18:36:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 18:36:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/30/2023 18:36:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/30/2023 18:36:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/30/2023 18:36:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/30/2023 18:36:23'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:36:29'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:36:29'!
+FAILURE!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:37:23' prior: 50626437 overrides: 16902957!
+print
+
+	^ account printTransactions add: 'Balance: ', account balance asString.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:37:24'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:37:24'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:37:28'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:37:28'!
+ERROR!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:37:46' prior: 50626494 overrides: 16902957!
+print
+
+	^ account printTransactions add: ('Balance: ', account balance asString).! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:37:48'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:37:48'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:37:51'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:37:51'!
+ERROR!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:38:14' prior: 50626511 overrides: 16902957!
+print
+
+	^ (account printTransactions) add: ('Balance: ', account balance asString).! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:38:15'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:38:15'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:38:53'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:38:53'!
+ERROR!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:39:39' prior: 50626528 overrides: 16902957!
+print
+
+	^ account printTransactions.! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:39:41'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:39:41'!
+FAILURE!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:40:29' prior: 50626545 overrides: 16902957!
+print
+
+	^ (account printTransactions) add: 'test'.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:40:30'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:40:30'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:40:32'!
+FAILURE!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:41:00' prior: 50626555 overrides: 16902957!
+print
+
+	^ (account printTransactions) add: 'Balance: ', account balance.! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:41:09'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:41:09'!
+ERROR!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:41:19' prior: 50626568 overrides: 16902957!
+print
+
+	^ (account printTransactions) add: 'Balance: ', account balance asString .! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:41:20' prior: 50626579 overrides: 16902957!
+print
+
+	^ (account printTransactions) add: 'Balance: ', account balance asString.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:41:21'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:41:21'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:41:22'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'SF 5/30/2023 18:41:48' prior: 50626396!
+test02
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	accountSummary := AccountSummary new ofAccount: account.
+	self assert: accountSummary print equals: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100')
+	! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:41:52'!
+ERROR!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'SF 5/30/2023 18:42:07' prior: 50626599!
+test02
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	accountSummary := AccountSummary new ofAccount: account.
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:42:08'!
+ERROR!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:42:28' prior: 50626586 overrides: 16902957!
+print
+
+	^ (account printTransactions) add: ('Balance: ', account balance asString).! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:42:29'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:42:29'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:42:30'!
+FAILURE!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 18:42:48' prior: 50626630 overrides: 16902957!
+print
+
+	^ (account printTransactions) add: ('Balance = ', account balance asString).! !
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:42:53'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 18:43:47' prior: 50626451!
+printTransactions
+
+	^transactions inject: OrderedCollection new into: [ 
+		:printedTransactions :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [printedTransactions add: ('Depósito por ', aTransaction value asString, '.')].
+		].! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/30/2023 18:43:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 18:43:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 18:43:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/30/2023 18:43:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/30/2023 18:43:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/30/2023 18:43:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/30/2023 18:43:48'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:43:51'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:43:51'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 18:44:25' prior: 50626653!
+printTransactions
+
+	^transactions inject: OrderedCollection new into: [ 
+		:printedTransactions :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [printedTransactions add: ('Depósito por ', (aTransaction value asString), '.')].
+		].! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:44:30'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:44:30'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:44:32'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:44:32'!
+ERROR!
+
+(account printTransactions)!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 18:45:17' prior: 50626695!
+printTransactions
+
+	^transactions inject: OrderedCollection new into: [ 
+		:printedTransactions :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: ['Depósito por ', (aTransaction value asString), '.'].
+		].! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/30/2023 18:45:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 18:45:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 18:45:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/30/2023 18:45:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/30/2023 18:45:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/30/2023 18:45:20'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/30/2023 18:45:20'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:45:22'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:45:22'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:45:23'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:45:37'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:45:37'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:45:41'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:45:41'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:45:43'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:45:43'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 18:46:21' prior: 50626717!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	^transactions do:  [ :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [res add: ('Depósito por ', (aTransaction value asString), '.')].
+		].! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/30/2023 18:46:28' prior: 50626776!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [res add: ('Depósito por ', (aTransaction value asString), '.')].
+		].
+	^res.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 5/30/2023 18:46:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 18:46:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 5/30/2023 18:46:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 5/30/2023 18:46:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 5/30/2023 18:46:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 5/30/2023 18:46:34'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 5/30/2023 18:46:34'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:46:37'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'SF 5/30/2023 18:46:37'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:46:40'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:46:40'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'SF 5/30/2023 18:47:01' prior: 50626381!
+test01
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	accountSummary := AccountSummary new ofAccount: account.
+	
+	self assert: (OrderedCollection with: 'Balance = 0') equals: accountSummary print
+	! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'SF 5/30/2023 18:47:01'!
+FAILURE!
+
+----SNAPSHOT----(30 May 2023 18:47:18) CuisUniversity-5832.image priorSource: 9366758!
