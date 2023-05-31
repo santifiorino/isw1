@@ -3671,3 +3671,427 @@ printTransactions
 	^ transactions collect: [ :aTransaction | aTransaction asAccountSummaryEntry ].! !
 
 ----SNAPSHOT----(31 May 2023 16:43:53) CuisUniversity-5832.image priorSource: 9530019!
+
+----STARTUP---- (31 May 2023 19:39:43) as C:\Users\005675613\Documents\Inge 1\windows64\CuisUniversity-5832.image!
+
+
+----End fileIn of C:\Users\005675613\Documents\Inge 1\windows64\Portfolio-Solucion.st----!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'SF 5/31/2023 19:41:14'!
+Report subclass: #AccountSummary
+	instanceVariableNames: 'report'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:41:10' prior: 50638202 overrides: 50638185!
+print
+	
+	account addTransactionsToReport: self.
+	^report.
+	! !
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'SF 5/31/2023 19:41:31'!
+Report subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Report category: 'Portfolio-Solucion' stamp: 'SF 5/31/2023 19:41:31'!
+Object subclass: #Report
+	instanceVariableNames: 'account report'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/31/2023 19:42:14'!
+addTransactionsToReport: aReport
+
+	transactions do: [ :aTransaction | aTransaction addToReport: aReport ].! !
+!AccountTransaction methodsFor: 'value' stamp: 'SF 5/31/2023 19:42:31'!
+addToReport: aReport
+
+	self subclassResponsibility ! !
+!Deposit methodsFor: 'value' stamp: 'SF 5/31/2023 19:42:51' overrides: 50638302!
+addToReport: aReport
+
+	aReport addDeposit: self.! !
+!DepositLeg methodsFor: 'value' stamp: 'SF 5/31/2023 19:43:06' overrides: 50638302!
+addToReport: aReport
+
+	aReport addDepositLeg: self.! !
+!Withdraw methodsFor: 'value' stamp: 'SF 5/31/2023 19:43:21' overrides: 50638302!
+addToReport: aReport
+
+	aReport addWithdraw: self! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:43:47' overrides: 50638302!
+addToReport: aReport
+
+	aReport addWithdrawLeg: self.! !
+
+!classRenamed: #WithdrawalLeg as: #WithdrawLeg stamp: 'SF 5/31/2023 19:43:55'!
+Smalltalk renameClassNamed: #WithdrawalLeg as: #WithdrawLeg!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:43:55' prior: 50638240!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	value := aTransferValue.
+	withdrawalLeg := WithdrawLeg new fromTransfer: self.
+	depositLeg := DepositLeg new fromTransfer: self.
+	aSenderAccount register: withdrawalLeg.
+	aReceiverAccount register: depositLeg.! !
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:44:37'!
+addDeposit: aDeposit
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:44:43'!
+addDepositLeg: aDepositLeg
+
+	self subclassResponsibility ! !
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:44:55'!
+addWithdraw: aWithdraw
+	
+	self subclassResponsibility ! !
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:45:04'!
+addWithdrawLeg: aWithdrawLeg
+	
+	self subclassResponsibility ! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:46:04' overrides: 50638344!
+addDeposit: aDeposit
+
+	report add: 'Depósito por ', aDeposit value, '.'.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:46:41' overrides: 50638349!
+addDepositLeg: aDepositLeg
+
+	report add: 'Entrada por transferencia de ', aDepositLeg value, '.'.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:47:03' overrides: 50638354!
+addWithdraw: aWithdraw
+
+	report add: 'Extracción por ', aWithdraw value, '.'.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:47:26' overrides: 50638359!
+addWithdrawLeg: aWithdrawLeg
+
+	report add: 'Salida por transferencia de ', aWithdrawLeg value, '.'.! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:47:40'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:47:40'!
+FAILURE!
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:47:57' prior: 50638180!
+ofAccount: anAccount
+	account := anAccount.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:48:10' prior: 50638276 overrides: 50638185!
+print
+	
+	report := OrderedCollection new.
+	account addTransactionsToReport: self.
+	^report.
+	! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:48:21' prior: 50638404 overrides: 50638185!
+print
+	
+	report := OrderedCollection new.
+	account addTransactionsToReport: self.
+	account addBalanceToReport: self.
+	^report.
+	! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/31/2023 19:48:41'!
+addBalanceToReport: aReport
+
+	aReport addBalance: self balance.! !
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:49:18'!
+addBalance: aBalanceValue
+
+	report add: 'Balance = ', aBalanceValue.! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:49:29'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:49:29'!
+ERROR!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:49:55' prior: 50638411 overrides: 50638185!
+print
+	
+	report := OrderedCollection new.
+	account addTransactionsToReport: self.
+	
+	^report.
+	! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:50:04'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:50:04'!
+FAILURE!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:50:39' prior: 50638437 overrides: 50638185!
+print
+	
+	report := OrderedCollection new.
+	account addTransactionsToReport: self.
+	account addBalanceToReport: self.
+	^report.
+	! !
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:09' prior: 50638423!
+addBalance: aBalanceValue
+
+	report add: 'Balance = ', aBalanceValue asString.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:27' prior: 50638365 overrides: 50638344!
+addDeposit: aDeposit
+
+	report add: 'Depósito por ', aDeposit value asString, '.'.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:31' prior: 50638371 overrides: 50638349!
+addDepositLeg: aDepositLeg
+
+	report add: 'Entrada por transferencia de ', aDepositLeg value asString, '.'.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:36' prior: 50638378 overrides: 50638354!
+addWithdraw: aWithdraw
+
+	report add: 'Extracción por ', aWithdraw value asString, '.'.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:40' prior: 50638384 overrides: 50638359!
+addWithdrawLeg: aWithdrawLeg
+
+	report add: 'Salida por transferencia de ', aWithdrawLeg value asString, '.'.! !
+
+----SNAPSHOT----(31 May 2023 19:51:54) CuisUniversity-5832.image priorSource: 9366758!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:52:00'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 5/31/2023 19:52:05'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 5/31/2023 19:52:14'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:52:14'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 5/31/2023 19:52:14'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 5/31/2023 19:52:14'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 5/31/2023 19:52:14'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 5/31/2023 19:52:14'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 5/31/2023 19:52:14'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 5/31/2023 19:52:14'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 5/31/2023 19:52:19'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 5/31/2023 19:52:22'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 5/31/2023 19:52:25'!
+PASSED!
+!Portfolio methodsFor: 'balance' stamp: 'SF 5/31/2023 19:53:40'!
+addTransactionsToReport: aReport
+
+	accounts do: [ :anAccount | anAccount addTransactionsToReport: aReport ].! !
+
+!methodRemoval: ReceptiveAccount #addBalanceToReport: stamp: 'SF 5/31/2023 19:53:57'!
+addBalanceToReport: aReport
+
+	aReport addBalance: self balance.!
+!Account methodsFor: 'composition' stamp: 'SF 5/31/2023 19:54:02'!
+addBalanceToReport: aReport
+
+	aReport addBalance: self balance.! !
+
+----SNAPSHOT----(31 May 2023 19:54:13) CuisUniversity-5832.image priorSource: 9818991!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 5/31/2023 19:54:17'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 5/31/2023 19:54:17'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 5/31/2023 19:54:17'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 5/31/2023 19:54:17'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 5/31/2023 19:54:17'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 5/31/2023 19:54:17'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 5/31/2023 19:54:17'!
+PASSED!
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:54:39' overrides: 50638344!
+addDeposit: aDeposit! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:54:43' prior: 50638597 overrides: 50638344!
+addDeposit: aWithdraw! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:54:50' prior: 50638602 overrides: 50638344!
+addDeposit: aDeposit! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:55:00' overrides: 50638354!
+addWithdraw: aWithdraw! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:55:08' overrides: 50638349!
+addDepositLeg: aDepositLeg
+
+	report add: 'Entrada por transferencia de ', aDepositLeg value asString, '.'.! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:55:18' overrides: 50638359!
+addWithdrawLeg: aWithdrawLeg
+
+	report add: 'Salida por transferencia de ', aWithdrawLeg value asString, '.'.! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:55:30' prior: 50638219 overrides: 50638185!
+print
+	
+	report := OrderedCollection new.
+	account addTransactionsToReport: self.
+	account addBalanceToReport: self.
+	^report.
+	! !
+
+!testRun: #TransferNetTest #test01 stamp: 'SF 5/31/2023 19:55:34'!
+FAILURE!
+
+!testRun: #TransferNetTest #test02 stamp: 'SF 5/31/2023 19:55:34'!
+FAILURE!
+
+!testRun: #TransferNetTest #test03 stamp: 'SF 5/31/2023 19:55:34'!
+FAILURE!
+
+!testRun: #TransferNetTest #test04 stamp: 'SF 5/31/2023 19:55:34'!
+FAILURE!
+
+!testRun: #TransferNetTest #test05 stamp: 'SF 5/31/2023 19:55:34'!
+FAILURE!
+
+!testRun: #TransferNetTest #test01 stamp: 'SF 5/31/2023 19:55:39'!
+FAILURE!
+
+!testRun: #TransferNetTest #test01 stamp: 'SF 5/31/2023 19:55:39'!
+FAILURE!
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:57:27' prior: 50638630 overrides: 50638185!
+print
+	
+	report := 0.
+	account addTransactionsToReport: self.
+	account addBalanceToReport: self.
+	^report.
+	! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:57:45' prior: 50638615 overrides: 50638349!
+addDepositLeg: aDepositLeg
+
+	report + aDepositLeg value! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:57:53' prior: 50638663 overrides: 50638349!
+addDepositLeg: aDepositLeg
+
+	report := report + aDepositLeg value! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:58:10' prior: 50638622 overrides: 50638359!
+addWithdrawLeg: aWithdrawLeg
+
+	report := report + aWithdrawLeg value! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:58:18' prior: 50638655 overrides: 50638185!
+print
+	
+	report := 0.
+	account addTransactionsToReport: self.
+	^report.
+	! !
+
+----SNAPSHOT----(31 May 2023 19:58:31) CuisUniversity-5832.image priorSource: 9821250!
+
+!testRun: #TransferNetTest #test01 stamp: 'SF 5/31/2023 19:58:34'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'SF 5/31/2023 19:58:34'!
+FAILURE!
+
+!testRun: #TransferNetTest #test03 stamp: 'SF 5/31/2023 19:58:34'!
+FAILURE!
+
+!testRun: #TransferNetTest #test04 stamp: 'SF 5/31/2023 19:58:34'!
+PASSED!
+
+!testRun: #TransferNetTest #test05 stamp: 'SF 5/31/2023 19:58:34'!
+FAILURE!
+
+!testRun: #TransferNetTest #test01 stamp: 'SF 5/31/2023 19:58:43'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'SF 5/31/2023 19:58:45'!
+FAILURE!
+
+!testRun: #TransferNetTest #test02 stamp: 'SF 5/31/2023 19:58:45'!
+FAILURE!
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:59:07' prior: 50638675 overrides: 50638359!
+addWithdrawLeg: aWithdrawLeg
+
+	report := report - aWithdrawLeg value! !
+
+!testRun: #TransferNetTest #test01 stamp: 'SF 5/31/2023 19:59:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'SF 5/31/2023 19:59:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test03 stamp: 'SF 5/31/2023 19:59:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test04 stamp: 'SF 5/31/2023 19:59:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test05 stamp: 'SF 5/31/2023 19:59:10'!
+PASSED!
+
+!methodRemoval: Portfolio #printTransactionsAndBalance stamp: 'SF 5/31/2023 19:59:20'!
+printTransactionsAndBalance
+
+	| res |
+	res := OrderedCollection new.
+	accounts do: [ :anAccount |
+		res addAll: anAccount printTransactions.
+		].
+	res add: 'Balance = ', self balance asString.
+	^ res.!
+
+!methodRemoval: Portfolio #transferNet stamp: 'SF 5/31/2023 19:59:25'!
+transferNet
+
+	| res |
+	res := 0.
+	accounts do: [ :anAccount |
+		res := res + anAccount transferNet.
+		].
+	^ res.!
+
+!methodRemoval: ReceptiveAccount #transferNet stamp: 'SF 5/31/2023 19:59:31'!
+transferNet
+	
+	| res |
+	res := 0.
+	transactions do:  [ :aTransaction | 
+		res := aTransaction affectTransferNet: res.
+		].
+	^res.!
+
+!methodRemoval: ReceptiveAccount #printTransactionsAndBalance stamp: 'SF 5/31/2023 19:59:33'!
+printTransactionsAndBalance
+	
+	| res |
+	res := self printTransactions.
+	res addAll: self printBalance.
+	^ res.!
+
+!methodRemoval: ReceptiveAccount #printTransactions stamp: 'SF 5/31/2023 19:59:34'!
+printTransactions
+	
+	^ transactions collect: [ :aTransaction | aTransaction asAccountSummaryEntry ].!
+
+!methodRemoval: ReceptiveAccount #printBalance stamp: 'SF 5/31/2023 19:59:38'!
+printBalance
+
+	^ OrderedCollection with: 'Balance = ', self balance asString.!
+
+----SNAPSHOT----(31 May 2023 20:02:52) CuisUniversity-5832.image priorSource: 9825132!

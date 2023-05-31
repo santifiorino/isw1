@@ -578,6 +578,11 @@ transactions
 	self subclassResponsibility ! !
 
 
+!Account methodsFor: 'composition' stamp: 'SF 5/31/2023 19:54:02'!
+addBalanceToReport: aReport
+
+	aReport addBalance: self balance.! !
+
 !Account methodsFor: 'composition' stamp: 'HAW 5/25/2019 12:24:04'!
 addedTo: aPortfolio
 
@@ -633,31 +638,15 @@ initialize
 	parents := OrderedCollection new.! !
 
 
+!Portfolio methodsFor: 'balance' stamp: 'SF 5/31/2023 19:53:40'!
+addTransactionsToReport: aReport
+
+	accounts do: [ :anAccount | anAccount addTransactionsToReport: aReport ].! !
+
 !Portfolio methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:19:36'!
 balance
 	
 	^accounts sum: [ :anAccount | anAccount balance ] ifEmpty: [ 0 ]! !
-
-!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:27:41'!
-printTransactionsAndBalance
-
-	| res |
-	res := OrderedCollection new.
-	accounts do: [ :anAccount |
-		res addAll: anAccount printTransactions.
-		].
-	res add: 'Balance = ', self balance asString.
-	^ res.! !
-
-!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:21:11'!
-transferNet
-
-	| res |
-	res := 0.
-	accounts do: [ :anAccount |
-		res := res + anAccount transferNet.
-		].
-	^ res.! !
 
 
 !Portfolio methodsFor: 'transactions' stamp: 'HAW 5/25/2019 11:42:55'!
@@ -762,23 +751,10 @@ addTransactionsTo: aCollectionOfTransactions
 
 	aCollectionOfTransactions addAll: transactions ! !
 
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:25:27'!
-printBalance
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'SF 5/31/2023 19:42:14'!
+addTransactionsToReport: aReport
 
-	^ OrderedCollection with: 'Balance = ', self balance asString.! !
-
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:42:02'!
-printTransactions
-	
-	^ transactions collect: [ :aTransaction | aTransaction asAccountSummaryEntry ].! !
-
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:28:57'!
-printTransactionsAndBalance
-	
-	| res |
-	res := self printTransactions.
-	res addAll: self printBalance.
-	^ res.! !
+	transactions do: [ :aTransaction | aTransaction addToReport: aReport ].! !
 
 !ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
 register: aTransaction
@@ -790,16 +766,6 @@ register: aTransaction
 transactions 
 
 	^ transactions copy! !
-
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:09:53'!
-transferNet
-	
-	| res |
-	res := 0.
-	transactions do:  [ :aTransaction | 
-		res := aTransaction affectTransferNet: res.
-		].
-	^res.! !
 
 
 !ReceptiveAccount methodsFor: 'balance' stamp: 'HAW 5/25/2019 11:24:46'!
@@ -834,6 +800,11 @@ Object subclass: #AccountTransaction
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
+
+!AccountTransaction methodsFor: 'value' stamp: 'SF 5/31/2023 19:42:31'!
+addToReport: aReport
+
+	self subclassResponsibility ! !
 
 !AccountTransaction methodsFor: 'value' stamp: 'sf 5/31/2023 16:10:14'!
 affectTransferNet: aTransferNetValue
@@ -885,6 +856,11 @@ initializeFor: aValue
 
 	value := aValue ! !
 
+
+!Deposit methodsFor: 'value' stamp: 'SF 5/31/2023 19:42:51'!
+addToReport: aReport
+
+	aReport addDeposit: self.! !
 
 !Deposit methodsFor: 'value' stamp: 'sf 5/31/2023 16:10:32'!
 affectTransferNet: aTransferNetValue
@@ -956,6 +932,11 @@ transaction
 ! !
 
 
+!DepositLeg methodsFor: 'value' stamp: 'SF 5/31/2023 19:43:06'!
+addToReport: aReport
+
+	aReport addDepositLeg: self.! !
+
 !DepositLeg methodsFor: 'value' stamp: 'sf 5/31/2023 15:41:09'!
 asAccountSummaryEntry
 
@@ -981,6 +962,11 @@ initializeFor: aValue
 
 	value := aValue ! !
 
+
+!Withdraw methodsFor: 'value' stamp: 'SF 5/31/2023 19:43:21'!
+addToReport: aReport
+
+	aReport addWithdraw: self! !
 
 !Withdraw methodsFor: 'value' stamp: 'sf 5/31/2023 16:10:36'!
 affectTransferNet: aTransferNetValue
@@ -1015,40 +1001,45 @@ for: aValue
 	^ self new initializeFor: aValue ! !
 
 
-!classDefinition: #WithdrawalLeg category: 'Portfolio-Solucion'!
-AccountTransaction subclass: #WithdrawalLeg
+!classDefinition: #WithdrawLeg category: 'Portfolio-Solucion'!
+AccountTransaction subclass: #WithdrawLeg
 	instanceVariableNames: 'parentTransfer transaction'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:33:48'!
+!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:43:47'!
+addToReport: aReport
+
+	aReport addWithdrawLeg: self.! !
+
+!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:33:48'!
 affectBalance: aBalance
 
 	^aBalance - self value! !
 
-!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:11:26'!
+!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:11:26'!
 affectTransferNet: aTransferNetValue
 
 	^aTransferNetValue - self value! !
 
-!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:42:28'!
+!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:42:28'!
 asAccountSummaryEntry
 	
 	^ 'Salida por transferencia de ', (self value asString), '.'! !
 
-!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:24'!
+!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:24'!
 fromTransfer: aTransfer
 
 	parentTransfer := aTransfer.
 	! !
 
-!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:53:20'!
+!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:53:20'!
 parentTransfer
 
 	^ parentTransfer ! !
 
-!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:52:08'!
+!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:52:08'!
 value
 
 	^ parentTransfer value.! !
@@ -1056,14 +1047,38 @@ value
 
 !classDefinition: #Report category: 'Portfolio-Solucion'!
 Object subclass: #Report
-	instanceVariableNames: 'account'
+	instanceVariableNames: 'account report'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!Report methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:32:25'!
-ofAccount: anAccount
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:09'!
+addBalance: aBalanceValue
 
+	report add: 'Balance = ', aBalanceValue asString.! !
+
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:44:37'!
+addDeposit: aDeposit
+
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:44:43'!
+addDepositLeg: aDepositLeg
+
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:44:55'!
+addWithdraw: aWithdraw
+	
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:45:04'!
+addWithdrawLeg: aWithdrawLeg
+	
+	self subclassResponsibility ! !
+
+!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:47:57'!
+ofAccount: anAccount
 	account := anAccount.! !
 
 !Report methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:32:46'!
@@ -1079,10 +1094,33 @@ Report subclass: #AccountSummary
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!AccountSummary methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:27:12'!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:27'!
+addDeposit: aDeposit
+
+	report add: 'Depósito por ', aDeposit value asString, '.'.! !
+
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:31'!
+addDepositLeg: aDepositLeg
+
+	report add: 'Entrada por transferencia de ', aDepositLeg value asString, '.'.! !
+
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:36'!
+addWithdraw: aWithdraw
+
+	report add: 'Extracción por ', aWithdraw value asString, '.'.! !
+
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:40'!
+addWithdrawLeg: aWithdrawLeg
+
+	report add: 'Salida por transferencia de ', aWithdrawLeg value asString, '.'.! !
+
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:50:39'!
 print
 	
-	^ account printTransactionsAndBalance.
+	report := OrderedCollection new.
+	account addTransactionsToReport: self.
+	account addBalanceToReport: self.
+	^report.
 	! !
 
 
@@ -1093,10 +1131,29 @@ Report subclass: #TransferNet
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:33:01'!
-print
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:54:50'!
+addDeposit: aDeposit! !
 
-	^ account transferNet.! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:57:53'!
+addDepositLeg: aDepositLeg
+
+	report := report + aDepositLeg value! !
+
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:55:00'!
+addWithdraw: aWithdraw! !
+
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:59:07'!
+addWithdrawLeg: aWithdrawLeg
+
+	report := report - aWithdrawLeg value! !
+
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:58:18'!
+print
+	
+	report := 0.
+	account addTransactionsToReport: self.
+	^report.
+	! !
 
 
 !classDefinition: #Transfer category: 'Portfolio-Solucion'!
@@ -1111,11 +1168,11 @@ depositLeg
 
 	^ depositLeg! !
 
-!Transfer methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:17'!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:43:55'!
 from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
 
 	value := aTransferValue.
-	withdrawalLeg := WithdrawalLeg new fromTransfer: self.
+	withdrawalLeg := WithdrawLeg new fromTransfer: self.
 	depositLeg := DepositLeg new fromTransfer: self.
 	aSenderAccount register: withdrawalLeg.
 	aReceiverAccount register: depositLeg.! !
