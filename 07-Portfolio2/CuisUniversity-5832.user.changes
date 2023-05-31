@@ -1640,3 +1640,2034 @@ test01
 FAILURE!
 
 ----SNAPSHOT----(30 May 2023 18:47:18) CuisUniversity-5832.image priorSource: 9366758!
+
+----STARTUP---- (31 May 2023 15:19:40) as /home/clinux01/Descargas/linux64/linux64/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/Portfolio-Solucion.st----!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:20:08'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:20:08'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:20:11'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:20:11'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:20:33'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:20:33'!
+FAILURE!
+
+accountSummary print!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:22:55' prior: 50627580 overrides: 16902957!
+print
+	
+	| res |
+	res := account printTransactions.
+	res add: 'Balance = ', account balance asString.
+	^ res.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:22:56'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:22:56'!
+PASSED!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:23:39'!
+test03
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	accountSummary := AccountSummary new ofAccount: account.
+	self assert: (OrderedCollection with: 'Extracción por 100.' with: 'Balance = -100') equals: accountSummary print
+	! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 15:24:09' prior: 50627520!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [res add: ('Depósito por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: Withdraw) ifTrue: [res add: ('Extracción por ', (aTransaction value asString), '.')].
+		].
+	^res.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'sf 5/31/2023 15:24:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 15:24:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 15:24:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'sf 5/31/2023 15:24:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'sf 5/31/2023 15:24:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'sf 5/31/2023 15:24:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'sf 5/31/2023 15:24:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:24:15'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:24:17'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:24:17'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:24:17'!
+PASSED!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:27:39'!
+test04
+
+	| senderAccount receiverAccount accountSummary |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	accountSummary := AccountSummary new ofAccount: senderAccount.
+	
+	self assert: (OrderedCollection with: 'Salida por transferencia de 100.' with: 'Balance = -100') equals: accountSummary print
+	! !
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:27:41'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 15:28:05' prior: 50627845!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [res add: ('Depósito por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: Withdraw) ifTrue: [res add: ('Extracción por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: WithdrawalLeg) ifTrue: [res add: ('Extracción por ', (aTransaction value asString), '.')].
+		].
+	^res.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'sf 5/31/2023 15:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 15:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 15:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'sf 5/31/2023 15:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'sf 5/31/2023 15:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'sf 5/31/2023 15:28:06'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'sf 5/31/2023 15:28:06'!
+PASSED!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 15:28:19' prior: 50627913!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [res add: ('Depósito por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: Withdraw) ifTrue: [res add: ('Extracción por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: WithdrawalLeg) ifTrue: [res add: ('Salida por transferencia de', (aTransaction value asString), '.')].
+		].
+	^res.! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 15:28:30' prior: 50627957!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [res add: ('Depósito por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: Withdraw) ifTrue: [res add: ('Extracción por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: WithdrawalLeg) ifTrue: [res add: ('Salida por transferencia de ', (aTransaction value asString), '.')].
+		].
+	^res.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:28:33'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:28:33'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:28:34'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:28:34'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:28:34'!
+FAILURE!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:31:29' prior: 50627779!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	value := aTransferValue.
+	withdrawalLeg := WithdrawalLeg new from: self withSender: aSenderAccount andValue: aTransferValue.
+	depositLeg := DepositLeg new from: self withReceiver: aReceiverAccount andValue: aTransferValue.
+	aSenderAccount register: withdrawalLeg.
+	aReceiverAccount register: depositLeg.! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:31:36' prior: 50627745!
+from: aTransfer withSender: aSenderAccount andValue: aTransferValue.
+
+	parentTransfer := aTransfer.
+	! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:31:44'!
+from: aTransfer
+
+	parentTransfer := aTransfer.
+	! !
+
+!methodRemoval: WithdrawalLeg #from:withSender:andValue: stamp: 'sf 5/31/2023 15:31:48'!
+from: aTransfer withSender: aSenderAccount andValue: aTransferValue.
+
+	parentTransfer := aTransfer.
+	!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:31:55'!
+from: aTransfer
+
+	parentTransfer := aTransfer.
+	
+! !
+
+!methodRemoval: DepositLeg #from:withReceiver:andValue: stamp: 'sf 5/31/2023 15:31:58'!
+from: aTransfer withReceiver: aReceiverAccount andValue: aTransferValue
+
+	parentTransfer := aTransfer.
+	transaction := Deposit register: aTransferValue on: aReceiverAccount.
+	
+!
+!Transfer methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:08' prior: 50628005!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	value := aTransferValue.
+	withdrawalLeg := WithdrawalLeg new from: self.
+	depositLeg := DepositLeg new from: self.
+	aSenderAccount register: withdrawalLeg.
+	aReceiverAccount register: depositLeg.! !
+!Transfer methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:17' prior: 50628050!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+
+	value := aTransferValue.
+	withdrawalLeg := WithdrawalLeg new fromTransfer: self.
+	depositLeg := DepositLeg new fromTransfer: self.
+	aSenderAccount register: withdrawalLeg.
+	aReceiverAccount register: depositLeg.! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:24'!
+fromTransfer: aTransfer
+
+	parentTransfer := aTransfer.
+	! !
+
+!methodRemoval: WithdrawalLeg #from: stamp: 'sf 5/31/2023 15:32:26'!
+from: aTransfer
+
+	parentTransfer := aTransfer.
+	!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:31'!
+fromTransfer: aTransfer
+
+	parentTransfer := aTransfer.
+	
+! !
+
+!methodRemoval: DepositLeg #from: stamp: 'sf 5/31/2023 15:32:33'!
+from: aTransfer
+
+	parentTransfer := aTransfer.
+	
+!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'sf 5/31/2023 15:33:06'!
+ERROR!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'sf 5/31/2023 15:33:06'!
+ERROR!
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:33:35' overrides: 50627602!
+affectBalance: aBalance
+
+	^aBalance + self value ! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:33:48' overrides: 50627602!
+affectBalance: aBalance
+
+	^aBalance - self value! !
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'sf 5/31/2023 15:33:54'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'sf 5/31/2023 15:33:54'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'sf 5/31/2023 15:33:54'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'sf 5/31/2023 15:33:54'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:33:58'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:33:58'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:33:58'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:33:58'!
+PASSED!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:34:48'!
+test05
+
+	| senderAccount receiverAccount accountSummary |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	accountSummary := AccountSummary new ofAccount: receiverAccount.
+	
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = -100') equals: accountSummary print
+	! !
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:34:55'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 15:35:19' prior: 50627975!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		(aTransaction isKindOf: Deposit) ifTrue: [res add: ('Depósito por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: Withdraw) ifTrue: [res add: ('Extracción por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: WithdrawalLeg) ifTrue: [res add: ('Salida por transferencia de ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: DepositLeg) ifTrue: [res add: ('Entrada por transferencia de ', (aTransaction value asString), '.')].
+		].
+	^res.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:35:25'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:35:25'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:35:25'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:35:25'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:35:25'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:35:25'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:35:37' prior: 50628132!
+test05
+
+	| senderAccount receiverAccount accountSummary |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	accountSummary := AccountSummary new ofAccount: receiverAccount.
+	
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:35:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:35:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:35:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:35:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:35:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:35:39'!
+PASSED!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 15:39:06' prior: 50628151!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		
+		"(aTransaction isKindOf: Deposit) ifTrue: [res add: ('Depósito por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: Withdraw) ifTrue: [res add: ('Extracción por ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: WithdrawalLeg) ifTrue: [res add: ('Salida por transferencia de ', (aTransaction value asString), '.')].
+		(aTransaction isKindOf: DepositLeg) ifTrue: [res add: ('Entrada por transferencia de ', (aTransaction value asString), '.')]."
+		].
+	^res.! !
+!AccountTransaction methodsFor: 'value' stamp: 'sf 5/31/2023 15:39:16'!
+asAccountSummaryEntry
+
+	self subclassResponsibility ! !
+!Deposit methodsFor: 'value' stamp: 'sf 5/31/2023 15:40:05' overrides: 50628242!
+asAccountSummaryEntry
+
+	^ 'Depósito por ', (self value asString), '.'! !
+!Deposit methodsFor: 'value' stamp: 'sf 5/31/2023 15:40:29' prior: 50628247 overrides: 50628242!
+asAccountSummaryEntry
+
+	^ 'Depósito por ', (value asString), '.'! !
+!DepositLeg methodsFor: 'value' stamp: 'sf 5/31/2023 15:41:09' overrides: 50628242!
+asAccountSummaryEntry
+
+	^ 'Entrada por transferencia de ', (self value asString), '.'
+! !
+!Withdraw methodsFor: 'value' stamp: 'sf 5/31/2023 15:41:47' overrides: 50628242!
+asAccountSummaryEntry
+	
+	^ 'Salida por transferencia de ', (value asString), '.'! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:42:09' overrides: 50628242!
+asAccountSummaryEntry
+	
+	^ 'Entrada por transferencia de ', (self value asString), '.'! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:42:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:42:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:42:11'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:42:11'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:42:11'!
+PASSED!
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:42:28' prior: 50628270 overrides: 50628242!
+asAccountSummaryEntry
+	
+	^ 'Salida por transferencia de ', (self value asString), '.'! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:42:30'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:42:30'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:42:30'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:42:30'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:42:30'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:42:30'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:42:38'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:42:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:42:41'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:42:41'!
+FAILURE!
+!Withdraw methodsFor: 'value' stamp: 'sf 5/31/2023 15:43:06' prior: 50628264 overrides: 50628242!
+asAccountSummaryEntry
+	
+	^ 'Extracción por ', (value asString), '.'! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:43:13'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:43:13'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:43:13'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:43:13'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:43:13'!
+PASSED!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 15:43:24' prior: 50628219!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	^res.! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:45:55'!
+test06
+
+	| simplePortfolio simplePortfolioAccount simplePortfolioAccountDeposit accountSummary |
+
+	simplePortfolioAccount := ReceptiveAccount new.
+	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	
+	
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:46:55'!
+test07
+
+	| simplePortfolio simplePortfolioAccount simplePortfolioAccountDeposit accountSummary |
+
+	simplePortfolioAccount := ReceptiveAccount new.
+	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	accountSummary := AccountSummary new ofAccount: simplePortfolio.
+		
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:48:15' prior: 50628346!
+test06
+
+	| emptyPortfolio accountSummary |
+
+	
+	emptyPortfolio := Portfolio new.
+	
+	accountSummary := AccountSummary new ofAccount: emptyPortfolio.
+	
+	
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:48:47' prior: 50628381!
+test06
+
+	| emptyPortfolio accountSummary |
+
+	
+	emptyPortfolio := Portfolio new.
+	
+	accountSummary := AccountSummary new ofAccount: emptyPortfolio.
+	
+	self assert: (OrderedCollection with: 'Balance = 0') equals: accountSummary print
+	! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:48:57' prior: 50628393!
+test06
+
+	| emptyPortfolio accountSummary |
+
+	emptyPortfolio := Portfolio new.
+	
+	accountSummary := AccountSummary new ofAccount: emptyPortfolio.
+	
+	self assert: (OrderedCollection with: 'Balance = 0') equals: accountSummary print
+	! !
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:48:58'!
+ERROR!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:49:04' prior: 50628362!
+test07
+
+	| simplePortfolio simplePortfolioAccount simplePortfolioAccountDeposit accountSummary |
+
+	simplePortfolioAccount := ReceptiveAccount new.
+	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	accountSummary := AccountSummary new ofAccount: simplePortfolio.
+		
+	"self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print"
+	! !
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:49:08'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:49:08'!
+ERROR!
+!Portfolio methodsFor: 'composition' stamp: 'sf 5/31/2023 15:49:49'!
+printTransactions
+
+	^ OrderedCollection with: 'Balance = 0'! !
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:49:54'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:49:54'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:50:20'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:50:20'!
+FAILURE!
+!Portfolio methodsFor: 'composition' stamp: 'sf 5/31/2023 15:50:49' prior: 50628440!
+printTransactions! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:50:51'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:50:51'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:50:51'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:50:51'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:50:51'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:50:51'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test07 stamp: 'sf 5/31/2023 15:50:51'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:50:51'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:50:56'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:50:56'!
+ERROR!
+!Portfolio methodsFor: 'composition' stamp: 'sf 5/31/2023 15:51:19' prior: 50628455!
+printTransactions
+
+	^ OrderedCollection new.! !
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:51:21'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:51:21'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:51:21'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:51:21'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:51:21'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:51:21'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07 stamp: 'sf 5/31/2023 15:51:21'!
+PASSED!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:51:57' prior: 50628417!
+test07
+
+	| simplePortfolio simplePortfolioAccount simplePortfolioAccountDeposit accountSummary |
+
+	simplePortfolioAccount := ReceptiveAccount new.
+	simplePortfolioAccountDeposit := Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	accountSummary := AccountSummary new ofAccount: simplePortfolio.
+		
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:52:10' prior: 50628505!
+test07
+
+	| simplePortfolio simplePortfolioAccount accountSummary |
+
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	accountSummary := AccountSummary new ofAccount: simplePortfolio.
+		
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+
+!testRun: #AccountSummaryTest #test07 stamp: 'sf 5/31/2023 15:52:12'!
+FAILURE!
+!Portfolio methodsFor: 'composition' stamp: 'sf 5/31/2023 15:53:19' prior: 50628483!
+printTransactions
+
+	
+	accounts do: [ :anAccount
+		
+		]
+	
+	"res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	^res."
+	^ OrderedCollection new.! !
+!Portfolio methodsFor: 'composition' stamp: 'sf 5/31/2023 15:54:18' prior: 50628543!
+printTransactions
+
+	| res |
+	res := OrderedCollection new.
+	accounts do: [ :anAccount |
+		res addAll: anAccount printTransactions.
+		].
+	^ res.! !
+
+!testRun: #AccountSummaryTest #test07 stamp: 'sf 5/31/2023 15:54:30'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test07 stamp: 'sf 5/31/2023 15:54:30'!
+FAILURE!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:54:51' prior: 50628524!
+test07
+
+	| simplePortfolio simplePortfolioAccount accountSummary |
+
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	accountSummary := AccountSummary new ofAccount: simplePortfolio.
+		
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+
+!testRun: #AccountSummaryTest #test07 stamp: 'sf 5/31/2023 15:54:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:54:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:54:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:54:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:54:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:54:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:54:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07 stamp: 'sf 5/31/2023 15:54:52'!
+PASSED!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:55:23'!
+test01SummaryOfEmptyAccountOnlyShowsBalance
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	accountSummary := AccountSummary new ofAccount: account.
+	
+	self assert: (OrderedCollection with: 'Balance = 0') equals: accountSummary print
+	! !
+
+!methodRemoval: AccountSummaryTest #test01 stamp: 'sf 5/31/2023 15:55:26'!
+test01
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	accountSummary := AccountSummary new ofAccount: account.
+	
+	self assert: (OrderedCollection with: 'Balance = 0') equals: accountSummary print
+	!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:55:53'!
+test02SummaryOfAccountWithDepositShowsDepositAndBalance
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	accountSummary := AccountSummary new ofAccount: account.
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+
+!methodRemoval: AccountSummaryTest #test02 stamp: 'sf 5/31/2023 15:55:56'!
+test02
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	Deposit register: 100 on: account.
+	
+	accountSummary := AccountSummary new ofAccount: account.
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100') equals: accountSummary print
+	!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:56:12'!
+test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	accountSummary := AccountSummary new ofAccount: account.
+	self assert: (OrderedCollection with: 'Extracción por 100.' with: 'Balance = -100') equals: accountSummary print
+	! !
+
+!methodRemoval: AccountSummaryTest #test03 stamp: 'sf 5/31/2023 15:56:14'!
+test03
+
+	| account accountSummary |
+	
+	account := ReceptiveAccount new.
+	Withdraw register: 100 on: account.
+	
+	accountSummary := AccountSummary new ofAccount: account.
+	self assert: (OrderedCollection with: 'Extracción por 100.' with: 'Balance = -100') equals: accountSummary print
+	!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:57:22'!
+test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance
+
+	| senderAccount receiverAccount accountSummary |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	accountSummary := AccountSummary new ofAccount: senderAccount.
+	
+	self assert: (OrderedCollection with: 'Salida por transferencia de 100.' with: 'Balance = -100') equals: accountSummary print
+	! !
+
+!methodRemoval: AccountSummaryTest #test04 stamp: 'sf 5/31/2023 15:57:24'!
+test04
+
+	| senderAccount receiverAccount accountSummary |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	accountSummary := AccountSummary new ofAccount: senderAccount.
+	
+	self assert: (OrderedCollection with: 'Salida por transferencia de 100.' with: 'Balance = -100') equals: accountSummary print
+	!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:57:40'!
+test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance
+
+	| senderAccount receiverAccount accountSummary |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	accountSummary := AccountSummary new ofAccount: receiverAccount.
+	
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+
+!methodRemoval: AccountSummaryTest #test05 stamp: 'sf 5/31/2023 15:57:41'!
+test05
+
+	| senderAccount receiverAccount accountSummary |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	accountSummary := AccountSummary new ofAccount: receiverAccount.
+	
+	self assert: (OrderedCollection with: 'Entrada por transferencia de 100.' with: 'Balance = 100') equals: accountSummary print
+	!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:57:59'!
+test06SummaryOfEmptyPortfolioOnlyShowsBalance
+
+	| emptyPortfolio accountSummary |
+
+	emptyPortfolio := Portfolio new.
+	
+	accountSummary := AccountSummary new ofAccount: emptyPortfolio.
+	
+	self assert: (OrderedCollection with: 'Balance = 0') equals: accountSummary print
+	! !
+
+!methodRemoval: AccountSummaryTest #test06 stamp: 'sf 5/31/2023 15:58:01'!
+test06
+
+	| emptyPortfolio accountSummary |
+
+	emptyPortfolio := Portfolio new.
+	
+	accountSummary := AccountSummary new ofAccount: emptyPortfolio.
+	
+	self assert: (OrderedCollection with: 'Balance = 0') equals: accountSummary print
+	!
+!AccountSummaryTest methodsFor: 'tests' stamp: 'sf 5/31/2023 15:59:15'!
+test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance
+
+	| simplePortfolio simplePortfolioAccount accountSummary |
+
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	accountSummary := AccountSummary new ofAccount: simplePortfolio.
+		
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100') equals: accountSummary print
+	! !
+
+!methodRemoval: AccountSummaryTest #test07 stamp: 'sf 5/31/2023 15:59:17'!
+test07
+
+	| simplePortfolio simplePortfolioAccount accountSummary |
+
+	simplePortfolioAccount := ReceptiveAccount new.
+	Deposit register: 100 on: simplePortfolioAccount.
+	simplePortfolio := Portfolio with: simplePortfolioAccount.
+	
+	accountSummary := AccountSummary new ofAccount: simplePortfolio.
+		
+	self assert: (OrderedCollection with: 'Depósito por 100.' with: 'Balance = 100') equals: accountSummary print
+	!
+
+TestCase subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetTest category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:02:29'!
+TestCase subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:02:37'!
+Object subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNetTest methodsFor: 'no messages' stamp: 'sf 5/31/2023 16:04:21'!
+test01
+
+	| account transfernet |
+	
+	account := ReceptiveAccount new.
+	
+	transfernet := TransferNet new ofAccount: account.
+	
+	self assert: 0 equals: transfernet print.! !
+!TransferNet methodsFor: 'no messages' stamp: 'sf 5/31/2023 16:04:30'!
+ofAccount: anAccount! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:04:36' overrides: 16902957!
+print
+
+	^ 0! !
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:04:39'!
+PASSED!
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:06:05'!
+test02
+
+	| senderAccount receiverAccount transfernet |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	transfernet := TransferNet new ofAccount: senderAccount.
+	
+	self assert: -100 equals: transfernet print.! !
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:06:08'!
+FAILURE!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:06:33'!
+Object subclass: #TransferNet
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:06:32' prior: 50628823!
+ofAccount: anAccount
+
+	account := anAccount.! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:06:47' prior: 50628827 overrides: 16902957!
+print
+
+	^ account balance.! !
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:06:48'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:06:48'!
+PASSED!
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:07:03'!
+test03
+
+	| senderAccount receiverAccount transfernet |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	transfernet := TransferNet new ofAccount: senderAccount.
+	
+	self assert: -100 equals: transfernet print.! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:07:19' prior: 50628871!
+test03
+
+	| senderAccount receiverAccount transfernet |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	Deposit register: 100 on: senderAccount.
+	
+	transfernet := TransferNet new ofAccount: senderAccount.
+	
+	self assert: -100 equals: transfernet print.! !
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:07:21'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:09:53'!
+transferNet
+	
+	| res |
+	res := 0.
+	transactions do:  [ :aTransaction | 
+		res := aTransaction affectTransferNet: res.
+		].
+	^res.! !
+!AccountTransaction methodsFor: 'value' stamp: 'sf 5/31/2023 16:10:14'!
+affectTransferNet: aTransferNetValue
+
+	self subclassResponsibility ! !
+!Deposit methodsFor: 'value' stamp: 'sf 5/31/2023 16:10:32' overrides: 50628909!
+affectTransferNet: aTransferNetValue
+
+	^ aTransferNetValue.! !
+!Withdraw methodsFor: 'value' stamp: 'sf 5/31/2023 16:10:36' overrides: 50628909!
+affectTransferNet: aTransferNetValue
+
+	^ aTransferNetValue.! !
+!DepositLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:11:07' overrides: 50628909!
+affectTransferNet: aTransferNetValue
+
+	^aTransferNetValue + self value ! !
+!WithdrawalLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:11:26' overrides: 50628909!
+affectTransferNet: aTransferNetValue
+
+	^aTransferNetValue - self value! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:11:35' overrides: 16902254!
+value
+
+	^ account balance.! !
+
+!methodRemoval: TransferNet #print stamp: 'sf 5/31/2023 16:11:37'!
+print
+
+	^ account balance.!
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:11:42' prior: 50628815!
+test01
+
+	| account transfernet |
+	
+	account := ReceptiveAccount new.
+	
+	transfernet := TransferNet new ofAccount: account.
+	
+	self assert: 0 equals: transfernet value.! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:11:49' prior: 50628833!
+test02
+
+	| senderAccount receiverAccount transfernet |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	transfernet := TransferNet new ofAccount: senderAccount.
+	
+	self assert: -100 equals: transfernet value.! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:11:52' prior: 50628885!
+test03
+
+	| senderAccount receiverAccount transfernet |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	Deposit register: 100 on: senderAccount.
+	
+	transfernet := TransferNet new ofAccount: senderAccount.
+	
+	self assert: -100 equals: transfernet value.! !
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:11:52'!
+FAILURE!
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:12:20' prior: 50628937 overrides: 16902254!
+value
+
+	^ account transferNet.! !
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:12:21'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:12:21'!
+PASSED!
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:12:21'!
+PASSED!
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:14:09'!
+test04
+
+	| emptyPortfolio transfernet |
+
+	emptyPortfolio := Portfolio new.
+	
+	transfernet := TransferNet new ofAccount: emptyPortfolio.
+	
+	self assert: 0 equals: transfernet value.! !
+!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:14:52'!
+transferNet
+
+	^0! !
+
+!testRun: #TransferNetTest #test04 stamp: 'sf 5/31/2023 16:14:58'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:15:01'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:15:01'!
+PASSED!
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:15:01'!
+PASSED!
+
+!testRun: #TransferNetTest #test04 stamp: 'sf 5/31/2023 16:15:01'!
+PASSED!
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:18:10'!
+test05
+
+	| simplePortfolio senderAccount receiverAccount transfernet |
+
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	simplePortfolio := Portfolio with: senderAccount.
+	
+	transfernet := TransferNet new ofAccount: simplePortfolio.
+		
+	self assert: -100 equals: transfernet value! !
+
+!testRun: #TransferNetTest #test05 stamp: 'sf 5/31/2023 16:18:12'!
+FAILURE!
+!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:19:09' prior: 50628553!
+printTransactions
+
+	| res |
+	res := 0.
+	accounts do: [ :anAccount |
+		res := anAccount affectTransferNet: res.
+		].
+	^ res.! !
+!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:20:28' prior: 50629039!
+printTransactions
+
+	| res |
+	res := OrderedCollection new.
+	accounts do: [ :anAccount |
+		res addAll: anAccount printTransactions.
+		].
+	^ res.! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:20:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:20:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:20:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:20:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:20:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:20:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:20:39'!
+PASSED!
+!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:21:11' prior: 50629005!
+transferNet
+
+	| res |
+	res := 0.
+	accounts do: [ :anAccount |
+		res := res + anAccount transferNet.
+		].
+	^ res.! !
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:21:19'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:21:19'!
+PASSED!
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:21:19'!
+PASSED!
+
+!testRun: #TransferNetTest #test04 stamp: 'sf 5/31/2023 16:21:19'!
+PASSED!
+
+!testRun: #TransferNetTest #test05 stamp: 'sf 5/31/2023 16:21:19'!
+PASSED!
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:22:34' prior: 50627822 overrides: 16902957!
+print
+	
+	| res |
+	res := account printTransactions.
+	^ res.! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:22:43' prior: 50629102 overrides: 16902957!
+print
+	
+	^ account printTransactions.
+	! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:22:55' prior: 50628338!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	res add: 'Balance = ', self balance asString.
+	^res.! !
+!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:23:10' prior: 50629046!
+printTransactions
+
+	| res |
+	res := OrderedCollection new.
+	accounts do: [ :anAccount |
+		res addAll: anAccount printTransactions.
+		].
+	res add: 'Balance = ', self balance asString.
+	^ res.! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:23:12'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:23:12'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:23:12'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:23:12'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:23:12'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:23:12'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:23:12'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:23:12'!
+FAILURE!
+!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:24:07' prior: 50629122!
+printTransactions
+
+	| res |
+	res := OrderedCollection new.
+	accounts do: [ :anAccount |
+		res addAll: anAccount printTransactions.
+		res removeLast.
+		].
+	res add: 'Balance = ', self balance asString.
+	^ res.! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'sf 5/31/2023 16:24:08'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:24:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:24:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:24:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:24:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:24:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:24:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:24:11'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'sf 5/31/2023 16:24:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 16:24:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 16:24:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'sf 5/31/2023 16:24:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'sf 5/31/2023 16:24:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'sf 5/31/2023 16:24:14'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'sf 5/31/2023 16:24:14'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:24:16'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:24:16'!
+PASSED!
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:24:16'!
+PASSED!
+
+!testRun: #TransferNetTest #test04 stamp: 'sf 5/31/2023 16:24:16'!
+PASSED!
+
+!testRun: #TransferNetTest #test05 stamp: 'sf 5/31/2023 16:24:16'!
+PASSED!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:25:05' prior: 50629113!
+printTransactions
+	
+	| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	
+	^res.! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:25:27'!
+printBalance
+
+	^ OrderedCollection with: 'Balance = ', self balance asString.! !
+!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:25:52' prior: 50629164!
+printTransactions
+
+	| res |
+	res := OrderedCollection new.
+	accounts do: [ :anAccount |
+		res addAll: anAccount printTransactions.
+		].
+	res add: 'Balance = ', self balance asString.
+	^ res.! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:26:39'!
+printTransactionsAndBalance
+	
+	^ self printTransactions addAll: self printBalance ! !
+!AccountSummary methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:27:12' prior: 50629108 overrides: 16902957!
+print
+	
+	^ account printTransactionsAndBalance.
+	! !
+!Portfolio methodsFor: 'balance' stamp: 'sf 5/31/2023 16:27:41'!
+printTransactionsAndBalance
+
+	| res |
+	res := OrderedCollection new.
+	accounts do: [ :anAccount |
+		res addAll: anAccount printTransactions.
+		].
+	res add: 'Balance = ', self balance asString.
+	^ res.! !
+
+!methodRemoval: Portfolio #printTransactions stamp: 'sf 5/31/2023 16:27:43'!
+printTransactions
+
+	| res |
+	res := OrderedCollection new.
+	accounts do: [ :anAccount |
+		res addAll: anAccount printTransactions.
+		].
+	res add: 'Balance = ', self balance asString.
+	^ res.!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:27:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:27:45'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:27:45'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:27:45'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:27:45'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:27:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:27:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:27:51'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:27:51'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:28:06'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:28:57' prior: 50629321!
+printTransactionsAndBalance
+	
+	| res |
+	res := self printTransactions.
+	res addAll: self printBalance.
+	^ res.! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'sf 5/31/2023 16:29:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 16:29:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 16:29:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'sf 5/31/2023 16:29:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'sf 5/31/2023 16:29:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'sf 5/31/2023 16:29:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'sf 5/31/2023 16:29:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:29:09'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:29:09'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:29:09'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:29:09'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:29:09'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:29:09'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:29:09'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:29:17'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:29:17'!
+PASSED!
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:29:17'!
+PASSED!
+
+!testRun: #TransferNetTest #test04 stamp: 'sf 5/31/2023 16:29:17'!
+PASSED!
+
+!testRun: #TransferNetTest #test05 stamp: 'sf 5/31/2023 16:29:17'!
+PASSED!
+
+----SNAPSHOT----(31 May 2023 16:29:41) CuisUniversity-5832.image priorSource: 9366758!
+
+Object subclass: #Report
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Report category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:31:21'!
+Object subclass: #Report
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #TransferNet
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:31:36'!
+Report subclass: #TransferNet
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:31:44'!
+Report subclass: #AccountSummary
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #AccountSummary
+	instanceVariableNames: 'account2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:32:03'!
+Report subclass: #AccountSummary
+	instanceVariableNames: 'account2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #TransferNet
+	instanceVariableNames: 'account2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:32:05'!
+Report subclass: #TransferNet
+	instanceVariableNames: 'account2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Object subclass: #Report
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #Report category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:32:09'!
+Object subclass: #Report
+	instanceVariableNames: 'account'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummary category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:32:14'!
+Report subclass: #AccountSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNet category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:32:17'!
+Report subclass: #TransferNet
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!Report methodsFor: 'no messages' stamp: 'sf 5/31/2023 16:32:25'!
+ofAccount: anAccount
+
+	account := anAccount.! !
+
+!methodRemoval: AccountSummary #ofAccount: stamp: 'sf 5/31/2023 16:32:29'!
+ofAccount: anAccount
+
+	account := anAccount.!
+
+!methodRemoval: TransferNet #ofAccount: stamp: 'sf 5/31/2023 16:32:32'!
+ofAccount: anAccount
+
+	account := anAccount.!
+!Report methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:32:46' overrides: 16902957!
+print
+
+	self subclassResponsibility.! !
+!TransferNet methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:33:01' overrides: 50629573!
+print
+
+	^ account transferNet.! !
+
+!methodRemoval: TransferNet #value stamp: 'sf 5/31/2023 16:33:01'!
+value
+
+	^ account transferNet.!
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:33:17' prior: 50628945!
+test01
+
+	| account transfernet |
+	
+	account := ReceptiveAccount new.
+	
+	transfernet := TransferNet new ofAccount: account.
+	
+	self assert: 0 equals: transfernet print.! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:33:20' prior: 50628954!
+test02
+
+	| senderAccount receiverAccount transfernet |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	
+	transfernet := TransferNet new ofAccount: senderAccount.
+	
+	self assert: -100 equals: transfernet print.! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:33:23' prior: 50628968!
+test03
+
+	| senderAccount receiverAccount transfernet |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	Deposit register: 100 on: senderAccount.
+	
+	transfernet := TransferNet new ofAccount: senderAccount.
+	
+	self assert: -100 equals: transfernet print.! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:33:25' prior: 50628997!
+test04
+
+	| emptyPortfolio transfernet |
+
+	emptyPortfolio := Portfolio new.
+	
+	transfernet := TransferNet new ofAccount: emptyPortfolio.
+	
+	self assert: 0 equals: transfernet print.! !
+!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:33:27' prior: 50629021!
+test05
+
+	| simplePortfolio senderAccount receiverAccount transfernet |
+
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	Transfer new from: senderAccount to: receiverAccount withValue: 100.
+	simplePortfolio := Portfolio with: senderAccount.
+	
+	transfernet := TransferNet new ofAccount: simplePortfolio.
+		
+	self assert: -100 equals: transfernet print! !
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:33:29'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:33:29'!
+PASSED!
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:33:29'!
+PASSED!
+
+!testRun: #TransferNetTest #test04 stamp: 'sf 5/31/2023 16:33:29'!
+PASSED!
+
+!testRun: #TransferNetTest #test05 stamp: 'sf 5/31/2023 16:33:29'!
+PASSED!
+
+TestCase subclass: #ReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #ReportTest category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:34:02'!
+TestCase subclass: #ReportTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+ReportTest subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferNetTest category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:34:10'!
+ReportTest subclass: #TransferNetTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+ReportTest subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #AccountSummaryTest category: 'Portfolio-Solucion' stamp: 'sf 5/31/2023 16:34:17'!
+ReportTest subclass: #AccountSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:34:42'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:34:42'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:34:42'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:34:42'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:34:42'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:34:42'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:34:42'!
+PASSED!
+
+!testRun: #TransferNetTest #test01 stamp: 'sf 5/31/2023 16:34:43'!
+PASSED!
+
+!testRun: #TransferNetTest #test02 stamp: 'sf 5/31/2023 16:34:43'!
+PASSED!
+
+!testRun: #TransferNetTest #test03 stamp: 'sf 5/31/2023 16:34:43'!
+PASSED!
+
+!testRun: #TransferNetTest #test04 stamp: 'sf 5/31/2023 16:34:43'!
+PASSED!
+
+!testRun: #TransferNetTest #test05 stamp: 'sf 5/31/2023 16:34:43'!
+PASSED!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:36:42' prior: 50629298!
+printTransactions
+	
+	"| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	
+	^res."
+	
+	^ transactions inject: OrderedCollection new into: [ :report :aTransaction |
+		report add: aTransaction asAccountSummaryEntry.
+		]! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:36:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:36:45'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:36:45'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:36:45'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:36:45'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:36:45'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:36:45'!
+FAILURE!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:36:56'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:36:56'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:37:24' prior: 50629737!
+printTransactions
+	
+	"| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	
+	^res."
+	
+	^ transactions inject: OrderedCollection new into: [ :aTransaction :report |
+		report add: aTransaction asAccountSummaryEntry.
+		]! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'sf 5/31/2023 16:37:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 16:37:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'sf 5/31/2023 16:37:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'sf 5/31/2023 16:37:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'sf 5/31/2023 16:37:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'sf 5/31/2023 16:37:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'sf 5/31/2023 16:37:26'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:37:28'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:37:28'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:37:28'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:37:28'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:37:28'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:37:28'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:37:28'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:37:32'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:37:32'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:37:32'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:37:32'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:37:32'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:37:32'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:37:32'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:37:35'!
+ERROR!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:37:35'!
+ERROR!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:37:54' prior: 50629786!
+printTransactions
+	
+	"| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	
+	^res."
+	
+	^ transactions inject: OrderedCollection new into: [ :report :aTransaction  |
+		report add: aTransaction asAccountSummaryEntry.
+		]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:38:02' prior: 50629889!
+printTransactions
+	
+	"| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	
+	^res."
+	
+	^ transactions inject: OrderedCollection new into: [ :report :aTransaction  |
+		aTransaction asAccountSummaryEntry.
+		]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:39:37' prior: 50629902!
+printTransactions
+	
+	"| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	
+	^res."
+	
+	^ transactions inject: OrderedCollection new into: [ :report :aTransaction  |
+		report add: aTransaction asAccountSummaryEntry.
+		]! !
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:41:44' prior: 50629914!
+printTransactions
+	
+	"| res |
+	res := OrderedCollection new.
+	transactions do:  [ :aTransaction | 
+		res add: aTransaction asAccountSummaryEntry.
+		].
+	
+	^res."
+	
+	^ transactions collect: [ :aTransaction | aTransaction asAccountSummaryEntry ].! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'sf 5/31/2023 16:41:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'sf 5/31/2023 16:41:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'sf 5/31/2023 16:41:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'sf 5/31/2023 16:41:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'sf 5/31/2023 16:41:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'sf 5/31/2023 16:41:52'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'sf 5/31/2023 16:41:52'!
+PASSED!
+!ReceptiveAccount methodsFor: 'transactions' stamp: 'sf 5/31/2023 16:42:02' prior: 50629927!
+printTransactions
+	
+	^ transactions collect: [ :aTransaction | aTransaction asAccountSummaryEntry ].! !
+
+----SNAPSHOT----(31 May 2023 16:43:53) CuisUniversity-5832.image priorSource: 9530019!
