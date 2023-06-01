@@ -427,7 +427,7 @@ ReportTest subclass: #TransferNetTest
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:19:46'!
+!TransferNetTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:19:46'!
 test01TransferNetOfEmptyReceptiveAccountIsZero
 
 	| account transfernet |
@@ -438,7 +438,7 @@ test01TransferNetOfEmptyReceptiveAccountIsZero
 	
 	self assert: 0 equals: transfernet print.! !
 
-!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:19:25'!
+!TransferNetTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:19:25'!
 test02TransferNetGetsAffectedByTransferTransaction
 
 	| senderAccount receiverAccount transfernet |
@@ -452,7 +452,7 @@ test02TransferNetGetsAffectedByTransferTransaction
 	
 	self assert: -100 equals: transfernet print.! !
 
-!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:19:19'!
+!TransferNetTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:19:19'!
 test03TransferNetDoesntGetAffectedByRegularTransaction
 
 	| senderAccount receiverAccount transfernet |
@@ -467,7 +467,7 @@ test03TransferNetDoesntGetAffectedByRegularTransaction
 	
 	self assert: -100 equals: transfernet print.! !
 
-!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:19:58'!
+!TransferNetTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:19:58'!
 test04TransferNetOfEmptyPortfolioIsZero
 
 	| emptyPortfolio transfernet |
@@ -478,7 +478,7 @@ test04TransferNetOfEmptyPortfolioIsZero
 	
 	self assert: 0 equals: transfernet print.! !
 
-!TransferNetTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:20:23'!
+!TransferNetTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:20:23'!
 test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet
 
 	| simplePortfolio senderAccount receiverAccount transfernet |
@@ -500,7 +500,7 @@ ReportTest subclass: #TreeStructureTest
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!TreeStructureTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:21:23'!
+!TreeStructureTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:21:23'!
 test01TreeStructureOfEmptyPortfolioOnlyShowsItsName
 
 	| portfolio report |
@@ -511,7 +511,7 @@ test01TreeStructureOfEmptyPortfolioOnlyShowsItsName
 	
 	self assert: (OrderedCollection with: 'Portfolio de Juampi') equals: report print.! !
 
-!TreeStructureTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:22:02'!
+!TreeStructureTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:22:02'!
 test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName
 
 	| portfolio account report |
@@ -524,7 +524,7 @@ test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountNam
 	
 	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Cuenta de Juampi') equals: report print.! !
 
-!TreeStructureTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:25:05'!
+!TreeStructureTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:25:05'!
 test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended
 
 	| johnsAccount angiesAccount childrenPortfolio myAccount familyPortfolio report |
@@ -547,7 +547,7 @@ test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyInten
 							     with: '    Cuenta de Juan'
 							     with: '    Cuenta de Angeles') equals: report print.! !
 
-!TreeStructureTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:22:39'!
+!TreeStructureTest methodsFor: 'tests' stamp: 'dsf 6/1/2023 01:22:39'!
 test04cantCreateTreeStructureOfReceptiveAccount
 
 	|  johnsAccount  |
@@ -562,6 +562,85 @@ test04cantCreateTreeStructureOfReceptiveAccount
 			self assert: anError messageText = TreeStructure triedToCreateTreeStructureOfReceptiveAccountErrorDescription
 			]
 	! !
+
+
+!classDefinition: #TreeStructureWithSummaryTest category: 'Portfolio-Solucion'!
+ReportTest subclass: #TreeStructureWithSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TreeStructureWithSummaryTest methodsFor: 'tests' stamp: 'SF 6/1/2023 16:20:29'!
+test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance
+
+	| portfolio report |
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi'.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Balance = 0') equals: report print.! !
+
+!TreeStructureWithSummaryTest methodsFor: 'tests' stamp: 'SF 6/1/2023 16:44:32'!
+test02PortfolioWithAccountShowsItsNameAndAccountsNameAndSummaryOfAccountCorrectlyIndented
+
+	| portfolio account report |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juampi'.
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi' with: account.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Cuenta de Juampi' with: '    Balance = 0'  with: '  Balance = 0') equals: report print.! !
+
+!TreeStructureWithSummaryTest methodsFor: 'tests' stamp: 'SF 6/1/2023 16:44:24'!
+test03PortfolioWithAccountsWithTransferShowsTheAccountsAndTransferCorrectlyIndented
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Salida por transferencia de 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Entrada por transferencia de 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+
+!TreeStructureWithSummaryTest methodsFor: 'tests' stamp: 'SF 6/1/2023 16:45:04'!
+test04PortfolioWithAccountsWithTransactionsShowsTheAccountsAndTransactionsCorrectlyIndented
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Withdraw register: 1000000 on: juampisAccount.
+	Deposit register: 1000000 on: santisAccount.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Extracción por 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Depósito por 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
 
 
 !classDefinition: #TransferTest category: 'Portfolio-Solucion'!
@@ -656,21 +735,20 @@ transactions
 
 	self subclassResponsibility ! !
 
-!Account methodsFor: 'transactions' stamp: 'dsf 6/1/2023 01:12:14'!
-triedToCreateTreeStructure
-
-	self subclassResponsibility ! !
-
 
 !Account methodsFor: 'composition' stamp: 'SF 5/31/2023 22:36:11'!
 addedTo: aPortfolio
 
 	self subclassResponsibility ! !
 
-!Account methodsFor: 'composition' stamp: 'SF 5/31/2023 22:45:39'!
+
+!Account methodsFor: 'reports' stamp: 'SF 5/31/2023 22:45:39'!
 fillReport: aReport
 
 	self subclassResponsibility ! !
+
+!Account methodsFor: 'reports' stamp: 'SF 6/1/2023 15:35:30'!
+triedToCreateTreeStructure! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -678,7 +756,7 @@ fillReport: aReport
 Account class
 	instanceVariableNames: ''!
 
-!Account class methodsFor: 'as yet unclassified' stamp: 'dsf 5/31/2023 23:54:52'!
+!Account class methodsFor: 'instance creation' stamp: 'dsf 5/31/2023 23:54:52'!
 named: anAccountName
 
 	self subclassResponsibility ! !
@@ -747,19 +825,6 @@ balance
 	
 	^accounts sum: [ :anAccount | anAccount balance ] ifEmpty: [ 0 ]! !
 
-!Portfolio methodsFor: 'balance' stamp: 'dsf 6/1/2023 00:41:39'!
-fillReport: aReport
-
-	aReport addName: name.
-
-	aReport increaseDepth.
-
-	accounts do: [ :anAccount | anAccount fillReport: aReport ].
-	
-	aReport decreaseDepth.
-	
-	aReport addBalance: self balance.! !
-
 
 !Portfolio methodsFor: 'transactions' stamp: 'SF 5/31/2023 22:38:25'!
 addTransactionsTo: aCollectionOfTransactions
@@ -775,9 +840,6 @@ transactions
 	accounts do: [ :anAccount | anAccount addTransactionsTo: transactions ].
 	
 	^transactions ! !
-
-!Portfolio methodsFor: 'transactions' stamp: 'dsf 6/1/2023 01:12:21'!
-triedToCreateTreeStructure! !
 
 
 !Portfolio methodsFor: 'composition' stamp: 'SF 5/31/2023 22:39:09'!
@@ -820,29 +882,44 @@ signalCanNotAddAccount
 	
 	self error: self class canNotAddAccountErrorMessage! !
 
+
+!Portfolio methodsFor: 'reports' stamp: 'SF 6/1/2023 16:26:03'!
+fillReport: aReport
+
+	aReport addName: name.
+
+	aReport increaseDepthForPortfolio.
+
+	accounts do: [ :anAccount | anAccount fillReport: aReport ].
+	
+	aReport decreaseDepthForPortfolio.
+	
+	aReport addBalance: self balance.! !
+
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
 !classDefinition: 'Portfolio class' category: 'Portfolio-Solucion'!
 Portfolio class
 	instanceVariableNames: ''!
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:48:55'!
+!Portfolio class methodsFor: 'errors' stamp: 'HAW 5/25/2019 11:48:55'!
 canNotAddAccountErrorMessage
 	
 	^'Can not add repeated account to a portfolio'! !
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'dsf 5/31/2023 23:55:15'!
+
+!Portfolio class methodsFor: 'instance creation' stamp: 'dsf 5/31/2023 23:55:15'!
 named: anAccountName
 	^self new initializeWithName: anAccountName.! !
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'dsf 5/31/2023 23:57:26'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'dsf 5/31/2023 23:57:26'!
 named: anAccountName with: anAccount
 	^(self new 
 		initializeWithName: anAccountName)
 		add: anAccount;
 		yourself! !
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'dsf 5/31/2023 23:57:44'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'dsf 5/31/2023 23:57:44'!
 named: anAccountName with: anAccount with: anotherAccount
 
 	^((self new 
@@ -851,14 +928,14 @@ named: anAccountName with: anAccount with: anotherAccount
 		add: anotherAccount;
 		yourself! !
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:18:21'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:18:21'!
 with: anAccount
 
 	^self new 
 		add: anAccount;
 		yourself! !
 
-!Portfolio class methodsFor: 'as yet unclassified' stamp: 'HAW 5/25/2019 11:23:59'!
+!Portfolio class methodsFor: 'instance creation' stamp: 'HAW 5/25/2019 11:23:59'!
 with: anAccount with: anotherAccount
 
 	^self new 
@@ -895,15 +972,6 @@ addTransactionsTo: aCollectionOfTransactions
 
 	aCollectionOfTransactions addAll: transactions ! !
 
-!ReceptiveAccount methodsFor: 'transactions' stamp: 'dsf 6/1/2023 00:41:55'!
-fillReport: aReport
-
-	aReport addName: name.
-
-	transactions do: [ :aTransaction | aTransaction addToReport: aReport ].
-	
-	aReport addBalance: self balance.! !
-
 !ReceptiveAccount methodsFor: 'transactions' stamp: 'HernanWilkinson 7/13/2011 18:37'!
 register: aTransaction
 
@@ -935,15 +1003,26 @@ isComposedBy: anAccount
 
 	^self = anAccount ! !
 
-!ReceptiveAccount methodsFor: 'testing' stamp: 'dsf 6/1/2023 01:13:18'!
-triedToCreateTreeStructure
-
-	TreeStructure triedToCreateTreeStructureOfReceptiveAccountError.! !
-
 
 !ReceptiveAccount methodsFor: 'composition' stamp: 'SF 5/31/2023 22:39:14'!
 addedTo: aPortfolio
 	! !
+
+
+!ReceptiveAccount methodsFor: 'reports' stamp: 'SF 6/1/2023 16:29:49'!
+fillReport: aReport
+
+	aReport addName: name.
+	aReport increaseDepthForReceptiveAccount.
+	transactions do: [ :aTransaction | aTransaction addToReport: aReport ].
+	aReport addBalance: self balance.
+	
+	aReport decreaseDepthForReceptiveAccount.	! !
+
+!ReceptiveAccount methodsFor: 'reports' stamp: 'dsf 6/1/2023 01:13:18'!
+triedToCreateTreeStructure
+
+	TreeStructure triedToCreateTreeStructureOfReceptiveAccountError.! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -951,7 +1030,7 @@ addedTo: aPortfolio
 ReceptiveAccount class
 	instanceVariableNames: ''!
 
-!ReceptiveAccount class methodsFor: 'as yet unclassified' stamp: 'dsf 5/31/2023 23:55:25'!
+!ReceptiveAccount class methodsFor: 'instance creation' stamp: 'dsf 5/31/2023 23:55:25'!
 named: anAccountName
 
 	^self new initializeWithName: anAccountName.! !
@@ -964,10 +1043,11 @@ Object subclass: #AccountTransaction
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!AccountTransaction methodsFor: 'value' stamp: 'SF 5/31/2023 19:42:31'!
+!AccountTransaction methodsFor: 'reports' stamp: 'SF 5/31/2023 19:42:31'!
 addToReport: aReport
 
 	self subclassResponsibility ! !
+
 
 !AccountTransaction methodsFor: 'value' stamp: 'SF 5/30/2023 17:50:20'!
 value 
@@ -1010,10 +1090,11 @@ initializeFor: aValue
 	value := aValue ! !
 
 
-!Deposit methodsFor: 'value' stamp: 'SF 5/31/2023 19:42:51'!
+!Deposit methodsFor: 'reports' stamp: 'SF 5/31/2023 19:42:51'!
 addToReport: aReport
 
 	aReport addDeposit: self.! !
+
 
 !Deposit methodsFor: 'value' stamp: 'SF 5/30/2023 17:50:40'!
 value
@@ -1045,41 +1126,37 @@ AccountTransaction subclass: #DepositLeg
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!DepositLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:33:35'!
-affectBalance: aBalance
-
-	^aBalance + self value ! !
-
-!DepositLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:31'!
+!DepositLeg methodsFor: 'transfer' stamp: 'sf 5/31/2023 15:32:31'!
 fromTransfer: aTransfer
 
 	parentTransfer := aTransfer.
 	
 ! !
 
-!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:53:07'!
+!DepositLeg methodsFor: 'transfer' stamp: 'SF 5/30/2023 17:53:07'!
 parentTransfer
 
 	^ parentTransfer
 ! !
 
-!DepositLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:34:34'!
-transaction
 
-	^ transaction
-! !
-
-
-!DepositLeg methodsFor: 'value' stamp: 'SF 5/31/2023 19:43:06'!
+!DepositLeg methodsFor: 'reports' stamp: 'SF 5/31/2023 19:43:06'!
 addToReport: aReport
 
 	aReport addDepositLeg: self.! !
+
 
 !DepositLeg methodsFor: 'value' stamp: 'SF 5/30/2023 17:52:04'!
 value
 
 	^ parentTransfer value.
 ! !
+
+
+!DepositLeg methodsFor: 'balance' stamp: 'sf 5/31/2023 15:33:35'!
+affectBalance: aBalance
+
+	^aBalance + self value ! !
 
 
 !classDefinition: #Withdraw category: 'Portfolio-Solucion'!
@@ -1095,11 +1172,6 @@ initializeFor: aValue
 	value := aValue ! !
 
 
-!Withdraw methodsFor: 'value' stamp: 'SF 5/31/2023 19:43:21'!
-addToReport: aReport
-
-	aReport addWithdraw: self! !
-
 !Withdraw methodsFor: 'value' stamp: 'SF 5/30/2023 17:50:47'!
 value
 
@@ -1110,6 +1182,12 @@ value
 affectBalance: aBalance
 
 	^aBalance - value! !
+
+
+!Withdraw methodsFor: 'reports' stamp: 'SF 5/31/2023 19:43:21'!
+addToReport: aReport
+
+	aReport addWithdraw: self! !
 
 "-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
 
@@ -1130,28 +1208,31 @@ AccountTransaction subclass: #WithdrawLeg
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:43:47'!
-addToReport: aReport
-
-	aReport addWithdrawLeg: self.! !
-
-!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:33:48'!
-affectBalance: aBalance
-
-	^aBalance - self value! !
-
-!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 15:32:24'!
+!WithdrawLeg methodsFor: 'transfer' stamp: 'sf 5/31/2023 15:32:24'!
 fromTransfer: aTransfer
 
 	parentTransfer := aTransfer.
 	! !
 
-!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:53:20'!
+!WithdrawLeg methodsFor: 'transfer' stamp: 'SF 5/30/2023 17:53:20'!
 parentTransfer
 
 	^ parentTransfer ! !
 
-!WithdrawLeg methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:52:08'!
+
+!WithdrawLeg methodsFor: 'reports' stamp: 'SF 5/31/2023 19:43:47'!
+addToReport: aReport
+
+	aReport addWithdrawLeg: self.! !
+
+
+!WithdrawLeg methodsFor: 'balance' stamp: 'sf 5/31/2023 15:33:48'!
+affectBalance: aBalance
+
+	^aBalance - self value! !
+
+
+!WithdrawLeg methodsFor: 'value' stamp: 'SF 5/30/2023 17:52:08'!
 value
 
 	^ parentTransfer value.! !
@@ -1164,38 +1245,47 @@ Object subclass: #Report
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!Report methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:16:53'!
-addBalance: aBalanceValue! !
-
-!Report methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:16:50'!
-addDeposit: aDeposit! !
-
-!Report methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:16:56'!
-addDepositLeg: aDepositLeg! !
-
-!Report methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:16:22'!
-addName: anAccountName! !
-
-!Report methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:17:00'!
-addWithdraw: aWithdraw! !
-
-!Report methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:17:04'!
-addWithdrawLeg: aWithdrawLeg! !
-
-!Report methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:17:58'!
-decreaseDepth! !
-
-!Report methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:17:54'!
-increaseDepth! !
-
-!Report methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:47:57'!
+!Report methodsFor: 'initialization' stamp: 'SF 5/31/2023 19:47:57'!
 ofAccount: anAccount
 	account := anAccount.! !
 
-!Report methodsFor: 'as yet unclassified' stamp: 'sf 5/31/2023 16:32:46'!
+
+!Report methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:26:40'!
+decreaseDepthForPortfolio! !
+
+!Report methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:26:57'!
+decreaseDepthForReceptiveAccount! !
+
+!Report methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:26:46'!
+increaseDepthForPortfolio! !
+
+!Report methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:26:50'!
+increaseDepthForReceptiveAccount! !
+
+
+!Report methodsFor: 'printing' stamp: 'sf 5/31/2023 16:32:46'!
 print
 
 	self subclassResponsibility.! !
+
+
+!Report methodsFor: 'adding' stamp: 'dsf 6/1/2023 00:16:53'!
+addBalance: aBalanceValue! !
+
+!Report methodsFor: 'adding' stamp: 'dsf 6/1/2023 00:16:50'!
+addDeposit: aDeposit! !
+
+!Report methodsFor: 'adding' stamp: 'dsf 6/1/2023 00:16:56'!
+addDepositLeg: aDepositLeg! !
+
+!Report methodsFor: 'adding' stamp: 'dsf 6/1/2023 00:16:22'!
+addName: anAccountName! !
+
+!Report methodsFor: 'adding' stamp: 'dsf 6/1/2023 00:17:00'!
+addWithdraw: aWithdraw! !
+
+!Report methodsFor: 'adding' stamp: 'dsf 6/1/2023 00:17:04'!
+addWithdrawLeg: aWithdrawLeg! !
 
 
 !classDefinition: #AccountSummary category: 'Portfolio-Solucion'!
@@ -1205,32 +1295,33 @@ Report subclass: #AccountSummary
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 22:48:45'!
+!AccountSummary methodsFor: 'adding' stamp: 'SF 5/31/2023 22:48:45'!
 addBalance: aBalanceValue
 
 	report add: 'Balance = ', aBalanceValue asString.! !
 
-!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:27'!
+!AccountSummary methodsFor: 'adding' stamp: 'SF 5/31/2023 19:51:27'!
 addDeposit: aDeposit
 
 	report add: 'Depósito por ', aDeposit value asString, '.'.! !
 
-!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:31'!
+!AccountSummary methodsFor: 'adding' stamp: 'SF 5/31/2023 19:51:31'!
 addDepositLeg: aDepositLeg
 
 	report add: 'Entrada por transferencia de ', aDepositLeg value asString, '.'.! !
 
-!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:36'!
+!AccountSummary methodsFor: 'adding' stamp: 'SF 5/31/2023 19:51:36'!
 addWithdraw: aWithdraw
 
 	report add: 'Extracción por ', aWithdraw value asString, '.'.! !
 
-!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:51:40'!
+!AccountSummary methodsFor: 'adding' stamp: 'SF 5/31/2023 19:51:40'!
 addWithdrawLeg: aWithdrawLeg
 
 	report add: 'Salida por transferencia de ', aWithdrawLeg value asString, '.'.! !
 
-!AccountSummary methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 22:45:39'!
+
+!AccountSummary methodsFor: 'printing' stamp: 'SF 5/31/2023 22:45:39'!
 print
 
 	report := OrderedCollection new.
@@ -1248,17 +1339,18 @@ Report subclass: #TransferNet
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:57:53'!
+!TransferNet methodsFor: 'adding' stamp: 'SF 5/31/2023 19:57:53'!
 addDepositLeg: aDepositLeg
 
 	report := report + aDepositLeg value! !
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:59:07'!
+!TransferNet methodsFor: 'adding' stamp: 'SF 5/31/2023 19:59:07'!
 addWithdrawLeg: aWithdrawLeg
 
 	report := report - aWithdrawLeg value! !
 
-!TransferNet methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 22:48:05'!
+
+!TransferNet methodsFor: 'printing' stamp: 'SF 5/31/2023 22:48:05'!
 print
 
 	report := 0.
@@ -1276,7 +1368,7 @@ Report subclass: #TreeStructure
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!TreeStructure methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:22:52'!
+!TreeStructure methodsFor: 'auxiliar' stamp: 'dsf 6/1/2023 00:22:52'!
 addDepthNumberOfTabsTo: anAccountName
 
 	| tabbedName |
@@ -1287,29 +1379,33 @@ addDepthNumberOfTabsTo: anAccountName
 		].
 	^ tabbedName.! !
 
-!TreeStructure methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:21:10'!
+
+!TreeStructure methodsFor: 'adding' stamp: 'dsf 6/1/2023 00:21:10'!
 addName: anAccountName
 
 	report add: (self addDepthNumberOfTabsTo: anAccountName)! !
 
-!TreeStructure methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:18:18'!
-decreaseDepth
+
+!TreeStructure methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:27:17'!
+decreaseDepthForPortfolio
 
 	depth := depth - 1! !
 
-!TreeStructure methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:18:13'!
-increaseDepth
+!TreeStructure methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:27:10'!
+increaseDepthForPortfolio
 
 	depth := depth + 1! !
 
-!TreeStructure methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:17:35'!
+
+!TreeStructure methodsFor: 'initialization' stamp: 'dsf 6/1/2023 00:17:35'!
 ofAccount: anAccount
 
 	account := anAccount.
 	
 	depth := 0.! !
 
-!TreeStructure methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 00:40:59'!
+
+!TreeStructure methodsFor: 'printing' stamp: 'dsf 6/1/2023 00:40:59'!
 print
 
 	report := OrderedCollection new.
@@ -1324,23 +1420,108 @@ print
 TreeStructure class
 	instanceVariableNames: ''!
 
-!TreeStructure class methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:11:50'!
+!TreeStructure class methodsFor: 'instance creation' stamp: 'dsf 6/1/2023 01:11:50'!
 ofAccount: anAccount
 
 	anAccount triedToCreateTreeStructure.
 	
 	^ self new ofAccount: anAccount.! !
 
-!TreeStructure class methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:13:48'!
+
+!TreeStructure class methodsFor: 'errors' stamp: 'dsf 6/1/2023 01:13:48'!
 triedToCreateTreeStructureOfReceptiveAccountError
 
 	self error: self triedToCreateTreeStructureOfReceptiveAccountErrorDescription.! !
 
-!TreeStructure class methodsFor: 'as yet unclassified' stamp: 'dsf 6/1/2023 01:14:33'!
+!TreeStructure class methodsFor: 'errors' stamp: 'dsf 6/1/2023 01:14:33'!
 triedToCreateTreeStructureOfReceptiveAccountErrorDescription
 
 	^ 'Se intentó crear un TreeStructure de una ReceptiveAccount y sólo se puede con portfolios'
 ! !
+
+
+!classDefinition: #TreeStructureWithSummary category: 'Portfolio-Solucion'!
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: 'depth'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TreeStructureWithSummary methodsFor: 'adding' stamp: 'SF 6/1/2023 16:14:31'!
+addBalance: aBalanceValue
+
+	report add: (self addDepthNumberOfTabsTo: 'Balance = ', aBalanceValue asString).! !
+
+!TreeStructureWithSummary methodsFor: 'adding' stamp: 'SF 6/1/2023 16:41:57'!
+addDeposit: aDeposit
+
+	report add: (self addDepthNumberOfTabsTo: 'Depósito por ', aDeposit value asString, '.').! !
+
+!TreeStructureWithSummary methodsFor: 'adding' stamp: 'SF 6/1/2023 16:38:16'!
+addDepositLeg: aDepositLeg
+
+	report add: (self addDepthNumberOfTabsTo: 'Entrada por transferencia de ', aDepositLeg value asString, '.').! !
+
+!TreeStructureWithSummary methodsFor: 'adding' stamp: 'SF 6/1/2023 16:10:30'!
+addName: anAccountName
+
+	report add: (self addDepthNumberOfTabsTo: anAccountName)! !
+
+!TreeStructureWithSummary methodsFor: 'adding' stamp: 'SF 6/1/2023 16:42:25'!
+addWithdraw: aWithdraw
+
+	report add: (self addDepthNumberOfTabsTo: 'Extracción por ', aWithdraw value asString, '.').! !
+
+!TreeStructureWithSummary methodsFor: 'adding' stamp: 'SF 6/1/2023 16:37:29'!
+addWithdrawLeg: aWithdrawLeg
+
+	report add: (self addDepthNumberOfTabsTo: 'Salida por transferencia de ', aWithdrawLeg value asString, '.').! !
+
+
+!TreeStructureWithSummary methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:27:49'!
+decreaseDepthForReceptiveAccount
+
+	depth := depth - 1! !
+
+!TreeStructureWithSummary methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:27:58'!
+increaseDepthForPortfolio
+
+	depth := depth + 1! !
+
+!TreeStructureWithSummary methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:28:03'!
+increaseDepthForReceptiveAccount
+
+	depth := depth + 1! !
+
+
+!TreeStructureWithSummary methodsFor: 'initialization' stamp: 'SF 6/1/2023 16:09:43'!
+ofAccount: anAccount
+
+	account := anAccount.
+	
+	depth := 0.! !
+
+
+!TreeStructureWithSummary methodsFor: 'printing' stamp: 'SF 6/1/2023 16:09:53'!
+print
+
+	report := OrderedCollection new.
+	
+	account fillReport: self.
+	
+	^report.! !
+
+
+!TreeStructureWithSummary methodsFor: 'auxiliar' stamp: 'SF 6/1/2023 16:11:01'!
+addDepthNumberOfTabsTo: anAccountName
+
+	| tabbedName |
+	
+	tabbedName := anAccountName.
+	depth timesRepeat: [
+		tabbedName := '  ', tabbedName.
+		].
+	^ tabbedName.! !
 
 
 !classDefinition: #Transfer category: 'Portfolio-Solucion'!
@@ -1350,12 +1531,13 @@ Object subclass: #Transfer
 	poolDictionaries: ''
 	category: 'Portfolio-Solucion'!
 
-!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:31:26'!
-depositLeg
+!Transfer methodsFor: 'accessing' stamp: 'SF 5/30/2023 17:51:20'!
+value
 
-	^ depositLeg! !
+	^ value.! !
 
-!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/31/2023 19:43:55'!
+
+!Transfer methodsFor: 'initialization' stamp: 'SF 5/31/2023 19:43:55'!
 from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
 
 	value := aTransferValue.
@@ -1364,17 +1546,13 @@ from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
 	aSenderAccount register: withdrawalLeg.
 	aReceiverAccount register: depositLeg.! !
 
-!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:21:08'!
-transfer
 
-	^ self! !
+!Transfer methodsFor: 'transfer legs' stamp: 'SF 5/30/2023 17:31:26'!
+depositLeg
 
-!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:51:20'!
-value
+	^ depositLeg! !
 
-	^ value.! !
-
-!Transfer methodsFor: 'as yet unclassified' stamp: 'SF 5/30/2023 17:20:43'!
+!Transfer methodsFor: 'transfer legs' stamp: 'SF 5/30/2023 17:20:43'!
 withdrawalLeg
 
 	^ withdrawalLeg! !

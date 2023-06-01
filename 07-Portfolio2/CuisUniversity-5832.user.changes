@@ -22499,3 +22499,4711 @@ PASSED!
 PASSED!
 
 ----SNAPSHOT----(1 June 2023 01:25:41) CuisUniversity-5832.image priorSource: 10637479!
+
+----STARTUP---- (1 June 2023 15:31:41) as C:\Users\005675613\Documents\Inge 1\windows64\windows64\CuisUniversity-5832.image!
+
+
+----End fileIn of C:\Users\005675613\Documents\Inge 1\windows64\windows64\Portfolio-Solucion.st----!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 15:32:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 15:32:37'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 15:32:44) CuisUniversity-5832.image priorSource: 9366758!
+!Account methodsFor: 'reports' stamp: 'SF 6/1/2023 15:35:30' prior: 50665539!
+triedToCreateTreeStructure! !
+
+!methodRemoval: Portfolio #triedToCreateTreeStructure stamp: 'SF 6/1/2023 15:35:39'!
+triedToCreateTreeStructure!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 15:37:11'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 15:37:12'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 15:46:07'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 15:46:08'!
+PASSED!
+!DepositLeg methodsFor: 'transfer' stamp: 'SF 6/1/2023 15:46:19' prior: 50665956!
+transaction! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 15:46:20'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 15:46:20'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 15:46:20'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 15:46:20'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 15:46:20'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 15:46:20'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 15:46:20'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 15:46:21'!
+PASSED!
+
+!methodRemoval: DepositLeg #transaction stamp: 'SF 6/1/2023 15:46:23'!
+transaction!
+
+----SNAPSHOT----(1 June 2023 15:47:00) CuisUniversity-5832.image priorSource: 10714021!
+!Behavior method!
+register: aTransaction
+	#_coverageTracker927922_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker927922_
+		cover: (28 to: 39)
+		declaredAt: (28 to: 39)
+		by: transactions.
+	#_coverageTracker927922_
+		coverAll:
+			{41 to: 44}
+		evaluating: [
+			receiver1 add:
+				(#_coverageTracker927922_
+					cover: (46 to: 57)
+					declaredAt: (11 to: 22)
+					by: aTransaction) ]
+		thatSends: #add:
+		to: receiver1 ] value.! !
+!Behavior method!
+parentTransfer
+	#_coverageTracker927929_ markAsExecuted.
+	^ #_coverageTracker927929_
+		cover: (22 to: 35)
+		declaredAt: (22 to: 35)
+		by: parentTransfer.! !
+!Behavior method!
+named: anAccountName
+	#_coverageTracker927943_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker927943_
+		coverAll:
+			{25 to: 28}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker927943_
+		coverAll:
+			{30 to: 32}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker927943_
+		coverAll:
+			{34 to: 52}
+		evaluating: [
+			receiver2 initializeWithName:
+				(#_coverageTracker927943_
+					cover: (54 to: 66)
+					declaredAt: (8 to: 20)
+					by: anAccountName) ]
+		thatSends: #initializeWithName:
+		to: receiver2 ] value.! !
+!Behavior method!
+addDepositLeg: aDepositLeg
+	#_coverageTracker927949_ markAsExecuted.! !
+!Behavior method!
+addToReport: aReport
+	#_coverageTracker927969_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker927969_
+		cover: (26 to: 32)
+		declaredAt: (14 to: 20)
+		by: aReport.
+	#_coverageTracker927969_
+		coverAll:
+			{34 to: 48}
+		evaluating: [
+			receiver1 addWithdrawLeg:
+				(#_coverageTracker927969_
+					coverAll:
+						{50 to: 53}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addWithdrawLeg:
+		to: receiver1 ] value.! !
+!Behavior method!
+addWithdraw: aWithdraw
+	#_coverageTracker927979_ markAsExecuted.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker927979_
+		cover: (28 to: 33)
+		declaredAt: (28 to: 33)
+		by: report.
+	#_coverageTracker927979_
+		coverAll:
+			{35 to: 38}
+		evaluating: [
+			receiver5 add:
+				[ | receiver4 |
+				receiver4 _ [ | receiver3 |
+				receiver3 _ #_coverageTracker927979_
+					coverAll:
+						{40 to: 56}
+					byLiteralOrPseudoVariable: 'Extracción por '.
+				#_coverageTracker927979_
+					coverAll:
+						{57 to: 57}
+					evaluating: [
+						receiver3 ,
+							[ | receiver2 |
+							receiver2 _ [ | receiver1 |
+							receiver1 _ #_coverageTracker927979_
+								cover: (59 to: 67)
+								declaredAt: (14 to: 22)
+								by: aWithdraw.
+							#_coverageTracker927979_
+								coverAll:
+									{69 to: 73}
+								evaluating: [ receiver1 value ]
+								thatSends: #value
+								to: receiver1 ] value.
+							#_coverageTracker927979_
+								coverAll:
+									{75 to: 82}
+								evaluating: [ receiver2 asString ]
+								thatSends: #asString
+								to: receiver2 ] value ]
+					thatSends: #,
+					to: receiver3 ] value.
+				#_coverageTracker927979_
+					coverAll:
+						{83 to: 83}
+					evaluating: [
+						receiver4 ,
+							(#_coverageTracker927979_
+								coverAll:
+									{85 to: 87}
+								byLiteralOrPseudoVariable: '.') ]
+					thatSends: #,
+					to: receiver4 ] value ]
+		thatSends: #add:
+		to: receiver5 ] value.! !
+!Behavior method!
+from: aSenderAccount to: aReceiverAccount withValue: aTransferValue
+	#_coverageTracker927997_ markAsExecuted.
+	#_coverageTracker927997_
+		cover: (73 to: 77)
+		declaredAt: (73 to: 77)
+		by:
+			(value _ #_coverageTracker927997_
+				cover: (82 to: 95)
+				declaredAt: (54 to: 67)
+				by: aTransferValue).
+	#_coverageTracker927997_
+		cover: (100 to: 112)
+		declaredAt: (100 to: 112)
+		by:
+			(withdrawalLeg _ [ | receiver2 |
+			receiver2 _ [ | receiver1 |
+			receiver1 _ #_coverageTracker927997_
+				coverAll:
+					{117 to: 127}
+				by: WithdrawLeg.
+			#_coverageTracker927997_
+				coverAll:
+					{129 to: 131}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value.
+			#_coverageTracker927997_
+				coverAll:
+					{133 to: 145}
+				evaluating: [
+					receiver2 fromTransfer:
+						(#_coverageTracker927997_
+							coverAll:
+								{147 to: 150}
+							byLiteralOrPseudoVariable: self) ]
+				thatSends: #fromTransfer:
+				to: receiver2 ] value).
+	#_coverageTracker927997_
+		cover: (155 to: 164)
+		declaredAt: (155 to: 164)
+		by:
+			(depositLeg _ [ | receiver4 |
+			receiver4 _ [ | receiver3 |
+			receiver3 _ #_coverageTracker927997_
+				coverAll:
+					{169 to: 178}
+				by: DepositLeg.
+			#_coverageTracker927997_
+				coverAll:
+					{180 to: 182}
+				evaluating: [ receiver3 new ]
+				thatSends: #new
+				to: receiver3 ] value.
+			#_coverageTracker927997_
+				coverAll:
+					{184 to: 196}
+				evaluating: [
+					receiver4 fromTransfer:
+						(#_coverageTracker927997_
+							coverAll:
+								{198 to: 201}
+							byLiteralOrPseudoVariable: self) ]
+				thatSends: #fromTransfer:
+				to: receiver4 ] value).
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker927997_
+		cover: (206 to: 219)
+		declaredAt: (7 to: 20)
+		by: aSenderAccount.
+	#_coverageTracker927997_
+		coverAll:
+			{221 to: 229}
+		evaluating: [
+			receiver5 register:
+				(#_coverageTracker927997_
+					cover: (231 to: 243)
+					declaredAt: (100 to: 112)
+					by: withdrawalLeg) ]
+		thatSends: #register:
+		to: receiver5 ] value.
+	[ | receiver6 |
+	receiver6 _ #_coverageTracker927997_
+		cover: (248 to: 263)
+		declaredAt: (26 to: 41)
+		by: aReceiverAccount.
+	#_coverageTracker927997_
+		coverAll:
+			{265 to: 273}
+		evaluating: [
+			receiver6 register:
+				(#_coverageTracker927997_
+					cover: (275 to: 284)
+					declaredAt: (155 to: 164)
+					by: depositLeg) ]
+		thatSends: #register:
+		to: receiver6 ] value.! !
+!Behavior method!
+print
+	#_coverageTracker928010_ markAsExecuted.
+	#_coverageTracker928010_
+		cover: (11 to: 16)
+		declaredAt: (11 to: 16)
+		by:
+			(report _ [ | receiver1 |
+			receiver1 _ #_coverageTracker928010_
+				coverAll:
+					{21 to: 37}
+				by: OrderedCollection.
+			#_coverageTracker928010_
+				coverAll:
+					{39 to: 41}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928010_
+		cover: (49 to: 55)
+		declaredAt: (49 to: 55)
+		by: account.
+	#_coverageTracker928010_
+		coverAll:
+			{57 to: 67}
+		evaluating: [
+			receiver2 fillReport:
+				(#_coverageTracker928010_
+					coverAll:
+						{69 to: 72}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #fillReport:
+		to: receiver2 ] value.
+	^ #_coverageTracker928010_
+		cover: (81 to: 86)
+		declaredAt: (11 to: 16)
+		by: report.! !
+!Behavior method!
+assertCanAdd: accountToAdd
+	#_coverageTracker928021_ markAsExecuted.
+	[ | receiver3 |
+	receiver3 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928021_
+		coverAll:
+			{33 to: 36}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928021_
+		coverAll:
+			{38 to: 63}
+		evaluating: [
+			receiver1 anyRootParentIsComposedBy:
+				(#_coverageTracker928021_
+					cover: (65 to: 76)
+					declaredAt: (15 to: 26)
+					by: accountToAdd) ]
+		thatSends: #anyRootParentIsComposedBy:
+		to: receiver1 ] value.
+	#_coverageTracker928021_
+		coverAll:
+			{79 to: 85}
+		evaluating: [
+			receiver3 ifTrue: [
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker928021_
+					coverAll:
+						{89 to: 92}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker928021_
+					coverAll:
+						{94 to: 115}
+					evaluating: [ receiver2 signalCanNotAddAccount ]
+					thatSends: #signalCanNotAddAccount
+					to: receiver2 ] value ]]
+		thatSends: #ifTrue:
+		to: receiver3 ] value.! !
+!Behavior method!
+fillReport: aReport
+	#_coverageTracker928029_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928029_
+		cover: (25 to: 31)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker928029_
+		coverAll:
+			{33 to: 40}
+		evaluating: [
+			receiver1 addName:
+				(#_coverageTracker928029_
+					cover: (42 to: 45)
+					declaredAt: (42 to: 45)
+					by: name) ]
+		thatSends: #addName:
+		to: receiver1 ] value.
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker928029_
+		cover: (52 to: 63)
+		declaredAt: (52 to: 63)
+		by: transactions.
+	#_coverageTracker928029_
+		coverAll:
+			{65 to: 67}
+		evaluating: [
+			receiver3 do: [ :aTransaction |
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker928029_
+					cover: (87 to: 98)
+					declaredAt: (72 to: 83)
+					by: aTransaction.
+				#_coverageTracker928029_
+					coverAll:
+						{100 to: 111}
+					evaluating: [
+						receiver2 addToReport:
+							(#_coverageTracker928029_
+								cover: (113 to: 119)
+								declaredAt: (13 to: 19)
+								by: aReport) ]
+					thatSends: #addToReport:
+					to: receiver2 ] value ]]
+		thatSends: #do:
+		to: receiver3 ] value.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker928029_
+		cover: (129 to: 135)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker928029_
+		coverAll:
+			{137 to: 147}
+		evaluating: [
+			receiver5 addBalance:
+				[ | receiver4 |
+				receiver4 _ #_coverageTracker928029_
+					coverAll:
+						{149 to: 152}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker928029_
+					coverAll:
+						{154 to: 160}
+					evaluating: [ receiver4 balance ]
+					thatSends: #balance
+					to: receiver4 ] value ]
+		thatSends: #addBalance:
+		to: receiver5 ] value.! !
+!Behavior method!
+addName: anAccountName
+	#_coverageTracker928038_ markAsExecuted.! !
+!Behavior method!
+addToReport: aReport
+	#_coverageTracker928050_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928050_
+		cover: (26 to: 32)
+		declaredAt: (14 to: 20)
+		by: aReport.
+	#_coverageTracker928050_
+		coverAll:
+			{34 to: 45}
+		evaluating: [
+			receiver1 addWithdraw:
+				(#_coverageTracker928050_
+					coverAll:
+						{47 to: 50}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addWithdraw:
+		to: receiver1 ] value.! !
+!Behavior method!
+ofAccount: anAccount
+	#_coverageTracker928056_ markAsExecuted.
+	#_coverageTracker928056_
+		cover: (24 to: 30)
+		declaredAt: (24 to: 30)
+		by:
+			(account _ #_coverageTracker928056_
+				cover: (35 to: 43)
+				declaredAt: (12 to: 20)
+				by: anAccount).! !
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	#_coverageTracker928063_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928063_
+		cover: (50 to: 74)
+		declaredAt: (20 to: 44)
+		by: aCollectionOfTransactions.
+	#_coverageTracker928063_
+		coverAll:
+			{76 to: 82}
+		evaluating: [
+			receiver1 addAll:
+				(#_coverageTracker928063_
+					cover: (84 to: 95)
+					declaredAt: (84 to: 95)
+					by: transactions) ]
+		thatSends: #addAll:
+		to: receiver1 ] value.! !
+!Behavior method!
+accountsIncludes: anAccount
+	#_coverageTracker928069_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928069_
+		cover: (34 to: 41)
+		declaredAt: (34 to: 41)
+		by: accounts.
+	#_coverageTracker928069_
+		coverAll:
+			{43 to: 51}
+		evaluating: [
+			receiver1 includes:
+				(#_coverageTracker928069_
+					cover: (53 to: 61)
+					declaredAt: (19 to: 27)
+					by: anAccount) ]
+		thatSends: #includes:
+		to: receiver1 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker928076_ markAsExecuted.
+	^ #_coverageTracker928076_
+		cover: (13 to: 17)
+		declaredAt: (13 to: 17)
+		by: value.! !
+!Behavior method!
+accountsSize
+	#_coverageTracker928089_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928089_
+		cover: (19 to: 26)
+		declaredAt: (19 to: 26)
+		by: accounts.
+	#_coverageTracker928089_
+		coverAll:
+			{28 to: 31}
+		evaluating: [ receiver1 size ]
+		thatSends: #size
+		to: receiver1 ] value.! !
+!Behavior method!
+with: anAccount with: anotherAccount
+	#_coverageTracker928095_ markAsExecuted.
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928095_
+		coverAll:
+			{43 to: 46}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928095_
+		coverAll:
+			{48 to: 50}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ cascadeReceiver.
+	#_coverageTracker928095_
+		coverAll:
+			{56 to: 59}
+		evaluating: [
+			receiver2 add:
+				(#_coverageTracker928095_
+					cover: (61 to: 69)
+					declaredAt: (7 to: 15)
+					by: anAccount) ]
+		thatSends: #add:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ cascadeReceiver.
+	#_coverageTracker928095_
+		coverAll:
+			{75 to: 78}
+		evaluating: [
+			receiver3 add:
+				(#_coverageTracker928095_
+					cover: (80 to: 93)
+					declaredAt: (23 to: 36)
+					by: anotherAccount) ]
+		thatSends: #add:
+		to: receiver3 ] value.
+	[ | receiver4 |
+	receiver4 _ cascadeReceiver.
+	#_coverageTracker928095_
+		coverAll:
+			{99 to: 106}
+		evaluating: [ receiver4 yourself ]
+		thatSends: #yourself
+		to: receiver4 ] value ] value.! !
+!Behavior method!
+addedTo: aPortfolio
+	#_coverageTracker928115_ markAsExecuted.! !
+!Behavior method!
+canNotAddAccountErrorMessage
+	#_coverageTracker928118_ markAsExecuted.
+	^ #_coverageTracker928118_
+		coverAll:
+			{36 to: 80}
+		byLiteralOrPseudoVariable: 'Can not add repeated account to a portfolio'.! !
+!Behavior method!
+isComposedBy: anAccount
+	#_coverageTracker928126_ markAsExecuted.
+	^ [ | receiver6 |
+	receiver6 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928126_
+		coverAll:
+			{31 to: 34}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928126_
+		coverAll:
+			{36 to: 36}
+		evaluating: [
+			receiver1 =
+				(#_coverageTracker928126_
+					cover: (38 to: 46)
+					declaredAt: (15 to: 23)
+					by: anAccount) ]
+		thatSends: #=
+		to: receiver1 ] value.
+	#_coverageTracker928126_
+		coverAll:
+			{48 to: 50}
+		evaluating: [
+			receiver6 or: [
+				[ | receiver5 |
+				receiver5 _ #_coverageTracker928126_
+					cover: (54 to: 61)
+					declaredAt: (54 to: 61)
+					by: accounts.
+				#_coverageTracker928126_
+					coverAll:
+						{63 to: 73}
+					evaluating: [
+						receiver5 anySatisfy: [ :composedAccount |
+							[ | receiver4 |
+							receiver4 _ [ | receiver2 |
+							receiver2 _ #_coverageTracker928126_
+								cover: (97 to: 111)
+								declaredAt: (78 to: 92)
+								by: composedAccount.
+							#_coverageTracker928126_
+								coverAll:
+									{113 to: 125}
+								evaluating: [
+									receiver2 isComposedBy:
+										(#_coverageTracker928126_
+											cover: (127 to: 135)
+											declaredAt: (15 to: 23)
+											by: anAccount) ]
+								thatSends: #isComposedBy:
+								to: receiver2 ] value.
+							#_coverageTracker928126_
+								coverAll:
+									{138 to: 140}
+								evaluating: [
+									receiver4 or: [
+										[ | receiver3 |
+										receiver3 _ #_coverageTracker928126_
+											cover: (144 to: 152)
+											declaredAt: (15 to: 23)
+											by: anAccount.
+										#_coverageTracker928126_
+											coverAll:
+												{154 to: 166}
+											evaluating: [
+												receiver3 isComposedBy:
+													(#_coverageTracker928126_
+														cover: (168 to: 182)
+														declaredAt: (78 to: 92)
+														by: composedAccount) ]
+											thatSends: #isComposedBy:
+											to: receiver3 ] value ]]
+								thatSends: #or:
+								to: receiver4 ] value ]]
+					thatSends: #anySatisfy:
+					to: receiver5 ] value ]]
+		thatSends: #or:
+		to: receiver6 ] value.! !
+!Behavior method!
+triedToCreateTreeStructureOfReceptiveAccountError
+	#_coverageTracker928136_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928136_
+		coverAll:
+			{55 to: 58}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928136_
+		coverAll:
+			{60 to: 65}
+		evaluating: [
+			receiver2 error:
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker928136_
+					coverAll:
+						{67 to: 70}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker928136_
+					coverAll:
+						{72 to: 131}
+					evaluating: [ receiver1 triedToCreateTreeStructureOfReceptiveAccountErrorDescription ]
+					thatSends: #triedToCreateTreeStructureOfReceptiveAccountErrorDescription
+					to: receiver1 ] value ]
+		thatSends: #error:
+		to: receiver2 ] value.! !
+!Behavior method!
+addDepositLeg: aDepositLeg
+	#_coverageTracker928151_ markAsExecuted.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker928151_
+		cover: (32 to: 37)
+		declaredAt: (32 to: 37)
+		by: report.
+	#_coverageTracker928151_
+		coverAll:
+			{39 to: 42}
+		evaluating: [
+			receiver5 add:
+				[ | receiver4 |
+				receiver4 _ [ | receiver3 |
+				receiver3 _ #_coverageTracker928151_
+					coverAll:
+						{44 to: 74}
+					byLiteralOrPseudoVariable: 'Entrada por transferencia de '.
+				#_coverageTracker928151_
+					coverAll:
+						{75 to: 75}
+					evaluating: [
+						receiver3 ,
+							[ | receiver2 |
+							receiver2 _ [ | receiver1 |
+							receiver1 _ #_coverageTracker928151_
+								cover: (77 to: 87)
+								declaredAt: (16 to: 26)
+								by: aDepositLeg.
+							#_coverageTracker928151_
+								coverAll:
+									{89 to: 93}
+								evaluating: [ receiver1 value ]
+								thatSends: #value
+								to: receiver1 ] value.
+							#_coverageTracker928151_
+								coverAll:
+									{95 to: 102}
+								evaluating: [ receiver2 asString ]
+								thatSends: #asString
+								to: receiver2 ] value ]
+					thatSends: #,
+					to: receiver3 ] value.
+				#_coverageTracker928151_
+					coverAll:
+						{103 to: 103}
+					evaluating: [
+						receiver4 ,
+							(#_coverageTracker928151_
+								coverAll:
+									{105 to: 107}
+								byLiteralOrPseudoVariable: '.') ]
+					thatSends: #,
+					to: receiver4 ] value ]
+		thatSends: #add:
+		to: receiver5 ] value.! !
+!Behavior method!
+addToReport: aReport
+	#_coverageTracker928158_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928158_
+		cover: (26 to: 32)
+		declaredAt: (14 to: 20)
+		by: aReport.
+	#_coverageTracker928158_
+		coverAll:
+			{34 to: 47}
+		evaluating: [
+			receiver1 addDepositLeg:
+				(#_coverageTracker928158_
+					coverAll:
+						{49 to: 52}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addDepositLeg:
+		to: receiver1 ] value.! !
+!Behavior method!
+initialize
+	#_coverageTracker928164_ markAsExecuted.
+	#_coverageTracker928164_
+		cover: (16 to: 23)
+		declaredAt: (16 to: 23)
+		by:
+			(accounts _ [ | receiver1 |
+			receiver1 _ #_coverageTracker928164_
+				coverAll:
+					{28 to: 44}
+				by: OrderedCollection.
+			#_coverageTracker928164_
+				coverAll:
+					{46 to: 48}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker928164_
+		cover: (53 to: 59)
+		declaredAt: (53 to: 59)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker928164_
+				coverAll:
+					{64 to: 80}
+				by: OrderedCollection.
+			#_coverageTracker928164_
+				coverAll:
+					{82 to: 84}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+addRootParentsTo: rootParents
+	#_coverageTracker928181_ markAsExecuted.
+	[ | receiver4 |
+	receiver4 _ #_coverageTracker928181_
+		cover: (35 to: 41)
+		declaredAt: (35 to: 41)
+		by: parents.
+	#_coverageTracker928181_
+		coverAll:
+			{47 to: 54. 85 to: 95}
+		evaluating: [
+			receiver4
+				ifEmpty: [
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker928181_
+						cover: (58 to: 68)
+						declaredAt: (19 to: 29)
+						by: rootParents.
+					#_coverageTracker928181_
+						coverAll:
+							{70 to: 73}
+						evaluating: [
+							receiver1 add:
+								(#_coverageTracker928181_
+									coverAll:
+										{75 to: 78}
+									byLiteralOrPseudoVariable: self) ]
+						thatSends: #add:
+						to: receiver1 ] value ]
+				ifNotEmpty: [
+					[ | receiver3 |
+					receiver3 _ #_coverageTracker928181_
+						cover: (99 to: 105)
+						declaredAt: (35 to: 41)
+						by: parents.
+					#_coverageTracker928181_
+						coverAll:
+							{107 to: 109}
+						evaluating: [
+							receiver3 do: [ :aParent |
+								[ | receiver2 |
+								receiver2 _ #_coverageTracker928181_
+									cover: (124 to: 130)
+									declaredAt: (114 to: 120)
+									by: aParent.
+								#_coverageTracker928181_
+									coverAll:
+										{132 to: 148}
+									evaluating: [
+										receiver2 addRootParentsTo:
+											(#_coverageTracker928181_
+												cover: (150 to: 160)
+												declaredAt: (19 to: 29)
+												by: rootParents) ]
+									thatSends: #addRootParentsTo:
+									to: receiver2 ] value ]]
+						thatSends: #do:
+						to: receiver3 ] value ]]
+		thatSends: #ifEmpty:ifNotEmpty:
+		to: receiver4 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker928189_ markAsExecuted.
+	^ #_coverageTracker928189_
+		cover: (13 to: 17)
+		declaredAt: (13 to: 17)
+		by: value.! !
+!Behavior method!
+transfer
+	#_coverageTracker928220_ markAsExecuted.
+	^ #_coverageTracker928220_
+		coverAll:
+			{16 to: 19}
+		byLiteralOrPseudoVariable: self.! !
+!Behavior method!
+addTransactionsTo: aCollectionOfTransactions
+	#_coverageTracker928251_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928251_
+		cover: (50 to: 57)
+		declaredAt: (50 to: 57)
+		by: accounts.
+	#_coverageTracker928251_
+		coverAll:
+			{59 to: 61}
+		evaluating: [
+			receiver2 do: [ :anAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker928251_
+					cover: (78 to: 86)
+					declaredAt: (66 to: 74)
+					by: anAccount.
+				#_coverageTracker928251_
+					coverAll:
+						{88 to: 105}
+					evaluating: [
+						receiver1 addTransactionsTo:
+							(#_coverageTracker928251_
+								cover: (107 to: 131)
+								declaredAt: (20 to: 44)
+								by: aCollectionOfTransactions) ]
+					thatSends: #addTransactionsTo:
+					to: receiver1 ] value ]]
+		thatSends: #do:
+		to: receiver2 ] value.! !
+!Behavior method!
+affectBalance: aBalance
+	#_coverageTracker928289_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928289_
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)
+		by: aBalance.
+	#_coverageTracker928289_
+		coverAll:
+			{39 to: 39}
+		evaluating: [
+			receiver1 -
+				(#_coverageTracker928289_
+					cover: (41 to: 45)
+					declaredAt: (41 to: 45)
+					by: value) ]
+		thatSends: #-
+		to: receiver1 ] value.! !
+!Behavior method!
+addWithdraw: aWithdraw
+	#_coverageTracker928350_ markAsExecuted.! !
+!Behavior method!
+affectBalance: aBalance
+	#_coverageTracker928384_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker928384_
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)
+		by: aBalance.
+	#_coverageTracker928384_
+		coverAll:
+			{39 to: 39}
+		evaluating: [
+			receiver2 +
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker928384_
+					coverAll:
+						{41 to: 44}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker928384_
+					coverAll:
+						{46 to: 50}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #+
+		to: receiver2 ] value.! !
+!Behavior method!
+balance
+	#_coverageTracker928417_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker928417_
+		cover: (14 to: 25)
+		declaredAt: (14 to: 25)
+		by: transactions.
+	#_coverageTracker928417_
+		coverAll:
+			{31 to: 37. 44 to: 48}
+		evaluating: [
+			receiver2
+				inject:
+					(#_coverageTracker928417_
+						coverAll:
+							{39 to: 39}
+						byLiteralOrPseudoVariable: 0)
+				into: [ :currentBalance :transaction |
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker928417_
+						cover: (83 to: 93)
+						declaredAt: (69 to: 79)
+						by: transaction.
+					#_coverageTracker928417_
+						coverAll:
+							{95 to: 108}
+						evaluating: [
+							receiver1 affectBalance:
+								(#_coverageTracker928417_
+									cover: (110 to: 123)
+									declaredAt: (53 to: 66)
+									by: currentBalance) ]
+						thatSends: #affectBalance:
+						to: receiver1 ] value ]]
+		thatSends: #inject:into:
+		to: receiver2 ] value.! !
+!Behavior method!
+addToReport: aReport
+	#_coverageTracker928459_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928459_
+		cover: (26 to: 32)
+		declaredAt: (14 to: 20)
+		by: aReport.
+	#_coverageTracker928459_
+		coverAll:
+			{34 to: 44}
+		evaluating: [
+			receiver1 addDeposit:
+				(#_coverageTracker928459_
+					coverAll:
+						{46 to: 49}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addDeposit:
+		to: receiver1 ] value.! !
+!Behavior method!
+value
+	#_coverageTracker928466_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928466_
+		cover: (13 to: 26)
+		declaredAt: (13 to: 26)
+		by: parentTransfer.
+	#_coverageTracker928466_
+		coverAll:
+			{28 to: 32}
+		evaluating: [ receiver1 value ]
+		thatSends: #value
+		to: receiver1 ] value.! !
+!Behavior method!
+affectBalance: aBalance
+	#_coverageTracker928475_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker928475_
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)
+		by: aBalance.
+	#_coverageTracker928475_
+		coverAll:
+			{39 to: 39}
+		evaluating: [
+			receiver2 -
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker928475_
+					coverAll:
+						{41 to: 44}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker928475_
+					coverAll:
+						{46 to: 50}
+					evaluating: [ receiver1 value ]
+					thatSends: #value
+					to: receiver1 ] value ]
+		thatSends: #-
+		to: receiver2 ] value.! !
+!Behavior method!
+addDepthNumberOfTabsTo: anAccountName
+	| tabbedName |
+	#_coverageTracker928481_ markAsExecuted.
+	#_coverageTracker928481_
+		cover: (63 to: 72)
+		declaredAt: (45 to: 54)
+		by:
+			(tabbedName _ #_coverageTracker928481_
+				cover: (77 to: 89)
+				declaredAt: (25 to: 37)
+				by: anAccountName).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928481_
+		cover: (94 to: 98)
+		declaredAt: (94 to: 98)
+		by: depth.
+	#_coverageTracker928481_
+		coverAll:
+			{100 to: 111}
+		evaluating: [
+			receiver2 timesRepeat: [
+				#_coverageTracker928481_
+					cover: (138 to: 147)
+					declaredAt: (45 to: 54)
+					by:
+						(tabbedName _ [ | receiver1 |
+						receiver1 _ #_coverageTracker928481_
+							coverAll:
+								{132 to: 135}
+							byLiteralOrPseudoVariable: '  '.
+						#_coverageTracker928481_
+							coverAll:
+								{136 to: 136}
+							evaluating: [
+								receiver1 ,
+									(#_coverageTracker928481_
+										cover: (118 to: 127)
+										declaredAt: (45 to: 54)
+										by: tabbedName) ]
+							thatSends: #,
+							to: receiver1 ] value) ]]
+		thatSends: #timesRepeat:
+		to: receiver2 ] value.
+	^ #_coverageTracker928481_
+		cover: (160 to: 169)
+		declaredAt: (45 to: 54)
+		by: tabbedName.! !
+!Behavior method!
+addDeposit: aDeposit
+	#_coverageTracker928497_ markAsExecuted.! !
+!Behavior method!
+addDeposit: aDeposit
+	#_coverageTracker928504_ markAsExecuted.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker928504_
+		cover: (26 to: 31)
+		declaredAt: (26 to: 31)
+		by: report.
+	#_coverageTracker928504_
+		coverAll:
+			{33 to: 36}
+		evaluating: [
+			receiver5 add:
+				[ | receiver4 |
+				receiver4 _ [ | receiver3 |
+				receiver3 _ #_coverageTracker928504_
+					coverAll:
+						{38 to: 52}
+					byLiteralOrPseudoVariable: 'Depósito por '.
+				#_coverageTracker928504_
+					coverAll:
+						{53 to: 53}
+					evaluating: [
+						receiver3 ,
+							[ | receiver2 |
+							receiver2 _ [ | receiver1 |
+							receiver1 _ #_coverageTracker928504_
+								cover: (55 to: 62)
+								declaredAt: (13 to: 20)
+								by: aDeposit.
+							#_coverageTracker928504_
+								coverAll:
+									{64 to: 68}
+								evaluating: [ receiver1 value ]
+								thatSends: #value
+								to: receiver1 ] value.
+							#_coverageTracker928504_
+								coverAll:
+									{70 to: 77}
+								evaluating: [ receiver2 asString ]
+								thatSends: #asString
+								to: receiver2 ] value ]
+					thatSends: #,
+					to: receiver3 ] value.
+				#_coverageTracker928504_
+					coverAll:
+						{78 to: 78}
+					evaluating: [
+						receiver4 ,
+							(#_coverageTracker928504_
+								coverAll:
+									{80 to: 82}
+								byLiteralOrPseudoVariable: '.') ]
+					thatSends: #,
+					to: receiver4 ] value ]
+		thatSends: #add:
+		to: receiver5 ] value.! !
+!Behavior method!
+affectBalance: aBalance
+	#_coverageTracker928530_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928530_
+		cover: (30 to: 37)
+		declaredAt: (16 to: 23)
+		by: aBalance.
+	#_coverageTracker928530_
+		coverAll:
+			{39 to: 39}
+		evaluating: [
+			receiver1 +
+				(#_coverageTracker928530_
+					cover: (41 to: 45)
+					declaredAt: (41 to: 45)
+					by: value) ]
+		thatSends: #+
+		to: receiver1 ] value.! !
+!Behavior method!
+accountsIsEmpty
+	#_coverageTracker928540_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928540_
+		cover: (22 to: 29)
+		declaredAt: (22 to: 29)
+		by: accounts.
+	#_coverageTracker928540_
+		coverAll:
+			{31 to: 37}
+		evaluating: [ receiver1 isEmpty ]
+		thatSends: #isEmpty
+		to: receiver1 ] value.! !
+!Behavior method!
+addDepositLeg: aDepositLeg
+	#_coverageTracker928549_ markAsExecuted.
+	#_coverageTracker928549_
+		cover: (42 to: 47)
+		declaredAt: (32 to: 37)
+		by:
+			(report _ [ | receiver2 |
+			receiver2 _ #_coverageTracker928549_
+				cover: (32 to: 37)
+				declaredAt: (32 to: 37)
+				by: report.
+			#_coverageTracker928549_
+				coverAll:
+					{49 to: 49}
+				evaluating: [
+					receiver2 +
+						[ | receiver1 |
+						receiver1 _ #_coverageTracker928549_
+							cover: (51 to: 61)
+							declaredAt: (16 to: 26)
+							by: aDepositLeg.
+						#_coverageTracker928549_
+							coverAll:
+								{63 to: 67}
+							evaluating: [ receiver1 value ]
+							thatSends: #value
+							to: receiver1 ] value ]
+				thatSends: #+
+				to: receiver2 ] value).! !
+!Behavior method!
+print
+	#_coverageTracker928561_ markAsExecuted.
+	#_coverageTracker928561_
+		cover: (11 to: 16)
+		declaredAt: (11 to: 16)
+		by:
+			(report _ [ | receiver1 |
+			receiver1 _ #_coverageTracker928561_
+				coverAll:
+					{21 to: 37}
+				by: OrderedCollection.
+			#_coverageTracker928561_
+				coverAll:
+					{39 to: 41}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928561_
+		cover: (49 to: 55)
+		declaredAt: (49 to: 55)
+		by: account.
+	#_coverageTracker928561_
+		coverAll:
+			{57 to: 67}
+		evaluating: [
+			receiver2 fillReport:
+				(#_coverageTracker928561_
+					coverAll:
+						{69 to: 72}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #fillReport:
+		to: receiver2 ] value.
+	^ #_coverageTracker928561_
+		cover: (81 to: 86)
+		declaredAt: (11 to: 16)
+		by: report.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker928568_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928568_
+		coverAll:
+			{19 to: 22}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928568_
+		coverAll:
+			{24 to: 26}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker928568_
+		coverAll:
+			{28 to: 41}
+		evaluating: [
+			receiver2 initializeFor:
+				(#_coverageTracker928568_
+					cover: (43 to: 48)
+					declaredAt: (6 to: 11)
+					by: aValue) ]
+		thatSends: #initializeFor:
+		to: receiver2 ] value.! !
+!Behavior method!
+named: anAccountName with: anAccount
+	#_coverageTracker928575_ markAsExecuted.
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928575_
+		coverAll:
+			{42 to: 45}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928575_
+		coverAll:
+			{47 to: 49}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker928575_
+		coverAll:
+			{55 to: 73}
+		evaluating: [
+			receiver2 initializeWithName:
+				(#_coverageTracker928575_
+					cover: (75 to: 87)
+					declaredAt: (8 to: 20)
+					by: anAccountName) ]
+		thatSends: #initializeWithName:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ cascadeReceiver.
+	#_coverageTracker928575_
+		coverAll:
+			{93 to: 96}
+		evaluating: [
+			receiver3 add:
+				(#_coverageTracker928575_
+					cover: (98 to: 106)
+					declaredAt: (28 to: 36)
+					by: anAccount) ]
+		thatSends: #add:
+		to: receiver3 ] value.
+	[ | receiver4 |
+	receiver4 _ cascadeReceiver.
+	#_coverageTracker928575_
+		coverAll:
+			{112 to: 119}
+		evaluating: [ receiver4 yourself ]
+		thatSends: #yourself
+		to: receiver4 ] value ] value.! !
+!Behavior method!
+ofAccount: anAccount
+	#_coverageTracker928582_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928582_
+		cover: (26 to: 34)
+		declaredAt: (12 to: 20)
+		by: anAccount.
+	#_coverageTracker928582_
+		coverAll:
+			{36 to: 61}
+		evaluating: [ receiver1 triedToCreateTreeStructure ]
+		thatSends: #triedToCreateTreeStructure
+		to: receiver1 ] value.
+	^ [ | receiver3 |
+	receiver3 _ [ | receiver2 |
+	receiver2 _ #_coverageTracker928582_
+		coverAll:
+			{71 to: 74}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928582_
+		coverAll:
+			{76 to: 78}
+		evaluating: [ receiver2 new ]
+		thatSends: #new
+		to: receiver2 ] value.
+	#_coverageTracker928582_
+		coverAll:
+			{80 to: 89}
+		evaluating: [
+			receiver3 ofAccount:
+				(#_coverageTracker928582_
+					cover: (91 to: 99)
+					declaredAt: (12 to: 20)
+					by: anAccount) ]
+		thatSends: #ofAccount:
+		to: receiver3 ] value.! !
+!Behavior method!
+fillReport: aReport
+	#_coverageTracker928597_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928597_
+		cover: (25 to: 31)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker928597_
+		coverAll:
+			{33 to: 40}
+		evaluating: [
+			receiver1 addName:
+				(#_coverageTracker928597_
+					cover: (42 to: 45)
+					declaredAt: (42 to: 45)
+					by: name) ]
+		thatSends: #addName:
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928597_
+		cover: (52 to: 58)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker928597_
+		coverAll:
+			{60 to: 72}
+		evaluating: [ receiver2 increaseDepth ]
+		thatSends: #increaseDepth
+		to: receiver2 ] value.
+	[ | receiver4 |
+	receiver4 _ #_coverageTracker928597_
+		cover: (79 to: 86)
+		declaredAt: (79 to: 86)
+		by: accounts.
+	#_coverageTracker928597_
+		coverAll:
+			{88 to: 90}
+		evaluating: [
+			receiver4 do: [ :anAccount |
+				[ | receiver3 |
+				receiver3 _ #_coverageTracker928597_
+					cover: (107 to: 115)
+					declaredAt: (95 to: 103)
+					by: anAccount.
+				#_coverageTracker928597_
+					coverAll:
+						{117 to: 127}
+					evaluating: [
+						receiver3 fillReport:
+							(#_coverageTracker928597_
+								cover: (129 to: 135)
+								declaredAt: (13 to: 19)
+								by: aReport) ]
+					thatSends: #fillReport:
+					to: receiver3 ] value ]]
+		thatSends: #do:
+		to: receiver4 ] value.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker928597_
+		cover: (145 to: 151)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker928597_
+		coverAll:
+			{153 to: 165}
+		evaluating: [ receiver5 decreaseDepth ]
+		thatSends: #decreaseDepth
+		to: receiver5 ] value.
+	[ | receiver7 |
+	receiver7 _ #_coverageTracker928597_
+		cover: (173 to: 179)
+		declaredAt: (13 to: 19)
+		by: aReport.
+	#_coverageTracker928597_
+		coverAll:
+			{181 to: 191}
+		evaluating: [
+			receiver7 addBalance:
+				[ | receiver6 |
+				receiver6 _ #_coverageTracker928597_
+					coverAll:
+						{193 to: 196}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker928597_
+					coverAll:
+						{198 to: 204}
+					evaluating: [ receiver6 balance ]
+					thatSends: #balance
+					to: receiver6 ] value ]
+		thatSends: #addBalance:
+		to: receiver7 ] value.! !
+!Behavior method!
+triedToCreateTreeStructure
+	#_coverageTracker928608_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928608_
+		coverAll:
+			{32 to: 44}
+		by: TreeStructure.
+	#_coverageTracker928608_
+		coverAll:
+			{46 to: 94}
+		evaluating: [ receiver1 triedToCreateTreeStructureOfReceptiveAccountError ]
+		thatSends: #triedToCreateTreeStructureOfReceptiveAccountError
+		to: receiver1 ] value.! !
+!Behavior method!
+transactions
+	#_coverageTracker928615_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928615_
+		cover: (21 to: 32)
+		declaredAt: (21 to: 32)
+		by: transactions.
+	#_coverageTracker928615_
+		coverAll:
+			{34 to: 37}
+		evaluating: [ receiver1 copy ]
+		thatSends: #copy
+		to: receiver1 ] value.! !
+!Behavior method!
+balance
+	#_coverageTracker928628_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker928628_
+		cover: (15 to: 22)
+		declaredAt: (15 to: 22)
+		by: accounts.
+	#_coverageTracker928628_
+		coverAll:
+			{24 to: 27. 64 to: 71}
+		evaluating: [
+			receiver2
+				sum: [ :anAccount |
+					[ | receiver1 |
+					receiver1 _ #_coverageTracker928628_
+						cover: (44 to: 52)
+						declaredAt: (32 to: 40)
+						by: anAccount.
+					#_coverageTracker928628_
+						coverAll:
+							{54 to: 60}
+						evaluating: [ receiver1 balance ]
+						thatSends: #balance
+						to: receiver1 ] value ]
+				ifEmpty: [
+					#_coverageTracker928628_
+						coverAll:
+							{75 to: 75}
+						byLiteralOrPseudoVariable: 0 ]]
+		thatSends: #sum:ifEmpty:
+		to: receiver2 ] value.! !
+!Behavior method!
+initialize
+	#_coverageTracker928636_ markAsExecuted.
+	#_coverageTracker928636_
+		coverAll:
+			{22 to: 31}
+		evaluating: [ super initialize ]
+		thatSends: #initialize
+		to: super.
+	#_coverageTracker928636_
+		cover: (36 to: 47)
+		declaredAt: (36 to: 47)
+		by:
+			(transactions _ [ | receiver1 |
+			receiver1 _ #_coverageTracker928636_
+				coverAll:
+					{52 to: 68}
+				by: OrderedCollection.
+			#_coverageTracker928636_
+				coverAll:
+					{70 to: 72}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).! !
+!Behavior method!
+withdrawalLeg
+	#_coverageTracker928659_ markAsExecuted.
+	^ #_coverageTracker928659_
+		cover: (21 to: 33)
+		declaredAt: (21 to: 33)
+		by: withdrawalLeg.! !
+!Behavior method!
+named: anAccountName
+	#_coverageTracker928691_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928691_
+		coverAll:
+			{27 to: 30}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928691_
+		coverAll:
+			{32 to: 34}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker928691_
+		coverAll:
+			{36 to: 54}
+		evaluating: [
+			receiver2 initializeWithName:
+				(#_coverageTracker928691_
+					cover: (56 to: 68)
+					declaredAt: (8 to: 20)
+					by: anAccountName) ]
+		thatSends: #initializeWithName:
+		to: receiver2 ] value.! !
+!Behavior method!
+rootParents
+	| rootParents |
+	#_coverageTracker928716_ markAsExecuted.
+	#_coverageTracker928716_
+		cover: (38 to: 48)
+		declaredAt: (19 to: 29)
+		by:
+			(rootParents _ [ | receiver1 |
+			receiver1 _ #_coverageTracker928716_
+				coverAll:
+					{53 to: 55}
+				by: Set.
+			#_coverageTracker928716_
+				coverAll:
+					{57 to: 59}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928716_
+		coverAll:
+			{67 to: 70}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928716_
+		coverAll:
+			{72 to: 88}
+		evaluating: [
+			receiver2 addRootParentsTo:
+				(#_coverageTracker928716_
+					cover: (90 to: 100)
+					declaredAt: (19 to: 29)
+					by: rootParents) ]
+		thatSends: #addRootParentsTo:
+		to: receiver2 ] value.
+	^ #_coverageTracker928716_
+		cover: (110 to: 120)
+		declaredAt: (19 to: 29)
+		by: rootParents.! !
+!Behavior method!
+with: anAccount
+	#_coverageTracker928750_ markAsExecuted.
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928750_
+		coverAll:
+			{22 to: 25}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928750_
+		coverAll:
+			{27 to: 29}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ cascadeReceiver.
+	#_coverageTracker928750_
+		coverAll:
+			{35 to: 38}
+		evaluating: [
+			receiver2 add:
+				(#_coverageTracker928750_
+					cover: (40 to: 48)
+					declaredAt: (7 to: 15)
+					by: anAccount) ]
+		thatSends: #add:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ cascadeReceiver.
+	#_coverageTracker928750_
+		coverAll:
+			{54 to: 61}
+		evaluating: [ receiver3 yourself ]
+		thatSends: #yourself
+		to: receiver3 ] value ] value.! !
+!Behavior method!
+value
+	#_coverageTracker928775_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928775_
+		cover: (13 to: 26)
+		declaredAt: (13 to: 26)
+		by: parentTransfer.
+	#_coverageTracker928775_
+		coverAll:
+			{28 to: 32}
+		evaluating: [ receiver1 value ]
+		thatSends: #value
+		to: receiver1 ] value.! !
+!Behavior method!
+hasRegistered: aTransaction
+	#_coverageTracker928814_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ #_coverageTracker928814_
+		cover: (34 to: 41)
+		declaredAt: (34 to: 41)
+		by: accounts.
+	#_coverageTracker928814_
+		coverAll:
+			{43 to: 53}
+		evaluating: [
+			receiver2 anySatisfy: [ :anAccount |
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker928814_
+					cover: (70 to: 78)
+					declaredAt: (58 to: 66)
+					by: anAccount.
+				#_coverageTracker928814_
+					coverAll:
+						{80 to: 93}
+					evaluating: [
+						receiver1 hasRegistered:
+							(#_coverageTracker928814_
+								cover: (95 to: 106)
+								declaredAt: (16 to: 27)
+								by: aTransaction) ]
+					thatSends: #hasRegistered:
+					to: receiver1 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver2 ] value.! !
+!Behavior method!
+increaseDepth
+	#_coverageTracker928843_ markAsExecuted.! !
+!Behavior method!
+hasRegistered: aTransaction
+	#_coverageTracker928851_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker928851_
+		cover: (35 to: 46)
+		declaredAt: (35 to: 46)
+		by: transactions.
+	#_coverageTracker928851_
+		coverAll:
+			{48 to: 56}
+		evaluating: [
+			receiver1 includes:
+				(#_coverageTracker928851_
+					cover: (58 to: 69)
+					declaredAt: (16 to: 27)
+					by: aTransaction) ]
+		thatSends: #includes:
+		to: receiver1 ] value.! !
+!Behavior method!
+add: accountToAdd
+	#_coverageTracker928864_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker928864_
+		coverAll:
+			{23 to: 26}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928864_
+		coverAll:
+			{28 to: 40}
+		evaluating: [
+			receiver1 assertCanAdd:
+				(#_coverageTracker928864_
+					cover: (42 to: 53)
+					declaredAt: (6 to: 17)
+					by: accountToAdd) ]
+		thatSends: #assertCanAdd:
+		to: receiver1 ] value.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928864_
+		cover: (61 to: 68)
+		declaredAt: (61 to: 68)
+		by: accounts.
+	#_coverageTracker928864_
+		coverAll:
+			{70 to: 73}
+		evaluating: [
+			receiver2 add:
+				(#_coverageTracker928864_
+					cover: (75 to: 86)
+					declaredAt: (6 to: 17)
+					by: accountToAdd) ]
+		thatSends: #add:
+		to: receiver2 ] value.
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker928864_
+		cover: (94 to: 105)
+		declaredAt: (6 to: 17)
+		by: accountToAdd.
+	#_coverageTracker928864_
+		coverAll:
+			{107 to: 114}
+		evaluating: [
+			receiver3 addedTo:
+				(#_coverageTracker928864_
+					coverAll:
+						{116 to: 119}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #addedTo:
+		to: receiver3 ] value.! !
+!Behavior method!
+for: aValue
+	#_coverageTracker928874_ markAsExecuted.
+	^ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928874_
+		coverAll:
+			{19 to: 22}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928874_
+		coverAll:
+			{24 to: 26}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker928874_
+		coverAll:
+			{28 to: 41}
+		evaluating: [
+			receiver2 initializeFor:
+				(#_coverageTracker928874_
+					cover: (43 to: 48)
+					declaredAt: (6 to: 11)
+					by: aValue) ]
+		thatSends: #initializeFor:
+		to: receiver2 ] value.! !
+!Behavior method!
+transactions
+	| transactions |
+	#_coverageTracker928882_ markAsExecuted.
+	#_coverageTracker928882_
+		cover: (41 to: 52)
+		declaredAt: (21 to: 32)
+		by:
+			(transactions _ [ | receiver1 |
+			receiver1 _ #_coverageTracker928882_
+				coverAll:
+					{57 to: 73}
+				by: OrderedCollection.
+			#_coverageTracker928882_
+				coverAll:
+					{75 to: 77}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker928882_
+		cover: (82 to: 89)
+		declaredAt: (82 to: 89)
+		by: accounts.
+	#_coverageTracker928882_
+		coverAll:
+			{91 to: 93}
+		evaluating: [
+			receiver3 do: [ :anAccount |
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker928882_
+					cover: (110 to: 118)
+					declaredAt: (98 to: 106)
+					by: anAccount.
+				#_coverageTracker928882_
+					coverAll:
+						{120 to: 137}
+					evaluating: [
+						receiver2 addTransactionsTo:
+							(#_coverageTracker928882_
+								cover: (139 to: 150)
+								declaredAt: (21 to: 32)
+								by: transactions) ]
+					thatSends: #addTransactionsTo:
+					to: receiver2 ] value ]]
+		thatSends: #do:
+		to: receiver3 ] value.
+	^ #_coverageTracker928882_
+		cover: (161 to: 172)
+		declaredAt: (21 to: 32)
+		by: transactions.! !
+!Behavior method!
+depositLeg
+	#_coverageTracker928893_ markAsExecuted.
+	^ #_coverageTracker928893_
+		cover: (18 to: 27)
+		declaredAt: (18 to: 27)
+		by: depositLeg.! !
+!Behavior method!
+value
+	#_coverageTracker928900_ markAsExecuted.
+	^ #_coverageTracker928900_
+		cover: (13 to: 17)
+		declaredAt: (13 to: 17)
+		by: value.! !
+!Behavior method!
+named: anAccountName with: anAccount with: anotherAccount
+	#_coverageTracker928909_ markAsExecuted.
+	^ [ | cascadeReceiver |
+	cascadeReceiver _ [ | receiver3 |
+	receiver3 _ [ | receiver2 |
+	receiver2 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker928909_
+		coverAll:
+			{66 to: 69}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker928909_
+		coverAll:
+			{71 to: 73}
+		evaluating: [ receiver1 new ]
+		thatSends: #new
+		to: receiver1 ] value.
+	#_coverageTracker928909_
+		coverAll:
+			{79 to: 97}
+		evaluating: [
+			receiver2 initializeWithName:
+				(#_coverageTracker928909_
+					cover: (99 to: 111)
+					declaredAt: (8 to: 20)
+					by: anAccountName) ]
+		thatSends: #initializeWithName:
+		to: receiver2 ] value.
+	#_coverageTracker928909_
+		coverAll:
+			{117 to: 120}
+		evaluating: [
+			receiver3 add:
+				(#_coverageTracker928909_
+					cover: (122 to: 130)
+					declaredAt: (28 to: 36)
+					by: anAccount) ]
+		thatSends: #add:
+		to: receiver3 ] value.
+	[ | receiver4 |
+	receiver4 _ cascadeReceiver.
+	#_coverageTracker928909_
+		coverAll:
+			{136 to: 139}
+		evaluating: [
+			receiver4 add:
+				(#_coverageTracker928909_
+					cover: (141 to: 154)
+					declaredAt: (44 to: 57)
+					by: anotherAccount) ]
+		thatSends: #add:
+		to: receiver4 ] value.
+	[ | receiver5 |
+	receiver5 _ cascadeReceiver.
+	#_coverageTracker928909_
+		coverAll:
+			{160 to: 167}
+		evaluating: [ receiver5 yourself ]
+		thatSends: #yourself
+		to: receiver5 ] value ] value.! !
+!Behavior method!
+decreaseDepth
+	#_coverageTracker928918_ markAsExecuted.! !
+!Behavior method!
+addName: anAccountName
+	#_coverageTracker928926_ markAsExecuted.
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker928926_
+		cover: (28 to: 33)
+		declaredAt: (28 to: 33)
+		by: report.
+	#_coverageTracker928926_
+		coverAll:
+			{35 to: 38}
+		evaluating: [
+			receiver2 add:
+				[ | receiver1 |
+				receiver1 _ #_coverageTracker928926_
+					coverAll:
+						{41 to: 44}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker928926_
+					coverAll:
+						{46 to: 68}
+					evaluating: [
+						receiver1 addDepthNumberOfTabsTo:
+							(#_coverageTracker928926_
+								cover: (70 to: 82)
+								declaredAt: (10 to: 22)
+								by: anAccountName) ]
+					thatSends: #addDepthNumberOfTabsTo:
+					to: receiver1 ] value ]
+		thatSends: #add:
+		to: receiver2 ] value.! !
+!Behavior method!
+parentTransfer
+	#_coverageTracker928940_ markAsExecuted.
+	^ #_coverageTracker928940_
+		cover: (22 to: 35)
+		declaredAt: (22 to: 35)
+		by: parentTransfer.! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker928949_ markAsExecuted.
+	#_coverageTracker928949_
+		cover: (27 to: 31)
+		declaredAt: (27 to: 31)
+		by:
+			(value _ #_coverageTracker928949_
+				cover: (36 to: 41)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+!Behavior method!
+increaseDepth
+	#_coverageTracker928957_ markAsExecuted.
+	#_coverageTracker928957_
+		cover: (28 to: 32)
+		declaredAt: (19 to: 23)
+		by:
+			(depth _ [ | receiver1 |
+			receiver1 _ #_coverageTracker928957_
+				cover: (19 to: 23)
+				declaredAt: (19 to: 23)
+				by: depth.
+			#_coverageTracker928957_
+				coverAll:
+					{34 to: 34}
+				evaluating: [
+					receiver1 +
+						(#_coverageTracker928957_
+							coverAll:
+								{35 to: 36}
+							byLiteralOrPseudoVariable: 1) ]
+				thatSends: #+
+				to: receiver1 ] value).! !
+!Behavior method!
+triedToCreateTreeStructureOfReceptiveAccountErrorDescription
+	#_coverageTracker928974_ markAsExecuted.
+	^ #_coverageTracker928974_
+		coverAll:
+			{68 to: 157}
+		byLiteralOrPseudoVariable: 'Se intentó crear un TreeStructure de una ReceptiveAccount y sólo se puede con portfolios'.! !
+!Behavior method!
+addBalance: aBalanceValue
+	#_coverageTracker928988_ markAsExecuted.
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker928988_
+		cover: (31 to: 36)
+		declaredAt: (31 to: 36)
+		by: report.
+	#_coverageTracker928988_
+		coverAll:
+			{38 to: 41}
+		evaluating: [
+			receiver3 add:
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker928988_
+					coverAll:
+						{43 to: 54}
+					byLiteralOrPseudoVariable: 'Balance = '.
+				#_coverageTracker928988_
+					coverAll:
+						{55 to: 55}
+					evaluating: [
+						receiver2 ,
+							[ | receiver1 |
+							receiver1 _ #_coverageTracker928988_
+								cover: (57 to: 69)
+								declaredAt: (13 to: 25)
+								by: aBalanceValue.
+							#_coverageTracker928988_
+								coverAll:
+									{71 to: 78}
+								evaluating: [ receiver1 asString ]
+								thatSends: #asString
+								to: receiver1 ] value ]
+					thatSends: #,
+					to: receiver2 ] value ]
+		thatSends: #add:
+		to: receiver3 ] value.! !
+!Behavior method!
+addWithdrawLeg: aWithdrawLeg
+	#_coverageTracker929004_ markAsExecuted.! !
+!Behavior method!
+initializeWithName: anAccountName
+	#_coverageTracker929011_ markAsExecuted.
+	#_coverageTracker929011_
+		cover: (39 to: 42)
+		declaredAt: (39 to: 42)
+		by:
+			(name _ #_coverageTracker929011_
+				cover: (47 to: 59)
+				declaredAt: (21 to: 33)
+				by: anAccountName).
+	#_coverageTracker929011_
+		cover: (66 to: 73)
+		declaredAt: (66 to: 73)
+		by:
+			(accounts _ [ | receiver1 |
+			receiver1 _ #_coverageTracker929011_
+				coverAll:
+					{78 to: 94}
+				by: OrderedCollection.
+			#_coverageTracker929011_
+				coverAll:
+					{96 to: 98}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).
+	#_coverageTracker929011_
+		cover: (103 to: 109)
+		declaredAt: (103 to: 109)
+		by:
+			(parents _ [ | receiver2 |
+			receiver2 _ #_coverageTracker929011_
+				coverAll:
+					{114 to: 130}
+				by: OrderedCollection.
+			#_coverageTracker929011_
+				coverAll:
+					{132 to: 134}
+				evaluating: [ receiver2 new ]
+				thatSends: #new
+				to: receiver2 ] value).! !
+!Behavior method!
+addWithdrawLeg: aWithdrawLeg
+	#_coverageTracker929024_ markAsExecuted.
+	[ | receiver5 |
+	receiver5 _ #_coverageTracker929024_
+		cover: (34 to: 39)
+		declaredAt: (34 to: 39)
+		by: report.
+	#_coverageTracker929024_
+		coverAll:
+			{41 to: 44}
+		evaluating: [
+			receiver5 add:
+				[ | receiver4 |
+				receiver4 _ [ | receiver3 |
+				receiver3 _ #_coverageTracker929024_
+					coverAll:
+						{46 to: 75}
+					byLiteralOrPseudoVariable: 'Salida por transferencia de '.
+				#_coverageTracker929024_
+					coverAll:
+						{76 to: 76}
+					evaluating: [
+						receiver3 ,
+							[ | receiver2 |
+							receiver2 _ [ | receiver1 |
+							receiver1 _ #_coverageTracker929024_
+								cover: (78 to: 89)
+								declaredAt: (17 to: 28)
+								by: aWithdrawLeg.
+							#_coverageTracker929024_
+								coverAll:
+									{91 to: 95}
+								evaluating: [ receiver1 value ]
+								thatSends: #value
+								to: receiver1 ] value.
+							#_coverageTracker929024_
+								coverAll:
+									{97 to: 104}
+								evaluating: [ receiver2 asString ]
+								thatSends: #asString
+								to: receiver2 ] value ]
+					thatSends: #,
+					to: receiver3 ] value.
+				#_coverageTracker929024_
+					coverAll:
+						{105 to: 105}
+					evaluating: [
+						receiver4 ,
+							(#_coverageTracker929024_
+								coverAll:
+									{107 to: 109}
+								byLiteralOrPseudoVariable: '.') ]
+					thatSends: #,
+					to: receiver4 ] value ]
+		thatSends: #add:
+		to: receiver5 ] value.! !
+!Behavior method!
+decreaseDepth
+	#_coverageTracker929040_ markAsExecuted.
+	#_coverageTracker929040_
+		cover: (28 to: 32)
+		declaredAt: (19 to: 23)
+		by:
+			(depth _ [ | receiver1 |
+			receiver1 _ #_coverageTracker929040_
+				cover: (19 to: 23)
+				declaredAt: (19 to: 23)
+				by: depth.
+			#_coverageTracker929040_
+				coverAll:
+					{34 to: 34}
+				evaluating: [
+					receiver1 -
+						(#_coverageTracker929040_
+							coverAll:
+								{35 to: 36}
+							byLiteralOrPseudoVariable: 1) ]
+				thatSends: #-
+				to: receiver1 ] value).! !
+!Behavior method!
+print
+	#_coverageTracker929049_ markAsExecuted.
+	#_coverageTracker929049_
+		cover: (11 to: 16)
+		declaredAt: (11 to: 16)
+		by:
+			(report _ #_coverageTracker929049_
+				coverAll:
+					{21 to: 21}
+				byLiteralOrPseudoVariable: 0).
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker929049_
+		cover: (29 to: 35)
+		declaredAt: (29 to: 35)
+		by: account.
+	#_coverageTracker929049_
+		coverAll:
+			{37 to: 47}
+		evaluating: [
+			receiver1 fillReport:
+				(#_coverageTracker929049_
+					coverAll:
+						{49 to: 52}
+					byLiteralOrPseudoVariable: self) ]
+		thatSends: #fillReport:
+		to: receiver1 ] value.
+	^ #_coverageTracker929049_
+		cover: (61 to: 66)
+		declaredAt: (11 to: 16)
+		by: report.! !
+!Behavior method!
+isComposedBy: anAccount
+	#_coverageTracker929055_ markAsExecuted.
+	^ [ | receiver1 |
+	receiver1 _ #_coverageTracker929055_
+		coverAll:
+			{30 to: 33}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker929055_
+		coverAll:
+			{35 to: 35}
+		evaluating: [
+			receiver1 =
+				(#_coverageTracker929055_
+					cover: (37 to: 45)
+					declaredAt: (15 to: 23)
+					by: anAccount) ]
+		thatSends: #=
+		to: receiver1 ] value.! !
+!Behavior method!
+triedToCreateTreeStructure
+	#_coverageTracker929068_ markAsExecuted.! !
+!Behavior method!
+signalCanNotAddAccount
+	#_coverageTracker929075_ markAsExecuted.
+	[ | receiver3 |
+	receiver3 _ #_coverageTracker929075_
+		coverAll:
+			{29 to: 32}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker929075_
+		coverAll:
+			{34 to: 39}
+		evaluating: [
+			receiver3 error:
+				[ | receiver2 |
+				receiver2 _ [ | receiver1 |
+				receiver1 _ #_coverageTracker929075_
+					coverAll:
+						{41 to: 44}
+					byLiteralOrPseudoVariable: self.
+				#_coverageTracker929075_
+					coverAll:
+						{46 to: 50}
+					evaluating: [ receiver1 class ]
+					thatSends: #class
+					to: receiver1 ] value.
+				#_coverageTracker929075_
+					coverAll:
+						{52 to: 79}
+					evaluating: [ receiver2 canNotAddAccountErrorMessage ]
+					thatSends: #canNotAddAccountErrorMessage
+					to: receiver2 ] value ]
+		thatSends: #error:
+		to: receiver3 ] value.! !
+!Behavior method!
+addWithdrawLeg: aWithdrawLeg
+	#_coverageTracker929083_ markAsExecuted.
+	#_coverageTracker929083_
+		cover: (44 to: 49)
+		declaredAt: (34 to: 39)
+		by:
+			(report _ [ | receiver2 |
+			receiver2 _ #_coverageTracker929083_
+				cover: (34 to: 39)
+				declaredAt: (34 to: 39)
+				by: report.
+			#_coverageTracker929083_
+				coverAll:
+					{51 to: 51}
+				evaluating: [
+					receiver2 -
+						[ | receiver1 |
+						receiver1 _ #_coverageTracker929083_
+							cover: (53 to: 64)
+							declaredAt: (17 to: 28)
+							by: aWithdrawLeg.
+						#_coverageTracker929083_
+							coverAll:
+								{66 to: 70}
+							evaluating: [ receiver1 value ]
+							thatSends: #value
+							to: receiver1 ] value ]
+				thatSends: #-
+				to: receiver2 ] value).! !
+!Behavior method!
+fromTransfer: aTransfer
+	#_coverageTracker929099_ markAsExecuted.
+	#_coverageTracker929099_
+		cover: (29 to: 42)
+		declaredAt: (29 to: 42)
+		by:
+			(parentTransfer _ #_coverageTracker929099_
+				cover: (47 to: 55)
+				declaredAt: (15 to: 23)
+				by: aTransfer).! !
+!Behavior method!
+ofAccount: anAccount
+	#_coverageTracker929106_ markAsExecuted.
+	#_coverageTracker929106_
+		cover: (26 to: 32)
+		declaredAt: (26 to: 32)
+		by:
+			(account _ #_coverageTracker929106_
+				cover: (37 to: 45)
+				declaredAt: (12 to: 20)
+				by: anAccount).
+	#_coverageTracker929106_
+		cover: (53 to: 57)
+		declaredAt: (53 to: 57)
+		by:
+			(depth _ #_coverageTracker929106_
+				coverAll:
+					{62 to: 62}
+				byLiteralOrPseudoVariable: 0).! !
+!Behavior method!
+initializeWithName: anAccountName
+	#_coverageTracker929112_ markAsExecuted.
+	#_coverageTracker929112_
+		coverAll:
+			{45 to: 54}
+		evaluating: [ super initialize ]
+		thatSends: #initialize
+		to: super.
+	#_coverageTracker929112_
+		cover: (62 to: 65)
+		declaredAt: (62 to: 65)
+		by:
+			(name _ #_coverageTracker929112_
+				cover: (70 to: 82)
+				declaredAt: (21 to: 33)
+				by: anAccountName).
+	#_coverageTracker929112_
+		cover: (90 to: 101)
+		declaredAt: (90 to: 101)
+		by:
+			(transactions _ [ | receiver1 |
+			receiver1 _ #_coverageTracker929112_
+				coverAll:
+					{106 to: 122}
+				by: OrderedCollection.
+			#_coverageTracker929112_
+				coverAll:
+					{124 to: 126}
+				evaluating: [ receiver1 new ]
+				thatSends: #new
+				to: receiver1 ] value).! !
+!Behavior method!
+addedTo: aPortfolio
+	#_coverageTracker929121_ markAsExecuted.
+	[ | receiver1 |
+	receiver1 _ #_coverageTracker929121_
+		cover: (26 to: 32)
+		declaredAt: (26 to: 32)
+		by: parents.
+	#_coverageTracker929121_
+		coverAll:
+			{34 to: 37}
+		evaluating: [
+			receiver1 add:
+				(#_coverageTracker929121_
+					cover: (39 to: 48)
+					declaredAt: (10 to: 19)
+					by: aPortfolio) ]
+		thatSends: #add:
+		to: receiver1 ] value.! !
+!Behavior method!
+anyRootParentIsComposedBy: accountToAdd
+	#_coverageTracker929130_ markAsExecuted.
+	^ [ | receiver3 |
+	receiver3 _ [ | receiver1 |
+	receiver1 _ #_coverageTracker929130_
+		coverAll:
+			{46 to: 49}
+		byLiteralOrPseudoVariable: self.
+	#_coverageTracker929130_
+		coverAll:
+			{51 to: 61}
+		evaluating: [ receiver1 rootParents ]
+		thatSends: #rootParents
+		to: receiver1 ] value.
+	#_coverageTracker929130_
+		coverAll:
+			{63 to: 73}
+		evaluating: [
+			receiver3 anySatisfy: [ :aParent |
+				[ | receiver2 |
+				receiver2 _ #_coverageTracker929130_
+					cover: (88 to: 94)
+					declaredAt: (78 to: 84)
+					by: aParent.
+				#_coverageTracker929130_
+					coverAll:
+						{96 to: 108}
+					evaluating: [
+						receiver2 isComposedBy:
+							(#_coverageTracker929130_
+								cover: (110 to: 121)
+								declaredAt: (28 to: 39)
+								by: accountToAdd) ]
+					thatSends: #isComposedBy:
+					to: receiver2 ] value ]]
+		thatSends: #anySatisfy:
+		to: receiver3 ] value.! !
+!Behavior method!
+fromTransfer: aTransfer
+	#_coverageTracker929137_ markAsExecuted.
+	#_coverageTracker929137_
+		cover: (29 to: 42)
+		declaredAt: (29 to: 42)
+		by:
+			(parentTransfer _ #_coverageTracker929137_
+				cover: (47 to: 55)
+				declaredAt: (15 to: 23)
+				by: aTransfer).! !
+!Behavior method!
+register: aValue on: account
+	| transaction |
+	#_coverageTracker929143_ markAsExecuted.
+	#_coverageTracker929143_
+		cover: (55 to: 65)
+		declaredAt: (36 to: 46)
+		by:
+			(transaction _ [ | receiver1 |
+			receiver1 _ #_coverageTracker929143_
+				coverAll:
+					{70 to: 73}
+				byLiteralOrPseudoVariable: self.
+			#_coverageTracker929143_
+				coverAll:
+					{75 to: 78}
+				evaluating: [
+					receiver1 for:
+						(#_coverageTracker929143_
+							cover: (80 to: 85)
+							declaredAt: (11 to: 16)
+							by: aValue) ]
+				thatSends: #for:
+				to: receiver1 ] value).
+	[ | receiver2 |
+	receiver2 _ #_coverageTracker929143_
+		cover: (90 to: 96)
+		declaredAt: (22 to: 28)
+		by: account.
+	#_coverageTracker929143_
+		coverAll:
+			{98 to: 106}
+		evaluating: [
+			receiver2 register:
+				(#_coverageTracker929143_
+					cover: (108 to: 118)
+					declaredAt: (36 to: 46)
+					by: transaction) ]
+		thatSends: #register:
+		to: receiver2 ] value.
+	^ #_coverageTracker929143_
+		cover: (129 to: 139)
+		declaredAt: (36 to: 46)
+		by: transaction.! !
+!Behavior method!
+initializeFor: aValue
+	#_coverageTracker929148_ markAsExecuted.
+	#_coverageTracker929148_
+		cover: (27 to: 31)
+		declaredAt: (27 to: 31)
+		by:
+			(value _ #_coverageTracker929148_
+				cover: (36 to: 41)
+				declaredAt: (16 to: 21)
+				by: aValue).! !
+!Behavior method!
+addBalance: aBalanceValue
+	#_coverageTracker929162_ markAsExecuted.! !
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 15:47:10'!
+PASSED!
+
+!methodRemoval: Transfer #transfer stamp: 'SF 6/1/2023 15:48:25'!
+transfer
+
+	^ self!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 15:48:38'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 15:48:39'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 15:54:23'!
+PASSED!
+
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: 'depth'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TreeStructureWithSummary category: 'Portfolio-Solucion' stamp: 'SF 6/1/2023 15:56:35'!
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: 'depth'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+ReportTest subclass: #TreeStructureWithSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TreeStructureWithSummaryTest category: 'Portfolio-Solucion' stamp: 'SF 6/1/2023 15:57:24'!
+ReportTest subclass: #TreeStructureWithSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TreeStructureWithSummaryTest methodsFor: 'no messages' stamp: 'SF 6/1/2023 15:58:40'!
+test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance
+
+	| portfolio report |
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi'.
+	
+	report := TreeStructure ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Balance = 0') equals: report print.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 15:58:50'!
+FAILURE!
+!TreeStructureWithSummary methodsFor: 'no messages' stamp: 'SF 6/1/2023 15:59:14' overrides: 50666062!
+addBalance: aBalanceValue
+
+	report add: 'Balance = ', aBalanceValue asString.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 15:59:27'!
+FAILURE!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 15:59:53' prior: 50669373!
+test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance
+
+	| portfolio report |
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi'.
+	
+	report := TreeStructureWithSummary ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Balance = 0') equals: report print.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 15:59:55'!
+ERROR!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 15:59:55'!
+ERROR!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:00:41' prior: 50669402!
+test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance
+
+	| portfolio report |
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi'.
+	
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Balance = 0') equals: report print.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:00:42'!
+ERROR!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:01:06' overrides: 50666097!
+print
+
+	report := OrderedCollection new.
+	
+	account fillReport: self.
+	
+	^report.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:01:08'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:01:08'!
+FAILURE!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:01:24' overrides: 50666074!
+addName: anAccountName
+
+	report add: (self addDepthNumberOfTabsTo: anAccountName)! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:01:25'!
+ERROR!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:01:25'!
+ERROR!
+
+TreeStructure subclass: #TreeStructureWithSummary
+	instanceVariableNames: 'depth'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+TreeStructure subclass: #TreeStructureWithSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TreeStructureWithSummary category: 'Portfolio-Solucion' stamp: 'SF 6/1/2023 16:02:18'!
+TreeStructure subclass: #TreeStructureWithSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TreeStructureWithSummary category: 'Portfolio-Solucion' stamp: 'SF 6/1/2023 16:03:18'!
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: 'depth'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TreeStructureWithSummary category: 'Portfolio-Solucion' stamp: 'SF 6/1/2023 16:03:27'!
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: 'depth'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:03:40'!
+addDepthNumberOfTabsTo: anAccountName
+
+	| tabbedName |
+	
+	tabbedName := anAccountName.
+	depth timesRepeat: [
+		tabbedName := '  ', tabbedName.
+		].
+	^ tabbedName.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:03:41'!
+ERROR!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:03:41'!
+ERROR!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:04:13' overrides: 50666086!
+decreaseDepth
+
+	depth := depth - 1! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:04:20' overrides: 50666089!
+increaseDepth
+
+	depth := depth - 1! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:04:32' overrides: 50666092!
+ofAccount: anAccount
+
+	account := anAccount.
+	
+	depth := 0.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:04:33'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:04:33'!
+FAILURE!
+
+----STARTUP---- (1 June 2023 16:05:39) as C:\Users\005675613\Documents\Inge 1\windows64\windows64\CuisUniversity-5832.image!
+
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 16:05:48'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 16:05:49'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 16:05:49'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 16:05:49'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 16:05:49'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 16:05:49'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 16:05:49'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 16:07:36'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 16:07:37'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:07:46) CuisUniversity-5832.image priorSource: 10729886!
+
+!methodRemoval: Transfer #transfer stamp: 'SF 6/1/2023 16:07:53'!
+transfer
+
+	^ self!
+
+!testRun: #AccountSummaryTest #test01SummaryOfEmptyAccountOnlyShowsBalance stamp: 'SF 6/1/2023 16:07:56'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test02SummaryOfAccountWithDepositShowsDepositAndBalance stamp: 'SF 6/1/2023 16:07:56'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test03SummaryOfAccountWithWithdrawShowsWithdrawAndBalance stamp: 'SF 6/1/2023 16:07:56'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test04SummaryOfAccountWithWithdrawLegShowsWithdrawLegAndBalance stamp: 'SF 6/1/2023 16:07:56'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test05SummaryOfAccountWithDepositLegShowsDepositLegAndBalance stamp: 'SF 6/1/2023 16:07:56'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test06SummaryOfEmptyPortfolioOnlyShowsBalance stamp: 'SF 6/1/2023 16:07:56'!
+PASSED!
+
+!testRun: #AccountSummaryTest #test07SummaryOfPortfolioWithAccountsShowsSummaryOfAllAccountsAndItsBalance stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferNetTest #test01TransferNetOfEmptyReceptiveAccountIsZero stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferNetTest #test02TransferNetGetsAffectedByTransferTransaction stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferNetTest #test03TransferNetDoesntGetAffectedByRegularTransaction stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferNetTest #test04TransferNetOfEmptyPortfolioIsZero stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferNetTest #test05TransferNetOfPortfolioWithAccountsAddsTheirTransferNet stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 16:07:57'!
+PASSED!
+
+----SNAPSHOT----(1 June 2023 16:08:07) CuisUniversity-5832.image priorSource: 10823443!
+
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: 'depth'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TreeStructureWithSummary category: 'Portfolio-Solucion' stamp: 'SF 6/1/2023 16:08:31'!
+Report subclass: #TreeStructureWithSummary
+	instanceVariableNames: 'depth'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+ReportTest subclass: #TreeStructureWithSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TreeStructureWithSummaryTest category: 'Portfolio-Solucion' stamp: 'SF 6/1/2023 16:08:39'!
+ReportTest subclass: #TreeStructureWithSummaryTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TreeStructureWithSummaryTest methodsFor: 'no messages' stamp: 'SF 6/1/2023 16:09:17'!
+test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance
+
+	| portfolio report |
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi'.
+	
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Balance = 0') equals: report print.! !
+
+----SNAPSHOT----(1 June 2023 16:09:29) CuisUniversity-5832.image priorSource: 10828735!
+!TreeStructureWithSummary methodsFor: 'no messages' stamp: 'SF 6/1/2023 16:09:43' overrides: 50666092!
+ofAccount: anAccount
+
+	account := anAccount.
+	
+	depth := 0.! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:09:53' overrides: 50666097!
+print
+
+	report := OrderedCollection new.
+	
+	account fillReport: self.
+	
+	^report.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:10:15'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:10:15'!
+FAILURE!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:10:30' overrides: 50666074!
+addName: anAccountName
+
+	report add: (self addDepthNumberOfTabsTo: anAccountName)! !
+
+----SNAPSHOT----(1 June 2023 16:10:48) CuisUniversity-5832.image priorSource: 10830076!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:10:49'!
+ERROR!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:10:49'!
+ERROR!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:11:01'!
+addDepthNumberOfTabsTo: anAccountName
+
+	| tabbedName |
+	
+	tabbedName := anAccountName.
+	depth timesRepeat: [
+		tabbedName := '  ', tabbedName.
+		].
+	^ tabbedName.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:11:02'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:11:02'!
+FAILURE!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:11:24' overrides: 50666062!
+addBalance: aBalanceValue
+
+	report add: 'Balance = ', aBalanceValue asString.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:11:25'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:11:25'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:12:02'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:12:02'!
+FAILURE!
+
+----SNAPSHOT----(1 June 2023 16:12:16) CuisUniversity-5832.image priorSource: 10831060!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:12:19'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:12:19'!
+FAILURE!
+
+----STARTUP---- (1 June 2023 16:12:30) as C:\Users\005675613\Documents\Inge 1\windows64\windows64\CuisUniversity-5832.image!
+
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:12:39'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:12:39'!
+FAILURE!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:12:53' overrides: 50666089!
+increaseDepth
+
+	depth := depth + 1! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:12:57'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:12:57'!
+FAILURE!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:14:31' prior: 50670152 overrides: 50666062!
+addBalance: aBalanceValue
+
+	report add: (self addDepthNumberOfTabsTo: 'Balance = ', aBalanceValue asString).! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:14:32'!
+PASSED!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:15:37' prior: 50670078!
+test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance
+
+	| portfolio account report |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juampi'.
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi' with: account.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Balance = 0') equals: report print.! !
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:16:17' prior: 50670228!
+test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance
+
+	| portfolio account report |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juampi'.
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi' with: account.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Cuenta de Juampi' with: '    Balance = 0'  with: '  Balance = 0') equals: report print.! !
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:16:39'!
+test02
+
+	| portfolio account report |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juampi'.
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi' with: account.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Cuenta de Juampi' with: '    Balance = 0'  with: '  Balance = 0') equals: report print.! !
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:16:40'!
+FAILURE!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:18:50' overrides: 50666086!
+decreaseDepth
+
+	depth := depth - 1! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:18:52'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:18:52'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:19:05'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:19:05'!
+FAILURE!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:20:29' prior: 50670244!
+test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance
+
+	| portfolio report |
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi'.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Balance = 0') equals: report print.! !
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:20:31'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:20:58'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:20:58'!
+FAILURE!
+
+!methodRemoval: TreeStructureWithSummary #decreaseDepth stamp: 'SF 6/1/2023 16:23:02'!
+decreaseDepth
+
+	depth := depth - 1!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:23:07'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:23:10'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:23:10'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'SF 6/1/2023 16:24:45' prior: 50665781 overrides: 50665548!
+fillReport: aReport
+
+	aReport addName: name.
+	aReport increaseDepth.
+	transactions do: [ :aTransaction | aTransaction addToReport: aReport ].
+	aReport decreaseDepth.	
+	aReport addBalance: self balance.! !
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 16:24:49'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 16:24:49'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 16:24:49'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 16:24:49'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:24:53'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:24:53'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:24:53'!
+FAILURE!
+!Portfolio methodsFor: 'reports' stamp: 'SF 6/1/2023 16:26:03' prior: 50665624 overrides: 50665548!
+fillReport: aReport
+
+	aReport addName: name.
+
+	aReport increaseDepthForPortfolio.
+
+	accounts do: [ :anAccount | anAccount fillReport: aReport ].
+	
+	aReport decreaseDepthForPortfolio.
+	
+	aReport addBalance: self balance.! !
+!ReceptiveAccount methodsFor: 'reports' stamp: 'SF 6/1/2023 16:26:26' prior: 50670340 overrides: 50665548!
+fillReport: aReport
+
+	aReport addName: name.
+	aReport increaseDepthForReceptiveAccount.
+	transactions do: [ :aTransaction | aTransaction addToReport: aReport ].
+	aReport decreaseDepthForReceptiveAccount.	
+	aReport addBalance: self balance.! !
+!Report methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:26:40'!
+decreaseDepthForPortfolio! !
+!Report methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:26:46'!
+increaseDepthForPortfolio! !
+!Report methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:26:50'!
+increaseDepthForReceptiveAccount! !
+!Report methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:26:57'!
+decreaseDepthForReceptiveAccount! !
+
+!methodRemoval: Report #increaseDepth stamp: 'SF 6/1/2023 16:26:59'!
+increaseDepth!
+
+!methodRemoval: Report #decreaseDepth stamp: 'SF 6/1/2023 16:27:03'!
+decreaseDepth!
+!TreeStructure methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:27:10' overrides: 50670401!
+increaseDepthForPortfolio
+
+	depth := depth + 1! !
+
+!methodRemoval: TreeStructure #increaseDepth stamp: 'SF 6/1/2023 16:27:12'!
+increaseDepth
+
+	depth := depth + 1!
+!TreeStructure methodsFor: 'depth control' stamp: 'SF 6/1/2023 16:27:17' overrides: 50670398!
+decreaseDepthForPortfolio
+
+	depth := depth - 1! !
+
+!methodRemoval: TreeStructure #decreaseDepth stamp: 'SF 6/1/2023 16:27:20'!
+decreaseDepth
+
+	depth := depth - 1!
+
+!testRun: #TreeStructureTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsName stamp: 'SF 6/1/2023 16:27:21'!
+PASSED!
+
+!testRun: #TreeStructureTest #test02TreeStructureOfPortfolioWithAccountShowsPortfolioNameAndIndentedAccountName stamp: 'SF 6/1/2023 16:27:21'!
+PASSED!
+
+!testRun: #TreeStructureTest #test03TreeStructureOfPortfolioWithPortfolioAndAccountShowsAllNamesCorrectlyIntended stamp: 'SF 6/1/2023 16:27:21'!
+PASSED!
+
+!testRun: #TreeStructureTest #test04cantCreateTreeStructureOfReceptiveAccount stamp: 'SF 6/1/2023 16:27:21'!
+PASSED!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:27:43'!
+decreaseDepthForAccount
+
+	depth := depth - 1! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:27:49' overrides: 50670408!
+decreaseDepthForReceptiveAccount
+
+	depth := depth - 1! !
+
+!methodRemoval: TreeStructureWithSummary #decreaseDepthForAccount stamp: 'SF 6/1/2023 16:27:51'!
+decreaseDepthForAccount
+
+	depth := depth - 1!
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:27:58' overrides: 50670401!
+increaseDepthForPortfolio
+
+	depth := depth + 1! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:28:03' overrides: 50670404!
+increaseDepthForReceptiveAccount
+
+	depth := depth + 1! !
+
+!methodRemoval: TreeStructureWithSummary #increaseDepth stamp: 'SF 6/1/2023 16:28:05'!
+increaseDepth
+
+	depth := depth + 1!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:28:14'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:28:14'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:28:14'!
+FAILURE!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:29:04'!
+FAILURE!
+!ReceptiveAccount methodsFor: 'reports' stamp: 'SF 6/1/2023 16:29:49' prior: 50670388 overrides: 50665548!
+fillReport: aReport
+
+	aReport addName: name.
+	aReport increaseDepthForReceptiveAccount.
+	transactions do: [ :aTransaction | aTransaction addToReport: aReport ].
+	aReport addBalance: self balance.
+	
+	aReport decreaseDepthForReceptiveAccount.	! !
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'SF 6/1/2023 16:29:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 16:29:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'SF 6/1/2023 16:29:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'SF 6/1/2023 16:29:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'SF 6/1/2023 16:29:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'SF 6/1/2023 16:29:50'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'SF 6/1/2023 16:29:50'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:29:56'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:29:56'!
+PASSED!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:33:07'!
+test03
+
+	| portfolio juampisAccount santisAccount report |
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio del grupo' with: '  Cuenta de Juampi' with: '    Balance = -1000000'  with: '  Cuenta de Santi' with: '    Balance = 1000000' with: '  Balance = 0') equals: report print.! !
+
+!testRun: #TreeStructureWithSummaryTest #test03 stamp: 'SF 6/1/2023 16:33:08'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:33:08'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:33:08'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test03 stamp: 'SF 6/1/2023 16:33:08'!
+PASSED!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:35:07' prior: 50670541!
+test03
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+
+----SNAPSHOT----(1 June 2023 16:35:14) CuisUniversity-5832.image priorSource: 10832784!
+
+!testRun: #TreeStructureWithSummaryTest #test03 stamp: 'SF 6/1/2023 16:35:16'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:35:16'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:35:16'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test03 stamp: 'SF 6/1/2023 16:35:16'!
+PASSED!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:35:39' prior: 50670578!
+test03
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Salida por transferencia de 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:36:30' prior: 50670621!
+test03
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Salida por transferencia de 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Entrada por transferencia de 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:36:49' overrides: 50666082!
+addWithdrawLeg: aWithdrawLeg
+
+	report add: 'Salida por transferencia de ', aWithdrawLeg value asString, '.'.! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:37:02' overrides: 50666070!
+addDepositLeg: aDepositLeg
+
+	report add: 'Entrada por transferencia de ', aDepositLeg value asString, '.'.! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:37:29' prior: 50670681 overrides: 50666082!
+addWithdrawLeg: aWithdrawLeg
+
+	report add: (self addDepthNumberOfTabsTo: 'Salida por transferencia de ', aWithdrawLeg value asString, '.').! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:38:16' prior: 50670688 overrides: 50666070!
+addDepositLeg: aDepositLeg
+
+	report add: (self addDepthNumberOfTabsTo: 'Entrada por transferencia de ', aDepositLeg value asString, '.').! !
+
+----SNAPSHOT----(1 June 2023 16:38:26) CuisUniversity-5832.image priorSource: 10846497!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:38:28'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:38:28'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test03 stamp: 'SF 6/1/2023 16:38:28'!
+PASSED!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:40:01'!
+test04
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Withdraw register: 1000000 on: juampisAccount.
+	Deposit register: 1000000 on: santisAccount.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Extracción por 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Depósito por 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:40:19' overrides: 50666066!
+addDeposit: aDeposit
+
+	report add: 'Depósito por ', aDeposit value asString, '.'.! !
+!TreeStructureWithSummary methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:40:31' overrides: 50666078!
+addWithdraw: aWithdraw
+
+	report add: 'Extracción por ', aWithdraw value asString, '.'.! !
+!TreeStructureWithSummary methodsFor: 'adding' stamp: 'SF 6/1/2023 16:41:57' prior: 50670757 overrides: 50666066!
+addDeposit: aDeposit
+
+	report add: (self addDepthNumberOfTabsTo: 'Depósito por ', aDeposit value asString, '.').! !
+!TreeStructureWithSummary methodsFor: 'adding' stamp: 'SF 6/1/2023 16:42:25' prior: 50670764 overrides: 50666078!
+addWithdraw: aWithdraw
+
+	report add: (self addDepthNumberOfTabsTo: 'Extracción por ', aWithdraw value asString, '.').! !
+
+----SNAPSHOT----(1 June 2023 16:42:44) CuisUniversity-5832.image priorSource: 10849964!
+
+!testRun: #TransferTest #test01ATransactionModifiesBothAccountsBalances stamp: 'SF 6/1/2023 16:42:47'!
+PASSED!
+
+!testRun: #TransferTest #test02AWithdrawalKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 16:42:47'!
+PASSED!
+
+!testRun: #TransferTest #test03ADepositKnowsWhichTransferItsFrom stamp: 'SF 6/1/2023 16:42:47'!
+PASSED!
+
+!testRun: #TransferTest #test04TransferLegsKnowTheirValue stamp: 'SF 6/1/2023 16:42:47'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test01TreeStructureOfEmptyPortfolioOnlyShowsItsNameAndBalance stamp: 'SF 6/1/2023 16:42:51'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:42:51'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test03 stamp: 'SF 6/1/2023 16:42:51'!
+PASSED!
+
+!testRun: #TreeStructureWithSummaryTest #test04 stamp: 'SF 6/1/2023 16:42:51'!
+PASSED!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:43:32'!
+test02PortfolioWithAccountShowsItsNameAndAccountsNameAndSummaryOfAccountCorrectlyIntended
+
+	| portfolio account report |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juampi'.
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi' with: account.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Cuenta de Juampi' with: '    Balance = 0'  with: '  Balance = 0') equals: report print.! !
+
+!methodRemoval: TreeStructureWithSummaryTest #test02 stamp: 'SF 6/1/2023 16:43:36'!
+test02
+
+	| portfolio account report |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juampi'.
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi' with: account.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Cuenta de Juampi' with: '    Balance = 0'  with: '  Balance = 0') equals: report print.!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:44:19'!
+test03PortfolioWithAccountsWithTransferShowsTheAccountsAndTransferCorrectlyIntended
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Salida por transferencia de 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Entrada por transferencia de 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:44:24'!
+test03PortfolioWithAccountsWithTransferShowsTheAccountsAndTransferCorrectlyIndented
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Salida por transferencia de 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Entrada por transferencia de 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+
+!methodRemoval: TreeStructureWithSummaryTest #test03PortfolioWithAccountsWithTransferShowsTheAccountsAndTransferCorrectlyIntended stamp: 'SF 6/1/2023 16:44:26'!
+test03PortfolioWithAccountsWithTransferShowsTheAccountsAndTransferCorrectlyIntended
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Salida por transferencia de 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Entrada por transferencia de 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:44:32'!
+test02PortfolioWithAccountShowsItsNameAndAccountsNameAndSummaryOfAccountCorrectlyIndented
+
+	| portfolio account report |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juampi'.
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi' with: account.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Cuenta de Juampi' with: '    Balance = 0'  with: '  Balance = 0') equals: report print.! !
+
+!methodRemoval: TreeStructureWithSummaryTest #test02PortfolioWithAccountShowsItsNameAndAccountsNameAndSummaryOfAccountCorrectlyIntended stamp: 'SF 6/1/2023 16:44:34'!
+test02PortfolioWithAccountShowsItsNameAndAccountsNameAndSummaryOfAccountCorrectlyIntended
+
+	| portfolio account report |
+	
+	account := ReceptiveAccount named: 'Cuenta de Juampi'.
+	
+	portfolio := Portfolio named: 'Portfolio de Juampi' with: account.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	
+	self assert: (OrderedCollection with: 'Portfolio de Juampi' with: '  Cuenta de Juampi' with: '    Balance = 0'  with: '  Balance = 0') equals: report print.!
+
+!methodRemoval: TreeStructureWithSummaryTest #test03 stamp: 'SF 6/1/2023 16:44:37'!
+test03
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Transfer new from: juampisAccount to: santisAccount withValue: 1000000.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Salida por transferencia de 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Entrada por transferencia de 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.!
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:44:59'!
+test03PortfolioWithAccountsWithTransactionsShowsTheAccountsAndTransactionsCorrectlyIndented
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Withdraw register: 1000000 on: juampisAccount.
+	Deposit register: 1000000 on: santisAccount.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Extracción por 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Depósito por 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+!TreeStructureWithSummaryTest methodsFor: 'as yet unclassified' stamp: 'SF 6/1/2023 16:45:04'!
+test04PortfolioWithAccountsWithTransactionsShowsTheAccountsAndTransactionsCorrectlyIndented
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Withdraw register: 1000000 on: juampisAccount.
+	Deposit register: 1000000 on: santisAccount.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Extracción por 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Depósito por 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.! !
+
+!methodRemoval: TreeStructureWithSummaryTest #test03PortfolioWithAccountsWithTransactionsShowsTheAccountsAndTransactionsCorrectlyIndented stamp: 'SF 6/1/2023 16:45:06'!
+test03PortfolioWithAccountsWithTransactionsShowsTheAccountsAndTransactionsCorrectlyIndented
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Withdraw register: 1000000 on: juampisAccount.
+	Deposit register: 1000000 on: santisAccount.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Extracción por 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Depósito por 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.!
+
+!methodRemoval: TreeStructureWithSummaryTest #test04 stamp: 'SF 6/1/2023 16:45:08'!
+test04
+
+	| portfolio juampisAccount santisAccount report expected|
+	
+	juampisAccount := ReceptiveAccount named: 'Cuenta de Juampi'.
+	santisAccount := ReceptiveAccount named: 'Cuenta de Santi'.
+	Withdraw register: 1000000 on: juampisAccount.
+	Deposit register: 1000000 on: santisAccount.
+	 
+	portfolio := Portfolio named: 'Portfolio del grupo' with: juampisAccount with: santisAccount.
+		
+	report := TreeStructureWithSummary new ofAccount: portfolio.	
+	expected := OrderedCollection new.
+	expected add: 'Portfolio del grupo'.
+	expected add: '  Cuenta de Juampi'.
+	expected add: '    Extracción por 1000000.'.
+	expected add: '    Balance = -1000000'.
+	expected add: '  Cuenta de Santi'.
+	expected add: '    Depósito por 1000000.'.
+	expected add: '    Balance = 1000000'.
+	expected add: '  Balance = 0'.
+	self assert: expected equals: report print.!
+
+----SNAPSHOT----(1 June 2023 16:45:42) CuisUniversity-5832.image priorSource: 10852313!
