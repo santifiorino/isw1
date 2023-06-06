@@ -1,0 +1,899 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (6 June 2023 16:21:12) as C:\Users\005675613\Documents\Inge 1\windows64\windows64\CuisUniversity-5832.image!
+
+
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'SF 6/6/2023 16:22:06'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classDefinition: #Cart category: 'TusLibros-Tests' stamp: 'SF 6/6/2023 16:23:06'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+TestCase subclass: #CartTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classDefinition: #CartTests category: 'TusLibros-Tests' stamp: 'SF 6/6/2023 16:24:00'!
+TestCase subclass: #CartTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classRemoval: #Cart stamp: 'SF 6/6/2023 16:24:05'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classRemoval: #CartTests stamp: 'SF 6/6/2023 16:24:23'!
+TestCase subclass: #CartTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+TestCase subclass: #CartTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+!classDefinition: #CartTests category: 'TusLibros-Tests' stamp: 'SF 6/6/2023 16:24:40'!
+TestCase subclass: #CartTests
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'SF 6/6/2023 16:25:02'!
+Object subclass: #Cart
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+----End fileIn of C:\Users\005675613\Documents\Inge 1\2023-1c\08-MarsRover-ElRegreso\MarsRover-WithHeading.st----!
+
+!classRemoval: #MarsRoverHeadingWest stamp: 'SF 6/6/2023 16:26:07'!
+MarsRoverHeading subclass: #MarsRoverHeadingWest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingSouth stamp: 'SF 6/6/2023 16:26:07'!
+MarsRoverHeading subclass: #MarsRoverHeadingSouth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingNorth stamp: 'SF 6/6/2023 16:26:08'!
+MarsRoverHeading subclass: #MarsRoverHeadingNorth
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeadingEast stamp: 'SF 6/6/2023 16:26:08'!
+MarsRoverHeading subclass: #MarsRoverHeadingEast
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverHeading stamp: 'SF 6/6/2023 16:26:08'!
+Object subclass: #MarsRoverHeading
+	instanceVariableNames: 'marsRover'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRover stamp: 'SF 6/6/2023 16:26:08'!
+Object subclass: #MarsRover
+	instanceVariableNames: 'position head'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+!classRemoval: #MarsRoverTest stamp: 'SF 6/6/2023 16:26:08'!
+TestCase subclass: #MarsRoverTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'MarsRover-WithHeading'!
+
+----End fileIn of C:\Users\005675613\Documents\Inge 1\2023-1c\06-Portfolio1\Portfolio-Solucion.st----!
+
+!classRemoval: #Withdraw stamp: 'SF 6/6/2023 16:26:53'!
+AccountTransaction subclass: #Withdraw
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Deposit stamp: 'SF 6/6/2023 16:26:53'!
+AccountTransaction subclass: #Deposit
+	instanceVariableNames: 'value'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #AccountTransaction stamp: 'SF 6/6/2023 16:26:53'!
+Object subclass: #AccountTransaction
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #ReceptiveAccount stamp: 'SF 6/6/2023 16:26:53'!
+Account subclass: #ReceptiveAccount
+	instanceVariableNames: 'transactions'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Portfolio stamp: 'SF 6/6/2023 16:26:53'!
+Account subclass: #Portfolio
+	instanceVariableNames: 'accounts parents'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #Account stamp: 'SF 6/6/2023 16:26:54'!
+Object subclass: #Account
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #ReceptiveAccountTest stamp: 'SF 6/6/2023 16:26:54'!
+TestCase subclass: #ReceptiveAccountTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classRemoval: #PortfolioTest stamp: 'SF 6/6/2023 16:26:54'!
+TestCase subclass: #PortfolioTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:27:54'!
+test01NewCartIsEmpty
+
+	self assert: Cart new isEmpty! !
+!Cart methodsFor: 'nil' stamp: 'SF 6/6/2023 16:28:10'!
+isEmpty
+
+	^ true! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:28:17'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:32:20'!
+test02CartWithABookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new.
+	aCart addBook: 1234.
+	
+	self deny: aCart isEmpty
+	! !
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'SF 6/6/2023 16:33:10'!
+Object subclass: #Cart
+	instanceVariableNames: 'empty'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:33:09'!
+addBook: aBookISBN
+
+	empty := false! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:33:27' prior: 50625746!
+isEmpty
+
+	^ empty! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:33:36' overrides: 16920235!
+initialize
+
+	empty := true! !
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:33:46' prior: 50625742!
+test01NewCartIsEmpty
+
+	self assert: Cart new initialize isEmpty! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:33:48'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:33:54' prior: 50625752!
+test02CartWithABookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new initialize.
+	aCart addBook: 1234.
+	
+	self deny: aCart isEmpty
+	! !
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:33:56'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:35:35'!
+test03CanListAllCartsBooks
+
+	| aCart |
+	
+	aCart := Cart new initialize.
+	aCart addBook: 1234.
+	aCart addBook: 5678.
+	
+	self assert: (OrderedCollection with: 1234 with: 5678)
+		equals: aCart listBooks
+	! !
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'SF 6/6/2023 16:36:38'!
+Object subclass: #Cart
+	instanceVariableNames: 'empty books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:36:37' prior: 50625773 overrides: 16920235!
+initialize
+
+	empty := true.
+	books := OrderedCollection new.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:36:47' prior: 50625765!
+addBook: aBookISBN
+
+	empty := false
+	books add: aBookISBN.! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:36:50'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:36:50'!
+ERROR!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 16:36:50'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:37:08'!
+listBooks
+
+	^ books! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:37:27'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:37:27'!
+ERROR!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 16:37:27'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:37:31'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:37:31'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:37:47' prior: 50625816!
+addBook: aBookISBN
+
+	empty := false.
+	books add: aBookISBN.! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:37:50'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:37:50'!
+PASSED!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 16:37:50'!
+PASSED!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:38:01' prior: 50625847!
+addBook: aBookISBN
+
+	books add: aBookISBN.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:38:08' prior: 50625811 overrides: 16920235!
+initialize
+
+	books := OrderedCollection new.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:38:16' prior: 50625769!
+isEmpty
+
+	^ books isEmpty ! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:38:26'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:38:26'!
+PASSED!
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:38:30'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:38:30'!
+PASSED!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 16:38:30'!
+PASSED!
+
+!classDefinition: #Editorial category: 'TusLibros' stamp: 'SF 6/6/2023 16:49:23'!
+Object subclass: #Editorial
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:49:12'!
+test04AddingAnInvalidBookToCartThrowsInvalidBookError
+
+	| anEditorial aCart |
+	
+	anEditorial := Editorial new.
+	anEditorial registerBook: 1234.
+	
+	aCart := Cart new of: anEditorial.
+	
+	self should: [ aCart addBook: 5678 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cart InvalidBookErrorMessage
+			]! !
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:49:52' prior: 50625894!
+test04AddingAnInvalidBookToCartThrowsInvalidBookError
+
+	| anEditorial aCart |
+	
+	anEditorial := Editorial new initialize.
+	anEditorial registerBook: 1234.
+	
+	aCart := Cart new of: anEditorial.
+	
+	self should: [ aCart addBook: 5678 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cart InvalidBookErrorMessage
+			]! !
+
+!classDefinition: #Editorial category: 'TusLibros' stamp: 'SF 6/6/2023 16:50:10'!
+Object subclass: #Editorial
+	instanceVariableNames: 'books'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Editorial methodsFor: 'no messages' stamp: 'SF 6/6/2023 16:50:08' overrides: 16920235!
+initialize
+
+	books := OrderedCollection new! !
+!Editorial methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:50:24'!
+addBook: aBookISBN
+
+	books add: aBookISBN.! !
+!Editorial methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:51:01'!
+registerBook: aBookISBN
+
+	books add: aBookISBN.! !
+
+!methodRemoval: Editorial #addBook: stamp: 'SF 6/6/2023 16:51:05'!
+addBook: aBookISBN
+
+	books add: aBookISBN.!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 16:51:17'!
+ERROR!
+
+!classDefinition: #Cart category: 'TusLibros' stamp: 'SF 6/6/2023 16:51:42'!
+Object subclass: #Cart
+	instanceVariableNames: 'empty books editorial'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:51:40'!
+of: anEditorial
+
+	editorial := anEditorial.
+	books := OrderedCollection new.! !
+
+!methodRemoval: Cart #initialize stamp: 'SF 6/6/2023 16:51:46'!
+initialize
+
+	books := OrderedCollection new.!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:52:11' prior: 50625777!
+test01NewCartIsEmpty
+
+	self assert: (Cart new of: Editorial new initialize) isEmpty! !
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:52:29' prior: 50625785!
+test02CartWithABookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new of: Editorial new initialize.
+	aCart addBook: 1234.
+	
+	self deny: aCart isEmpty
+	! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:52:33'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:52:35'!
+PASSED!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 16:52:38'!
+ERROR!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 16:52:38'!
+ERROR!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:52:54' prior: 50625794!
+test03CanListAllCartsBooks
+
+	| aCart |
+	
+	aCart := Cart new of: Editorial new initialize.
+	aCart addBook: 1234.
+	aCart addBook: 5678.
+	
+	self assert: (OrderedCollection with: 1234 with: 5678)
+		equals: aCart listBooks
+	! !
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 16:52:56'!
+PASSED!
+!Cart class methodsFor: 'no messages' stamp: 'SF 6/6/2023 16:53:40'!
+InvalidBookErrorMessage
+
+	^ 'Tried to add an invalid book'! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:55:50' prior: 50625860!
+addBook: aBookISBN
+
+	self raiseErrorIfBookIsInvalid.
+	books add: aBookISBN.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:56:11'!
+raiseErrorIfBookIsInvalid: aBookISBN! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:56:30' prior: 50626006!
+addBook: aBookISBN
+
+	self raiseErrorIfBookIsInvalid: aBookISBN.
+	books add: aBookISBN.! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:57:47' prior: 50626011!
+raiseErrorIfBookIsInvalid: aBookISBN
+
+	(editorial hasRegistered: aBookISBN) ifFalse: [
+		self error: self class InvalidBookErrorMessage
+		].! !
+!Editorial methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 16:58:22'!
+hasRegistered: aBookISBN
+
+	books includes: aBookISBN.! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:58:25'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 16:58:25'!
+ERROR!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 16:58:25'!
+ERROR!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 16:58:25'!
+FAILURE!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 16:58:30'!
+FAILURE!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 16:58:30'!
+FAILURE!
+
+!classDefinition: #CartTests category: 'TusLibros-Tests' stamp: 'SF 6/6/2023 16:59:24'!
+TestCase subclass: #CartTests
+	instanceVariableNames: 'editorial1'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:59:22' overrides: 16961394!
+setUp
+
+	editorial1 := Editorial new initialize.
+	editorial1 registerBook: 1234.! !
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 16:59:34' prior: 50625964!
+test01NewCartIsEmpty
+
+	self assert: (Cart new of: editorial1) isEmpty! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 16:59:36'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:00:00' prior: 50625970!
+test02CartWithABookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	aCart addBook: 1234.
+	
+	self deny: aCart isEmpty
+	! !
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:00:02'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:00:02'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:00:09'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:00:09'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:01:05'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:01:05'!
+ERROR!
+!Editorial methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 17:01:26' prior: 50626028!
+hasRegistered: aBookISBN
+
+	^ books includes: aBookISBN.! !
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:01:32'!
+PASSED!
+
+!classDefinition: #CartTests category: 'TusLibros-Tests' stamp: 'SF 6/6/2023 17:02:19'!
+TestCase subclass: #CartTests
+	instanceVariableNames: 'editorial1 editorial2'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Tests'!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:02:17' prior: 50626059 overrides: 16961394!
+setUp
+
+	editorial1 := Editorial new initialize.
+	editorial1 registerBook: 1234.
+	editorial2 := Editorial new initialize.
+	editorial2 registerBook: 1234.
+	editorial2 registerBook: 5678.! !
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:02:32' prior: 50625989!
+test03CanListAllCartsBooks
+
+	| aCart |
+	
+	aCart := Cart new of: editorial2.
+	
+	self assert: (OrderedCollection with: 1234 with: 5678)
+		equals: aCart listBooks
+	! !
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:02:33'!
+FAILURE!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:02:33'!
+FAILURE!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:02:47' prior: 50626123!
+test03CanListAllCartsBooks
+
+	| aCart |
+	
+	aCart := Cart new of: editorial2.
+	aCart addBook: 1234.
+	aCart addBook: 5678.
+	
+	self assert: (OrderedCollection with: 1234 with: 5678)
+		equals: aCart listBooks
+	! !
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:02:49'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:03:20' prior: 50625908!
+test04AddingAnInvalidBookToCartThrowsInvalidBookError
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	
+	self should: [ aCart addBook: 5678 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cart InvalidBookErrorMessage
+			]! !
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 17:03:21'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:05:01'!
+test05CanAddMultipleCopiesOfTheSameBookAtOnce
+
+	! !
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:07:47' prior: 50626163!
+test05CanAddMultipleCopiesOfTheSameBookAtOnce
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	aCart add: 3 copiesOfBook: 1234.
+	
+	self assert: (OrderedCollection with: 1234 with: 1234 with: 1234)
+		equals: aCart listBooks
+	! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 17:08:35'!
+add: aQuantity copiesOfBook: aBookISBN
+
+	aQuantity timesRepeat: [ self addBook: aBookISBN ].! !
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfTheSameBookAtOnce stamp: 'SF 6/6/2023 17:08:41'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:09:03' prior: 50626073!
+test02CartWithABookIsNotEmpty
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	aCart add: 1 copiesOfBook: 1234.
+	
+	self deny: aCart isEmpty
+	! !
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:09:05'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:09:25' prior: 50626137!
+test03CanListAllCartsBooks
+
+	| aCart |
+	
+	aCart := Cart new of: editorial2.
+	aCart add: 1 copiesOfBook: 1234.
+	aCart add: 1 copiesOfBook: 5678.
+	
+	self assert: (OrderedCollection with: 1234 with: 5678)
+		equals: aCart listBooks
+	! !
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:09:26'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:09:43' prior: 50626149!
+test04AddingAnInvalidBookToCartThrowsInvalidBookError
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	
+	self should: [ aCart add: 1 copiesOfBook: 5678 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cart InvalidBookErrorMessage
+			]! !
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 17:09:45'!
+PASSED!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfTheSameBookAtOnce stamp: 'SF 6/6/2023 17:09:48'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:10:23'!
+test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	aCart add: 3 copiesOfBook: 1234.
+	
+	self assert: (OrderedCollection with: 1234 with: 1234 with: 1234)
+		equals: aCart listBooks
+	! !
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 17:11:27'!
+PASSED!
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:12:05' prior: 50626228!
+test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	
+	self should: [ aCart add: -1 copiesOfBook: 1234 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cart NegativeAmountOfBooksError
+			]! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 17:13:27'!
+raiseErrorIfQuantityIsNotPositive: aQuantity
+
+	(aQuantity <= 0)! !
+
+!methodRemoval: Cart #raiseErrorIfBookIsInvalid: stamp: 'SF 6/6/2023 17:13:32'!
+raiseErrorIfBookIsInvalid: aBookISBN
+
+	(editorial hasRegistered: aBookISBN) ifFalse: [
+		self error: self class InvalidBookErrorMessage
+		].!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 17:14:17' prior: 50626254!
+raiseErrorIfQuantityIsNotPositive: aQuantity
+
+	(aQuantity <= 0) ifTrue: [ self error: self class NotPositiveAmountOfBooksErrorDescription ]! !
+!Cart class methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 17:14:38'!
+NotPositiveAmountOfBooksErrorDescription
+
+	^ 'Tried to add a not positive amount of books'! !
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:15:00' prior: 50626242!
+test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	
+	self should: [ aCart add: -1 copiesOfBook: 1234 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cart NotPositiveAmountOfBooksErrorDescription
+			]! !
+!CartTests methodsFor: 'tests' stamp: 'SF 6/6/2023 17:15:03' prior: 50626279!
+test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError
+
+	| aCart |
+	
+	aCart := Cart new of: editorial1.
+	
+	self should: [ aCart add: 0 copiesOfBook: 1234 ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = Cart NotPositiveAmountOfBooksErrorDescription
+			]! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 17:15:24' prior: 50626178!
+add: aQuantity copiesOfBook: aBookISBN
+
+	self raiseErrorIfQuantityIsNotPositive: aQuantity.
+	aQuantity timesRepeat: [ self addBook: aBookISBN ].! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 17:15:30'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:15:30'!
+ERROR!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:15:30'!
+ERROR!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 17:15:30'!
+FAILURE!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfTheSameBookAtOnce stamp: 'SF 6/6/2023 17:15:30'!
+ERROR!
+
+!testRun: #CartTests #test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError stamp: 'SF 6/6/2023 17:15:30'!
+PASSED!
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 17:15:38'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:15:38'!
+ERROR!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:15:38'!
+ERROR!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 17:15:38'!
+FAILURE!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfTheSameBookAtOnce stamp: 'SF 6/6/2023 17:15:38'!
+ERROR!
+
+!testRun: #CartTests #test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError stamp: 'SF 6/6/2023 17:15:38'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:15:45'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:15:45'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 17:16:52'!
+raiseErrorIfBookIsInvalid: aBookISBN
+
+	(editorial hasRegistered: aBookISBN) ifTrue: [
+		self error: self class InvalidBookErrorMessage 
+		]! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 17:16:55'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:16:55'!
+ERROR!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:16:55'!
+ERROR!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 17:16:55'!
+FAILURE!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfTheSameBookAtOnce stamp: 'SF 6/6/2023 17:16:55'!
+ERROR!
+
+!testRun: #CartTests #test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError stamp: 'SF 6/6/2023 17:16:55'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:17:00'!
+ERROR!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:17:00'!
+ERROR!
+!Cart methodsFor: 'as yet unclassified' stamp: 'SF 6/6/2023 17:17:18' prior: 50626356!
+raiseErrorIfBookIsInvalid: aBookISBN
+
+	(editorial hasRegistered: aBookISBN) ifFalse: [
+		self error: self class InvalidBookErrorMessage 
+		]! !
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 17:17:20'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:17:20'!
+PASSED!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:17:20'!
+PASSED!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 17:17:20'!
+PASSED!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfTheSameBookAtOnce stamp: 'SF 6/6/2023 17:17:20'!
+PASSED!
+
+!testRun: #CartTests #test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError stamp: 'SF 6/6/2023 17:17:20'!
+PASSED!
+
+----SNAPSHOT----(6 June 2023 17:19:00) CuisUniversity-5832.image priorSource: 9366758!
+
+----STARTUP---- (6 June 2023 17:19:18) as C:\Users\005675613\Documents\Inge 1\windows64\windows64\CuisUniversity-5832.image!
+
+
+!testRun: #CartTests #test01NewCartIsEmpty stamp: 'SF 6/6/2023 17:19:21'!
+PASSED!
+
+!testRun: #CartTests #test02CartWithABookIsNotEmpty stamp: 'SF 6/6/2023 17:19:21'!
+PASSED!
+
+!testRun: #CartTests #test03CanListAllCartsBooks stamp: 'SF 6/6/2023 17:19:21'!
+PASSED!
+
+!testRun: #CartTests #test04AddingAnInvalidBookToCartThrowsInvalidBookError stamp: 'SF 6/6/2023 17:19:21'!
+PASSED!
+
+!testRun: #CartTests #test05CanAddMultipleCopiesOfTheSameBookAtOnce stamp: 'SF 6/6/2023 17:19:21'!
+PASSED!
+
+!testRun: #CartTests #test06AddingNegativeAmountOfBooksThrowsNegativeAmountOfBooksError stamp: 'SF 6/6/2023 17:19:21'!
+PASSED!
