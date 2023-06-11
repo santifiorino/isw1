@@ -1,29 +1,7 @@
 
 
-----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+----STARTUP---- (11 June 2023 16:13:01) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5832.image!
 
-----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
-
-
-----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
-
-----STARTUP---- (8 June 2023 19:44:59) as /home/clinux01/Descargas/linux64/linux64/CuisUniversity-5832.image!
-
-
-----End fileIn of /home/clinux01/Descargas/linux64/linux64/TusLibros-18.st----!
-
-Object subclass: #Cashier
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
-
-!classDefinition: #Cashier category: 'TusLibros' stamp: 'dsf 6/8/2023 19:45:28'!
-Object subclass: #Cashier
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'TusLibros'!
 
 TestCase subclass: #CashierTest
 	instanceVariableNames: ''
@@ -31,464 +9,63 @@ TestCase subclass: #CashierTest
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!classDefinition: #CashierTest category: 'TusLibros' stamp: 'dsf 6/8/2023 19:45:33'!
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'sf 6/11/2023 16:15:49'!
 TestCase subclass: #CashierTest
 	instanceVariableNames: ''
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
-!CashierTest methodsFor: 'no messages' stamp: 'dsf 6/8/2023 19:47:28'!
-test01checkoutOfEmptyCartRaisesInvalidCartError
+!CashierTest methodsFor: 'no messages' stamp: 'sf 6/11/2023 16:17:03'!
+aCardWithInvalidNumber
 
-	| aCart |
+	^ Card new withName: 'Hernan'
+	                    andNumber: 1
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000000! !
 
-	aCart := Cart new.
+(GregorianMonthOfYear current) next: 6*month!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:17:34'!
+aFutureMonthOfYear
 
-	self 
-		should: [ Cashier new checkout: aCart with: self aCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier invalidItemErrorMessage.
-			self assert: aCart isEmpty ]! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:47:53'!
-aCard
+	^ (GregorianMonthOfYear current) next: 6*month! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:17:41'!
+aPastMonthOfYear
 
-	^ 1234123412341234 @ (2023, December)! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:48:07'!
+	^ (GregorianMonthOfYear current) previous: 6*month! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:18:00'!
 aValidCard
 
-	^ 1234123412341234 @ (2023, December)! !
-
-!methodRemoval: CashierTest #aCard stamp: 'dsf 6/8/2023 19:48:09'!
-aCard
-
-	^ 1234123412341234 @ (2023, December)!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:48:17' prior: 50624574!
-test01checkoutOfEmptyCartRaisesInvalidCartError
-
-	| aCart |
-
-	aCart := Cart new.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier invalidItemErrorMessage.
-			self assert: aCart isEmpty ]! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:48:22' prior: 50624599!
-test01checkoutOfEmptyCartRaisesInvalidCartError
-
-	| aCart |
-
-	aCart := Cart new.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier InvalidItemErrorMessage.
-			self assert: aCart isEmpty ]! !
-!Cashier class methodsFor: 'no messages' stamp: 'dsf 6/8/2023 19:48:34'!
-InvalidItemErrorMessage
-
-	^ 'Carrito inválido'! !
-!Cashier class methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:48:42'!
-InvalidCartErrorMessageDescription
-
-	^ 'Carrito inválido'! !
-
-!methodRemoval: Cashier class #InvalidItemErrorMessage stamp: 'dsf 6/8/2023 19:48:44'!
-InvalidItemErrorMessage
-
-	^ 'Carrito inválido'!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:48:57' prior: 50624612!
-test01checkoutOfEmptyCartRaisesInvalidCartError
-
-	| aCart |
-
-	aCart := Cart new.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier InvalidCartErrorMessageDescription.
-			self assert: aCart isEmpty ]! !
-!Cashier methodsFor: 'no messages' stamp: 'dsf 6/8/2023 19:49:41'!
-checkout: aCart with: aCardToPayWith
-
-	self error: self class InvalidCartErrorMessageDescription
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:49:43'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:49:43'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:50:22'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:50:22'!
-FAILURE!
-
-Cashier InvalidCartErrorMessageDescription!
-
-anError messageText!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:51:16' prior: 50624651!
-checkout: aCart with: aCardToPayWith
-
-	self error: Cashier InvalidCartErrorMessageDescription
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:51:18'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:51:18'!
-FAILURE!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:51:26' prior: 50624674!
-checkout: aCart with: aCardToPayWith
-
-	self error: self class InvalidCartErrorMessageDescription
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:51:47'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:51:47'!
-FAILURE!
-
-anError!
-
-!methodRemoval: Cashier class #InvalidCartErrorMessageDescription stamp: 'dsf 6/8/2023 19:52:54'!
-InvalidCartErrorMessageDescription
-
-	^ 'Carrito inválido'!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:53:01' prior: 50624688!
-checkout: aCart with: aCardToPayWith
-
-	self error: self class InvalidCartErrorMessage
-
-	! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:53:12'!
-InvalidCartErrorMessage
-
-	^ 'Carrito inválido'
-
-	! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:53:15' prior: 50624707!
-checkout: aCart with: aCardToPayWith
-
-	self error: self InvalidCartErrorMessage
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:53:16'!
-ERROR!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:53:16'!
-ERROR!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:53:27' prior: 50624639!
-test01checkoutOfEmptyCartRaisesInvalidCartError
-
-	| aCart |
-
-	aCart := Cart new.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier new InvalidCartErrorMessage.
-			self assert: aCart isEmpty ]! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:53:29'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:53:29'!
-FAILURE!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:53:48' prior: 50624731!
-test01checkoutOfEmptyCartRaisesInvalidCartError
-
-	| aCart |
-
-	aCart := Cart new.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText equals: Cashier new InvalidCartErrorMessage.
-			self assert: aCart isEmpty ]! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:54:00' prior: 50624751!
-test01checkoutOfEmptyCartRaisesInvalidCartError
-
-	| aCart |
-
-	aCart := Cart new.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier new InvalidCartErrorMessage.
-			self assert: aCart isEmpty ].! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:54:01'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:54:27'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:54:27'!
-FAILURE!
-
-anError messageText!
-
-(2023, December)!
-
-(2023, December)!
-
-2023, July!
-
-2023 of: July!
-
-December, 2023!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:55:53' prior: 50624590!
-aValidCard
-
-	^ (1234123412341234 @ (December, 2023))! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:55:55'!
-ERROR!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:55:55'!
-ERROR!
-
-CartTest new createCart!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 19:57:23' prior: 50624764!
-test01checkoutOfEmptyCartRaisesInvalidCartError
-
-	| aCart |
-
-	aCart := CartTest new createCart.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier new InvalidCartErrorMessage.
-			self assert: aCart isEmpty ].! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:57:28'!
-PASSED!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 19:57:28'!
-PASSED!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:02:03'!
-test02checkoutOfCartWithABookReturnsATicket
-
-	| aCart |
-	
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-	
-	self assert: (Cashier new checkout: aCart with: self aValidCard)
-		equals: #Ticket! !
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:02:11'!
-ERROR!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:02:11'!
-ERROR!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:02:43' prior: 50624718!
-checkout: aCart with: aCardToPayWith
-
-	self raiseErrorIfCartIsEmpty: aCart
-	^ #Ticket
-
-	! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:03:07'!
-raiseErrorIfCartIsEmpty: aCart
-	
-	(aCart isEmpty) ifTrue: [
-		self error: self InvalidCartErrorMessage
-		]
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:03:11'!
-FAILURE!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:03:11'!
-ERROR!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:03:14'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:03:14'!
-FAILURE!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:03:31' prior: 50624841!
-checkout: aCart with: aCardToPayWith
-
-	self raiseErrorIfCartIsEmpty: aCart.
-	^ #Ticket
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:03:32'!
-PASSED!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:03:32'!
-PASSED!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:04:10'!
-test03checkoutOfCartWithABookEmptiesCart
-
-	| aCart |
-	
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-	
-	Cashier new checkout: aCart with: self aValidCard.
-	
-	self assert: aCart isEmpty! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:05:58' prior: 50624868!
-checkout: aCart with: aCardToPayWith
-
-	self raiseErrorIfCartIsEmpty: aCart.
-	self emptyOutCart: aCart.
-	^ #Ticket
-
-	! !
-!Cart methodsFor: 'nil' stamp: 'dsf 6/8/2023 20:07:20'!
-dumpItems
-
-	items := OrderedCollection new.! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:07:37' prior: 50624891!
-checkout: aCart with: aCardToPayWith
-
-	self raiseErrorIfCartIsEmpty: aCart.
-	aCart dumpItems.
-	^ #Ticket
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:07:41'!
-PASSED!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:07:41'!
-PASSED!
-
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:07:41'!
-PASSED!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:07:52'!
-PASSED!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:07:52'!
-PASSED!
-
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:07:52'!
-PASSED!
-
-Date today!
-
-(Date today) monthOfYear !
-
-(Date today) monthOfYear!
-
-(Date today)!
-
-December, 2023!
-
-GregorianMonthOfYear current!
-
-GregorianMonthOfYear current < June, 2024!
-
-GregorianMonthOfYear!
-
-(GregorianMonthOfYear current) < (June, 2024)!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:12:32'!
-test04checkoutWithExpiredCardRaisesInvalidCardError
-
-	| aCart |
-
-	aCart := CartTest new createCart.
-	
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier new InvalidCartErrorMessage.
-			self deny: aCart isEmpty ].! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:12:39' prior: 50624937!
-test04checkoutWithExpiredCardRaisesInvalidCardError
-
-	| aCart |
-
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier new InvalidCartErrorMessage.
-			self deny: aCart isEmpty ].! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:12:47' prior: 50624951!
-test04checkoutWithExpiredCardRaisesInvalidCardError
-
-	| aCart |
-
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier new InvalidCardErrorMessage.
-			self deny: aCart isEmpty ].! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:12:57' prior: 50624966!
-test04checkoutWithExpiredCardRaisesInvalidCardError
-
-	| aCart |
-
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-
-	self 
-		should: [ Cashier new checkout: aCart with: self anExpiredCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = Cashier new InvalidCardErrorMessage.
-			self deny: aCart isEmpty ].! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:13:17'!
+	^ Card new withName: 'Hernan'
+	                    andNumber: 1234123412341234
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000000! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:18:12'!
 anExpiredCard
 
-	^ (1234123412341234 @ (April, 2000))! !
+	^ Card new withName: 'Hernan'
+	                    andNumber: 1234123412341234
+	                    andExpirationDate: self aPastMonthOfYear
+	                    andBalance: 1000000! !
 
-!classDefinition: #CashierTest category: 'TusLibros' stamp: 'dsf 6/8/2023 20:14:02'!
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'sf 6/11/2023 16:18:35'!
 TestCase subclass: #CashierTest
-	instanceVariableNames: 'cashier'
+	instanceVariableNames: 'cartTest'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:14:00' overrides: 16961394!
-setUp
 
-	cashier := Cashier new.! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:14:13' prior: 50624804!
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'sf 6/11/2023 16:18:36'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'cartTest cashier'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:18:32'!
 test01checkoutOfEmptyCartRaisesInvalidCartError
 
 	| aCart |
 
-	aCart := CartTest new createCart.
+	aCart := cartTest createCart.
 
 	self 
 		should: [ cashier checkout: aCart with: self aValidCard ]
@@ -496,157 +73,29 @@ test01checkoutOfEmptyCartRaisesInvalidCartError
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = cashier InvalidCartErrorMessage.
 			self assert: aCart isEmpty ].! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:14:18' prior: 50624824!
-test02checkoutOfCartWithABookReturnsATicket
 
-	| aCart |
-	
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-	
-	self assert: (cashier checkout: aCart with: self aValidCard)
-		equals: #Ticket! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:14:20'!
-PASSED!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:14:21'!
-PASSED!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:14:26' prior: 50624881!
-test03checkoutOfCartWithABookEmptiesCart
-
-	| aCart |
-	
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-	
-	cashier checkout: aCart with: self aValidCard.
-	
-	self assert: aCart isEmpty! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:14:35' prior: 50624981!
-test04checkoutWithExpiredCardRaisesInvalidCardError
-
-	| aCart |
-
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-
-	self 
-		should: [ cashier checkout: aCart with: self anExpiredCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = cashier InvalidCardErrorMessage.
-			self deny: aCart isEmpty ].! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:14:45'!
-InvalidCardErrorMessage
-
-	^ 'Tarjeta inválida'
-
-	! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:15:03' prior: 50624902!
-checkout: aCart with: aCardToPayWith
-
-	self raiseErrorIfCartIsEmpty: aCart.
-	self raiseErrorIfCardIsExpired: aCardToPayWith.
-	aCart dumpItems.
-	^ #Ticket
-
-	! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:16:03'!
-raiseErrorIfCardIsExpired: aCardToPayWith.
-	
-	(aCardToPayWith y) < (GregorianMonthOfYear current)
-
-	! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:16:42' prior: 50625080!
-raiseErrorIfCardIsExpired: aCardToPayWith.
-	
-	((aCardToPayWith y) < (GregorianMonthOfYear current)) ifTrue: [
-		self error: self InvalidCardErrorMessage 
-		]
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:16:43'!
-PASSED!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:16:43'!
-PASSED!
-
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:16:43'!
-PASSED!
-
-!testRun: #CashierTest #test04checkoutWithExpiredCardRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:16:43'!
-PASSED!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:21:53' prior: 50625026!
-test02checkoutOfCartWithABookReturnsATicket
-
-	| aCart |
-	
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-	
-	self assert: (cashier checkout: aCart with: self aValidCard)
-		 equals: #Ticket! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:22:45' prior: 50625053!
-test04checkoutWithExpiredCardRaisesInvalidCardError
-
-	| aCart |
-
-	aCart := CartTest new createCart.
-	aCart add: CartTest new itemSellByTheStore.
-
-	self 
-		should: [ cashier checkout: aCart with: self anExpiredCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = cashier InvalidCardErrorMessage.
-			self deny: aCart isEmpty ].! !
-
-!classDefinition: #CashierTest category: 'TusLibros' stamp: 'dsf 6/8/2023 20:23:06'!
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'sf 6/11/2023 16:19:23'!
 TestCase subclass: #CashierTest
-	instanceVariableNames: 'cashier cartTest'
+	instanceVariableNames: 'cartTest cashier merchantProcessor'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:23:04' prior: 50625008 overrides: 16961394!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:19:22' overrides: 16961394!
 setUp
 
 	cartTest := CartTest new.
-	cashier := Cashier new.! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:23:13' prior: 50625013!
-test01checkoutOfEmptyCartRaisesInvalidCartError
+	merchantProcessor := MerchantProcessor new.
+	cashier := Cashier new with: merchantProcessor! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:19:25' prior: 50625757 overrides: 16961394!
+setUp
 
-	| aCart |
+	cartTest := CartTest new.
+	merchantProcessor := MerchantProcessor new.
+	cashier := Cashier new with: merchantProcessor.! !
 
-	aCart := cartTest createCart.
-
-	self 
-		should: [ cashier checkout: aCart with: self aValidCard ]
-		raise: Error
-		withExceptionDo: [ :anError |
-			self assert: anError messageText = cashier InvalidCartErrorMessage.
-			self assert: aCart isEmpty ].! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:23:17'!
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:19:28'!
 PASSED!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:23:23' prior: 50625109!
-test02checkoutOfCartWithABookReturnsATicket
-
-	| aCart |
-	
-	aCart := cartTest createCart.
-	aCart add: cartTest new itemSellByTheStore.
-	
-	self assert: (cashier checkout: aCart with: self aValidCard)
-		 equals: #Ticket! !
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:23:23'!
-ERROR!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:23:26'!
-ERROR!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:23:30' prior: 50625164!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:19:44'!
 test02checkoutOfCartWithABookReturnsATicket
 
 	| aCart |
@@ -655,23 +104,56 @@ test02checkoutOfCartWithABookReturnsATicket
 	aCart add: cartTest itemSellByTheStore.
 	
 	self assert: (cashier checkout: aCart with: self aValidCard)
-		 equals: #Ticket! !
+		 equals: 0! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:19:52' prior: 50625776!
+test02checkoutOfCartWithABookReturnsATicket
 
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:23:31'!
-PASSED!
+	| aCart |
+	
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assert: (cashier checkout: aCart with: self aValidCard)
+	       equals: 0! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:20:06' prior: 50625182!
+checkout: aCart with: aCardToPayWith
+	self raiseErrorIfCartIsEmpty: aCart.
+	(merchantProcessor processPaymentOf: 1 withCard: aCardToPayWith) ifFalse: [
+		self error: self InvalidCardErrorMessage 
+		].
+	
+	aCart dumpItems.
+	^ 0
 
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:23:31'!
-PASSED!
+	! !
 
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:23:31'!
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'sf 6/11/2023 16:20:10'!
 PASSED!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:20:51' prior: 50625786!
+test02checkoutOfCartWithABookReturnsATicket
 
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:23:31'!
-PASSED!
+	| aCart |
+	
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assert: (cashier checkout: aCart with: self aValidCard)
+	       equals: 100! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:20:59' prior: 50625796!
+checkout: aCart with: aCardToPayWith
+	self raiseErrorIfCartIsEmpty: aCart.
+	(merchantProcessor processPaymentOf: 1 withCard: aCardToPayWith) ifFalse: [
+		self error: self InvalidCardErrorMessage 
+		].
+	
+	aCart dumpItems.
+	^ 100
 
-!testRun: #CashierTest #test04checkoutWithExpiredCardRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:23:31'!
+	! !
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'sf 6/11/2023 16:21:03'!
 PASSED!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:23:38' prior: 50625043!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:21:07'!
 test03checkoutOfCartWithABookEmptiesCart
 
 	| aCart |
@@ -683,22 +165,143 @@ test03checkoutOfCartWithABookEmptiesCart
 	
 	self assert: aCart isEmpty! !
 
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:23:39'!
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:21:07'!
+PASSED!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:21:57'!
+test02checkoutOfCartWithABookReturnsATicketWithItsPrice
+
+	| aCart |
+	
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assert: (cashier checkout: aCart with: self aValidCard)
+	       equals: 100! !
+
+!methodRemoval: CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'sf 6/11/2023 16:21:58'!
+test02checkoutOfCartWithABookReturnsATicket
+
+	| aCart |
+	
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assert: (cashier checkout: aCart with: self aValidCard)
+	       equals: 100!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:22:42'!
+test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice
+
+	| aCart |
+	
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assert: (cashier checkout: aCart with: self aValidCard)
+	       equals: 100! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:23:09' prior: 50625867!
+test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice
+
+	| aCart |
+	
+	aCart := cartTest createCart.
+	aCart add: 10 of: cartTest itemSellByTheStore.
+	
+	self assert: (cashier checkout: aCart with: self aValidCard)
+	       equals: 1000! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:24:27' prior: 50625820!
+checkout: aCart with: aCardToPayWith
+
+	| amountToPay |
+
+	self raiseErrorIfCartIsEmpty: aCart.
+	
+	amountToPay := aCart getSubtotal.
+	
+	(merchantProcessor processPaymentOf: 1 withCard: aCardToPayWith) ifFalse: [
+		self error: self InvalidCardErrorMessage 
+		].
+	
+	aCart dumpItems.
+	^ 100
+
+	! !
+!Cashier methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:24:39' prior: 50625889!
+checkout: aCart with: aCardToPayWith
+
+	| amountToPay |
+
+	self raiseErrorIfCartIsEmpty: aCart.
+	
+	amountToPay := aCart getSubtotal.
+	
+	(merchantProcessor processPaymentOf: amountToPay withCard: aCardToPayWith) ifFalse: [
+		self error: self InvalidCardErrorMessage 
+		].
+	
+	aCart dumpItems.
+	^ 100
+
+	! !
+!Cart methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:26:02'!
+getSubtotal
+
+	^ items sum: [ :anItem | catalog at: anItem ]! !
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:26:08'!
+FAILURE!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:26:08'!
+FAILURE!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:26:23' prior: 50625878!
+test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice
+
+	| aCart |
+	
+	aCart := cartTest createCart.
+	aCart add: 10 of: cartTest itemSellByTheStore.
+	
+	self assert: 1000
+	       equals: (cashier checkout: aCart with: self aValidCard)! !
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:26:27'!
+FAILURE!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:26:27'!
+FAILURE!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:26:31'!
+PASSED!
+!Cashier methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:26:59' prior: 50625902!
+checkout: aCart with: aCardToPayWith
+
+	| amountToPay |
+
+	self raiseErrorIfCartIsEmpty: aCart.
+	
+	amountToPay := aCart getSubtotal.
+	
+	(merchantProcessor processPaymentOf: amountToPay withCard: aCardToPayWith) ifFalse: [
+		self error: self InvalidCardErrorMessage 
+		].
+	
+	aCart dumpItems.
+	^ amountToPay
+
+	! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:27:03'!
 PASSED!
 
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:23:39'!
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:27:03'!
 PASSED!
 
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:23:39'!
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:27:03'!
 PASSED!
 
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:23:39'!
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:27:03'!
 PASSED!
-
-!testRun: #CashierTest #test04checkoutWithExpiredCardRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:23:39'!
-PASSED!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:23:44' prior: 50625119!
-test04checkoutWithExpiredCardRaisesInvalidCardError
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:27:50'!
+test05checkoutWithExpiredCardRaisesInvalidCardError
 
 	| aCart |
 
@@ -712,32 +315,10 @@ test04checkoutWithExpiredCardRaisesInvalidCardError
 			self assert: anError messageText = cashier InvalidCardErrorMessage.
 			self deny: aCart isEmpty ].! !
 
-!testRun: #CashierTest #test04checkoutWithExpiredCardRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:23:46'!
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:27:50'!
 PASSED!
-
-1234123412341234 log: 10!
-
-12341234123412345 log: 10!
-
-(12341234123412345 log: 10) floor!
-
-(1 log: 10) floor + 1.!
-
-(12 log: 10) floor + 1.!
-
-(123 log: 10) floor + 1.!
-
-(1234 log: 10) floor + 1.!
-
-(12345 log: 10) floor + 1.!
-
-(123456 log: 10) floor + 1.!
-
-(1234567 log: 10) floor + 1.!
-
-(12345678 log: 10) floor + 1.!
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:29:03'!
-test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:28:07'!
+test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError
 
 	| aCart |
 
@@ -750,121 +331,554 @@ test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = cashier InvalidCardErrorMessage.
 			self deny: aCart isEmpty ].! !
-!CashierTest methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:29:36'!
-aCardWithInvalidNumber
 
-	^ 1 @ (December, 2023)! !
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:28:09'!
+PASSED!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:28:55'!
+test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError
 
-!testRun: #CashierTest #test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:29:39'!
-FAILURE!
+	| aCart |
 
-!testRun: #CashierTest #test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:29:39'!
-FAILURE!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:30:46'!
-amountOfDigits: aNumber
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
 
-	^ ((aNumber log: 10) floor + 1)! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:31:12'!
-has16Digits: aNumber
+	self 
+		should: [ cashier checkout: aCart with: self aCardWith0Balance ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:29:07'!
+aCardWith0Balance
 
-	^ ((aNumber log: 10) floor + 1) = 16! !
+	^ Card new withName: 'Hernan'
+	                    andNumber: 1234123412341234
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 0! !
 
-!methodRemoval: Cashier #amountOfDigits: stamp: 'dsf 6/8/2023 20:31:16'!
-amountOfDigits: aNumber
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:29:11'!
+PASSED!
 
-	^ ((aNumber log: 10) floor + 1)!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:32:29'!
-raiseErrorIfCardNumberIsIvalid: aCardToPayWith.
+----SNAPSHOT----(11 June 2023 16:29:23) CuisUniversity-5832.image priorSource: 9408470!
+!MerchantProcessor methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:30:57' prior: 50625392!
+processPaymentOf: anAmountToPay withCard: aCardToPayWith
+
+	(self checkIfCardIsExpired: aCardToPayWith) ifTrue: [ ^ false ].
+	(self checkIfCardNumberIsInvalid: aCardToPayWith) ifTrue: [ ^ false ].
+	(self checkIfCard: aCardToPayWith cantAfford: anAmountToPay) ifTrue: [ ^ false ].
+	aCardToPayWith substractBalanceBy: anAmountToPay.
+	^ true.! !
+!Card methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:31:30'!
+substractBalanceBy: anAmountToPay
+
+	balance := balance - anAmountToPay! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:33:49'!
+test08checkoutSubstractsTheAmountToPayFromCardsBalance
+
+	| aCart |
+
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+
+	self 
+		should: [ cashier checkout: aCart with: self aCardWith0Balance ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:34:00' prior: 50625704!
+aValidCard
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 1234123412341234
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 100! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:34:20' prior: 50626066!
+test08checkoutSubstractsTheAmountToPayFromCardsBalance
+
+	| aCart aCard|
+
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
 	
-	(self has16Digits: aCardToPayWith) ifTrue: [
-		self error: self InvalidCardErrorMessage
-		]
+	
 
-	! !
+	self 
+		should: [ cashier checkout: aCart with: self aCardWith0Balance ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:34:37' prior: 50626091!
+test08checkoutSubstractsTheAmountToPayFromCardsBalance
 
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:32:31'!
+	| aCart aCard|
+
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	aCard := self aValidCard.
+
+	self 
+		should: [ cashier checkout: aCart with: self aCardWith0Balance ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:35:31' prior: 50626106!
+test08checkoutSubstractsTheAmountToPayFromCardsBalance
+
+	| aCart aCard|
+
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	aCard := self aValidCard.
+	cashier checkout: aCart with: aCard.
+	
+	aCart add: cartTest itemSellByTheStore.
+	self 
+		should: [ cashier checkout: aCart with: aCard ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:35:32'!
 PASSED!
 
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:32:31'!
+!methodRemoval: Card #withName:andNumber:andExpirationDate: stamp: 'sf 6/11/2023 16:36:21'!
+withName: anOwnersName andNumber: aCreditCardNumber andExpirationDate: anExpirationMonthofYear
+
+	name := anOwnersName.
+	number := aCreditCardNumber.
+	expirationDate := anExpirationMonthofYear.!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:36:23'!
 PASSED!
 
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:32:31'!
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:36:23'!
 PASSED!
 
-!testRun: #CashierTest #test04checkoutWithExpiredCardRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:32:31'!
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:36:23'!
 PASSED!
 
-!testRun: #CashierTest #test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:32:31'!
-FAILURE!
-
-!testRun: #CashierTest #test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:32:31'!
-FAILURE!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:33:09' prior: 50625072!
-checkout: aCart with: aCardToPayWith
-
-	self raiseErrorIfCartIsEmpty: aCart.
-	self raiseErrorIfCardIsExpired: aCardToPayWith.
-	self raiseErrorIfCardNumberIsIvalid: aCardToPayWith.
-	aCart dumpItems.
-	^ #Ticket
-
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:33:11'!
-PASSED!
-
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:33:11'!
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:36:23'!
 ERROR!
 
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:33:11'!
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:36:23'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:36:23'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:36:23'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:36:23'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:36:23'!
 ERROR!
 
-!testRun: #CashierTest #test04checkoutWithExpiredCardRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:33:11'!
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:36:39'!
 PASSED!
 
-!testRun: #CashierTest #test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:33:11'!
-FAILURE!
-
-!testRun: #CashierTest #test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:33:14'!
-FAILURE!
-
-!testRun: #CashierTest #test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:33:14'!
-FAILURE!
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:34:36'!
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:36:40'!
 PASSED!
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:34:57' prior: 50625336!
-checkout: aCart with: aCardToPayWith
 
-	self raiseErrorIfCartIsEmpty: aCart.
-	self raiseErrorIfCardIsExpired: aCardToPayWith.
-	self raiseErrorIfCardNumberIsIvalid: aCardToPayWith x.
-	aCart dumpItems.
-	^ #Ticket
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:36:41'!
+PASSED!
 
-	! !
-!Cashier methodsFor: 'as yet unclassified' stamp: 'dsf 6/8/2023 20:35:07' prior: 50625306!
-raiseErrorIfCardNumberIsIvalid: aCardToPayWith.
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:36:43'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:36:43'!
+ERROR!
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:36:58' prior: 50626081!
+aValidCard
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 1234123412341234
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000! !
+!CashierTest methodsFor: 'as yet unclassified' stamp: 'sf 6/11/2023 16:37:11' prior: 50626122!
+test08checkoutSubstractsTheAmountToPayFromCardsBalance
+
+	| aCart aCard|
+
+	aCart := cartTest createCart.
+	aCart add: 10 of: cartTest itemSellByTheStore.
 	
-	(self has16Digits: aCardToPayWith) ifFalse: [
-		self error: self InvalidCardErrorMessage
-		]
+	aCard := self aValidCard.
+	cashier checkout: aCart with: aCard.
+	
+	aCart add: cartTest itemSellByTheStore.
+	self 
+		should: [ cashier checkout: aCart with: aCard ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
 
-	! !
-
-!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'dsf 6/8/2023 20:35:10'!
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:37:12'!
 PASSED!
 
-!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicket stamp: 'dsf 6/8/2023 20:35:10'!
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:37:15'!
 PASSED!
 
-!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'dsf 6/8/2023 20:35:10'!
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:37:15'!
 PASSED!
 
-!testRun: #CashierTest #test04checkoutWithExpiredCardRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:35:10'!
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:37:15'!
 PASSED!
 
-!testRun: #CashierTest #test05checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'dsf 6/8/2023 20:35:10'!
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:37:15'!
 PASSED!
 
-----SNAPSHOT----(8 June 2023 21:16:59) CuisUniversity-5832.image priorSource: 9366758!
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:37:15'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:37:15'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:37:15'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:37:15'!
+PASSED!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/11/2023 16:44:21' prior: 50626048!
+processPaymentOf: anAmountToPay withCard: aCardToPayWith
+
+	self validateCard: aCardToPayWith forPaymentOf: anAmountToPay.
+	aCardToPayWith substractBalanceBy: anAmountToPay.
+	^ true.! !
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/11/2023 16:44:29'!
+validateCard: aCardToPayWith forPaymentOf: anAmountToPay
+
+	(self checkIfCardIsExpired: aCardToPayWith) ifTrue: [ ^ false ].
+	(self checkIfCardNumberIsInvalid: aCardToPayWith) ifTrue: [ ^ false ].
+	(self checkIfCard: aCardToPayWith cantAfford: anAmountToPay) ifTrue: [ ^ false ].! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:44:36'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:44:36'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:44:36'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:44:36'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:44:36'!
+FAILURE!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:44:36'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:44:36'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:44:36'!
+FAILURE!
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/11/2023 16:45:54' prior: 50626277!
+validateCard: aCardToPayWith forPaymentOf: anAmountToPay
+
+	^(self checkIfCardIsExpired: aCardToPayWith) and:
+	   (self checkIfCardNumberIsInvalid: aCardToPayWith) and:
+	   (self checkIfCard: aCardToPayWith cantAfford: anAmountToPay)! !
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/11/2023 16:46:16' prior: 50626268!
+processPaymentOf: anAmountToPay withCard: aCardToPayWith
+
+	(self validateCard: aCardToPayWith forPaymentOf: anAmountToPay) ifFalse: [ ^false ].
+	aCardToPayWith substractBalanceBy: anAmountToPay.
+	^ true.! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:46:17'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:46:17'!
+ERROR!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:46:17'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:46:17'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:46:17'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:46:17'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:46:17'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:46:17'!
+ERROR!
+
+true and: true and: false!
+
+!methodRemoval: MerchantProcessor #validateCard:forPaymentOf: stamp: 'sf 6/11/2023 16:46:55'!
+validateCard: aCardToPayWith forPaymentOf: anAmountToPay
+
+	^(self checkIfCardIsExpired: aCardToPayWith) and:
+	   (self checkIfCardNumberIsInvalid: aCardToPayWith) and:
+	   (self checkIfCard: aCardToPayWith cantAfford: anAmountToPay)!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:47:26'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:47:26'!
+ERROR!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:47:26'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:47:26'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:47:26'!
+FAILURE!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:47:26'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:47:26'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:47:26'!
+ERROR!
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/11/2023 16:48:38'!
+validateCard: aCardToPayWith forPaymentOf: anAmountToPay
+
+	^ ( self checkIfCard: aCardToPayWith cantAfford: anAmountToPay ) or:
+	    ( self checkIfCardIsExpired: aCardToPayWith ) or:
+	    ( self checkIfCardNumberIsInvalid: aCardToPayWith )! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:48:40'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:48:40'!
+ERROR!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:48:40'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:48:40'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:48:40'!
+FAILURE!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:48:40'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:48:40'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:48:40'!
+ERROR!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/11/2023 16:49:07' prior: 50626331!
+processPaymentOf: anAmountToPay withCard: aCardToPayWith
+
+	(self validateCard: aCardToPayWith forPaymentOf: anAmountToPay) ifTrue: [ ^false ].
+	aCardToPayWith substractBalanceBy: anAmountToPay.
+	^ true.! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:49:08'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:49:08'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:49:08'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:49:08'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:49:08'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:49:08'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:49:08'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:49:08'!
+PASSED!
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/11/2023 16:49:36' prior: 50626438!
+validateCard: aCardToPayWith forPaymentOf: anAmountToPay
+
+	^ (( self checkIfCard: aCardToPayWith cantAfford: anAmountToPay ) or:
+	     ( self checkIfCardIsExpired: aCardToPayWith ) or:
+	     ( self checkIfCardNumberIsInvalid: aCardToPayWith )) not! !
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/11/2023 16:49:50' prior: 50626479!
+processPaymentOf: anAmountToPay withCard: aCardToPayWith
+
+	(self validateCard: aCardToPayWith forPaymentOf: anAmountToPay) ifFalse: [ ^false ].
+	aCardToPayWith substractBalanceBy: anAmountToPay.
+	^ true.! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:49:56'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:49:56'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:49:56'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:49:56'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:49:56'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:49:56'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:49:56'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:49:56'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:52:15'!
+assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: aCard
+	self 
+		should: [ cashier checkout: aCart with: aCard ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:52:22' prior: 50626569!
+assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: aCard
+
+	self 
+		should: [ cashier checkout: aCart with: aCard ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:52:49' prior: 50625979!
+test05checkoutWithExpiredCardRaisesInvalidCardError
+
+	| aCart |
+
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: self anExpiredCard.! !
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:52:51'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:53:11' prior: 50625997!
+test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError
+
+	| aCart |
+
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: self aCardWithInvalidNumber.! !
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:53:12'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:53:33' prior: 50626016!
+test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError
+
+	| aCart |
+
+	aCart := cartTest createCart.
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: self aCardWith0Balance.! !
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:53:34'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:53:51' prior: 50626216!
+test08checkoutSubstractsTheAmountToPayFromCardsBalance
+
+	| aCart aCard|
+
+	aCart := cartTest createCart.
+	aCart add: 10 of: cartTest itemSellByTheStore.
+	
+	aCard := self aValidCard.
+	cashier checkout: aCart with: aCard.
+	
+	aCart add: cartTest itemSellByTheStore.
+	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: aCard.! !
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:53:52'!
+PASSED!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/11/2023 16:53:54'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/11/2023 16:53:54'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/11/2023 16:53:54'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/11/2023 16:53:54'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/11/2023 16:53:54'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/11/2023 16:53:54'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/11/2023 16:53:54'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/11/2023 16:53:54'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:54:22' prior: 50625736!
+test01checkoutOfEmptyCartRaisesInvalidCartError
+
+	| aCart |
+
+	aCart := cartTest createCart.
+
+	self 
+		should: [ cashier checkout: aCart with: self aValidCard ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCartErrorMessage.
+			self assert: aCart isEmpty ].! !
+
+----SNAPSHOT----(11 June 2023 16:55:17) CuisUniversity-5832.image priorSource: 9420587!
+
+----SNAPSHOT----(11 June 2023 16:55:55) CuisUniversity-5832.image priorSource: 9441497!
