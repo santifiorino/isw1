@@ -882,3 +882,1440 @@ test01checkoutOfEmptyCartRaisesInvalidCartError
 ----SNAPSHOT----(11 June 2023 16:55:17) CuisUniversity-5832.image priorSource: 9420587!
 
 ----SNAPSHOT----(11 June 2023 16:55:55) CuisUniversity-5832.image priorSource: 9441497!
+
+----STARTUP---- (12 June 2023 14:10:28) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5832.image!
+
+!CashierTest methodsFor: 'setUp/tearDown' stamp: 'sf 6/12/2023 14:16:43' prior: 50625765 overrides: 16961394!
+setUp
+
+	cartTest := CartTest new.
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance . 0 }).
+	cashier := Cashier new with: merchantProcessor.! !
+!CashierTest methodsFor: 'setUp/tearDown' stamp: 'sf 6/12/2023 14:17:55' prior: 50626708 overrides: 16961394!
+setUp
+
+	cartTest := CartTest new.
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance . 0 .
+		                                               self aCardWithInvalidNumber . 100 .
+		                                               self anExpiredCard . 100 .
+							       self aValidCard . 1000}).
+	cashier := Cashier new with: merchantProcessor.! !
+
+!classDefinition: #MerchantProcessor category: 'TusLibros' stamp: 'sf 6/12/2023 14:18:34'!
+Object subclass: #MerchantProcessor
+	instanceVariableNames: 'cardsBalance'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:18:32'!
+with: aDictOfCardsAndTheirBalance
+
+	cardsBalance := aDictOfCardsAndTheirBalance.! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:20:10' prior: 50625385!
+checkIfCard: aCardToPayWith cantAfford: anAmountToPay
+
+	^ (cardsBalance at: aCardToPayWith) < anAmountToPay! !
+
+!methodRemoval: Card #canAfford: stamp: 'sf 6/12/2023 14:20:25'!
+canAfford: anAmountToPay
+
+	^ (balance >= anAmountToPay)!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 14:21:58' prior: 50626530!
+processPaymentOf: anAmountToPay withCard: aCardToPayWith
+
+	(self validateCard: aCardToPayWith forPaymentOf: anAmountToPay) ifFalse: [ ^false ].
+	cardsBalance at: aCardToPayWith put: (cardsBalance at: aCardToPayWith) - anAmountToPay.
+	^ true.! !
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 14:22:29'!
+substract: aCardToPayWith fromBalanceOfCard: anAmountToPay
+
+	^ cardsBalance at: aCardToPayWith put: (cardsBalance at: aCardToPayWith) - anAmountToPay! !
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 14:22:29' prior: 50626758!
+processPaymentOf: anAmountToPay withCard: aCardToPayWith
+
+	(self validateCard: aCardToPayWith forPaymentOf: anAmountToPay) ifFalse: [ ^false ].
+	self substract: aCardToPayWith fromBalanceOfCard: anAmountToPay.
+	^ true.! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:22:40'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:22:40'!
+ERROR!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:22:40'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:22:40'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:22:40'!
+FAILURE!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:22:40'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:22:40'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:22:40'!
+ERROR!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:22:45'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:22:46'!
+ERROR!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:22:46'!
+ERROR!
+!CashierTest methodsFor: 'setUp/tearDown' stamp: 'sf 6/12/2023 14:24:18' prior: 50626718 overrides: 16961394!
+setUp
+
+	cartTest := CartTest new.
+	
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance . 0 .
+		                                               self aCardWithInvalidNumber . 100 .
+		                                               self anExpiredCard . 100 .
+							       self aValidCard . 1000}).
+	cashier := Cashier new with: merchantProcessor.! !
+!Card methodsFor: 'modifying' stamp: 'sf 6/12/2023 14:27:54'!
+number
+
+	^ number ! !
+!CashierTest methodsFor: 'setUp/tearDown' stamp: 'sf 6/12/2023 14:28:15' prior: 50626828 overrides: 16961394!
+setUp
+
+	cartTest := CartTest new.
+	
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance number . 0 .
+		                                               self aCardWithInvalidNumber number . 100 .
+		                                               self anExpiredCard number . 100 .
+							       self aValidCard number . 1000}).
+	cashier := Cashier new with: merchantProcessor.! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:28:27' prior: 50626747!
+checkIfCard: aCardToPayWith cantAfford: anAmountToPay
+
+	^ (cardsBalance at: aCardToPayWith number) < anAmountToPay! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:28:38'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:28:39'!
+ERROR!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:28:39'!
+ERROR!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 14:28:49' prior: 50626768!
+substract: aCardToPayWith fromBalanceOfCard: anAmountToPay
+
+	^ cardsBalance at: aCardToPayWith put: (cardsBalance at: aCardToPayWith number) - anAmountToPay! !
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:28:53'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:28:55'!
+PASSED!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:28:57'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:28:57'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:28:57'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:28:57'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:28:57'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:28:57'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:28:57'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:28:57'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:29:01'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:29:01'!
+FAILURE!
+!CashierTest methodsFor: 'setUp/tearDown' stamp: 'sf 6/12/2023 14:29:52' prior: 50626848 overrides: 16961394!
+setUp
+
+	cartTest := CartTest new.! !
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:30:26'!
+defaultCashier
+
+	| merchantProcessor1 |
+
+	merchantProcessor1 := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance number . 0 .
+		                                               self aCardWithInvalidNumber number . 100 .
+		                                               self anExpiredCard number . 100 .
+							       self aValidCard number . 1000}).
+							
+	^ Cashier new with: merchantProcessor1.! !
+
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'cartTest cashier'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'sf 6/12/2023 14:30:33'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'cartTest cashier'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:30:44' prior: 50626942!
+defaultCashier
+
+	| merchantProcessor |
+
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance number . 0 .
+		                                               self aCardWithInvalidNumber number . 100 .
+		                                               self anExpiredCard number . 100 .
+							       self aValidCard number . 1000}).
+							
+	^ Cashier new with: merchantProcessor.! !
+
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'cartTest'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!classDefinition: #CashierTest category: 'TusLibros' stamp: 'sf 6/12/2023 14:31:02'!
+TestCase subclass: #CashierTest
+	instanceVariableNames: 'cartTest'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:31:19' prior: 50626685!
+test01checkoutOfEmptyCartRaisesInvalidCartError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+
+	self 
+		should: [ cashier checkout: aCart with: self aValidCard ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCartErrorMessage.
+			self assert: aCart isEmpty ].! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:31:21'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:31:29' prior: 50625847!
+test02checkoutOfCartWithABookReturnsATicketWithItsPrice
+
+	| aCart cashier |
+	
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assert: (cashier checkout: aCart with: self aValidCard)
+	       equals: 100! !
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:31:31'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:31:37' prior: 50625834!
+test03checkoutOfCartWithABookEmptiesCart
+
+	| aCart cashier |
+	
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	cashier checkout: aCart with: self aValidCard.
+	
+	self assert: aCart isEmpty! !
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:31:39'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:31:55' prior: 50625928!
+test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice
+
+	| aCart cashier |
+	
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: 10 of: cartTest itemSellByTheStore.
+	
+	self assert: 1000
+	       equals: (cashier checkout: aCart with: self aValidCard)! !
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:31:56'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:32:01' prior: 50626593!
+test05checkoutWithExpiredCardRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: self anExpiredCard.! !
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:32:13'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:32:15'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:32:15'!
+ERROR!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:33:20'!
+assertCheckoutOf: aCart byCashier: aCashier raisesInvalidCardErrorWhenUsing: aCard
+
+	self 
+		should: [ aCashier checkout: aCart with: aCard ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = aCashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].! !
+
+!methodRemoval: CashierTest #assertCheckoutOf:raisesInvalidCardErrorWhenUsing: stamp: 'sf 6/12/2023 14:33:24'!
+assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: aCard
+
+	self 
+		should: [ cashier checkout: aCart with: aCard ]
+		raise: Error
+		withExceptionDo: [ :anError |
+			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self deny: aCart isEmpty ].!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:33:34' prior: 50627061!
+test05checkoutWithExpiredCardRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self anExpiredCard.! !
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:33:36'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:33:57' prior: 50626607!
+test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithInvalidNumber.! !
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:33:58'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:34:10' prior: 50626622!
+test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWith0Balance.! !
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:34:11'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:34:11'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:34:19'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:34:19'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:35:47'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:35:47'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:35:53'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:35:53'!
+FAILURE!
+
+aFailDescription!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:37:15' prior: 50626031!
+aCardWith0Balance
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 4567456745674567
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 0! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:37:19'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:37:21'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:37:22'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:37:23'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:37:24'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:37:25'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:37:27'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:37:29'!
+ERROR!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:37:29'!
+ERROR!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:38:07' prior: 50626637!
+test08checkoutSubstractsTheAmountToPayFromCardsBalance
+
+	| aCart aCard cashier|
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: 10 of: cartTest itemSellByTheStore.
+	aCard := self aValidCard.
+	cashier checkout: aCart with: aCard.
+	
+	aCart add: cartTest itemSellByTheStore.
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: aCard.! !
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:38:09'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:38:09'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:38:19'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:38:19'!
+FAILURE!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:38:58' prior: 50625713!
+anExpiredCard
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 6789678967896789
+	                    andExpirationDate: self aPastMonthOfYear
+	                    andBalance: 1000000! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:39:26'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:39:26'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:39:26'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:39:26'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:39:26'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:39:26'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:39:26'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:39:26'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:39:26'!
+FAILURE!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:39:35'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:39:35'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:39:35'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:39:35'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:39:35'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:39:35'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:39:35'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:39:35'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:39:35'!
+FAILURE!
+
+aCard!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 14:40:58' prior: 50626883!
+substract: aCardToPayWith fromBalanceOfCard: anAmountToPay
+
+	^ cardsBalance at: aCardToPayWith put: ((cardsBalance at: aCardToPayWith number) - anAmountToPay)! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:41:00'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:41:00'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:41:00'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:41:00'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:41:00'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:41:00'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:41:00'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:41:00'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:41:00'!
+FAILURE!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 14:41:41' prior: 50627338!
+substract: aCardToPayWith fromBalanceOfCard: anAmountToPay
+
+	^ cardsBalance at: aCardToPayWith number put: (cardsBalance at: aCardToPayWith number) - anAmountToPay! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:41:43'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:41:43'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:41:43'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:41:43'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:41:43'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:41:43'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:41:43'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:41:43'!
+PASSED!
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:43:19'!
+checkIfCardNameHasInvalidLength: aCard! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:43:24' prior: 50625066!
+checkIfCardIsExpired: aCardToPayWith
+	
+	^ (aCardToPayWith isExpired)! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:44:24' prior: 50627420!
+checkIfCardNameHasInvalidLength: aCardToPayWith
+
+	^ (aCardToPayWith nameHasBetween1And30Characters) not! !
+!Card methodsFor: 'validation' stamp: 'sf 6/12/2023 14:44:56'!
+nameHasBetween1And30Characters
+
+	^ (name size > 0) and: (name size < 31)! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:45:25' prior: 50626519!
+validateCard: aCardToPayWith forPaymentOf: anAmountToPay
+
+	^ (( self checkIfCard: aCardToPayWith cantAfford: anAmountToPay ) or:
+	     ( self checkIfCardIsExpired: aCardToPayWith ) or:
+	     ( self checkIfCardNameHasInvalidLength: aCardToPayWith) or:
+	     ( self checkIfCardNumberIsInvalid: aCardToPayWith )) not! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:45:27'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:45:27'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:45:27'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:45:27'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:45:27'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:45:27'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:45:27'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:45:27'!
+PASSED!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:46:02'!
+aCardWithEmptyName
+
+	^ Card new withName: ''
+	                    andNumber: 0000000000000000
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000000! !
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:46:44'!
+aCardWithNameTooLarge
+
+	^ Card new withName: 'QWERTYUIOPASDFGHJKLZXCVBNMQWERTYUIOASDFGHJKL'
+	                    andNumber: 1111222233334444
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000000! !
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:47:40' prior: 50626970!
+defaultCashier
+
+	| merchantProcessor |
+
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance number . 0 .
+		                                               self aCardWithInvalidNumber number . 100 .
+		                                               self anExpiredCard number . 100 .
+							       self aValidCard number . 1000 .
+							       self aCardWithEmptyName . 100 .
+							       self aCardWithNameTooLarge . 100 .}).
+							
+	^ Cashier new with: merchantProcessor.! !
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:48:40'!
+test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithEmptyName.
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithNameTooLarge.! !
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:48:41'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:48:41'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:49:10'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:49:10'!
+FAILURE!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:49:56' prior: 50627506!
+defaultCashier
+
+	| merchantProcessor |
+
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance number . 0 .
+		                                               self aCardWithInvalidNumber number . 100 .
+		                                               self anExpiredCard number . 100 .
+							       self aValidCard number . 1000 .
+							       self aCardWithEmptyName number . 100 .
+							       self aCardWithNameTooLarge number . 100 .}).
+							
+	^ Cashier new with: merchantProcessor.! !
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:50:01'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:50:01'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:50:04'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:50:04'!
+FAILURE!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:50:38' prior: 50627495!
+aCardWithNameTooLarge
+
+	^ Card new withName: 'QWERTYUIOPASDFGHJKLZXCVBNMQWERTYUUDSIAOGFASIYUODBTFCGAOUIYSGCFOYUISGFRNCAIUYIOASDFGHJKL'
+	                    andNumber: 1111222233334444
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000000! !
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:50:44'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:50:44'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:50:51' prior: 50627525!
+test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithEmptyName.
+! !
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:50:53'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:50:53'!
+FAILURE!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:51:01' prior: 50627613!
+test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithEmptyName.
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithNameTooLarge.! !
+!Card methodsFor: 'validation' stamp: 'sf 6/12/2023 14:51:22' prior: 50627437!
+nameHasBetween1And30Characters
+
+	^ ((name size > 0) and: (name size < 31))! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:51:24'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:51:24'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:51:24'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:51:24'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:51:24'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:51:24'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:51:24'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:51:24'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:51:24'!
+FAILURE!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:51:24'!
+FAILURE!
+
+'HOLA' size!
+!Card methodsFor: 'validation' stamp: 'sf 6/12/2023 14:51:42' prior: 50627650!
+nameHasBetween1And30Characters
+
+	^ (name size > 0) and: (name size < 31)! !
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:54:31' prior: 50627634!
+test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithEmptyName.! !
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:54:33'!
+FAILURE!
+
+anError messageText!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:56:55' prior: 50627486!
+aCardWithEmptyName
+
+	^ Card new withName: ''
+	                    andNumber: 8888999911112222
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000000! !
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:57:00'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:57:21' prior: 50627699!
+test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithEmptyName.
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithNameTooLarge.! !
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:57:22'!
+PASSED!
+
+342589 asString!
+!Card methodsFor: 'validation' stamp: 'sf 6/12/2023 14:58:08' prior: 50624825!
+has16Digits
+	
+	
+	^ (number asString size) = 16! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:58:12'!
+PASSED!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:58:45' prior: 50625699!
+aPastMonthOfYear
+
+	^ (GregorianMonthOfYear current) previous! !
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:58:50' prior: 50625694!
+aFutureMonthOfYear
+
+	^ (GregorianMonthOfYear current) next! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:58:53'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'sf 6/12/2023 14:59:02'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'sf 6/12/2023 14:59:02'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'sf 6/12/2023 14:59:02'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'sf 6/12/2023 14:59:02'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'sf 6/12/2023 14:59:02'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'sf 6/12/2023 14:59:02'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'sf 6/12/2023 14:59:02'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'sf 6/12/2023 14:59:02'!
+PASSED!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:59:04'!
+PASSED!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 14:59:07'!
+PASSED!
+
+----SNAPSHOT----(12 June 2023 14:59:15) CuisUniversity-5832.image priorSource: 9441586!
+
+----SNAPSHOT----(12 June 2023 14:59:41) CuisUniversity-5832.image priorSource: 9480821!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 15:05:45' prior: 50627557!
+defaultCashier
+
+	| merchantProcessor |
+
+	merchantProcessor := MerchantProcessor new 
+		withCards:
+			(Dictionary newFromPairs: {self aCardWith0Balance number . OrderedCollection with: 0 with: false .
+		                                               				      self aCardWithInvalidNumber number . OrderedCollection with: 100 with: false .
+		                                                      self anExpiredCard number . OrderedCollection with: 100 with: false .
+							              self aValidCard number . OrderedCollection with: 1000 with: false .
+							              self aCardWithEmptyName number . OrderedCollection with: 100 with: false .
+							              self aCardWithNameTooLarge number . OrderedCollection with: 100 with: false .}).
+							
+	^ Cashier new with: merchantProcessor.! !
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 15:06:05' prior: 50627932!
+defaultCashier
+
+	| merchantProcessor |
+
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance number . OrderedCollection with: 0 with: false .
+	                                               				      self aCardWithInvalidNumber number . OrderedCollection with: 100 with: false .
+	                                                      self anExpiredCard number . OrderedCollection with: 100 with: false .
+						              self aValidCard number . OrderedCollection with: 1000 with: false .
+						              self aCardWithEmptyName number . OrderedCollection with: 100 with: false .
+						              self aCardWithNameTooLarge number . OrderedCollection with: 100 with: false .}).
+							
+	^ Cashier new with: merchantProcessor.! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:06:34'!
+getBalance: aCard! !
+
+!classDefinition: #MerchantProcessor category: 'TusLibros' stamp: 'sf 6/12/2023 15:06:44'!
+Object subclass: #MerchantProcessor
+	instanceVariableNames: 'cards'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+!MerchantProcessor methodsFor: 'as yet unclassified' stamp: 'sf 6/12/2023 15:06:44' prior: 50626741!
+with: aDictOfCardsAndTheirBalance
+
+	cards := aDictOfCardsAndTheirBalance.! !
+!MerchantProcessor methodsFor: 'as yet unclassified' stamp: 'sf 6/12/2023 15:06:44' prior: 50626865!
+checkIfCard: aCardToPayWith cantAfford: anAmountToPay
+
+	^ (cards at: aCardToPayWith number) < anAmountToPay! !
+!MerchantProcessor methodsFor: 'as yet unclassified' stamp: 'sf 6/12/2023 15:06:44' prior: 50627381!
+substract: aCardToPayWith fromBalanceOfCard: anAmountToPay
+
+	^ cards at: aCardToPayWith number put: (cards at: aCardToPayWith number) - anAmountToPay! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:07:07' prior: 50627987!
+getBalance: aCard
+
+	^ (cards at: aCard number) at: 0! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:07:27' prior: 50628004!
+checkIfCard: aCardToPayWith cantAfford: anAmountToPay
+
+	^ (self getBalance: aCardToPayWith) < anAmountToPay! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:07:38'!
+getBalanceOf: aCard
+
+	^ (cards at: aCard number) at: 0! !
+!MerchantProcessor methodsFor: 'as yet unclassified' stamp: 'sf 6/12/2023 15:07:38' prior: 50628024!
+checkIfCard: aCardToPayWith cantAfford: anAmountToPay
+
+	^ (self getBalanceOf: aCardToPayWith) < anAmountToPay! !
+
+!methodRemoval: MerchantProcessor #getBalance: stamp: 'sf 6/12/2023 15:07:38'!
+getBalance: aCard
+
+	^ (cards at: aCard number) at: 0!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:07:44'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:07:44'!
+ERROR!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:07:44'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:07:44'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:07:44'!
+FAILURE!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:07:44'!
+FAILURE!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:07:44'!
+FAILURE!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:07:44'!
+ERROR!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:07:44'!
+FAILURE!
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:08:17'!
+modifyBalanceOf: aCard to: aBalance
+
+	^ (cards at: aCard number) put: aBalance! !
+
+!methodRemoval: MerchantProcessor #modifyBalanceOf:to: stamp: 'sf 6/12/2023 15:08:30'!
+modifyBalanceOf: aCard to: aBalance
+
+	^ (cards at: aCard number) put: aBalance!
+
+|a|
+a := OrderedCollection with: 1 with: 2.
+a at: 1 put: 3.
+a.!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 15:10:03' prior: 50628011!
+substract: aCardToPayWith fromBalanceOfCard: anAmountToPay
+
+	^ ((cards at: aCardToPayWith number) at: 1) put: (self getBalanceOf: aCardToPayWith) - anAmountToPay! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:10:13' prior: 50628030!
+getBalanceOf: aCard
+
+	^ (cards at: aCard number) at: 1! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:10:18'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:10:18'!
+ERROR!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:10:18'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:10:18'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:10:18'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:10:18'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:10:18'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:10:18'!
+ERROR!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:10:18'!
+PASSED!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 15:10:58' prior: 50626776!
+processPaymentOf: anAmountToPay withCard: aCardToPayWith
+
+	(self validateCard: aCardToPayWith forPaymentOf: anAmountToPay) ifFalse: [ ^false ].
+	self substract: anAmountToPay fromBalanceOfCard: aCardToPayWith.
+	^ true.! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:11:47'!
+ERROR!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:11:47'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:11:47'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:11:47'!
+ERROR!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:11:47'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:11:53'!
+ERROR!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:11:53'!
+ERROR!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 15:12:24' prior: 50628093!
+substract: anAmountToPay fromBalanceOfCard: aCardToPayWith
+
+	^ ((cards at: aCardToPayWith number) at: 1) put: (self getBalanceOf: aCardToPayWith) - anAmountToPay! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:12:25'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:12:25'!
+ERROR!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:12:25'!
+ERROR!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:12:25'!
+ERROR!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:12:25'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:12:25'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:12:25'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:12:25'!
+ERROR!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:12:25'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:12:29'!
+ERROR!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:12:29'!
+ERROR!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 15:12:46' prior: 50628193!
+substract: anAmountToPay fromBalanceOfCard: aCardToPayWith
+
+	^ (cards at: aCardToPayWith number) at: 1 put: (self getBalanceOf: aCardToPayWith) - anAmountToPay! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:12:48'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:12:48'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:12:49'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:12:49'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:12:49'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:12:49'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:12:49'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:12:49'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:12:49'!
+PASSED!
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:13:15'!
+getStolenStateOf: aCard
+
+	^ (cards at: aCard number) at: 2! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:13:52'!
+checkIfCardIsStolen: aCardToPayWith
+
+	^ self getStolenStateOf: aCardToPayWith! !
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:14:12' prior: 50627443!
+validateCard: aCardToPayWith forPaymentOf: anAmountToPay
+
+	^ (( self checkIfCard: aCardToPayWith cantAfford: anAmountToPay ) or:
+	     ( self checkIfCardIsExpired: aCardToPayWith ) or:
+	     ( self checkIfCardNameHasInvalidLength: aCardToPayWith) or:
+	     ( self checkIfCardIsStolen: aCardToPayWith) or:
+	     ( self checkIfCardNumberIsInvalid: aCardToPayWith )) not! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:14:14'!
+PASSED!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 15:14:38'!
+test10checkoutWithStolenCardRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aStolenCard.! !
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 15:14:53'!
+aStolen
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 7777666655554444
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 0! !
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 15:15:29' prior: 50627960!
+defaultCashier
+
+	| merchantProcessor |
+
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance number . OrderedCollection with: 0 with: false .
+	                                               				      self aCardWithInvalidNumber number . OrderedCollection with: 100 with: false .
+	                                                      self anExpiredCard number . OrderedCollection with: 100 with: false .
+						              self aValidCard number . OrderedCollection with: 1000 with: false .
+						              self aCardWithEmptyName number . OrderedCollection with: 100 with: false .
+						              self aCardWithNameTooLarge number . OrderedCollection with: 100 with: false .
+							      self aStolenCard number . OrderedCollection with: 100 with: true .}).
+							
+	^ Cashier new with: merchantProcessor.! !
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 15:15:33'!
+aStolenCard
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 7777666655554444
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 0! !
+
+!methodRemoval: CashierTest #aStolen stamp: 'sf 6/12/2023 15:15:35'!
+aStolen
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 7777666655554444
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 0!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CashierTest #test10checkoutWithStolenCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:15:38'!
+PASSED!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+
+!testRun: #CashierTest #test10checkoutWithStolenCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:16:27'!
+PASSED!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 15:18:16' prior: 50628395!
+aStolenCard
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 7777666655554444
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000! !
+
+!testRun: #CashierTest #test01checkoutOfEmptyCartRaisesInvalidCartError stamp: 'sf 6/12/2023 15:18:18'!
+PASSED!
+
+!testRun: #CashierTest #test02checkoutOfCartWithABookReturnsATicketWithItsPrice stamp: 'sf 6/12/2023 15:18:18'!
+PASSED!
+
+!testRun: #CashierTest #test03checkoutOfCartWithABookEmptiesCart stamp: 'sf 6/12/2023 15:18:18'!
+PASSED!
+
+!testRun: #CashierTest #test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice stamp: 'sf 6/12/2023 15:18:19'!
+PASSED!
+
+!testRun: #CashierTest #test05checkoutWithExpiredCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:18:19'!
+PASSED!
+
+!testRun: #CashierTest #test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError stamp: 'sf 6/12/2023 15:18:19'!
+PASSED!
+
+!testRun: #CashierTest #test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError stamp: 'sf 6/12/2023 15:18:19'!
+PASSED!
+
+!testRun: #CashierTest #test08checkoutSubstractsTheAmountToPayFromCardsBalance stamp: 'sf 6/12/2023 15:18:19'!
+PASSED!
+
+!testRun: #CashierTest #test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError stamp: 'sf 6/12/2023 15:18:19'!
+PASSED!
+
+!testRun: #CashierTest #test10checkoutWithStolenCardRaisesInvalidCardError stamp: 'sf 6/12/2023 15:18:19'!
+PASSED!
+
+----SNAPSHOT----(12 June 2023 15:18:32) CuisUniversity-5832.image priorSource: 9480910!

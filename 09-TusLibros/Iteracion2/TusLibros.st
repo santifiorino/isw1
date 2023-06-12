@@ -5,21 +5,22 @@ TestCase subclass: #Card
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!Card methodsFor: 'validation' stamp: 'SF 6/11/2023 15:50:59'!
-canAfford: anAmountToPay
-
-	^ (balance >= anAmountToPay)! !
-
-!Card methodsFor: 'validation' stamp: 'SF 6/11/2023 15:12:20'!
+!Card methodsFor: 'validation' stamp: 'sf 6/12/2023 14:58:08'!
 has16Digits
-
-	^ ((number log: 10) floor + 1) = 16! !
+	
+	
+	^ (number asString size) = 16! !
 
 !Card methodsFor: 'validation' stamp: 'SF 6/11/2023 15:11:33'!
 isExpired
 	
 	^(expirationDate < (GregorianMonthOfYear current))
 ! !
+
+!Card methodsFor: 'validation' stamp: 'sf 6/12/2023 14:51:42'!
+nameHasBetween1And30Characters
+
+	^ (name size > 0) and: (name size < 31)! !
 
 
 !Card methodsFor: 'initialization' stamp: 'SF 6/11/2023 15:46:13'!
@@ -30,6 +31,11 @@ withName: anOwnersName andNumber: aCreditCardNumber andExpirationDate: anExpirat
 	expirationDate := anExpirationMonthofYear.
 	balance := aBalance.! !
 
+
+!Card methodsFor: 'modifying' stamp: 'sf 6/12/2023 14:27:54'!
+number
+
+	^ number ! !
 
 !Card methodsFor: 'modifying' stamp: 'sf 6/11/2023 16:31:30'!
 substractBalanceBy: anAmountToPay
@@ -154,17 +160,18 @@ itemSellByTheStore
 
 !classDefinition: #CashierTest category: 'TusLibros'!
 TestCase subclass: #CashierTest
-	instanceVariableNames: 'cartTest cashier merchantProcessor'
+	instanceVariableNames: 'cartTest'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:54:22'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:31:19'!
 test01checkoutOfEmptyCartRaisesInvalidCartError
 
-	| aCart |
+	| aCart cashier |
 
 	aCart := cartTest createCart.
+	cashier := self defaultCashier.
 
 	self 
 		should: [ cashier checkout: aCart with: self aValidCard ]
@@ -173,92 +180,138 @@ test01checkoutOfEmptyCartRaisesInvalidCartError
 			self assert: anError messageText = cashier InvalidCartErrorMessage.
 			self assert: aCart isEmpty ].! !
 
-!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:21:57'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:31:29'!
 test02checkoutOfCartWithABookReturnsATicketWithItsPrice
 
-	| aCart |
+	| aCart cashier |
 	
 	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
 	aCart add: cartTest itemSellByTheStore.
 	
 	self assert: (cashier checkout: aCart with: self aValidCard)
 	       equals: 100! !
 
-!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:21:07'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:31:37'!
 test03checkoutOfCartWithABookEmptiesCart
 
-	| aCart |
+	| aCart cashier |
 	
 	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
 	aCart add: cartTest itemSellByTheStore.
 	
 	cashier checkout: aCart with: self aValidCard.
 	
 	self assert: aCart isEmpty! !
 
-!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:26:23'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:31:55'!
 test04checkoutOfCartWithManyBookReturnsATicketWithTheSumOfTheirPrice
 
-	| aCart |
+	| aCart cashier |
 	
 	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
 	aCart add: 10 of: cartTest itemSellByTheStore.
 	
 	self assert: 1000
 	       equals: (cashier checkout: aCart with: self aValidCard)! !
 
-!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:52:49'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:33:34'!
 test05checkoutWithExpiredCardRaisesInvalidCardError
 
-	| aCart |
+	| aCart cashier |
 
 	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
 	aCart add: cartTest itemSellByTheStore.
 	
-	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: self anExpiredCard.! !
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self anExpiredCard.! !
 
-!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:53:11'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:33:57'!
 test06checkoutWithCardNumberWithInvalidFormatRaisesInvalidCardError
 
-	| aCart |
+	| aCart cashier |
 
 	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
 	aCart add: cartTest itemSellByTheStore.
 	
-	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: self aCardWithInvalidNumber.! !
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithInvalidNumber.! !
 
-!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:53:33'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:34:10'!
 test07checkoutWithCardWithouthEnoughBalanceRaisesInvalidCardError
 
-	| aCart |
+	| aCart cashier |
 
 	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
 	aCart add: cartTest itemSellByTheStore.
 	
-	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: self aCardWith0Balance.! !
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWith0Balance.! !
 
-!CashierTest methodsFor: 'tests' stamp: 'sf 6/11/2023 16:53:51'!
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:38:07'!
 test08checkoutSubstractsTheAmountToPayFromCardsBalance
 
-	| aCart aCard|
+	| aCart aCard cashier|
 
 	aCart := cartTest createCart.
-	aCart add: 10 of: cartTest itemSellByTheStore.
+	cashier := self defaultCashier.
 	
+	aCart add: 10 of: cartTest itemSellByTheStore.
 	aCard := self aValidCard.
 	cashier checkout: aCart with: aCard.
 	
 	aCart add: cartTest itemSellByTheStore.
-	self assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: aCard.! !
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: aCard.! !
+
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 14:57:21'!
+test09checkoutWithCardWithoutInvalidNameRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithEmptyName.
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aCardWithNameTooLarge.! !
+
+!CashierTest methodsFor: 'tests' stamp: 'sf 6/12/2023 15:14:38'!
+test10checkoutWithStolenCardRaisesInvalidCardError
+
+	| aCart cashier |
+
+	aCart := cartTest createCart.
+	cashier := self defaultCashier.
+	
+	aCart add: cartTest itemSellByTheStore.
+	
+	self assertCheckoutOf: aCart byCashier: cashier raisesInvalidCardErrorWhenUsing: self aStolenCard.! !
 
 
-!CashierTest methodsFor: 'support' stamp: 'sf 6/11/2023 16:29:07'!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:37:15'!
 aCardWith0Balance
 
 	^ Card new withName: 'Hernan'
-	                    andNumber: 1234123412341234
+	                    andNumber: 4567456745674567
 	                    andExpirationDate: self aFutureMonthOfYear
 	                    andBalance: 0! !
+
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:56:55'!
+aCardWithEmptyName
+
+	^ Card new withName: ''
+	                    andNumber: 8888999911112222
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000000! !
 
 !CashierTest methodsFor: 'support' stamp: 'sf 6/11/2023 16:17:03'!
 aCardWithInvalidNumber
@@ -268,15 +321,31 @@ aCardWithInvalidNumber
 	                    andExpirationDate: self aFutureMonthOfYear
 	                    andBalance: 1000000! !
 
-!CashierTest methodsFor: 'support' stamp: 'sf 6/11/2023 16:17:34'!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:50:38'!
+aCardWithNameTooLarge
+
+	^ Card new withName: 'QWERTYUIOPASDFGHJKLZXCVBNMQWERTYUUDSIAOGFASIYUODBTFCGAOUIYSGCFOYUISGFRNCAIUYIOASDFGHJKL'
+	                    andNumber: 1111222233334444
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000000! !
+
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:58:50'!
 aFutureMonthOfYear
 
-	^ (GregorianMonthOfYear current) next: 6*month! !
+	^ (GregorianMonthOfYear current) next! !
 
-!CashierTest methodsFor: 'support' stamp: 'sf 6/11/2023 16:17:41'!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:58:45'!
 aPastMonthOfYear
 
-	^ (GregorianMonthOfYear current) previous: 6*month! !
+	^ (GregorianMonthOfYear current) previous! !
+
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 15:18:16'!
+aStolenCard
+
+	^ Card new withName: 'Hernan'
+	                    andNumber: 7777666655554444
+	                    andExpirationDate: self aFutureMonthOfYear
+	                    andBalance: 1000! !
 
 !CashierTest methodsFor: 'support' stamp: 'sf 6/11/2023 16:36:58'!
 aValidCard
@@ -286,31 +355,45 @@ aValidCard
 	                    andExpirationDate: self aFutureMonthOfYear
 	                    andBalance: 1000! !
 
-!CashierTest methodsFor: 'support' stamp: 'sf 6/11/2023 16:18:12'!
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:38:58'!
 anExpiredCard
 
 	^ Card new withName: 'Hernan'
-	                    andNumber: 1234123412341234
+	                    andNumber: 6789678967896789
 	                    andExpirationDate: self aPastMonthOfYear
 	                    andBalance: 1000000! !
 
-!CashierTest methodsFor: 'support' stamp: 'sf 6/11/2023 16:52:22'!
-assertCheckoutOf: aCart raisesInvalidCardErrorWhenUsing: aCard
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 14:33:20'!
+assertCheckoutOf: aCart byCashier: aCashier raisesInvalidCardErrorWhenUsing: aCard
 
 	self 
-		should: [ cashier checkout: aCart with: aCard ]
+		should: [ aCashier checkout: aCart with: aCard ]
 		raise: Error
 		withExceptionDo: [ :anError |
-			self assert: anError messageText = cashier InvalidCardErrorMessage.
+			self assert: anError messageText = aCashier InvalidCardErrorMessage.
 			self deny: aCart isEmpty ].! !
 
+!CashierTest methodsFor: 'support' stamp: 'sf 6/12/2023 15:15:29'!
+defaultCashier
 
-!CashierTest methodsFor: 'setUp/tearDown' stamp: 'sf 6/11/2023 16:19:25'!
+	| merchantProcessor |
+
+	merchantProcessor := MerchantProcessor new with:
+		(Dictionary newFromPairs: {self aCardWith0Balance number . OrderedCollection with: 0 with: false .
+	                                               				      self aCardWithInvalidNumber number . OrderedCollection with: 100 with: false .
+	                                                      self anExpiredCard number . OrderedCollection with: 100 with: false .
+						              self aValidCard number . OrderedCollection with: 1000 with: false .
+						              self aCardWithEmptyName number . OrderedCollection with: 100 with: false .
+						              self aCardWithNameTooLarge number . OrderedCollection with: 100 with: false .
+							      self aStolenCard number . OrderedCollection with: 100 with: true .}).
+							
+	^ Cashier new with: merchantProcessor.! !
+
+
+!CashierTest methodsFor: 'setUp/tearDown' stamp: 'sf 6/12/2023 14:29:52'!
 setUp
 
-	cartTest := CartTest new.
-	merchantProcessor := MerchantProcessor new.
-	cashier := Cashier new with: merchantProcessor.! !
+	cartTest := CartTest new.! !
 
 
 !classDefinition: #Cart category: 'TusLibros'!
@@ -461,37 +544,69 @@ InvalidCartErrorMessage
 
 !classDefinition: #MerchantProcessor category: 'TusLibros'!
 Object subclass: #MerchantProcessor
-	instanceVariableNames: ''
+	instanceVariableNames: 'cards'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
-!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/11/2023 16:49:50'!
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 15:10:58'!
 processPaymentOf: anAmountToPay withCard: aCardToPayWith
 
 	(self validateCard: aCardToPayWith forPaymentOf: anAmountToPay) ifFalse: [ ^false ].
-	aCardToPayWith substractBalanceBy: anAmountToPay.
+	self substract: anAmountToPay fromBalanceOfCard: aCardToPayWith.
 	^ true.! !
 
+!MerchantProcessor methodsFor: 'payments' stamp: 'sf 6/12/2023 15:12:46'!
+substract: anAmountToPay fromBalanceOfCard: aCardToPayWith
 
-!MerchantProcessor methodsFor: 'validation' stamp: 'SF 6/11/2023 15:52:16'!
+	^ (cards at: aCardToPayWith number) at: 1 put: (self getBalanceOf: aCardToPayWith) - anAmountToPay! !
+
+
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:07:38'!
 checkIfCard: aCardToPayWith cantAfford: anAmountToPay
 
-	^ (aCardToPayWith canAfford: anAmountToPay) not! !
+	^ (self getBalanceOf: aCardToPayWith) < anAmountToPay! !
 
-!MerchantProcessor methodsFor: 'validation' stamp: 'SF 6/11/2023 15:34:06'!
-checkIfCardIsExpired: aCardToPayWith.
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:43:24'!
+checkIfCardIsExpired: aCardToPayWith
 	
 	^ (aCardToPayWith isExpired)! !
+
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:13:52'!
+checkIfCardIsStolen: aCardToPayWith
+
+	^ self getStolenStateOf: aCardToPayWith! !
+
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 14:44:24'!
+checkIfCardNameHasInvalidLength: aCardToPayWith
+
+	^ (aCardToPayWith nameHasBetween1And30Characters) not! !
 
 !MerchantProcessor methodsFor: 'validation' stamp: 'SF 6/11/2023 15:53:52'!
 checkIfCardNumberIsInvalid: aCardToPayWith
 
 	^ (aCardToPayWith has16Digits) not! !
 
-!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/11/2023 16:49:36'!
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:10:13'!
+getBalanceOf: aCard
+
+	^ (cards at: aCard number) at: 1! !
+
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:13:15'!
+getStolenStateOf: aCard
+
+	^ (cards at: aCard number) at: 2! !
+
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:14:12'!
 validateCard: aCardToPayWith forPaymentOf: anAmountToPay
 
 	^ (( self checkIfCard: aCardToPayWith cantAfford: anAmountToPay ) or:
 	     ( self checkIfCardIsExpired: aCardToPayWith ) or:
+	     ( self checkIfCardNameHasInvalidLength: aCardToPayWith) or:
+	     ( self checkIfCardIsStolen: aCardToPayWith) or:
 	     ( self checkIfCardNumberIsInvalid: aCardToPayWith )) not! !
+
+!MerchantProcessor methodsFor: 'validation' stamp: 'sf 6/12/2023 15:06:44'!
+with: aDictOfCardsAndTheirBalance
+
+	cards := aDictOfCardsAndTheirBalance.! !
