@@ -258,18 +258,24 @@ TestCase subclass: #RestInterfaceTest
 	poolDictionaries: ''
 	category: 'TusLibros'!
 
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:22:13'!
+DateAndTimeWhereInterfaceStarts
+
+	^ DateAndTime year: 2023 day: 15 hour: 04 minute: 23 second: 21! !
+
 !RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/22/2013 00:15'!
 anotherValidBook
 	
 	^testObjectsFactory anotherItemSellByTheStore ! !
 
-!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'ARM 6/11/2023 14:12:44'!
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:21:07'!
 createDefaultInterface
 	
 	^RestInterface
 		authenticatingWith: self
 		acceptingItemsOf: testObjectsFactory defaultCatalog
-		merchantProcessor: self.! !
+		merchantProcessor: self
+		startingAtDateTime: self DateAndTimeWhereInterfaceStarts.! !
 
 !RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:49'!
 invalidBook
@@ -299,7 +305,7 @@ is: aUser authenticatingWith: aPassword
 	storedPassword := self validUsersAndPasswords at: aUser ifAbsent: [ ^false ].
 	^aPassword = storedPassword ! !
 
-!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:43'!
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:15:33'!
 setUp 
 
 	testObjectsFactory := StoreTestObjectsFactory new.
@@ -483,7 +489,7 @@ test12CanNotCheckoutAnEmptyCart
 		
 		! !
 
-!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 20:52:18'!
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:23:46'!
 test13TimeRemainingOfNewCartIs30Minutes
 
 	
@@ -493,24 +499,10 @@ test13TimeRemainingOfNewCartIs30Minutes
 
 	cartID := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
 	
-	self assert: testObjectsFactory defaultCartTimeout equals: (interface timeRemainingOfCart: cartID).! !
+	self assert: self DateAndTimeWhereInterfaceStarts equals: (interface dateAndTimeOfLastUpdateOfCart: cartID).! !
 
-!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 20:57:29'!
-test14TimeRemainingOfAllCartsDecreasesOverTime
-
-	
-	| interface cartID |
-	
-	interface := self createDefaultInterface.
-
-	cartID := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
-	
-	interface simulateTimePassageOf: 30*second.
-		
-	self assert: 0*second equals: (interface timeRemainingOfCart: cartID).! !
-
-!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 21:13:10'!
-test15CanNotInteractWithCartAfterTimeoutExpires
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:46:33'!
+test14CanNotInteractWithCartAfterTimeoutExpires
 
 	
 	| interface cartID |
@@ -519,7 +511,7 @@ test15CanNotInteractWithCartAfterTimeoutExpires
 
 	cartID := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
 	
-	interface simulateTimePassageOf: 30*second.
+	interface simulateTimePassageOf: (Duration minutes: 31).
 		
 	self
 		should: [ interface add: self validBook quantity: 1 toCartIdentifiedAs: cartID ]
@@ -533,8 +525,8 @@ test15CanNotInteractWithCartAfterTimeoutExpires
 		withExceptionDo: [ :anError |
 			self assert: anError messageText = interface CartTimeoutErrorDescription ] .! !
 
-!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 21:17:51'!
-test16CartTimeoutResetsAfterInteraction
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:50:05'!
+test15CanInteractWithCartBeforeTimeoutExpires
 	
 	| interface cartID |
 	
@@ -542,18 +534,31 @@ test16CartTimeoutResetsAfterInteraction
 
 	cartID := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
 	
-	interface simulateTimePassageOf: 29*second.
+	interface simulateTimePassageOf: (Duration minutes: 29).
 	
-	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartID .
-		
-	self assert: testObjectsFactory defaultCartTimeout equals: (interface timeRemainingOfCart: cartID).
-	
-	interface simulateTimePassageOf: 29*second.
-	
-	 interface listCartIdentifiedAs: cartID .
-	
-	self assert: testObjectsFactory defaultCartTimeout equals: (interface timeRemainingOfCart: cartID).
+	self
+		shouldnt: [interface add: self validBook quantity: 1 toCartIdentifiedAs: cartID]
+		raise: Error.
 	! !
+
+!RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:50:31'!
+test16LastUpdatedOfCartResetsAfterInteractions
+	
+	| interface cartID |
+	
+	interface := self createDefaultInterface.
+
+	cartID := interface createCartFor: self validUser authenticatedWith: self validUserPassword.
+	
+	interface simulateTimePassageOf: (Duration minutes: 29).
+	
+	interface add: self validBook quantity: 1 toCartIdentifiedAs: cartID.
+	
+	interface simulateTimePassageOf: (Duration minutes: 2).
+	
+	self
+		shouldnt: [interface add: self validBook quantity: 1 toCartIdentifiedAs: cartID]
+		raise: Error.! !
 
 !RestInterfaceTest methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:50'!
 validBook
@@ -767,6 +772,24 @@ cartCanNotBeEmptyErrorMessage
 	^'Can not check out an empty cart'! !
 
 
+!classDefinition: #ClockSimulator category: 'TusLibros'!
+Object subclass: #ClockSimulator
+	instanceVariableNames: 'dateAndTime'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros'!
+
+!ClockSimulator methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:15:09'!
+getCurrentDateAndTime
+
+	^ dateAndTime! !
+
+!ClockSimulator methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:05:17'!
+setDateAndTime: aDateTime
+
+	dateAndTime := aDateTime! !
+
+
 !classDefinition: #CreditCard category: 'TusLibros'!
 Object subclass: #CreditCard
 	instanceVariableNames: 'expiration'
@@ -799,7 +822,7 @@ expiringOn: aMonth
 
 !classDefinition: #RestInterface category: 'TusLibros'!
 Object subclass: #RestInterface
-	instanceVariableNames: 'authenticationSystem carts catalog lastId merchantProcessor salesBook timeRemainingOfCarts'
+	instanceVariableNames: 'authenticationSystem carts catalog lastId merchantProcessor salesBook dateAndTimeOfLastCartUpdate clock'
 	classVariableNames: ''
 	poolDictionaries: ''
 	category: 'TusLibros'!
@@ -809,12 +832,10 @@ CartTimeoutErrorDescription
 
 	^ 'El timeout del carrito ha expirado'! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 21:16:50'!
+!RestInterface methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:32:08'!
 add: aBook quantity: anAmount toCartIdentifiedAs: aCartId
 
 	| cart |
-	
-	
 	
 	cart := carts at: aCartId ifAbsent: [ self signalInvalidCartId ].
 	
@@ -843,7 +864,7 @@ checkOutCartIdentifiedAs: aCartId withCreditCardNumbered: aCreditCartNumber owne
 		on: self today 
 		registeringOn: salesBook! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 21:00:15'!
+!RestInterface methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:14:26'!
 createCartFor: aUser authenticatedWith: aPassword
 
 	| cartId |
@@ -853,9 +874,14 @@ createCartFor: aUser authenticatedWith: aPassword
 	cartId := self generateCartId.
 	carts at: cartId put: (Cart acceptingItemsOf: catalog).
 	
-	timeRemainingOfCarts at: cartId put:  StoreTestObjectsFactory new defaultCartTimeout .
+	dateAndTimeOfLastCartUpdate at: cartId put: clock getCurrentDateAndTime.
 	
 	^cartId ! !
+
+!RestInterface methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:23:22'!
+dateAndTimeOfLastUpdateOfCart: cartID
+
+	^ dateAndTimeOfLastCartUpdate at: cartID .! !
 
 !RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:32'!
 generateCartId
@@ -866,15 +892,16 @@ generateCartId
 	lastId := lastId + 1.
 	^lastId! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 20:58:38'!
-initializeAuthenticatingWith: anAuthenticationSystem acceptingItemsOf: aCatalog merchantProcessor: anMP
+!RestInterface methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:19:17'!
+initializeAuthenticatingWith: anAuthenticationSystem acceptingItemsOf: aCatalog merchantProcessor: anMP startingAtDateTime: aDateTime
 
 	authenticationSystem := anAuthenticationSystem.
 	catalog := aCatalog.
 	carts := Dictionary new.
 	lastId := 0.
 	merchantProcessor := anMP.
-	timeRemainingOfCarts := Dictionary new.! !
+	dateAndTimeOfLastCartUpdate := Dictionary new.
+	clock := ClockSimulator new setDateAndTime: aDateTime.! !
 
 !RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:27'!
 invalidCartIdErrorDescription
@@ -910,17 +937,17 @@ listCartIdentifiedAs: aCartId
 	
 	^cart content! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 21:10:52'!
+!RestInterface methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:42:55'!
 raiseErrorIfCartTimeoutHasExpired: aCartId
 
-	^ ((timeRemainingOfCarts at: aCartId) <= (0*second)) ifTrue: [
+	^ ((dateAndTimeOfLastCartUpdate at: aCartId) + (Duration minutes: 30) < clock getCurrentDateAndTime) ifTrue: [
 		self error: self CartTimeoutErrorDescription .
 		]! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 21:16:22'!
+!RestInterface methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:40:47'!
 restoreTimeoutOfCart: aCartId
 
-	timeRemainingOfCarts at: aCartId  put: StoreTestObjectsFactory new defaultCartTimeout .! !
+	dateAndTimeOfLastCartUpdate at: aCartId put: clock getCurrentDateAndTime.! !
 
 !RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/21/2013 23:27'!
 signalInvalidCartId
@@ -932,16 +959,10 @@ signalInvalidUserAndOrPassword
 	
 	self error: self invalidUserAndOrPasswordErrorDescription! !
 
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 21:03:01'!
+!RestInterface methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:31:10'!
 simulateTimePassageOf: anAmountOfTime
 
-	timeRemainingOfCarts  keys do: [:aCartId | 
-		timeRemainingOfCarts at: aCartId  put: ((timeRemainingOfCarts at: aCartId) - anAmountOfTime )].! !
-
-!RestInterface methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 21:03:25'!
-timeRemainingOfCart: cartID
-
-	^ timeRemainingOfCarts  at: cartID .! !
+	clock setDateAndTime: (clock getCurrentDateAndTime + anAmountOfTime)! !
 
 !RestInterface methodsFor: 'as yet unclassified' stamp: 'HernanWilkinson 6/22/2013 11:17'!
 today
@@ -954,10 +975,10 @@ today
 RestInterface class
 	instanceVariableNames: ''!
 
-!RestInterface class methodsFor: 'as yet unclassified' stamp: 'ARM 6/11/2023 14:13:04'!
-authenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP
+!RestInterface class methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:20:35'!
+authenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP startingAtDateTime: aDateTime
 
-	^self new initializeAuthenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP! !
+	^self new initializeAuthenticatingWith: aValidUsersAndPasswords acceptingItemsOf: aCatalog merchantProcessor: anMP startingAtDateTime: aDateTime! !
 
 
 !classDefinition: #StoreTestObjectsFactory category: 'TusLibros'!
@@ -1035,7 +1056,7 @@ anotherItemSellByTheStore
 	
 	^'anotherValidBook'! !
 
-!StoreTestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'jp 6/12/2023 20:53:49'!
+!StoreTestObjectsFactory methodsFor: 'as yet unclassified' stamp: 'SF 6/15/2023 16:30:20'!
 defaultCartTimeout
 	
-	^ 30*second! !
+	^ Duration minutes: 30! !
