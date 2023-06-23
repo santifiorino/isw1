@@ -1,0 +1,4764 @@
+
+
+----QUIT----(30 May 2023 00:05:32) CuisUniversity-5832.image priorSource: 4928100!
+
+----STARTUP---- (30 May 2023 00:05:33) as /Users/hernan/Documents/Cuis/5.0-64Bits/Cuis-University-Installer/CuisUniversity-5832.image!
+
+
+----QUIT----(30 May 2023 00:05:33) CuisUniversity-5832.image priorSource: 9366537!
+
+----STARTUP---- (20 June 2023 15:03:33) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5832.image!
+
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\Packages\System\Collections-CompactArrays.pck.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\Packages\Features\Compression.pck.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\Packages\Features\Sound.pck.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\Packages\Features\Cryptography-DigitalSignatures.pck.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\Packages\Features\Identities-UUID.pck.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\Packages\System\Network-Kernel.pck.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\WebClient.pck.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\TusLibros-Model Ejercicio it4.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\TusLibros-Tests Ejercicio it4.st----!
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\TusLibrosREST Ejercicio it4.st----!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:05:04'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:05:06'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:05:08'!
+FAILURE!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:07:24' prior: 50661881!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales aSemaphore |
+
+	bookPerformance := Dictionary new.
+	
+	aSemaphore := Semaphore new.
+	
+	[ totalSales := self totalSalesOf: anItem.
+	  aSemaphore signal.
+	  ] fork.
+	totalMoney := self totalMoneyRaisedBy: anItem.
+	
+	aSemaphore wait.	
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance
+	
+
+! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:08:10' prior: 50661922!
+storePerformance
+
+	| totalMoney totalSales performance aSemaphore |
+	
+	performance := Dictionary new.
+	aSemaphore := Semaphore new.
+	
+	[ totalSales := self totalSales.
+	  aSemaphore signal
+	  ] fork.
+	totalMoney := self totalMoneyRaised.
+	
+	aSemaphore wait.
+	
+	performance at: 'quantity' put: totalSales.
+	performance at: 'total' put: totalMoney.
+	performance at: 'summary' put: 'The store selled a total of ',totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^performance
+	
+
+! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:08:12'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:08:13'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:08:14'!
+PASSED!
+
+Object subclass: #ConcurrentClosureExecuter
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #ConcurrentClosureExecuter category: 'TusLibros-Model' stamp: 'SF 6/20/2023 15:10:54'!
+Object subclass: #ConcurrentClosureExecuter
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+
+!classDefinition: #ConcurrentClosureExecuter category: 'TusLibros-Model' stamp: 'SF 6/20/2023 15:12:39'!
+Object subclass: #ConcurrentClosureExecuter
+	instanceVariableNames: 'concurrentClosures'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!ConcurrentClosureExecuter methodsFor: 'no messages' stamp: 'SF 6/20/2023 15:12:38'!
+addClosureToRunConcurrently: aClosure
+
+	concurrentClosures add: aClosure.! !
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/20/2023 15:13:47'!
+addBlockToRunAfter: aClosure
+
+	concurrentClosures add: aClosure.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:13:48'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:13:49'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:13:50'!
+PASSED!
+
+!classDefinition: #ConcurrentClosureExecuter category: 'TusLibros-Model' stamp: 'SF 6/20/2023 15:14:15'!
+Object subclass: #ConcurrentClosureExecuter
+	instanceVariableNames: 'concurrentClosures block'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'TusLibros-Model'!
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/20/2023 15:14:14'!
+addBlockToRunAfterClosures: aBlock
+
+	block := aBlock.! !
+
+!methodRemoval: ConcurrentClosureExecuter #addBlockToRunAfter: stamp: 'SF 6/20/2023 15:14:21'!
+addBlockToRunAfter: aClosure
+
+	concurrentClosures add: aClosure.!
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/20/2023 15:16:27' overrides: 16902254!
+value
+
+	| aSemaphore |
+	
+	aSemaphore := Semaphore new.
+	
+	concurrentClosures do: [ :aClosure | 
+		aClosure value fork.
+		aSemaphore signal
+		].
+	
+	concurrentClosures size timesRepeat: [ aSemaphore wait ].
+	
+	block value.! !
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/20/2023 15:17:12' prior: 50664435 overrides: 16902254!
+value
+
+	| aSemaphore |
+	
+	aSemaphore := Semaphore new.
+	
+	concurrentClosures do: [ :aClosure | 
+		aClosure fork.
+		aSemaphore signal.
+		].
+	
+	concurrentClosures size timesRepeat: [ aSemaphore wait ].
+	
+	block value.! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:17:46' prior: 50664046!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales aSemaphore anExecuter |
+
+	bookPerformance := Dictionary new.
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+	
+	aSemaphore := Semaphore new.
+	
+	[ totalSales := self totalSalesOf: anItem.
+	  aSemaphore signal.
+	  ] fork.
+	totalMoney := self totalMoneyRaisedBy: anItem.
+	
+	aSemaphore wait.	
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance
+	
+
+! !
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/20/2023 15:18:05' overrides: 16920235!
+initialize
+	
+	concurrentClosures := OrderedCollection new.! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:19:36' prior: 50664457!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales anExecuter |
+
+	bookPerformance := Dictionary new.
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+	
+	anExecuter addClosureToRunConcurrently: [ totalSales := self totalSalesOf: anItem ].
+	anExecuter addClosureToRunConcurrently: [ totalMoney := self totalMoneyRaisedBy: anItem ].
+
+	anExecuter addBlockToRunAfterClosures: [	
+		bookPerformance at: 'quantity' put: totalSales.
+		bookPerformance at: 'total' put: totalMoney.
+		bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	]
+
+	^bookPerformance
+	
+
+! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:19:40'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:19:40'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:19:41'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:19:41'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:19:42'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:19:42'!
+ERROR!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:19:51' prior: 50664486!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales anExecuter |
+
+	bookPerformance := Dictionary new.
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+	
+	anExecuter addClosureToRunConcurrently: [ totalSales := self totalSalesOf: anItem ].
+	anExecuter addClosureToRunConcurrently: [ totalMoney := self totalMoneyRaisedBy: anItem ].
+
+	anExecuter addBlockToRunAfterClosures: [	
+		bookPerformance at: 'quantity' put: totalSales.
+		bookPerformance at: 'total' put: totalMoney.
+		bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	].
+
+	^bookPerformance
+	
+
+! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:19:53'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:19:53'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:19:53'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:19:53'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:19:53'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:19:54'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:19:54'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:19:55'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:19:55'!
+ERROR!
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:20:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:20:02'!
+ERROR!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:20:03'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:20:03'!
+ERROR!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:21:14' prior: 50664663!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales anExecuter |
+
+	bookPerformance := Dictionary new.
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+	
+	anExecuter addClosureToRunConcurrently: [ totalSales := self totalSalesOf: anItem ].
+	anExecuter addClosureToRunConcurrently: [ totalMoney := self totalMoneyRaisedBy: anItem ].
+
+	anExecuter addBlockToRunAfterClosures: [	
+		bookPerformance at: 'quantity' put: totalSales.
+		bookPerformance at: 'total' put: totalMoney.
+		bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	].
+
+	anExecuter value.
+
+	^bookPerformance
+	
+
+! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:21:18'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:21:18'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:21:19'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:21:19'!
+FAILURE!
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/20/2023 15:21:56' prior: 50664447 overrides: 16902254!
+value
+
+	| aSemaphore |
+	
+	aSemaphore := Semaphore new.
+	
+	concurrentClosures do: [ :aClosure | 
+		aClosure fork.
+		aSemaphore signal.
+		].
+	
+	concurrentClosures size timesRepeat: [ aSemaphore wait ].
+	
+	block value.! !
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/20/2023 15:23:46' prior: 50665169 overrides: 16902254!
+value
+
+	| aSemaphore |
+	
+	aSemaphore := Semaphore new.
+	
+	concurrentClosures do: [ :aClosure | 
+		[ aClosure.
+		aSemaphore signal ] fork.
+		].
+	
+	concurrentClosures size timesRepeat: [ aSemaphore wait ].
+	
+	block value.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:23:52'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:23:52'!
+FAILURE!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:23:53'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:23:53'!
+FAILURE!
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/20/2023 15:27:40' prior: 50665180 overrides: 16902254!
+value
+
+	| aSemaphore |
+	
+	aSemaphore := Semaphore new.
+	
+	concurrentClosures do: [ :aClosure | 
+		[ aClosure value.
+		aSemaphore signal ] fork.
+		].
+	
+	concurrentClosures size timesRepeat: [ aSemaphore wait ].
+	
+	block value.! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:27:45'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:27:46'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:27:47'!
+PASSED!
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:28:30' prior: 50664991!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales anExecuter |
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+
+	bookPerformance := Dictionary new.
+	
+	anExecuter addClosureToRunConcurrently: [ totalSales := self totalSalesOf: anItem ].
+	anExecuter addClosureToRunConcurrently: [ totalMoney := self totalMoneyRaisedBy: anItem ].
+
+	anExecuter addBlockToRunAfterClosures: [	
+		bookPerformance at: 'quantity' put: totalSales.
+		bookPerformance at: 'total' put: totalMoney.
+		bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	].
+
+	anExecuter value.
+
+	^bookPerformance
+	
+
+! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:28:49' prior: 50664067!
+storePerformance
+
+	| totalMoney totalSales performance aSemaphore anExecuter |
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+	
+	performance := Dictionary new.
+	aSemaphore := Semaphore new.
+	
+	[ totalSales := self totalSales.
+	  aSemaphore signal
+	  ] fork.
+	totalMoney := self totalMoneyRaised.
+	
+	aSemaphore wait.
+	
+	performance at: 'quantity' put: totalSales.
+	performance at: 'total' put: totalMoney.
+	performance at: 'summary' put: 'The store selled a total of ',totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^performance
+	
+
+! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/20/2023 15:30:20' prior: 50665527!
+storePerformance
+
+	| totalMoney totalSales performance anExecuter |
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+	
+	performance := Dictionary new.
+	
+	anExecuter addClosureToRunConcurrently: [ totalSales := self totalSales ].
+	anExecuter addClosureToRunConcurrently: [ totalMoney := self totalMoneyRaised ].
+	
+	anExecuter addBlockToRunAfterClosures: [
+		performance at: 'quantity' put: totalSales.
+		performance at: 'total' put: totalMoney.
+		performance at: 'summary' put: 'The store selled a total of ',totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+	].
+
+	anExecuter value.
+
+	^performance
+	
+
+! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/20/2023 15:30:22'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:30:23'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/20/2023 15:30:24'!
+PASSED!
+
+----SNAPSHOT----(20 June 2023 15:31:19) CuisUniversity-5832.image priorSource: 9366758!
+
+----SNAPSHOT----(20 June 2023 15:31:42) CuisUniversity-5832.image priorSource: 10690232!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+
+TusLibrosClientTestWindow open!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:04:48' prior: 50663598!
+addToCart
+
+	| cartId bookIsbn |
+
+	[
+		(self areCartIdAndBookSelected) ifTrue:[
+			cartId := self selectedCartId.
+			bookIsbn := self selectedBook.
+			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId.
+			self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)]
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:04:57' prior: 50663611!
+createCart
+
+	| newCartId |
+	
+	[
+		newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'.
+		cartIds add: newCartId.
+		self triggerEvent: #newCartIdArrived
+	] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:04:59' prior: 50665745!
+createCart
+
+	| newCartId |
+	
+	[
+		newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'.
+		cartIds add: newCartId.
+		self triggerEvent: #newCartIdArrived
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:05:10' prior: 50663620!
+listCart
+
+	| cartId |
+	
+	[
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			currentSelectedCartContent := restInterface listCart: cartId.
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId ].
+	] fork.! !
+
+WebServer reset!
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:10:00' prior: 50665765!
+listCart
+
+	| cartId |
+	
+	[
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			
+			[
+				currentSelectedCartContent := restInterface listCart: cartId.
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] on: Error do: [ : anError | 
+							
+						]
+			
+			
+			 ].
+	] fork.! !
+!TusLibrosClientTestWindow methodsFor: 'events' stamp: 'SF 6/20/2023 16:10:17'!
+informError: anErrorDescription
+
+	self inform: anErrorDescription
+	
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:12:16' prior: 50665781!
+listCart
+
+	| cartId |
+	
+	[
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			
+			[ currentSelectedCartContent := restInterface listCart: cartId.
+			  self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] on: Error
+		          do: [ : anError | 
+			      self triggerEvent: #informError with: anError messageText.
+			  ]			
+                ].
+	] fork.! !
+!TusLibrosClientTestWindow methodsFor: 'initialization' stamp: 'SF 6/20/2023 16:13:38' prior: 50663379!
+initializeWith: aTitle
+
+	self setLabel: aTitle.
+	self model: (TusLibrosClientTestWindowModel new).
+	self morphExtent: (self defaultExtent).
+	self buildMorphicWindow.
+	self openInWorld.
+			
+	self model when: #newCartIdArrived send: #refreshListOfCartIds to: self.		
+	self model when: #selectedCartChanged send: #refreshCartButtonsLabels: to: self.	
+	self model when: #bookAddedToCart send: #informBook:addedToCart: to: self.
+	self model when: #newCurrentSelectedCartContentArrived send: #refreshCurrentSelectedCartContent: to: self.
+	self model when: #errorRaised send: #informError: to: self.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:14:04' prior: 50665800!
+listCart
+
+	| cartId |
+	
+	[
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			
+			[ currentSelectedCartContent := restInterface listCart: cartId.
+			  self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] on: Error
+		          do: [ : anError | 
+			      self triggerEvent: #errorRaised with: anError messageText.
+			  ]			
+                ].
+	] fork.! !
+!TusLibrosServerRestInterface methodsFor: 'rest interface' stamp: 'SF 6/20/2023 16:14:38' prior: 50663776!
+listCart: aRequest
+
+	| cartId |
+	
+	self error: 'lol'.
+
+	(Delay forSeconds: 10) wait.
+	
+	self withFieldsOf: aRequest do: [ :requestFields |
+		cartId := self cartIdFrom: requestFields ].
+	
+	self 
+		answer: [(systemFacade listCartIdentifiedAs: cartId) asArray]
+		to: aRequest 
+! !
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+!TusLibrosServerRestInterface methodsFor: 'rest interface' stamp: 'SF 6/20/2023 16:17:27' prior: 50665855!
+listCart: aRequest
+
+	| cartId |
+
+	(Delay forSeconds: 10) wait.
+	
+	self withFieldsOf: aRequest do: [ :requestFields |
+		cartId := self cartIdFrom: requestFields ].
+	
+	self 
+		answer: [(systemFacade listCartIdentifiedAs: cartId) asArray]
+		to: aRequest 
+! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:21:21' prior: 50665839!
+listCart
+
+	| cartId |
+	
+	[
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			
+			[ currentSelectedCartContent := restInterface listCart: cartId.
+			  self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] on: Error
+		          do: [ : anError | 
+			      self triggerEvent: #errorRaised with: anError messageText.
+			]			
+                ].
+	] fork.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/20/2023 16:23:05' prior: 50663500!
+listCart: cartId
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	^self error: resp content.
+	"resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection] 
+		ifFalse:[^self error: resp content]"! !
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:25:08' prior: 50665883!
+listCart
+
+	| cartId |
+	
+	[
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			
+			[ currentSelectedCartContent := restInterface listCart: cartId.
+			    self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] on: Error
+		          do: [ : anError | 
+			      self triggerEvent: #errorRaised with: anError messageText.
+			]			
+                ].
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:25:14' prior: 50665917!
+listCart
+
+	| cartId |
+	
+	[
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			
+			[ currentSelectedCartContent := restInterface listCart: cartId.
+			    self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] on: Error
+		          do: [ : anError | 
+			    self triggerEvent: #errorRaised with: anError messageText.
+			]			
+                ].
+	] fork.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/20/2023 16:25:34' prior: 50665899!
+listCart: cartId
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	^self error: 'error jajaja'.
+	"resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection] 
+		ifFalse:[^self error: resp content]"! !
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+
+WebServer reset!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/20/2023 16:27:10' prior: 50665949!
+listCart: cartId
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection] 
+		ifFalse:[^self error: resp content]! !
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+
+WebServer reset!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:29:26' prior: 50665755!
+createCart
+
+	| newCartId |
+	
+	[
+		[       newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'.
+			cartIds add: newCartId.
+			self triggerEvent: #newCartIdArrived
+		] on: Error
+		  do: [ : anError | 
+		      self triggerEvent: #errorRaised with: anError messageText.
+		  ]	
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:29:28' prior: 50665986!
+createCart
+
+	| newCartId |
+	
+	[
+		[       newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'.
+			cartIds add: newCartId.
+			self triggerEvent: #newCartIdArrived
+		] on: Error
+		  do: [ : anError | 
+		      self triggerEvent: #errorRaised with: anError messageText.
+		  ]
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:30:14' prior: 50665731!
+addToCart
+
+	| cartId bookIsbn |
+
+	[
+		(self areCartIdAndBookSelected) ifTrue:[
+			[
+			cartId := self selectedCartId.
+			bookIsbn := self selectedBook.
+			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId.
+			self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)
+			] on: Error
+		          do: [ : anError | 
+			    self triggerEvent: #errorRaised with: anError messageText.
+			]
+			]
+	] fork.! !
+
+WebServer reset!
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+
+WebServer reset!
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+
+WebServer reset!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:35:40' prior: 50665933!
+listCart
+
+	| cartId |
+	
+	[
+		(self isCartIdSelected) ifTrue:[
+			cartId := self selectedCartId.
+			[ currentSelectedCartContent := restInterface listCart: cartId.
+			    self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] on: Error
+		          do: [ : anError | 
+			    self triggerEvent: #errorRaised with: anError messageText.
+			]			
+                ].
+	] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:48:12'!
+executeConcurrently: aClosure
+
+	[self executeWithPopUpErrorHandling: aClosure] fork.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:49:11'!
+executeWithPopUpErrorHandling: aClosure
+	
+	aClosure
+		on: Error
+		do: [ : anError | 
+			self triggerEvent: #errorRaised with: anError messageText.
+			]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:50:12' prior: 50665999!
+createCart
+
+	| newCartId |
+	
+	self executeConcurrently: [
+		newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'.
+		cartIds add: newCartId.
+		self triggerEvent: #newCartIdArrived.
+	].! !
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+WebServer reset!
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+
+WebServer reset!
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:53:08' prior: 50666012!
+addToCart
+
+	| cartId bookIsbn |
+	
+	self executeConcurrently: [
+		(self areCartIdAndBookSelected) ifTrue:[
+			cartId := self selectedCartId.
+			bookIsbn := self selectedBook.
+			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId.
+			self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)
+		].
+	].! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/20/2023 16:55:01' prior: 50666038!
+listCart
+
+	| cartId |
+	
+	self executeConcurrently: [
+		(self isCartIdSelected) ifTrue: [
+			cartId := self selectedCartId.
+			currentSelectedCartContent := restInterface listCart: cartId.
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+		].
+	].
+	! !
+
+WebServer reset.!
+
+TusLibrosServerRestInterface installForDefaultSystem.!
+
+TusLibrosClientTestWindow open.!
+
+WebServer reset.!
+
+----SNAPSHOT----(20 June 2023 16:56:48) CuisUniversity-5832.image priorSource: 10690321!
+
+----STARTUP---- (21 June 2023 22:08:42) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5832.image!
+
+
+!methodRemoval: ConcurrentClosureExecuter #addBlockToRunAfterClosures: stamp: 'SF 6/21/2023 22:10:08'!
+addBlockToRunAfterClosures: aBlock
+
+	block := aBlock.!
+!ConcurrentClosureExecuter methodsFor: 'as yet unclassified' stamp: 'SF 6/21/2023 22:10:17' prior: 50665343 overrides: 16902254!
+value
+
+	| aSemaphore |
+	
+	aSemaphore := Semaphore new.
+	
+	concurrentClosures do: [ :aClosure | 
+		[ aClosure value.
+		aSemaphore signal ] fork.
+		].
+	
+	concurrentClosures size timesRepeat: [ aSemaphore wait ].! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/21/2023 22:10:41' prior: 50665502!
+bookPerformance: anItem
+
+	| bookPerformance totalMoney totalSales anExecuter |
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+
+	bookPerformance := Dictionary new.
+	
+	anExecuter addClosureToRunConcurrently: [ totalSales := self totalSalesOf: anItem ].
+	anExecuter addClosureToRunConcurrently: [ totalMoney := self totalMoneyRaisedBy: anItem ].
+
+	anExecuter value.
+	
+	bookPerformance at: 'quantity' put: totalSales.
+	bookPerformance at: 'total' put: totalMoney.
+	bookPerformance at: 'summary' put: anItem,' was selled ',totalSales asString, ' times and raised a total amount of money equal to: ', totalMoney asString.
+	
+	^bookPerformance
+	
+
+! !
+!TusLibrosSystemFacade methodsFor: 'private' stamp: 'SF 6/21/2023 22:10:57' prior: 50665549!
+storePerformance
+
+	| totalMoney totalSales performance anExecuter |
+	
+	anExecuter := ConcurrentClosureExecuter new initialize.
+	
+	performance := Dictionary new.
+	
+	anExecuter addClosureToRunConcurrently: [ totalSales := self totalSales ].
+	anExecuter addClosureToRunConcurrently: [ totalMoney := self totalMoneyRaised ].
+	
+	anExecuter value.
+	
+	performance at: 'quantity' put: totalSales.
+	performance at: 'total' put: totalMoney.
+	performance at: 'summary' put: 'The store selled a total of ',totalSales asString, ' books and raised a total amount of money equal to: ', totalMoney asString.
+
+	^performance
+	
+
+! !
+
+!testRun: #CartTest #test01NewCartsAreCreatedEmpty stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CartTest #test02CanNotAddItemsThatDoNotBelongToStore stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CartTest #test03AfterAddingAnItemTheCartIsNotEmptyAnymore stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CartTest #test04CanNotAddNonPositiveNumberOfItems stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CartTest #test05CanNotAddMoreThanOneItemNotSellByTheStore stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CartTest #test06CartRemembersAddedItems stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CartTest #test07CartDoesNotHoldNotAddedItems stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CartTest #test08CartRemembersTheNumberOfAddedItems stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CashierTest #test01CanNotCheckoutAnEmptyCart stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CashierTest #test02CalculatedTotalIsCorrect stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CashierTest #test03CanNotCheckoutWithAnExpiredCreditCart stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CashierTest #test04CheckoutRegistersASale stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CashierTest #test05CashierChargesCreditCardUsingMerchantProcessor stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CashierTest #test06CashierDoesNotSaleWhenTheCreditCardHasNoCredit stamp: 'SF 6/21/2023 22:11:00'!
+PASSED!
+
+!testRun: #CreditCardTest #test01CreditCardNumberWithLessThan16DigitsIsNotValid stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #CreditCardTest #test02CreditCardNumberWithMoreThan16DigitsIsNotValid stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #CreditCardTest #test03CreditCardNumberShouldBeDigitsOnly stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #CreditCardTest #test04NameCanNotBeEmpty stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #CreditCardTest #test05IsExpiredOnNextExpirationMonth stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #CreditCardTest #test06IsNotExpiredOnExpirationMonth stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #CreditCardTest #test07CanGetCreditCardInfoFromIt stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test01CanCreateCartWithValidUserAndPassword stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test02CanNotCreateCartWithInvalidUser stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test03CanNotCreateCartWithInvalidPassword stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test04CanAddItemsToACreatedCart stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test05CanNotAddItemToNotCreatedCart stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test06CanNotAddItemNotSellByTheStore stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test08CanNotListCartOfInvalidCartId stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test09ListCartReturnsTheRightNumberOfItems stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10CheckOutReturnsTransactionIdAndImpactsCustomerPurchases stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test10_1_CanNotCheckoutAnAlreadyCheckedOutCart stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test11CanNotCheckoutANotCreatedCart stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test12CanNotCheckoutAnEmptyCart stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test13CanNotCheckoutWithAnExpiredCreditCard stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test14ListPurchasesIncludesBoughtItems stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test15CanNotListPurchasesOfInvalidCustomer stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test16CanNotListPurchasesOfValidCustomerWithInvalidPassword stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test17CanNotAddToCartWhenSessionIsExpired stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test18CanNotListCartWhenSessionIsExpired stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test19CanNotCheckOutCartWhenSessionIsExpired stamp: 'SF 6/21/2023 22:11:01'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test20BookPerformanceShouldNotTakeTooLong stamp: 'SF 6/21/2023 22:11:02'!
+PASSED!
+
+!testRun: #TusLibrosSystemFacadeTest #test21StorePerformanceShouldNotTakeTooLong stamp: 'SF 6/21/2023 22:11:03'!
+PASSED!
+
+----SNAPSHOT----(21 June 2023 22:12:49) CuisUniversity-5832.image priorSource: 10703154!
+
+----STARTUP---- (22 June 2023 18:51:35) as /home/clinux01/Descargas/linux64/linux64/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/Packages/System/Collections-CompactArrays.pck.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/Packages/Features/Compression.pck.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/Packages/Features/Sound.pck.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/Packages/Features/Cryptography-DigitalSignatures.pck.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/Packages/Features/Identities-UUID.pck.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/Packages/System/Network-Kernel.pck.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/WebClient.pck.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/TusLibros-Model.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/TusLibrosREST.st----!
+
+----End fileIn of /home/clinux01/Descargas/linux64/linux64/TusLibros-Tests.st----!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 18:53:41'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+		
+	resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[ successBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 18:54:50' prior: 50662480!
+addToCart
+
+	| cartId bookIsbn |
+	
+	self executeConcurrently: [
+		(self areCartIdAndBookSelected) ifTrue:[
+			cartId := self selectedCartId.
+			bookIsbn := self selectedBook.
+			restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: [ :status |
+				self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)
+			].
+		].
+	].! !
+
+TusLibrosServerRestInterface installForDefaultSystem!
+
+TusLibrosClientTestWindow open!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 18:57:04' prior: 50663965!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+		
+	resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+		
+	resp isSuccess
+		ifTrue:[ successBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 18:57:17' prior: 50662353!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+		
+	resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+		
+	resp isSuccess
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 18:57:31'!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))] 
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 18:57:39' prior: 50664032!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[ successBlock value: (WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 18:57:41' prior: 50664047!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 18:57:45' prior: 50664000!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+		
+	resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+		
+	resp isSuccess
+		ifTrue:[ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+		ifFalse:[^self error: resp content]! !
+
+!methodRemoval: TusLibrosClientTestWindowModel #executeConcurrently: stamp: 'SF 6/22/2023 18:57:52'!
+executeConcurrently: aClosure
+
+	[self executeWithPopUpErrorHandling: aClosure] fork.!
+
+!methodRemoval: TusLibrosClientTestWindowModel #executeWithPopUpErrorHandling: stamp: 'SF 6/22/2023 18:57:53'!
+executeWithPopUpErrorHandling: aClosure
+	
+	aClosure
+		on: Error
+		do: [ : anError | 
+			self triggerEvent: #errorRaised with: anError messageText.
+			]!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 18:58:03' prior: 50662494!
+createCart
+
+	| newCartId |
+	
+	newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk'.
+	cartIds add: newCartId.
+	self triggerEvent: #newCartIdArrived.
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 18:58:13' prior: 50663982!
+addToCart
+
+	| cartId bookIsbn |
+	
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: [ :status |
+			self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)
+		].
+	].
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 18:58:20' prior: 50662518!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		currentSelectedCartContent := restInterface listCart: cartId.
+		self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+	].
+	
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 18:58:36' prior: 50664111!
+createCart
+
+	| newCartId |
+	
+	newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk' onSuccessDo: [].
+	cartIds add: newCartId.
+	self triggerEvent: #newCartIdArrived.
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:00:20' prior: 50664145!
+createCart
+
+	| newCartId |
+	
+	newCartId := restInterface createCartFor: 'hernan' password: 'smalltalk' onSuccessDo: [
+		cartIds add: newCartId.
+		self triggerEvent: #newCartIdArrived.
+	].
+	
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:00:47' prior: 50664155!
+createCart
+
+	restInterface createCartFor: 'hernan' password: 'smalltalk' onSuccessDo: [ :newCartID |
+		cartIds add: newCartID.
+		self triggerEvent: #newCartIdArrived.
+	].
+	
+	! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:01:27' prior: 50664079!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+
+	[
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue:[ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse:[^self error: resp content]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:01:38' prior: 50664063!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	[
+		fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+		
+		resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue:[ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse:[^self error: resp content]
+	] fork! !
+
+!methodRemoval: TusLibrosClientRestInterface #createCartFor:password: stamp: 'SF 6/22/2023 19:02:15'!
+createCartFor: aUser password: aPassword
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+		
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))] 
+		ifFalse:[^self error: resp content]!
+
+!methodRemoval: TusLibrosClientRestInterface #add:of:toCartIdentifiedAs: stamp: 'SF 6/22/2023 19:02:18'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+		
+	resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+		
+	resp isSuccess
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))]
+		ifFalse:[^self error: resp content]!
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:03:40' prior: 50664134!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		currentSelectedCartContent := restInterface listCart: cartId onSuccessDo: [ :status | 
+			self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+		] asOrderedCollection.
+	].
+	
+	! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:03:51' prior: 50662382!
+listCart: cartId
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))] 
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:04:06'!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))] 
+		ifFalse:[^self error: resp content]! !
+
+!methodRemoval: TusLibrosClientRestInterface #listCart: stamp: 'SF 6/22/2023 19:04:10'!
+listCart: cartId
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue:[^(WebUtils jsonDecode: ((resp content) readStream))] 
+		ifFalse:[^self error: resp content]!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:04:28' prior: 50664192!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	[
+		fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+		
+		resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:04:36' prior: 50664264!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+		ifFalse:[^self error: resp content]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:04:40' prior: 50664307!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+		ifFalse:[ ^self error: resp content ]! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:04:48' prior: 50664174!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+
+	[
+		fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+			
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:05:29' prior: 50664120!
+addToCart
+
+	| cartId bookIsbn |
+	
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface
+			add: 1
+			of: bookIsbn
+			toCartIdentifiedAs: cartId
+			onSuccessDo: [ :status |
+				self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)
+			].
+		].
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:05:50' prior: 50664355!
+addToCart
+
+	| cartId bookIsbn |
+	
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId
+			onSuccessDo: [ :status |
+				self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)
+			].
+		].
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:05:59' prior: 50664165!
+createCart
+
+	restInterface createCartFor: 'hernan' password: 'smalltalk'
+		onSuccessDo: [ :newCartID |
+			cartIds add: newCartID.
+			self triggerEvent: #newCartIdArrived.
+		].
+	
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:06:07' prior: 50664238!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		currentSelectedCartContent := restInterface listCart: cartId
+			onSuccessDo: [ :status | 
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] asOrderedCollection.
+	].
+	
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:06:09' prior: 50664395!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		currentSelectedCartContent := restInterface listCart: cartId
+			onSuccessDo: [ :status | 
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			] asOrderedCollection.
+		].
+	
+	! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:06:26' prior: 50664322!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	[
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+		ifFalse:[ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'listSelectors' stamp: 'SF 6/22/2023 19:06:53' prior: 50662458!
+cartContent
+
+	^ currentSelectedCartContent! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:07:22' prior: 50664408!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		currentSelectedCartContent := (restInterface listCart: cartId
+			onSuccessDo: [ :status | 
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			]) asOrderedCollection.
+		].
+	
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:07:58' prior: 50664441!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		currentSelectedCartContent := restInterface listCart: cartId
+			onSuccessDo: [ :status | 
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			].
+		].
+	
+	! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:08:04' prior: 50664421!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	[
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection.]
+		ifFalse:[ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:08:06' prior: 50664466!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	[
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection ]
+		ifFalse:[ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:09:13' prior: 50664482!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	[
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) asOrderedCollection ]
+		ifFalse:[ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:11:34' prior: 50664454!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		restInterface listCart: cartId
+			onSuccessDo: [ :response |
+				currentSelectedCartContent := response. 
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			].
+		].
+	
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:11:39' prior: 50664385!
+createCart
+
+	restInterface createCartFor: 'hernan' password: 'smalltalk'
+		onSuccessDo: [ :response |
+			cartIds add: response.
+			self triggerEvent: #newCartIdArrived.
+		].
+	
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:11:43' prior: 50664370!
+addToCart
+
+	| cartId bookIsbn |
+	
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId
+			onSuccessDo: [ :response |
+				self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)
+			].
+		].
+	! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:12:21' prior: 50664498!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	[
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+		ifFalse:[ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:12:30' prior: 50664514!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		restInterface listCart: cartId
+			onSuccessDo: [ :response |
+				currentSelectedCartContent := response asOrderedCollection. 
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			].
+		].
+	
+	! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:13:15' prior: 50664290!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict resp |
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	[
+		
+		
+		resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:13:27' prior: 50664579!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	[
+		resp := WebClient htmlSubmit: (self url,'/createCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:13:35' prior: 50664551!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	[
+	resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+	
+	resp isSuccess 
+		ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+		ifFalse:[ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:13:51' prior: 50664337!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	[	
+		resp := WebClient htmlSubmit: (self url,'/addToCart') fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:13:56' prior: 50664613!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	[
+		resp := WebClient htmlSubmit: (self url,'/listCart') fields: fieldDict.
+		
+		resp isSuccess 
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse:[ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:14:49' prior: 50664646!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	[
+		resp := WebClient htmlSubmit: (self url, '/listCart') fields: fieldDict.
+		
+		resp isSuccess 
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse:[ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:14:52' prior: 50664596!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	[
+		resp := WebClient htmlSubmit: (self url, '/createCart') fields: fieldDict.
+			
+		resp isSuccess 
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:14:55' prior: 50664628!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	[	
+		resp := WebClient htmlSubmit: (self url, '/addToCart') fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:16:39' prior: 50664661!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	[
+		resp := WebClient htmlSubmit: (self url, '/listCart') fields: fieldDict.
+		
+		resp isSuccess 
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:18:05' prior: 50664693!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict resp |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self submitToRoute: '/addToCart' fields: fieldDict.
+	
+	[	
+		resp := WebClient htmlSubmit: (self url, '/addToCart') fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:19:08'!
+submitToRoute: aRoute fields: fieldDict withSuccessBlock: successBlock
+	
+	| resp |
+	
+	[	
+		resp := WebClient htmlSubmit: (self url, aRoute) fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:19:28' prior: 50664726!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self submitToRoute: '/addToCart' fields: fieldDict withSuccessBlock: successBlock.
+	"
+	[	
+		resp := WebClient htmlSubmit: (self url, '/addToCart') fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork
+"! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:19:51' prior: 50664759!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self submitToRoute: '/addToCart'
+		fields: fieldDict
+		withSuccessBlock: successBlock.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:19:54' prior: 50664779!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self  submitToRoute: '/addToCart'
+		fields: fieldDict
+		withSuccessBlock: successBlock.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:20:21' prior: 50664676!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self  submitToRoute: '/createCart'
+		fields: fieldDict
+		withSuccessBlock: successBlock.! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:20:41' prior: 50664711!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self  submitToRoute: '/listCart'
+		fields: fieldDict
+		withSuccessBlock: successBlock.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:23:58' prior: 50664537!
+addToCart
+
+	| cartId bookIsbn |
+	
+	(self areCartIdAndBookSelected) ifTrue:[
+		cartId := self selectedCartId.
+		bookIsbn := self selectedBook.
+		restInterface add: 1 of: bookIsbn toCartIdentifiedAs: cartId
+			onSuccessDo: [ :response |
+				self triggerEvent: #bookAddedToCart withArguments: (Array with: bookIsbn with: cartId)
+				]
+			onErrorDo: [ :response |
+				self triggerEvent: #errorRaised withArguments: response
+				].
+		].
+	! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:24:30'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock onErrorDo: errorBlock
+
+	| fieldDict |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self  submitToRoute: '/addToCart'
+		fields: fieldDict
+		withSuccessBlock: successBlock
+		withErrorBlock: errorBlock.! !
+
+!methodRemoval: TusLibrosClientRestInterface #add:of:toCartIdentifiedAs:onSuccessDo: stamp: 'SF 6/22/2023 19:24:33'!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock
+
+	| fieldDict |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self  submitToRoute: '/addToCart'
+		fields: fieldDict
+		withSuccessBlock: successBlock.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:25:04'!
+submitToRoute: aRoute fields: fieldDict withSuccessBlock: successBlock withErrorBlock: errorBlock
+	
+	| resp |
+	
+	[	
+		resp := WebClient htmlSubmit: (self url, aRoute) fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ errorBlock value: 'a']
+	] fork! !
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:25:27' prior: 50664872!
+submitToRoute: aRoute fields: fieldDict withSuccessBlock: successBlock withErrorBlock: errorBlock
+	
+	| resp |
+	
+	[	
+		resp := WebClient htmlSubmit: (self url, aRoute) fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ errorBlock value: resp content ]
+	] fork! !
+
+!methodRemoval: TusLibrosClientRestInterface #submitToRoute:fields:withSuccessBlock: stamp: 'SF 6/22/2023 19:25:35'!
+submitToRoute: aRoute fields: fieldDict withSuccessBlock: successBlock
+	
+	| resp |
+	
+	[	
+		resp := WebClient htmlSubmit: (self url, aRoute) fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ ^self error: resp content ]
+	] fork!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:26:05'!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock onErrorDo: errorBlock
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self  submitToRoute: '/createCart'
+		fields: fieldDict
+		onSuccessDo: successBlock
+		onErrorDo: errorBlock.! !
+
+!methodRemoval: TusLibrosClientRestInterface #createCartFor:password:onSuccessDo: stamp: 'SF 6/22/2023 19:26:09'!
+createCartFor: aUser password: aPassword onSuccessDo: successBlock
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'clientId'. aUser. 'password'. aPassword}.		
+	
+	self  submitToRoute: '/createCart'
+		fields: fieldDict
+		withSuccessBlock: successBlock.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:26:29'!
+listCart: cartId onSuccessDo: successBlock onErrorDo: errorBlock
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self  submitToRoute: '/listCart'
+		fields: fieldDict
+		onSuccessDo: successBlock
+		onErrorDo: errorBlock.! !
+
+!methodRemoval: TusLibrosClientRestInterface #listCart:onSuccessDo: stamp: 'SF 6/22/2023 19:26:32'!
+listCart: cartId onSuccessDo: successBlock
+
+	| fieldDict |
+	
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. }.		
+	
+	self  submitToRoute: '/listCart'
+		fields: fieldDict
+		withSuccessBlock: successBlock.!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:26:44'!
+submitToRoute: aRoute fields: fieldDict onSuccessDo: successBlock onErrorDo: errorBlock
+	
+	| resp |
+	
+	[	
+		resp := WebClient htmlSubmit: (self url, aRoute) fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ errorBlock value: resp content ]
+	] fork! !
+
+!methodRemoval: TusLibrosClientRestInterface #submitToRoute:fields:withSuccessBlock:withErrorBlock: stamp: 'SF 6/22/2023 19:26:46'!
+submitToRoute: aRoute fields: fieldDict withSuccessBlock: successBlock withErrorBlock: errorBlock
+	
+	| resp |
+	
+	[	
+		resp := WebClient htmlSubmit: (self url, aRoute) fields: fieldDict.
+			
+		resp isSuccess
+			ifTrue: [ successBlock value: (WebUtils jsonDecode: ((resp content) readStream)) ]
+			ifFalse: [ errorBlock value: resp content ]
+	] fork!
+!TusLibrosClientRestInterface methodsFor: 'requests' stamp: 'SF 6/22/2023 19:26:59' prior: 50664845!
+add: quantity of: bookIsbn toCartIdentifiedAs: cartId onSuccessDo: successBlock onErrorDo: errorBlock
+
+	| fieldDict |
+
+	fieldDict := Dictionary newFromPairs: {'cartId'. cartId. 'bookIsbn'. bookIsbn. 'bookQuantity'. quantity}.		
+	
+	self  submitToRoute: '/addToCart'
+		fields: fieldDict
+		onSuccessDo: successBlock
+		onErrorDo: errorBlock.! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:27:28' prior: 50664527!
+createCart
+
+	restInterface createCartFor: 'hernan' password: 'smalltalk'
+		onSuccessDo: [ :response |
+			cartIds add: response.
+			self triggerEvent: #newCartIdArrived.
+		]
+		onErrorDo: [ :response |
+			self triggerEvent: #errorRaised withArguments: response
+		]
+	
+	! !
+!TusLibrosClientTestWindowModel methodsFor: 'buttonSelectors' stamp: 'SF 6/22/2023 19:27:36' prior: 50664566!
+listCart
+
+	| cartId |
+	
+	(self isCartIdSelected) ifTrue: [
+		cartId := self selectedCartId.
+		restInterface listCart: cartId
+			onSuccessDo: [ :response |
+				currentSelectedCartContent := response asOrderedCollection. 
+				self triggerEvent: #newCurrentSelectedCartContentArrived with: cartId
+			]
+			onErrorDo: [ :response |
+				self triggerEvent: #errorRaised withArguments: response
+			].
+		].
+	
+	! !
+
+TusLibrosServerRestInterface reset!
+
+WebServer reset!
+
+----STARTUP---- (22 June 2023 20:03:51) as /home/clinux01/Descargas/linux64/linux64/CuisUniversity-5832.image!
+
+
+----End fileIn of /home/clinux01/Descargas/2023-1c/10-CustomerImporter/CustomerImporter.st----!
+!Customer methodsFor: 'importing' stamp: 'SF 6/22/2023 20:24:04'!
+importCustomers
+
+	"
+	self importCustomers
+	"
+	| inputStream session newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	! !
+
+!methodRemoval: Customer class #importCustomers stamp: 'SF 6/22/2023 20:24:04'!
+importCustomers
+
+	"
+	self importCustomers
+	"
+	| inputStream session newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:24:41'!
+importCustomers
+
+	"
+	self importCustomers
+	"
+	| inputStream session newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	! !
+
+!methodRemoval: Customer #importCustomers stamp: 'SF 6/22/2023 20:24:46'!
+importCustomers
+
+	"
+	self importCustomers
+	"
+	| inputStream session newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:24:51' prior: 50665048!
+test01Import
+
+	self importCustomers ! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:25:41' prior: 50665388!
+importCustomers
+
+	| inputStream session newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:31:42' prior: 50665473!
+importCustomers
+
+	| inputStream  newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	! !
+
+!classDefinition: #ImportTest category: 'CustomerImporter' stamp: 'SF 6/22/2023 20:31:42'!
+TestCase subclass: #ImportTest
+	instanceVariableNames: 'session'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:32:27' overrides: 16961394!
+setUp
+
+	session := DataBaseSession for: (Array with: Address with: Customer).
+	session beginTransaction! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:32:27' prior: 50665513!
+importCustomers
+
+	| inputStream  newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	self setUp.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:32:58' prior: 50665567!
+importCustomers
+
+	| inputStream  newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:33:37'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:34:00' prior: 50665604!
+importCustomers
+
+	| inputStream newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	session commit.
+	session close.
+
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:34:16' overrides: 16961402!
+tearDown
+
+	session commit.
+	session close! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:34:16' prior: 50665643!
+importCustomers
+
+	| inputStream newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	self tearDown.
+
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:34:26' prior: 50665685!
+importCustomers
+
+	| inputStream newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber .
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber .
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:38:17'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:44:49' prior: 50665468!
+test01Import
+
+	self importCustomers.
+	self assert: 5 equals: 5! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:45:19' prior: 50665759!
+test01Import
+
+	self importCustomers.
+	self assert: 5 equals: (session objectsOfType: Customer).! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:45:21'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:45:27' prior: 50665764!
+test01Import
+
+	self importCustomers.
+	self assert: 5 equals: (session objectsOfType: Customer) size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:45:28'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:45:58' prior: 50665773!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: (session objectsOfType: Address) size.
+	self assert: 2 equals: (session objectsOfType: Customer) size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:45:59'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:48:25' prior: 50665721!
+importCustomers
+
+	| inputStream newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:49:06' prior: 50665793!
+importCustomers
+
+	| inputStream newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fourth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:49:09'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:50:51' prior: 50665782!
+test01Import
+
+	self importCustomers.
+	self assert: 2 equals: (session objectsOfType: Customer) size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:50:59' prior: 50665866!
+test01Import
+
+	self importCustomers.
+	"self assert: 3 equals: (session objectsOfType: Address) size."
+	self assert: 2 equals: (session objectsOfType: Customer) size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:52:14' prior: 50665873!
+test01Import
+
+	self importCustomers.
+	"self assert: 3 equals: (session objectsOfType: Address) size."
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:52:15'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:52:16'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:52:27' prior: 50665882!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: (session selectAllOfType: Address) size.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:52:28'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:53:39' prior: 50665896!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: (session selectAllOfType: Customer) sum: [:aCustomer | aCustomer].
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:53:51' prior: 50665907!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: (session selectAllOfType: Customer) sum: [:aCustomer | aCustomer addresses].
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:54:38' prior: 50665917!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [:aCustomer | aCustomer addresses] size).
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:54:41'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:54:42'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:54:54' prior: 50665927!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [:aCustomer | aCustomer addresses size] ).
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 20:55:01'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:55:18' prior: 50665942!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :aCustomer | aCustomer addresses size] ).
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:55:23' prior: 50665955!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :aCustomer | aCustomer addresses size ] ).
+	self assert: 2 equals: (session selectAllOfType: Customer) size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 20:55:59' prior: 50665965!
+test01Import
+
+	self importCustomers.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :aCustomer | aCustomer addresses size ] ).
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:02:07' prior: 50665975!
+test01Import
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :aCustomer | aCustomer addresses size ] ).
+	
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:04:39'!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = 22333444 ].
+	
+	self assert: 1 equals: aCustomer size.
+	
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:04:41'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:04:53' prior: 50665995!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = 22333444 ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:04:55'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:05:06' prior: 50666006!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:05:07'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:05:28' prior: 50665828!
+importCustomers
+
+	| inputStream newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData fourth ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:05:32'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:05:32'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:05:33'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:06:12' prior: 50666018!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer first.
+	
+	self assert: 'Pepe' equals: aCustomer name.
+	
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:07:07' prior: 50666072!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer first.
+	
+	self assert: 'Pepe' equals: aCustomer name.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:07:08'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:07:22' prior: 50666084!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer at: 1.
+	
+	self assert: 'Pepe' equals: aCustomer name.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:07:23'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:07:30' prior: 50666102!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	
+	self assert: 'Pepe' equals: aCustomer name.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:07:31'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:07:53' prior: 50666120!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:07:54'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:07:55'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:07:56'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:10:18' prior: 50666138!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	! !
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:10:19'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:10:20'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:10:20'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:10:45' prior: 50666161!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:14:41'!
+test03
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		anAddress ])
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:15:16' prior: 50666202!
+test03
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress province = 'San Martin') and:
+		(anAddress)])
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:15:33' prior: 50666213!
+test03
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress streetName = 'San Martin') and:
+		(anAddress)])
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:16:05' prior: 50666225!
+test03
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress streetName = 'San Martin') and:
+		(anAddress streetNumber = '3322') and:
+		(anAddress)])
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:17:26' prior: 50666237!
+test03
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress streetName = 'San Martin') and:
+		(anAddress streetNumber = '3322') and:
+		(anAddress town = 'Olivos') and:
+		(anAddress zipCode = '1636') and:
+		(anAddress province = 'BsAs')
+		]) 
+	! !
+
+!testRun: #ImportTest #test03 stamp: 'SF 6/22/2023 21:17:29'!
+ERROR!
+
+!testRun: #ImportTest #test03 stamp: 'SF 6/22/2023 21:17:39'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:18:00' prior: 50666251!
+test03
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	aCustomer := aCustomer atRandom.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress streetName = 'San Martin') and:
+		(anAddress streetNumber = '3322') and:
+		(anAddress town = 'Olivos') and:
+		(anAddress zipCode = '1636') and:
+		(anAddress province = 'BsAs')
+		]) 
+	! !
+
+!testRun: #ImportTest #test03 stamp: 'SF 6/22/2023 21:18:01'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:18:18' prior: 50666030!
+importCustomers
+
+	| inputStream newCustomer line |
+
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData sixth ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:18:29' prior: 50666272!
+test03
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	aCustomer := aCustomer atRandom.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress streetName = 'San Martin') and:
+		(anAddress streetNumber = 3322) and:
+		(anAddress town = 'Olivos') and:
+		(anAddress zipCode = 1636) and:
+		(anAddress province = 'BsAs')
+		]) 
+	! !
+
+!testRun: #ImportTest #test03 stamp: 'SF 6/22/2023 21:18:30'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:18:31'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:18:32'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'SF 6/22/2023 21:18:32'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:20:07' prior: 50665985!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:20:20' prior: 50666354!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:20:29' prior: 50666365!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	self assert: 1 equals: aCustomer size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:20:31'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:20:32'!
+PASSED!
+
+!testRun: #ImportTest #test02 stamp: 'SF 6/22/2023 21:20:33'!
+PASSED!
+
+!testRun: #ImportTest #test03 stamp: 'SF 6/22/2023 21:20:33'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:20:58' prior: 50666379!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.! !
+
+!methodRemoval: ImportTest #test02 stamp: 'SF 6/22/2023 21:21:03'!
+test02
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	!
+
+!methodRemoval: ImportTest #test03 stamp: 'SF 6/22/2023 21:21:13'!
+test03
+
+	| aCustomer |
+	
+	self importCustomers.
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	aCustomer := aCustomer atRandom.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress streetName = 'San Martin') and:
+		(anAddress streetNumber = 3322) and:
+		(anAddress town = 'Olivos') and:
+		(anAddress zipCode = 1636) and:
+		(anAddress province = 'BsAs')
+		]) 
+	!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:21:18' prior: 50666404!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress streetName = 'San Martin') and:
+		(anAddress streetNumber = 3322) and:
+		(anAddress town = 'Olivos') and:
+		(anAddress zipCode = 1636) and:
+		(anAddress province = 'BsAs')
+		]) ! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:21:20'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:21:21'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:21:39' prior: 50666459!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	self assert: (aCustomer addresses anySatisfy: [ :anAddress |
+		(anAddress streetName = 'San Martin') and:
+		(anAddress streetNumber = 3322) and:
+		(anAddress town = 'Olivos') and:
+		(anAddress zipCode = 1636) and:
+		(anAddress province = 'BsAs')
+		]) ! !
+!Customer methodsFor: 'addresses' stamp: 'SF 6/22/2023 21:36:50'!
+addressesAtStreet: streetName
+
+	^ addresses select: [ :anAddress | anAddress streetName = streetName ]! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:39:31' prior: 50666495!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:39:37'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:39:38'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:40:28' prior: 50666532!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer | customer identificationNumber = '22333444' ] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:40:30'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:40:30'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:41:38' prior: 50666570!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'D' and: customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:41:40'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:41:41'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:42:34' prior: 50666618!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 'D' equals: aCustomer identificationType.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:42:45' prior: 50666668!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:43:13' prior: 50666719!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:43:15'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:43:16'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:43:55' prior: 50666768!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:43:57'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'SF 6/22/2023 21:43:58'!
+PASSED!
+!Customer methodsFor: 'name' stamp: 'SF 6/22/2023 21:46:10' prior: 50665122!
+firstName
+
+	^ firstName ! !
