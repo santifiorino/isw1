@@ -1,3 +1,34 @@
+!classDefinition: #StreamSimulator category: 'CustomerImporter'!
+UniFileStream subclass: #StreamSimulator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!StreamSimulator methodsFor: 'initialization' stamp: 'sdf 6/25/2023 16:54:26'!
+initialize
+
+	collection := OrderedCollection new.
+	position := 1.! !
+
+
+!StreamSimulator methodsFor: 'accessing' stamp: 'sdf 6/25/2023 16:54:40'!
+nextLine
+
+	| line |
+	
+	[ line := collection at: position ] on: Error do: [ ^nil ].
+	position := position + 1.
+	^ line.
+	! !
+
+
+!StreamSimulator methodsFor: 'read, write, position' stamp: 'sdf 6/25/2023 16:54:55'!
+nextPutAll: lineToAdd
+
+	collection add: lineToAdd! !
+
+
 !classDefinition: #ImportTest category: 'CustomerImporter'!
 TestCase subclass: #ImportTest
 	instanceVariableNames: 'session'
@@ -5,95 +36,165 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:18:18'!
-importCustomers
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:57:36'!
+assertAmountOfAddressesIs: amountOfAddresses
 
-	| inputStream newCustomer line |
+	^ self assert: amountOfAddresses equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ])! !
 
-	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:56:39'!
+assertAmountOfCustomersIs: amountOfCustomers
 
-	line := inputStream nextLine.
-	[ line notNil ] whileTrue: [
-		(line beginsWith: 'C') ifTrue: [ | customerData |
-			customerData := line findTokens: $,.
-			newCustomer := Customer new.
-			newCustomer firstName: customerData second.
-			newCustomer lastName: customerData third.
-			newCustomer identificationType: customerData fourth.
-			newCustomer identificationNumber: customerData fifth.
-			session persist: newCustomer ].
+	^ self assert: amountOfCustomers equals: (session selectAllOfType: Customer) size! !
 
-		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
-			addressData := line findTokens: $,.
-			newAddress := Address new.
-			newCustomer addAddress: newAddress.
-			newAddress streetName: addressData second.
-			newAddress streetNumber: addressData third asNumber.
-			newAddress town: addressData fourth.
-			newAddress zipCode: addressData fifth asNumber.
-			newAddress province: addressData sixth ].
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:52:23'!
+assertCustomer: aCustomer hasAddressAtStreet: streetName atNumber: streetNumber atTown: town withZipCode: zipCode atProvince: province
 
-		line := inputStream nextLine. ].
+	| addresses |
 
-	inputStream close.
-	! !
+	addresses := aCustomer addressesAtStreet: streetName.
+	
+	self assert: (addresses anySatisfy: [ :anAddress |
+		(streetNumber = anAddress streetNumber) and:
+		(town = anAddress town) and:
+		(zipCode = anAddress zipCode) and:
+		(province = anAddress province)
+	]).! !
 
-!ImportTest methodsFor: 'as yet unclassified' stamp: 'SF 6/22/2023 21:43:55'!
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:28:24'!
+assertCustomer: aCustomer hasFirstName: customerName andLastName: customerLastName andAmountOfAddresses: amountOfAddresses   
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: customerLastName equals: aCustomer lastName.
+	self assert: amountOfAddresses equals: aCustomer addresses size! !
+
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 16:19:25'!
+assertDBHasCustomer: aCustomer
+
+	| customerInDB |
+
+	self assertThereIsOnlyOneCustomerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+	
+	customerInDB := self customerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+
+	self assertCustomer: customerInDB hasFirstName: aCustomer firstName andLastName: aCustomer lastName andAmountOfAddresses: aCustomer amountOfAddresses.
+	
+	aCustomer addresses do: [ :anAddress |
+		self assertCustomer: customerInDB hasAddressAtStreet: anAddress streetName atNumber: anAddress streetNumber atTown: anAddress town withZipCode: anAddress zipCode atProvince: anAddress province.	
+		].! !
+
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:37:31'!
+assertThereIsOnlyOneCustomerWithIDType: idType andIDNumber: idNumber
+
+	| customers |
+
+	customers := self selectCustomersWithIDType: idType andIDNumber: idNumber.
+	
+	self assert: 1 equals: customers size.! !
+
+
+!ImportTest methodsFor: 'tests' stamp: 'sdf 6/25/2023 16:55:47'!
 test01Import
 
-	| aCustomer anAddress |
+	self importCustomersFromStream: self streamForTest01.
+	
+	self assertAmountOfCustomersIs: 2.
+	
+	self assertAmountOfAddressesIs: 3.
+	
+	self assertDBHasCustomer: self pepe.
+	
+	self assertDBHasCustomer: self juan.! !
 
-	self importCustomers.
-	self assert: 2 equals: (session selectAllOfType: Customer) size.
-	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+
+!ImportTest methodsFor: 'auxiliar' stamp: 'sdf 6/25/2023 15:37:52'!
+customerWithIDType: idType andIDNumber: idNumber 
+
+	| customers |
+
+	customers := self selectCustomersWithIDType: idType andIDNumber: idNumber.
 	
-	aCustomer := session select: [ :customer |
-		customer identificationType = 'D' and:
-		customer identificationNumber = '22333444'
-		] ofType: Customer.
-	self assert: 1 equals: aCustomer size.
+	^customers atRandom.! !
+
+!ImportTest methodsFor: 'auxiliar' stamp: 'sdf 6/25/2023 16:47:57'!
+importCustomersFromStream: inputStream
+
+	(CustomerImporter forSession: session readingFrom: inputStream) value! !
+
+!ImportTest methodsFor: 'auxiliar' stamp: 'sdf 6/25/2023 16:18:17'!
+juan
+
+	| aCustomer firstAddress |
 	
-	aCustomer := aCustomer atRandom.
-	self assert: 'Pepe' equals: aCustomer firstName.
-	self assert: 'Sanchez' equals: aCustomer lastName.
-	self assert: 2 equals: aCustomer addresses size.
+	aCustomer := Customer new.
+	aCustomer firstName: 'Juan'.
+	aCustomer lastName: 'Perez'.
+	aCustomer identificationType: 'C'.
+	aCustomer identificationNumber: '23-25666777-9'.
 	
-	anAddress := aCustomer addressesAtStreet: 'San Martin'.
-	self assert: 1 equals: anAddress size.
-	anAddress := anAddress first.
-	self assert: 3322 equals: anAddress streetNumber.
-	self assert: 'Olivos' equals: anAddress town.
-	self assert: 1636 equals: anAddress zipCode.
-	self assert: 'BsAs' equals: anAddress province.	
+	firstAddress := Address new.
+	firstAddress streetName: 'Alem'.
+	firstAddress streetNumber: 1122.
+	firstAddress town: 'CABA'.
+	firstAddress zipCode: 1001.
+	firstAddress province: 'CABA'.
 	
-	anAddress := aCustomer addressesAtStreet: 'Maipu'.
-	self assert: 1 equals: anAddress size.
+	aCustomer addAddress: firstAddress.
 	
-	anAddress := anAddress first.
-	self assert: 888 equals: anAddress streetNumber.
-	self assert: 'Florida' equals: anAddress town.
-	self assert: 1122 equals: anAddress zipCode.
-	self assert: 'Buenos Aires' equals: anAddress province.	
+	^ aCustomer.
+		! !
+
+!ImportTest methodsFor: 'auxiliar' stamp: 'sdf 6/25/2023 16:08:51'!
+pepe
+
+	| aCustomer firstAddress secondAddress |
 	
-	aCustomer := session select: [ :customer |
-		customer identificationType = 'C' and:
-		customer identificationNumber = '23-25666777-9'
-		] ofType: Customer.
-	self assert: 1 equals: aCustomer size.
+	aCustomer := Customer new.
+	aCustomer firstName: 'Pepe'.
+	aCustomer lastName: 'Sanchez'.
+	aCustomer identificationType: 'D'.
+	aCustomer identificationNumber: '22333444'.
 	
-	aCustomer := aCustomer atRandom.
-	self assert: 'Juan' equals: aCustomer firstName.
-	self assert: 'Perez' equals: aCustomer lastName.
-	self assert: 1 equals: aCustomer addresses size.
+	firstAddress := Address new.
+	firstAddress streetName: 'San Martin'.
+	firstAddress streetNumber: 3322.
+	firstAddress town: 'Olivos'.
+	firstAddress zipCode: 1636.
+	firstAddress province: 'BsAs'.
 	
-	anAddress := aCustomer addressesAtStreet: 'Alem'.
-	self assert: 1 equals: anAddress size.
+	secondAddress := Address new.
+	secondAddress streetName: 'Maipu'.
+	secondAddress streetNumber: 888.
+	secondAddress town: 'Florida'.
+	secondAddress zipCode: 1122.
+	secondAddress province: 'Buenos Aires'.
 	
-	anAddress := anAddress first.
-	self assert: 1122 equals: anAddress streetNumber.
-	self assert: 'CABA' equals: anAddress town.
-	self assert: 1001 equals: anAddress zipCode.
-	self assert: 'CABA' equals: anAddress province.	! !
+	aCustomer addAddress: firstAddress.
+	aCustomer addAddress: secondAddress.
+	
+	^ aCustomer.
+		! !
+
+!ImportTest methodsFor: 'auxiliar' stamp: 'sdf 6/25/2023 15:38:34'!
+selectCustomersWithIDType: idType andIDNumber: idNumber
+
+	^ session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer! !
+
+!ImportTest methodsFor: 'auxiliar' stamp: 'sdf 6/25/2023 16:50:16'!
+streamForTest01
+
+	| streamSim |
+	
+	streamSim := StreamSimulator new initialize.
+	streamSim nextPutAll: 'C,Pepe,Sanchez,D,22333444'.
+	streamSim nextPutAll: 'A,San Martin,3322,Olivos,1636,BsAs'.
+	streamSim nextPutAll: 'A,Maipu,888,Florida,1122,Buenos Aires'.
+	streamSim nextPutAll: 'C,Juan,Perez,C,23-25666777-9'.
+	streamSim nextPutAll: 'A,Alem,1122,CABA,1001,CABA'.
+	
+	^ streamSim.! !
 
 
 !ImportTest methodsFor: 'setUp/tearDown' stamp: 'SF 6/22/2023 20:32:27'!
@@ -149,12 +250,12 @@ streetNumber: aStreetNumber
 	streetNumber := aStreetNumber ! !
 
 
-!Address methodsFor: 'twon' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'town' stamp: 'HAW 5/22/2022 00:19:29'!
 town
 
 	^town! !
 
-!Address methodsFor: 'twon' stamp: 'HAW 5/22/2022 00:19:29'!
+!Address methodsFor: 'town' stamp: 'HAW 5/22/2022 00:19:29'!
 town: aTown
 
 	town := aTown! !
@@ -193,6 +294,11 @@ addressesAtStreet: streetName
 
 	^ addresses select: [ :anAddress | anAddress streetName = streetName ]! !
 
+
+!Customer methodsFor: 'name' stamp: 'sdf 6/25/2023 16:12:44'!
+amountOfAddresses
+
+	^ addresses size.! !
 
 !Customer methodsFor: 'name' stamp: 'SF 6/22/2023 21:46:10'!
 firstName
@@ -243,6 +349,58 @@ initialize
 	super initialize.
 	addresses := OrderedCollection new.! !
 
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session inputStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!CustomerImporter methodsFor: 'initialization' stamp: 'sdf 6/25/2023 16:47:23'!
+initializeForSession: aSession readingFrom: anInputStream
+
+	session := aSession.
+	inputStream := anInputStream.! !
+
+
+!CustomerImporter methodsFor: 'evaluating' stamp: 'sdf 6/25/2023 16:47:07'!
+value
+
+	| newCustomer line |
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData sixth ].
+		line := inputStream nextLine. ].
+	inputStream close.
+	! !
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'CustomerImporter class' category: 'CustomerImporter'!
+CustomerImporter class
+	instanceVariableNames: ''!
+
+!CustomerImporter class methodsFor: 'instance creation' stamp: 'sdf 6/25/2023 16:47:07'!
+forSession: aSession readingFrom: anInputStream
+	^self new initializeForSession: aSession readingFrom: anInputStream! !
 
 
 !classDefinition: #DataBaseSession category: 'CustomerImporter'!

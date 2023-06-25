@@ -4762,3 +4762,3120 @@ PASSED!
 firstName
 
 	^ firstName ! !
+
+----STARTUP---- (25 June 2023 15:09:29) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5832.image!
+
+
+----End fileIn of C:\Users\Santii\Desktop\UBA\inge1\windows64\CustomerImporter.st----!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:12:10' prior: 50624416!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+		
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:13:24' prior: 50624712!
+test01Import
+
+	| aCustomer anAddress |
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:15:03' prior: 50624779!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:17:03'!
+m1
+
+	^ session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:17:03' prior: 50624852!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self m1.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:17:21'!
+m1: idType
+
+	^ session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:17:21' prior: 50624926!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self m1: 'D'.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1 stamp: 'sdf 6/25/2023 15:17:21'!
+m1
+
+	^ session select: [ :customer |
+		customer identificationType = 'D' and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:17:21' prior: 50624988!
+m1: idType
+
+	^ session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:18:04'!
+m1: idType a: idNumber 
+
+	^ session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:18:04' prior: 50624996!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self m1: 'D' a: '22333444'.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1: stamp: 'sdf 6/25/2023 15:18:04'!
+m1: idType
+
+	^ session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = '22333444'
+		] ofType: Customer!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:18:04' prior: 50625073!
+m1: idType a: idNumber 
+
+	^ session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:18:27' prior: 50625082!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self m1: 'D' a: '22333444'.
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:19:18' prior: 50625152!
+m1: idType a: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	^ aCustomer size = 1.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:20:30'!
+thereIsExactlyOneCustomerWithIDType: idType andIDNumber: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	^ aCustomer size = 1.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:20:30' prior: 50625161!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self thereIsExactlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:a: stamp: 'sdf 6/25/2023 15:20:30'!
+m1: idType a: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	^ aCustomer size = 1.!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:21:33' prior: 50625233!
+thereIsExactlyOneCustomerWithIDType: idType andIDNumber: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	^aCustomer.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:21:45'!
+customersWithIDType: idType andIDNumber: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	^aCustomer.! !
+
+!methodRemoval: ImportTest #thereIsExactlyOneCustomerWithIDType:andIDNumber: stamp: 'sdf 6/25/2023 15:21:47'!
+thereIsExactlyOneCustomerWithIDType: idType andIDNumber: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	^aCustomer.!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:23:42' prior: 50625245!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	aCustomer := self customersWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:23:50'!
+m1: aCustomer
+
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:23:50' prior: 50625351!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	aCustomer := self customersWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self m1: aCustomer.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:24:20'!
+m1: aCustomer name: customerName 
+
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:24:20' prior: 50625424!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	aCustomer := self customersWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self m1: aCustomer name: 'Pepe'.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1: stamp: 'sdf 6/25/2023 15:24:20'!
+m1: aCustomer
+
+	self assert: 'Pepe' equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:24:20' prior: 50625484!
+m1: aCustomer name: customerName 
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:24:40'!
+m1: aCustomer name: customerName lastName: customerLastName  
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:24:40' prior: 50625493!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	aCustomer := self customersWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self m1: aCustomer name: 'Pepe' lastName: 'Sanchez'.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:name: stamp: 'sdf 6/25/2023 15:24:40'!
+m1: aCustomer name: customerName 
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: 'Sanchez' equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:24:40' prior: 50625570!
+m1: aCustomer name: customerName lastName: customerLastName  
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: customerLastName equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:25:11'!
+m1: aCustomer name: customerName lastName: customerLastName amountOfAddresses: amountOfAddresses   
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: customerLastName equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:25:11' prior: 50625580!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	aCustomer := self customersWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self m1: aCustomer name: 'Pepe' lastName: 'Sanchez' amountOfAddresses: 2.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:name:lastName: stamp: 'sdf 6/25/2023 15:25:11'!
+m1: aCustomer name: customerName lastName: customerLastName  
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: customerLastName equals: aCustomer lastName.
+	self assert: 2 equals: aCustomer addresses size!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:25:11' prior: 50625659!
+m1: aCustomer name: customerName lastName: customerLastName amountOfAddresses: amountOfAddresses   
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: customerLastName equals: aCustomer lastName.
+	self assert: amountOfAddresses equals: aCustomer addresses size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:28:24'!
+assertCustomer: aCustomer hasFirstName: customerName andLastName: customerLastName andAmountOfAddresses: amountOfAddresses   
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: customerLastName equals: aCustomer lastName.
+	self assert: amountOfAddresses equals: aCustomer addresses size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:28:24' prior: 50625671!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	aCustomer := self customersWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:name:lastName:amountOfAddresses: stamp: 'sdf 6/25/2023 15:28:24'!
+m1: aCustomer name: customerName lastName: customerLastName amountOfAddresses: amountOfAddresses   
+
+	self assert: customerName equals: aCustomer firstName.
+	self assert: customerLastName equals: aCustomer lastName.
+	self assert: amountOfAddresses equals: aCustomer addresses size!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:28:46'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:28:47'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:30:45' prior: 50625328!
+customersWithIDType: idType andIDNumber: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	^aCustomer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:32:53' prior: 50625767!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customersWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:33:27'!
+assertThereIsOnlyOneCustomerWithIDType: idType andIDNumber: idNumber
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:33:42'!
+customerWithIDType: idType andIDNumber: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	^aCustomer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:33:42' prior: 50625858!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #customersWithIDType:andIDNumber: stamp: 'sdf 6/25/2023 15:33:42'!
+customersWithIDType: idType andIDNumber: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	self assert: 1 equals: aCustomer size.
+	
+	^aCustomer!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:33:50' prior: 50625932!
+customerWithIDType: idType andIDNumber: idNumber 
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	^aCustomer atRandom.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:34:46' prior: 50625920!
+assertThereIsOnlyOneCustomerWithIDType: idType andIDNumber: idNumber
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer.
+	
+	"self assert: 1 equals: aCustomer size."! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:37:10'!
+selectCustomersWithIDType: idType andIDNumber: idNumber
+
+	| aCustomer |
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:37:10' prior: 50626029!
+assertThereIsOnlyOneCustomerWithIDType: idType andIDNumber: idNumber
+
+	self selectCustomersWithIDType: idType andIDNumber: idNumber.
+	
+	"self assert: 1 equals: aCustomer size."! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:37:31' prior: 50626052!
+assertThereIsOnlyOneCustomerWithIDType: idType andIDNumber: idNumber
+
+	| customers |
+
+	customers := self selectCustomersWithIDType: idType andIDNumber: idNumber.
+	
+	self assert: 1 equals: customers size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:37:52' prior: 50626018!
+customerWithIDType: idType andIDNumber: idNumber 
+
+	| customers |
+
+	customers := self selectCustomersWithIDType: idType andIDNumber: idNumber.
+	
+	^customers atRandom.! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:38:05'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:38:34' prior: 50626041!
+selectCustomersWithIDType: idType andIDNumber: idNumber
+
+	^ session select: [ :customer |
+		customer identificationType = idType and:
+		customer identificationNumber = idNumber
+		] ofType: Customer! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:38:38'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:40:57' prior: 50625944!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:41:05'!
+m1: anAddress
+
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:41:05' prior: 50626094!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self assert: 1 equals: anAddress size.
+	anAddress := anAddress first.
+	self m1: anAddress.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:42:48' prior: 50626166!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	anAddress := anAddress first.
+	self m1: anAddress.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:43:10' prior: 50626156!
+m1: anAddress
+
+	self assert: 'San Martin' equals: anAddress streetName.
+
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:44:38'!
+m1: anAddress a: streetName 
+
+	self assert: 'San Martin' equals: anAddress streetName.
+
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:44:38' prior: 50626223!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	anAddress := anAddress first.
+	self m1: anAddress a: 'San Martin'.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1: stamp: 'sdf 6/25/2023 15:44:38'!
+m1: anAddress
+
+	self assert: 'San Martin' equals: anAddress streetName.
+
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:44:38' prior: 50626290!
+m1: anAddress a: streetName 
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:44:51'!
+m1: anAddress a: streetName b: streetNumber  
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:44:51' prior: 50626302!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	anAddress := anAddress first.
+	self m1: anAddress a: 'San Martin' b: 3322.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:a: stamp: 'sdf 6/25/2023 15:44:51'!
+m1: anAddress a: streetName 
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: 3322 equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:44:51' prior: 50626381!
+m1: anAddress a: streetName b: streetNumber  
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:03'!
+m1: anAddress a: streetName b: streetNumber c: town   
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:03' prior: 50626394!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	anAddress := anAddress first.
+	self m1: anAddress a: 'San Martin' b: 3322 c: 'Olivos'.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:a:b: stamp: 'sdf 6/25/2023 15:45:03'!
+m1: anAddress a: streetName b: streetNumber  
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: 'Olivos' equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:03' prior: 50626474!
+m1: anAddress a: streetName b: streetNumber c: town   
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: town equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:22'!
+m1: anAddress a: streetName b: streetNumber c: town d: zipCode    
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: town equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:22' prior: 50626487!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	anAddress := anAddress first.
+	self m1: anAddress a: 'San Martin' b: 3322 c: 'Olivos' d: 1636.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:a:b:c: stamp: 'sdf 6/25/2023 15:45:22'!
+m1: anAddress a: streetName b: streetNumber c: town   
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: town equals: anAddress town.
+	self assert: 1636 equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:22' prior: 50626569!
+m1: anAddress a: streetName b: streetNumber c: town d: zipCode    
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: town equals: anAddress town.
+	self assert: zipCode equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:39'!
+m1: anAddress a: streetName b: streetNumber c: town d: zipCode e: province     
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: town equals: anAddress town.
+	self assert: zipCode equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:39' prior: 50626583!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	anAddress := anAddress first.
+	self m1: anAddress a: 'San Martin' b: 3322 c: 'Olivos' d: 1636 e: 'BsAs'.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:a:b:c:d: stamp: 'sdf 6/25/2023 15:45:39'!
+m1: anAddress a: streetName b: streetNumber c: town d: zipCode    
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: town equals: anAddress town.
+	self assert: zipCode equals: anAddress zipCode.
+	self assert: 'BsAs' equals: anAddress province!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:45:39' prior: 50626665!
+m1: anAddress a: streetName b: streetNumber c: town d: zipCode e: province     
+
+	self assert: streetName equals: anAddress streetName.
+
+	self assert: streetNumber equals: anAddress streetNumber.
+	self assert: town equals: anAddress town.
+	self assert: zipCode equals: anAddress zipCode.
+	self assert: province equals: anAddress province! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:46:26' prior: 50626679!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	anAddress := aCustomer addressesAtStreet: 'San Martin'.
+	self m1: aCustomer a: 'San Martin' b: 3322 c: 'Olivos' d: 1636 e: 'BsAs'.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:46:31' prior: 50626763!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self m1: aCustomer a: 'San Martin' b: 3322 c: 'Olivos' d: 1636 e: 'BsAs'.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:49:01' prior: 50626749!
+m1: aCustomer a: streetName b: streetNumber c: town d: zipCode e: province
+
+	| addresses |
+
+	addresses := aCustomer addressesAtStreet: 'San Martin'.
+	
+	self assert: (addresses anySatisfy: [ :anAddress |
+		(streetNumber = anAddress streetNumber) and:
+		(town = anAddress town) and:
+		(zipCode = anAddress zipCode) and:
+		(province = anAddress province)
+	]).! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:49:17'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:49:18'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:50:34'!
+assertCustomer: aCustomer hasAddressAtStreet: streetName atNumber: streetNumber atTown: town withZipCode: zipCode atProvince: province
+
+	| addresses |
+
+	addresses := aCustomer addressesAtStreet: 'San Martin'.
+	
+	self assert: (addresses anySatisfy: [ :anAddress |
+		(streetNumber = anAddress streetNumber) and:
+		(town = anAddress town) and:
+		(zipCode = anAddress zipCode) and:
+		(province = anAddress province)
+	]).! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:50:34' prior: 50626819!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	anAddress := aCustomer addressesAtStreet: 'Maipu'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 888 equals: anAddress streetNumber.
+	self assert: 'Florida' equals: anAddress town.
+	self assert: 1122 equals: anAddress zipCode.
+	self assert: 'Buenos Aires' equals: anAddress province.	
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!methodRemoval: ImportTest #m1:a:b:c:d:e: stamp: 'sdf 6/25/2023 15:50:34'!
+m1: aCustomer a: streetName b: streetNumber c: town d: zipCode e: province
+
+	| addresses |
+
+	addresses := aCustomer addressesAtStreet: 'San Martin'.
+	
+	self assert: (addresses anySatisfy: [ :anAddress |
+		(streetNumber = anAddress streetNumber) and:
+		(town = anAddress town) and:
+		(zipCode = anAddress zipCode) and:
+		(province = anAddress province)
+	]).!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:51:46' prior: 50626910!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:51:48'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:52:23' prior: 50626893!
+assertCustomer: aCustomer hasAddressAtStreet: streetName atNumber: streetNumber atTown: town withZipCode: zipCode atProvince: province
+
+	| addresses |
+
+	addresses := aCustomer addressesAtStreet: streetName.
+	
+	self assert: (addresses anySatisfy: [ :anAddress |
+		(streetNumber = anAddress streetNumber) and:
+		(town = anAddress town) and:
+		(zipCode = anAddress zipCode) and:
+		(province = anAddress province)
+	]).! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:52:27'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:52:36' prior: 50626980!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	aCustomer := session select: [ :customer |
+		customer identificationType = 'C' and:
+		customer identificationNumber = '23-25666777-9'
+		] ofType: Customer.
+	self assert: 1 equals: aCustomer size.
+	
+	aCustomer := aCustomer atRandom.
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:53:10' prior: 50627052!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:53:12'!
+FAILURE!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:53:41' prior: 50627102!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assert: 'Juan' equals: aCustomer firstName.
+	self assert: 'Perez' equals: aCustomer lastName.
+	self assert: 1 equals: aCustomer addresses size.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:53:42'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:53:43'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:54:24' prior: 50627152!
+test01Import
+
+	| aCustomer anAddress |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	anAddress := aCustomer addressesAtStreet: 'Alem'.
+	self assert: 1 equals: anAddress size.
+	
+	anAddress := anAddress first.
+	self assert: 1122 equals: anAddress streetNumber.
+	self assert: 'CABA' equals: anAddress town.
+	self assert: 1001 equals: anAddress zipCode.
+	self assert: 'CABA' equals: anAddress province.	! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:54:25'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:54:27'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:55:11' prior: 50627204!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:55:16'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 15:55:17'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:55:28' prior: 50627255!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assert: 2 equals: (session selectAllOfType: Customer) size.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:55:47'!
+m1
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:55:47' prior: 50627299!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self m1.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:56:10'!
+m1: amountOfCustomers
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:56:11' prior: 50627344!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self m1: 2.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+
+!methodRemoval: ImportTest #m1 stamp: 'sdf 6/25/2023 15:56:11'!
+m1
+
+	^ self assert: 2 equals: (session selectAllOfType: Customer) size!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:56:11' prior: 50627381!
+m1: amountOfCustomers
+
+	^ self assert: amountOfCustomers equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:56:39'!
+assertAmountOfCustomersIs: amountOfCustomers
+
+	^ self assert: amountOfCustomers equals: (session selectAllOfType: Customer) size! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:56:39' prior: 50627387!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ] ).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+
+!methodRemoval: ImportTest #m1: stamp: 'sdf 6/25/2023 15:56:39'!
+m1: amountOfCustomers
+
+	^ self assert: amountOfCustomers equals: (session selectAllOfType: Customer) size!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:56:59' prior: 50627443!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ]).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:57:11'!
+assertAmountOfAddressesIs
+
+	^ self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ])! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:57:11' prior: 50627487!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:57:36'!
+assertAmountOfAddressesIs: amountOfAddresses
+
+	^ self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ])! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:57:36' prior: 50627533!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+
+!methodRemoval: ImportTest #assertAmountOfAddressesIs stamp: 'sdf 6/25/2023 15:57:36'!
+assertAmountOfAddressesIs
+
+	^ self assert: 3 equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ])!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:57:36' prior: 50627569!
+assertAmountOfAddressesIs: amountOfAddresses
+
+	^ self assert: amountOfAddresses equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ])! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 15:59:39'!
+pepe
+
+	| aCustomer |
+	
+	aCustomer := Customer new.
+		! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:01:41' prior: 50627628!
+pepe
+
+	| aCustomer |
+	
+	aCustomer := Customer new.
+	aCustomer firstName: 'Pepe'.
+	aCustomer lastName: 'Sanchez'.
+	aCustomer identificationType: 'D'.
+	aCustomer identificationNumber: ''
+		! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:02:35' prior: 50627633!
+pepe
+
+	| aCustomer firstAddress secondAddress |
+	
+	aCustomer := Customer new.
+	aCustomer firstName: 'Pepe'.
+	aCustomer lastName: 'Sanchez'.
+	aCustomer identificationType: 'D'.
+	aCustomer identificationNumber: '22333444'.
+	
+	firstAddress := Address new.
+	
+		! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:02:43' prior: 50627642!
+pepe
+
+	| aCustomer firstAddress |
+	
+	aCustomer := Customer new.
+	aCustomer firstName: 'Pepe'.
+	aCustomer lastName: 'Sanchez'.
+	aCustomer identificationType: 'D'.
+	aCustomer identificationNumber: '22333444'.
+	
+	firstAddress := Address new.
+	
+	^ aCustomer.
+		! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:06:29' prior: 50627577!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self assert: (self m1: self pepe).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:08:51' prior: 50627654!
+pepe
+
+	| aCustomer firstAddress secondAddress |
+	
+	aCustomer := Customer new.
+	aCustomer firstName: 'Pepe'.
+	aCustomer lastName: 'Sanchez'.
+	aCustomer identificationType: 'D'.
+	aCustomer identificationNumber: '22333444'.
+	
+	firstAddress := Address new.
+	firstAddress streetName: 'San Martin'.
+	firstAddress streetNumber: 3322.
+	firstAddress town: 'Olivos'.
+	firstAddress zipCode: 1636.
+	firstAddress province: 'BsAs'.
+	
+	secondAddress := Address new.
+	secondAddress streetName: 'Maipu'.
+	secondAddress streetNumber: 888.
+	secondAddress town: 'Florida'.
+	secondAddress zipCode: 1122.
+	secondAddress province: 'Buenos Aires'.
+	
+	aCustomer addAddress: firstAddress.
+	aCustomer addAddress: secondAddress.
+	
+	^ aCustomer.
+		! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:09:32'!
+m1: aCustomer
+
+	self assertCustomer: aCustomer hasFirstName: 'Pepe' andLastName: 'Sanchez' andAmountOfAddresses: 2.
+	self assertCustomer: aCustomer hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:09:32' prior: 50627666!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self assert: (self m1: self pepe).
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self m1: aCustomer.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:12:14' prior: 50627729!
+m1: aCustomer
+
+	| customerInDB |
+
+	self assertThereIsOnlyOneCustomerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+	
+	customerInDB := self customerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+
+	self assertCustomer: customerInDB hasFirstName: aCustomer firstName andLastName: aCustomer lastName andAmountOfAddresses: (aCustomer addresses size).
+	self assertCustomer: customerInDB hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: customerInDB hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'! !
+!Customer methodsFor: 'name' stamp: 'sdf 6/25/2023 16:12:44'!
+amountOfAddresses
+
+	^ addresses size.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:12:58' prior: 50627771!
+m1: aCustomer
+
+	| customerInDB |
+
+	self assertThereIsOnlyOneCustomerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+	
+	customerInDB := self customerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+
+	self assertCustomer: customerInDB hasFirstName: aCustomer firstName andLastName: aCustomer lastName andAmountOfAddresses: aCustomer amountOfAddresses.
+	self assertCustomer: customerInDB hasAddressAtStreet: 'San Martin' atNumber: 3322 atTown: 'Olivos' withZipCode: 1636 atProvince: 'BsAs'.	
+	
+	self assertCustomer: customerInDB hasAddressAtStreet: 'Maipu' atNumber: 888 atTown: 'Florida' withZipCode: 1122 atProvince: 'Buenos Aires'! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:15:12' prior: 50627801!
+m1: aCustomer
+
+	| customerInDB |
+
+	self assertThereIsOnlyOneCustomerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+	
+	customerInDB := self customerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+
+	self assertCustomer: customerInDB hasFirstName: aCustomer firstName andLastName: aCustomer lastName andAmountOfAddresses: aCustomer amountOfAddresses.
+	
+	aCustomer addresses do: [ :anAddress |
+		self assertCustomer: customerInDB hasAddressAtStreet: anAddress streetName atNumber: anAddress streetNumber atTown: anAddress town withZipCode: anAddress zipCode atProvince: anAddress province.	
+		].! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:15:30'!
+ERROR!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:15:45' prior: 50627745!
+test01Import
+
+	| aCustomer |
+
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self m1: self pepe.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	aCustomer := self customerWithIDType: 'D' andIDNumber: '22333444'.
+	
+	self m1: aCustomer.
+	
+	self assertThereIsOnlyOneCustomerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	aCustomer := self customerWithIDType: 'C' andIDNumber: '23-25666777-9'.
+	
+	self assertCustomer: aCustomer hasFirstName: 'Juan' andLastName: 'Perez' andAmountOfAddresses: 1.
+	
+	self assertCustomer: aCustomer hasAddressAtStreet: 'Alem' atNumber: 1122 atTown: 'CABA' withZipCode: 1001 atProvince: 'CABA'.! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:15:47'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:15:49'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:18:17'!
+juan
+
+	| aCustomer firstAddress |
+	
+	aCustomer := Customer new.
+	aCustomer firstName: 'Juan'.
+	aCustomer lastName: 'Perez'.
+	aCustomer identificationType: 'C'.
+	aCustomer identificationNumber: '23-25666777-9'.
+	
+	firstAddress := Address new.
+	firstAddress streetName: 'Alem'.
+	firstAddress streetNumber: 1122.
+	firstAddress town: 'CABA'.
+	firstAddress zipCode: 1001.
+	firstAddress province: 'CABA'.
+	
+	aCustomer addAddress: firstAddress.
+	
+	^ aCustomer.
+		! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:18:28' prior: 50627854!
+test01Import
+
+	
+
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self m1: self pepe.
+	
+	self m1: self juan.! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:18:31'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:18:32'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:18:37' prior: 50627902!
+test01Import
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self m1: self pepe.
+	
+	self m1: self juan.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:19:25'!
+assertDBHasCustomer: aCustomer
+
+	| customerInDB |
+
+	self assertThereIsOnlyOneCustomerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+	
+	customerInDB := self customerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+
+	self assertCustomer: customerInDB hasFirstName: aCustomer firstName andLastName: aCustomer lastName andAmountOfAddresses: aCustomer amountOfAddresses.
+	
+	aCustomer addresses do: [ :anAddress |
+		self assertCustomer: customerInDB hasAddressAtStreet: anAddress streetName atNumber: anAddress streetNumber atTown: anAddress town withZipCode: anAddress zipCode atProvince: anAddress province.	
+		].! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:19:25' prior: 50627915!
+test01Import
+	self importCustomers.
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self assertDBHasCustomer: self pepe.
+	
+	self assertDBHasCustomer: self juan.! !
+
+!methodRemoval: ImportTest #m1: stamp: 'sdf 6/25/2023 16:19:25'!
+m1: aCustomer
+
+	| customerInDB |
+
+	self assertThereIsOnlyOneCustomerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+	
+	customerInDB := self customerWithIDType: aCustomer identificationType andIDNumber: aCustomer identificationNumber.
+
+	self assertCustomer: customerInDB hasFirstName: aCustomer firstName andLastName: aCustomer lastName andAmountOfAddresses: aCustomer amountOfAddresses.
+	
+	aCustomer addresses do: [ :anAddress |
+		self assertCustomer: customerInDB hasAddressAtStreet: anAddress streetName atNumber: anAddress streetNumber atTown: anAddress town withZipCode: anAddress zipCode atProvince: anAddress province.	
+		].!
+
+----SNAPSHOT----(25 June 2023 16:19:34) CuisUniversity-5832.image priorSource: 9366758!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:20:56' prior: 50624380!
+importCustomers
+	| inputStream newCustomer line |
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData sixth ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+Stream subclass: #StreamSimulator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #StreamSimulator category: 'CustomerImporter' stamp: 'sdf 6/25/2023 16:22:03'!
+Stream subclass: #StreamSimulator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+ReadStream on: (OrderedCollection with: 'hola' with: 'jaja')!
+
+(ReadStream on: (OrderedCollection with: 'hola' with: 'jaja')) nextLine!
+
+UniFileStream new nextPutAll: 'hola'!
+
+UniFileStream subclass: #StreamSimulator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #StreamSimulator category: 'CustomerImporter' stamp: 'sdf 6/25/2023 16:32:23'!
+UniFileStream subclass: #StreamSimulator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #StreamSimulator category: 'CustomerImporter' stamp: 'sdf 6/25/2023 16:32:46'!
+UniFileStream subclass: #StreamSimulator
+	instanceVariableNames: 'lines'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!StreamSimulator methodsFor: 'no messages' stamp: 'sdf 6/25/2023 16:32:45'!
+addLine: lineToAdd
+
+	lines add: lineToAdd ! !
+!StreamSimulator methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:32:51' prior: 50628056!
+addLine: lineToAdd
+
+	lines add: lineToAdd! !
+!StreamSimulator methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:33:17' overrides: 16920235!
+initialize
+
+	lines := OrderedCollection new.
+	position := 0.! !
+!StreamSimulator methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:34:12' overrides: 16913973!
+nextLine
+
+	
+	(position > lines size) ifTrue: [ ^nil ].
+	! !
+!StreamSimulator methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:35:44' prior: 50628072 overrides: 16913973!
+nextLine
+
+	| line |
+	
+	[ line := lines at: position ] on: Error do: [ ^nil ].
+	position := position + 1.
+	^ line.
+	! !
+!StreamSimulator methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:35:47' prior: 50628066 overrides: 16920235!
+initialize
+
+	lines := OrderedCollection new.
+	position := 1.! !
+
+| sim |
+sim := StreamSimulator new initialize.
+sim addLine: 'hola'.
+sim addLine: 'lol'.
+
+sim nextLine.!
+
+| sim |
+sim := StreamSimulator new initialize.
+sim addLine: 'hola'.
+sim addLine: 'lol'.
+
+sim nextLine nextLine.!
+
+| sim |
+sim := StreamSimulator new initialize.
+sim addLine: 'hola'.
+sim addLine: 'lol'.
+
+sim nextLine.
+sim nextLine.!
+
+| sim |
+sim := StreamSimulator new initialize.
+sim addLine: 'hola'.
+sim addLine: 'lol'.
+
+sim nextLine.
+sim nextLine.
+sim nextLine.!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:38:41'!
+streamForTest01
+
+	| streamSim |
+	
+	streamSim := StreamSimulator new initialize.
+	streamSim addLine: 'C,Pepe,Sanchez,D,22333444'.
+	streamSim addLine: 'A,San Martin,3322,Olivos,1636,BsAs'.
+	streamSim addLine: 'A,Maipu,888,Florida,1122,Buenos Aires'.
+	streamSim addLine: 'C,Juan,Perez,C,23-25666777-9'.
+	streamSim addLine: 'A,Alem,1122,CABA,1001,CABA'.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:40:36' prior: 50627948!
+test01Import
+	self importCustomersFromStream: (UniFileStream new open: 'input.txt' forWrite: false).
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self assertDBHasCustomer: self pepe.
+	
+	self assertDBHasCustomer: self juan.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:40:58'!
+importCustomersFromStream: inputStream
+
+	| newCustomer line |
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData sixth ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:41:04'!
+PASSED!
+
+!methodRemoval: ImportTest #importCustomers stamp: 'sdf 6/25/2023 16:41:08'!
+importCustomers
+	| inputStream newCustomer line |
+	inputStream := UniFileStream new open: 'input.txt' forWrite: false.
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData sixth ].
+
+		line := inputStream nextLine. ].
+
+	inputStream close.
+	!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:41:23' prior: 50628106!
+streamForTest01
+
+	| streamSim |
+	
+	streamSim := StreamSimulator new initialize.
+	streamSim addLine: 'C,Pepe,Sanchez,D,22333444'.
+	streamSim addLine: 'A,San Martin,3322,Olivos,1636,BsAs'.
+	streamSim addLine: 'A,Maipu,888,Florida,1122,Buenos Aires'.
+	streamSim addLine: 'C,Juan,Perez,C,23-25666777-9'.
+	streamSim addLine: 'A,Alem,1122,CABA,1001,CABA'.
+	
+	^ streamSim.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:41:37' prior: 50628120!
+test01Import
+	self importCustomersFromStream: (self streamForTest01).
+	self assertAmountOfCustomersIs: 2.
+	self assertAmountOfAddressesIs: 3.
+	
+	self assertDBHasCustomer: self pepe.
+	
+	self assertDBHasCustomer: self juan.! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:41:39'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:41:40'!
+PASSED!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:42:44' prior: 50628218!
+test01Import
+	self importCustomersFromStream: (self streamForTest01).
+	
+	self assertAmountOfCustomersIs: 2.
+	
+	self assertAmountOfAddressesIs: 3.
+	
+	self assertDBHasCustomer: self pepe.
+	
+	self assertDBHasCustomer: self juan.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:42:48' prior: 50628233!
+test01Import
+
+	self importCustomersFromStream: (self streamForTest01).
+	
+	self assertAmountOfCustomersIs: 2.
+	
+	self assertAmountOfAddressesIs: 3.
+	
+	self assertDBHasCustomer: self pepe.
+	
+	self assertDBHasCustomer: self juan.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:43:09' prior: 50628131!
+importCustomersFromStream: inputStream
+
+	| newCustomer line |
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData sixth ].
+		line := inputStream nextLine. ].
+	inputStream close.
+	! !
+!ExtractToMethodObjectForm methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:43:35'!
+shouldAutoHighlight
+	self shouldBeImplemented.! !
+!ExtractToMethodObjectForm methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:43:42' prior: 50628289!
+shouldAutoHighlight
+
+	^ false! !
+
+!classDefinition: #CustomerImporter category: 'CustomerImporter' stamp: 'sdf 6/25/2023 16:47:07'!
+Object subclass: #CustomerImporter
+	instanceVariableNames: 'session inputStream'
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!CustomerImporter class methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:47:07'!
+forSession: aSession readingFrom: anInputStream
+	^self new initializeForSession: aSession readingFrom: anInputStream! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:47:07'!
+initializeForSession: aSession readingFrom: anInputStream
+	session := aSession.
+	inputStream := anInputStream.! !
+!CustomerImporter methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:47:07' overrides: 16902254!
+value
+
+	| newCustomer line |
+	line := inputStream nextLine.
+	[ line notNil ] whileTrue: [
+		(line beginsWith: 'C') ifTrue: [ | customerData |
+			customerData := line findTokens: $,.
+			newCustomer := Customer new.
+			newCustomer firstName: customerData second.
+			newCustomer lastName: customerData third.
+			newCustomer identificationType: customerData fourth.
+			newCustomer identificationNumber: customerData fifth.
+			session persist: newCustomer ].
+
+		(line beginsWith: 'A') ifTrue: [ | addressData newAddress |
+			addressData := line findTokens: $,.
+			newAddress := Address new.
+			newCustomer addAddress: newAddress.
+			newAddress streetName: addressData second.
+			newAddress streetNumber: addressData third asNumber.
+			newAddress town: addressData fourth.
+			newAddress zipCode: addressData fifth asNumber.
+			newAddress province: addressData sixth ].
+		line := inputStream nextLine. ].
+	inputStream close.
+	! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:47:08' prior: 50628255!
+importCustomersFromStream: inputStream
+	(CustomerImporter forSession: session readingFrom: inputStream) value! !
+!CustomerImporter methodsFor: 'initialization' stamp: 'sdf 6/25/2023 16:47:23' prior: 50628313!
+initializeForSession: aSession readingFrom: anInputStream
+
+	session := aSession.
+	inputStream := anInputStream.! !
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:47:57' prior: 50628353!
+importCustomersFromStream: inputStream
+
+	(CustomerImporter forSession: session readingFrom: inputStream) value! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:48:00'!
+PASSED!
+!StreamSimulator methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:49:58' overrides: 50452924!
+nextPutAll: lineToAdd
+
+	lines add: lineToAdd! !
+
+!methodRemoval: StreamSimulator #addLine: stamp: 'sdf 6/25/2023 16:50:00'!
+addLine: lineToAdd
+
+	lines add: lineToAdd!
+!ImportTest methodsFor: 'as yet unclassified' stamp: 'sdf 6/25/2023 16:50:16' prior: 50628203!
+streamForTest01
+
+	| streamSim |
+	
+	streamSim := StreamSimulator new initialize.
+	streamSim nextPutAll: 'C,Pepe,Sanchez,D,22333444'.
+	streamSim nextPutAll: 'A,San Martin,3322,Olivos,1636,BsAs'.
+	streamSim nextPutAll: 'A,Maipu,888,Florida,1122,Buenos Aires'.
+	streamSim nextPutAll: 'C,Juan,Perez,C,23-25666777-9'.
+	streamSim nextPutAll: 'A,Alem,1122,CABA,1001,CABA'.
+	
+	^ streamSim.! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:50:19'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:50:20'!
+PASSED!
+!StreamSimulator methodsFor: 'initialization' stamp: 'sdf 6/25/2023 16:54:26' prior: 50628086 overrides: 16920235!
+initialize
+
+	collection := OrderedCollection new.
+	position := 1.! !
+
+UniFileStream subclass: #StreamSimulator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+
+!classDefinition: #StreamSimulator category: 'CustomerImporter' stamp: 'sdf 6/25/2023 16:54:30'!
+UniFileStream subclass: #StreamSimulator
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'CustomerImporter'!
+!StreamSimulator methodsFor: 'accessing' stamp: 'sdf 6/25/2023 16:54:40' prior: 50628078 overrides: 16913973!
+nextLine
+
+	| line |
+	
+	[ line := collection at: position ] on: Error do: [ ^nil ].
+	position := position + 1.
+	^ line.
+	! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:54:46'!
+ERROR!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:54:46'!
+ERROR!
+!StreamSimulator methodsFor: 'read, write, position' stamp: 'sdf 6/25/2023 16:54:55' prior: 50628377 overrides: 50452924!
+nextPutAll: lineToAdd
+
+	collection add: lineToAdd! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:55:03'!
+PASSED!
+!ImportTest methodsFor: 'tests' stamp: 'sdf 6/25/2023 16:55:47' prior: 50628244!
+test01Import
+
+	self importCustomersFromStream: self streamForTest01.
+	
+	self assertAmountOfCustomersIs: 2.
+	
+	self assertAmountOfAddressesIs: 3.
+	
+	self assertDBHasCustomer: self pepe.
+	
+	self assertDBHasCustomer: self juan.! !
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:55:49'!
+PASSED!
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 16:55:50'!
+PASSED!
+
+----SNAPSHOT----(25 June 2023 16:56:18) CuisUniversity-5832.image priorSource: 9482529!
+
+----STARTUP---- (25 June 2023 17:00:14) as C:\Users\Santii\Desktop\UBA\inge1\windows64\CuisUniversity-5832.image!
+
+
+!testRun: #ImportTest #test01Import stamp: 'sdf 6/25/2023 17:01:12'!
+PASSED!
