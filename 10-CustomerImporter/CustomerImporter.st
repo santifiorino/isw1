@@ -1,34 +1,3 @@
-!classDefinition: #StreamSimulator category: 'CustomerImporter'!
-UniFileStream subclass: #StreamSimulator
-	instanceVariableNames: ''
-	classVariableNames: ''
-	poolDictionaries: ''
-	category: 'CustomerImporter'!
-
-!StreamSimulator methodsFor: 'initialization' stamp: 'sdf 6/25/2023 16:54:26'!
-initialize
-
-	collection := OrderedCollection new.
-	position := 1.! !
-
-
-!StreamSimulator methodsFor: 'accessing' stamp: 'sdf 6/25/2023 16:54:40'!
-nextLine
-
-	| line |
-	
-	[ line := collection at: position ] on: Error do: [ ^nil ].
-	position := position + 1.
-	^ line.
-	! !
-
-
-!StreamSimulator methodsFor: 'read, write, position' stamp: 'sdf 6/25/2023 16:54:55'!
-nextPutAll: lineToAdd
-
-	collection add: lineToAdd! !
-
-
 !classDefinition: #ImportTest category: 'CustomerImporter'!
 TestCase subclass: #ImportTest
 	instanceVariableNames: 'session'
@@ -36,15 +5,17 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:57:36'!
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 18:25:44'!
 assertAmountOfAddressesIs: amountOfAddresses
 
-	^ self assert: amountOfAddresses equals: ((session selectAllOfType: Customer) sum: [ :customer | customer addresses size ])! !
+	^ self assert: amountOfAddresses
+		  equals: ((session selectAllOfType: Customer) sum: [ :customer | customer amountOfAddresses ])! !
 
-!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:56:39'!
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 18:23:41'!
 assertAmountOfCustomersIs: amountOfCustomers
 
-	^ self assert: amountOfCustomers equals: (session selectAllOfType: Customer) size! !
+	^ self assert: amountOfCustomers 
+		  equals: (session selectAllOfType: Customer) size! !
 
 !ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:52:23'!
 assertCustomer: aCustomer hasAddressAtStreet: streetName atNumber: streetNumber atTown: town withZipCode: zipCode atProvince: province
@@ -60,12 +31,12 @@ assertCustomer: aCustomer hasAddressAtStreet: streetName atNumber: streetNumber 
 		(province = anAddress province)
 	]).! !
 
-!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 15:28:24'!
+!ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 18:26:18'!
 assertCustomer: aCustomer hasFirstName: customerName andLastName: customerLastName andAmountOfAddresses: amountOfAddresses   
 
 	self assert: customerName equals: aCustomer firstName.
 	self assert: customerLastName equals: aCustomer lastName.
-	self assert: amountOfAddresses equals: aCustomer addresses size! !
+	self assert: amountOfAddresses equals: aCustomer amountOfAddresses.! !
 
 !ImportTest methodsFor: 'asserting' stamp: 'sdf 6/25/2023 16:19:25'!
 assertDBHasCustomer: aCustomer
@@ -92,17 +63,15 @@ assertThereIsOnlyOneCustomerWithIDType: idType andIDNumber: idNumber
 	self assert: 1 equals: customers size.! !
 
 
-!ImportTest methodsFor: 'tests' stamp: 'sdf 6/25/2023 16:55:47'!
-test01Import
+!ImportTest methodsFor: 'tests' stamp: 'sdf 6/25/2023 18:43:48'!
+test01CustomersInformationAndAddressesAreImported
 
 	self importCustomersFromStream: self streamForTest01.
 	
 	self assertAmountOfCustomersIs: 2.
-	
 	self assertAmountOfAddressesIs: 3.
 	
 	self assertDBHasCustomer: self pepe.
-	
 	self assertDBHasCustomer: self juan.! !
 
 
@@ -182,32 +151,36 @@ selectCustomersWithIDType: idType andIDNumber: idNumber
 		customer identificationNumber = idNumber
 		] ofType: Customer! !
 
-!ImportTest methodsFor: 'auxiliar' stamp: 'sdf 6/25/2023 16:50:16'!
+!ImportTest methodsFor: 'auxiliar' stamp: 'sdf 6/25/2023 18:21:23'!
 streamForTest01
 
-	| streamSim |
+	^ ReadStream on: (
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'
+	)
 	
-	streamSim := StreamSimulator new initialize.
-	streamSim nextPutAll: 'C,Pepe,Sanchez,D,22333444'.
-	streamSim nextPutAll: 'A,San Martin,3322,Olivos,1636,BsAs'.
-	streamSim nextPutAll: 'A,Maipu,888,Florida,1122,Buenos Aires'.
-	streamSim nextPutAll: 'C,Juan,Perez,C,23-25666777-9'.
-	streamSim nextPutAll: 'A,Alem,1122,CABA,1001,CABA'.
-	
-	^ streamSim.! !
 
 
-!ImportTest methodsFor: 'setUp/tearDown' stamp: 'SF 6/22/2023 20:32:27'!
+
+! !
+
+
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'sdf 6/25/2023 18:24:44'!
 setUp
-
+	
 	session := DataBaseSession for: (Array with: Address with: Customer).
-	session beginTransaction! !
+	
+	session beginTransaction.! !
 
-!ImportTest methodsFor: 'setUp/tearDown' stamp: 'SF 6/22/2023 20:34:16'!
+!ImportTest methodsFor: 'setUp/tearDown' stamp: 'sdf 6/25/2023 18:24:35'!
 tearDown
 
 	session commit.
-	session close! !
+	
+	session close.! !
 
 
 !classDefinition: #Address category: 'CustomerImporter'!
