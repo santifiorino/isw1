@@ -5,7 +5,92 @@ TestCase subclass: #ImportTest
 	poolDictionaries: ''
 	category: 'CustomerImporter'!
 
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:03:08'!
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 14:08:36'!
+assertOnlyPepeWasImported
+
+	self assertPepeSanchezWasImportedCorrecty.
+	
+	self assertImportedAmountOfCustomersIs: 1! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 13:58:08'!
+test01CanImportCustomersAndAddresses
+
+	CustomerImporter valueFrom: self validImportData into: session.
+
+	self assertImportedAmountOfCustomersIs: 2.
+	self assertPepeSanchezWasImportedCorrecty.
+	self assertJuanPerezWasImportedCorrectly ! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 13:46:15'!
+test02importingEmptyFileShouldRaiseError
+
+	self assert: [ CustomerImporter valueFrom: self emptyImportData into: session ]
+	       raises: CustomerImporter emptyStreamErrorDescription.
+	
+! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 14:08:36'!
+test03importingFileWithWrongAmountOfCustomerFieldsShouldRaiseError
+
+	self assert: [ CustomerImporter valueFrom: self importDataWithNotEnoughCustomerFields into: session. ]
+	       raises: CustomerImporter notEnoughFieldsErrorDescription.
+	
+	self assertOnlyPepeWasImported.
+! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 14:08:36'!
+test04importingFileWithWrongAmountOfAddressFieldsShouldRaiseError
+
+	self assert: [ CustomerImporter valueFrom: self importDataWithNotEnoughAddressFields into: session. ]
+	       raises: CustomerImporter notEnoughFieldsErrorDescription.
+	
+	self assertOnlyPepeWasImported.! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 13:59:47'!
+test05importingFileWithAddressBeforeCustomerShouldRaiseError
+	
+	self assert: [ CustomerImporter valueFrom: self importDataWithAddressBeforeCustomer into: session. ]
+	       raises: CustomerImporter addressBeforeCustomerErrorDescription.
+	
+	self assertImportedAmountOfCustomersIs: 0.
+! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 14:08:36'!
+test06importingFileWithInvalidEntryTypeShouldRaiseError
+	
+	self assert: [ CustomerImporter valueFrom: self importDataWithInvalidEntryType into: session. ]
+	       raises: CustomerImporter invalidTypeOfEntryErrorDescription.
+	
+	self assertOnlyPepeWasImported.
+! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 14:08:36'!
+test07importingFileWithAdjacentCommasShouldRaiseError
+	
+	self assert: [ CustomerImporter valueFrom: self importDataWithAdjacentCommas into: session. ]
+	       raises: CustomerImporter adjacentCommasErrorDescription.
+	
+	self assertOnlyPepeWasImported.
+! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 13:50:03'!
+test08importingNilStreamShouldRaiseError
+	
+	self assert: [ CustomerImporter valueFrom: nil into: session. ]
+	       raises: CustomerImporter nilStreamErrorDescription.
+! !
+
+!ImportTest methodsFor: 'tests' stamp: 'SF 6/29/2023 14:13:32'!
+test09importingFileWithEmptyLineShouldRaiseError
+	
+	self assert: [ CustomerImporter valueFrom: self importDataWithEmptyLine into: session. ]
+	       raises: CustomerImporter emptyLineErrorDescription.
+	
+	self assertOnlyPepeWasImported.
+! !
+
+
+!ImportTest methodsFor: 'assertions' stamp: 'p 6/26/2023 21:03:08'!
 assert: aClosure raises: expectedError
 
 	^ self should: aClosure
@@ -14,72 +99,6 @@ assert: aClosure raises: expectedError
 			  self assert: expectedError
 			        equals: anError messageText.
 			  ]! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 20:44:18'!
-test01Import
-
-	CustomerImporter valueFrom: self validImportData into: session.
-
-	self assertImportedRightNumberOfCustomers.
-	self assertPepeSanchezWasImportedCorrecty.
-	self assertJuanPerezWasImportedCorrectly ! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:10:45'!
-test02Empty
-
-	self assert: [ CustomerImporter valueFrom: self emptyImportData into: session ]
-	       raises: CustomerImporter emptyStreamErrorDescription.
-	
-! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:37:54'!
-test03notEnoughOrMoreCustomerFields
-
-	self assert: [ CustomerImporter valueFrom: self importDataWithNotEnoughCustomerFields into: session. ]
-	       raises: CustomerImporter notEnoughFieldsErrorDescription.
-! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:37:54'!
-test04notEnoughOrMoreAddressFields
-
-	self assert: [ CustomerImporter valueFrom: self importDataWithNotEnoughAddressFields into: session. ]
-	       raises: CustomerImporter notEnoughFieldsErrorDescription.! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:11:40'!
-test05addressBeforeCustomer
-	
-	self assert: [ CustomerImporter valueFrom: self importDataWithAddressBeforeCustomer into: session. ]
-	       raises: CustomerImporter addressBeforeCustomerErrorDescription.
-! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:39:40'!
-test06invalidEntryType
-	
-	self assert: [ CustomerImporter valueFrom: self importDataWithInvalidEntryType into: session. ]
-	       raises: CustomerImporter invalidTypeOfEntryErrorDescription.
-! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:21:07'!
-test07adjacentCommas
-	
-	self assert: [ CustomerImporter valueFrom: self importDataWithAdjacentCommas into: session. ]
-	       raises: CustomerImporter adjacentCommasErrorDescription.
-! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:49:43'!
-test08nilStream
-	
-	self assert: [ CustomerImporter valueFrom: nil into: session. ]
-	       raises: CustomerImporter nilStreamErrorDescription.
-! !
-
-!ImportTest methodsFor: 'tests' stamp: 'p 6/26/2023 21:54:43'!
-test09validFirstLetterButInvalidType
-	
-	self assert: [ CustomerImporter valueFrom: self importDataWithValidFirstLetterButInvalidType into: session. ]
-	       raises: CustomerImporter invalidTypeOfEntryErrorDescription.
-! !
-
 
 !ImportTest methodsFor: 'assertions' stamp: 'HAW 5/22/2022 18:22:05'!
 assertAddressOf: importedCustomer at: aStreetName hasNumber: aNumber town: aTown zipCode: aZipCode province: aProvince
@@ -111,10 +130,10 @@ assertCustomerWithIdentificationType: anIdType number: anIdNumber hasFirstName: 
 
 	! !
 
-!ImportTest methodsFor: 'assertions' stamp: 'HAW 5/22/2022 18:12:18'!
-assertImportedRightNumberOfCustomers
+!ImportTest methodsFor: 'assertions' stamp: 'SF 6/29/2023 13:58:08'!
+assertImportedAmountOfCustomersIs: amountOfCustomers
 
-	^ self assert: 2 equals: (session selectAllOfType: Customer) size! !
+	^ self assert: amountOfCustomers equals: (session selectAllOfType: Customer) size! !
 
 !ImportTest methodsFor: 'assertions' stamp: 'HAW 5/22/2022 18:28:45'!
 assertJuanPerezWasImportedCorrectly
@@ -166,37 +185,68 @@ emptyImportData
 
 	^ ReadStream on: ''! !
 
-!ImportTest methodsFor: 'test data' stamp: 'p 6/26/2023 20:47:33'!
+!ImportTest methodsFor: 'test data' stamp: 'SF 6/29/2023 13:59:22'!
 importDataWithAddressBeforeCustomer
 
-	^ ReadStream on: 'A,San Martin,3322,Olivos,1636'! !
+	^ ReadStream on:
+'A,San Martin,3322,Olivos,1636
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
 
-!ImportTest methodsFor: 'test data' stamp: 'p 6/26/2023 21:21:37'!
+!ImportTest methodsFor: 'test data' stamp: 'SF 6/29/2023 13:58:58'!
 importDataWithAdjacentCommas
 
-	^ ReadStream on: 'C,Pepe,Sanchez,D,,22333444'! !
+	^ ReadStream on: 
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Hernan,Wilkinson,D,,33444555
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
 
-!ImportTest methodsFor: 'test data' stamp: 'p 6/26/2023 21:39:25'!
+!ImportTest methodsFor: 'test data' stamp: 'SF 6/29/2023 14:09:24'!
+importDataWithEmptyLine
+
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
+
+!ImportTest methodsFor: 'test data' stamp: 'SF 6/29/2023 14:01:02'!
 importDataWithInvalidEntryType
 
-	^ ReadStream on: 'X,Pepe,Sanchez,D,22333444'! !
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+X,Pepe,Sanchez,D,22333444
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
 
-!ImportTest methodsFor: 'test data' stamp: 'p 6/26/2023 20:46:40'!
+!ImportTest methodsFor: 'test data' stamp: 'SF 6/29/2023 14:05:01'!
 importDataWithNotEnoughAddressFields
 
 	^ ReadStream on:
 'C,Pepe,Sanchez,D,22333444
-A,San Martin,3322,Olivos,1636'! !
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+A,Casa sin provincia,8833
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
 
-!ImportTest methodsFor: 'test data' stamp: 'p 6/26/2023 20:37:40'!
+!ImportTest methodsFor: 'test data' stamp: 'SF 6/29/2023 14:07:29'!
 importDataWithNotEnoughCustomerFields
 
-	^ ReadStream on: 'C,Pepe,Sanchez,D'! !
-
-!ImportTest methodsFor: 'test data' stamp: 'p 6/26/2023 21:54:01'!
-importDataWithValidFirstLetterButInvalidType
-
-	^ ReadStream on: 'Customer,Pepe,Sanchez,D,22333444'! !
+	^ ReadStream on:
+'C,Pepe,Sanchez,D,22333444
+A,San Martin,3322,Olivos,1636,BsAs
+A,Maipu,888,Florida,1122,Buenos Aires
+C,Hernan,Wilkinson,D
+C,Juan,Perez,C,23-25666777-9
+A,Alem,1122,CABA,1001,CABA'! !
 
 !ImportTest methodsFor: 'test data' stamp: 'HAW 5/22/2022 18:08:08'!
 validImportData
@@ -363,9 +413,10 @@ initializeFrom: aReadStream into: aSession
 	readStream := aReadStream.! !
 
 
-!CustomerImporter methodsFor: 'evaluating' stamp: 'p 6/26/2023 21:25:22'!
+!CustomerImporter methodsFor: 'evaluating' stamp: 'SF 6/29/2023 14:13:01'!
 createRecord
-
+	self raiseErrorIfLineIsEmpty.
+	
 	record := line findTokens: $,.
 	self raiseErrorIfAdjacentCommas.
 	^ record! !
@@ -440,6 +491,11 @@ raiseErrorIfAdjacentCommas
 		self error: self class adjacentCommasErrorDescription
 		]! !
 
+!CustomerImporter methodsFor: 'evaluating' stamp: 'SF 6/29/2023 14:13:01'!
+raiseErrorIfLineIsEmpty
+
+	^ (line isEmpty) ifTrue: [ self error: self class emptyLineErrorDescription ]! !
+
 !CustomerImporter methodsFor: 'evaluating' stamp: 'p 6/26/2023 21:37:54'!
 raiseErrorIfRecordSizeIsNot: recordSize
 	
@@ -486,6 +542,11 @@ addressBeforeCustomerErrorDescription
 adjacentCommasErrorDescription
 
 	^ 'Found line with adjacent commas >:('.! !
+
+!CustomerImporter class methodsFor: 'error description' stamp: 'SF 6/29/2023 14:10:52'!
+emptyLineErrorDescription
+
+	^ 'Found an empty line >:('.! !
 
 !CustomerImporter class methodsFor: 'error description' stamp: 'p 6/26/2023 20:59:13'!
 emptyStreamErrorDescription
